@@ -1,0 +1,5376 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Authentic Brand Hot Pot Favicon -->
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="alternate icon" type="image/png" href="images/favicon.png">
+
+  <title>HOT POT RESTAURANT – Haute Imperial Broth & Modern Dining</title>
+  
+  <!-- Premium Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       CSS VARIABLES & DESIGN TOKENS
+       ========================================================================== */
+    :root {
+      /* Brand Color Palette */
+      --color-burgundy: #641E16;
+      --color-red: #A93226;
+      --color-orange: #D35400;
+      --color-amber: #E5A000;
+      --color-cream: #FFF3E0;
+      --color-charcoal: #241A17;
+
+      /* Dark Theme (Default) */
+      --bg-body: #120A08;
+      --bg-surface: #1E120F;
+      --bg-nav: rgba(30, 18, 15, 0.72);
+      --bg-nav-scrolled: rgba(22, 13, 11, 0.92);
+      --bg-dropdown: rgba(28, 16, 13, 0.88);
+      --bg-drawer: rgba(24, 14, 12, 0.96);
+      --bg-card: rgba(45, 26, 22, 0.6);
+      --bg-hover: rgba(229, 160, 0, 0.12);
+      --bg-active: rgba(211, 84, 0, 0.22);
+      
+      --text-primary: #FFF3E0;
+      --text-secondary: #D4BBA8;
+      --text-muted: #9E8373;
+      
+      --border-subtle: rgba(229, 160, 0, 0.18);
+      --border-glow: rgba(229, 160, 0, 0.5);
+      --border-highlight: rgba(255, 243, 224, 0.25);
+      
+      --shadow-nav: 0 20px 45px -10px rgba(0, 0, 0, 0.65), 0 0 20px rgba(211, 84, 0, 0.15);
+      --shadow-dropdown: 0 25px 50px -12px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(229, 160, 0, 0.2);
+      --shadow-3d-button: 0 4px 0 #641E16, 0 8px 24px rgba(211, 84, 0, 0.45);
+      --shadow-3d-pressed: 0 1px 0 #641E16, 0 3px 10px rgba(211, 84, 0, 0.3);
+
+      --gradient-brand: linear-gradient(135deg, #A93226 0%, #D35400 50%, #E5A000 100%);
+      --gradient-brand-hover: linear-gradient(135deg, #C0392B 0%, #E67E22 50%, #F39C12 100%);
+      --gradient-gold: linear-gradient(135deg, #FFF3E0 0%, #E5A000 50%, #D35400 100%);
+      --gradient-steam: radial-gradient(circle, rgba(255, 243, 224, 0.8) 0%, rgba(229, 160, 0, 0.3) 50%, transparent 75%);
+
+      /* Framer-style Spring Curves */
+      --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+      --ease-smooth: cubic-bezier(0.25, 0.1, 0.25, 1);
+      
+      --radius-full: 9999px;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --radius-sm: 8px;
+
+      /* Cursor Spotlight Coordinates */
+      --mouse-x: 50%;
+      --mouse-y: 50%;
+    }
+
+    /* Light Theme */
+    [data-theme="light"] {
+      --bg-body: #FAF5F0;
+      --bg-surface: #FFFFFF;
+      --bg-nav: rgba(255, 250, 245, 0.82);
+      --bg-nav-scrolled: rgba(255, 255, 255, 0.95);
+      --bg-dropdown: rgba(255, 252, 248, 0.95);
+      --bg-drawer: rgba(255, 250, 245, 0.98);
+      --bg-card: rgba(255, 255, 255, 0.85);
+      --bg-hover: rgba(211, 84, 0, 0.08);
+      --bg-active: rgba(211, 84, 0, 0.14);
+      
+      --text-primary: #241A17;
+      --text-secondary: #5C463D;
+      --text-muted: #8A7266;
+      
+      --border-subtle: rgba(169, 50, 38, 0.15);
+      --border-glow: rgba(211, 84, 0, 0.4);
+      --border-highlight: rgba(255, 255, 255, 0.9);
+      
+      --shadow-nav: 0 16px 36px -10px rgba(100, 30, 22, 0.18), 0 0 15px rgba(229, 160, 0, 0.12);
+      --shadow-dropdown: 0 20px 45px -12px rgba(100, 30, 22, 0.22), 0 0 0 1px rgba(211, 84, 0, 0.15);
+      --shadow-3d-button: 0 4px 0 #501711, 0 8px 20px rgba(211, 84, 0, 0.35);
+      --shadow-3d-pressed: 0 1px 0 #501711, 0 3px 8px rgba(211, 84, 0, 0.25);
+    }
+
+    /* RTL Direction Overrides */
+    [dir="rtl"] {
+      text-align: right;
+    }
+
+    /* ==========================================================================
+       RESET & BASE STYLES
+       ========================================================================== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-body);
+      color: var(--text-primary);
+      min-height: 100vh;
+      overflow-x: hidden;
+      line-height: 1.6;
+      transition: background-color 0.4s var(--ease-spring), color 0.4s var(--ease-spring);
+    }
+
+    body.scroll-locked {
+      overflow: hidden !important;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: all 0.25s var(--ease-spring);
+    }
+
+    button {
+      font-family: inherit;
+      border: none;
+      background: none;
+      cursor: pointer;
+      color: inherit;
+    }
+
+    /* SVG Icon Helpers */
+    .icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 18px;
+      height: 18px;
+      stroke-width: 2;
+      stroke: currentColor;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: transform 0.3s var(--ease-spring), stroke 0.3s var(--ease-spring);
+      flex-shrink: 0;
+    }
+
+    /* Ambient Background Glow */
+    .ambient-glow {
+      position: fixed;
+      top: -200px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 900px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(211, 84, 0, 0.18) 0%, rgba(169, 50, 38, 0.1) 40%, transparent 70%);
+      filter: blur(80px);
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.8;
+      transition: opacity 0.5s ease;
+    }
+
+    [data-theme="light"] .ambient-glow {
+      opacity: 0.45;
+      background: radial-gradient(circle, rgba(229, 160, 0, 0.22) 0%, rgba(211, 84, 0, 0.12) 40%, transparent 70%);
+    }
+
+    /* ==========================================================================
+       TOP FIXED NAVIGATION WRAPPER (FLOATING 3D DOCK)
+       ========================================================================== */
+    .navbar-dock {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 18px 24px;
+      display: flex;
+      justify-content: center;
+      pointer-events: none; /* Allows clicks through padding edges */
+      transition: padding 0.4s var(--ease-spring);
+    }
+
+    /* Dock Scrolled State */
+    .navbar-dock.scrolled {
+      padding: 10px 16px;
+    }
+
+    /* ==========================================================================
+       FLOATING 3D GLASS CONTAINER
+       ========================================================================== */
+    .navbar-container {
+      pointer-events: auto;
+      width: 100%;
+      max-width: 1440px;
+      height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px 0 28px;
+      background: var(--bg-nav);
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      border-radius: var(--radius-full);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-nav);
+      position: relative;
+      transform-style: preserve-3d;
+      perspective: 1200px;
+      transition: all 0.4s var(--ease-spring);
+
+      /* Entrance Animation (Framer Motion equivalent) */
+      opacity: 0;
+      transform: translateY(-28px) scale(0.96);
+      animation: navbarEntrance 0.85s var(--ease-bounce) 0.1s forwards;
+    }
+
+    @keyframes navbarEntrance {
+      0% {
+        opacity: 0;
+        transform: translateY(-28px) scale(0.96);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    /* Scrolled Navbar Style */
+    .navbar-dock.scrolled .navbar-container {
+      height: 66px;
+      background: var(--bg-nav-scrolled);
+      box-shadow: 0 14px 40px -8px rgba(0, 0, 0, 0.75), 0 0 1px 1px var(--border-glow);
+      border-color: var(--border-glow);
+      padding: 0 16px 0 22px;
+    }
+
+    /* Dynamic Cursor Spotlight Effect */
+    .navbar-container::before {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: inherit;
+      padding: 1px;
+      background: radial-gradient(
+        350px circle at var(--mouse-x) var(--mouse-y),
+        var(--border-glow),
+        transparent 65%
+      );
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+      opacity: 0.85;
+      transition: opacity 0.3s ease;
+    }
+
+    /* Subtle Inner Ambient Glow */
+    .navbar-container::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: radial-gradient(
+        400px circle at var(--mouse-x) var(--mouse-y),
+        rgba(229, 160, 0, 0.06),
+        transparent 60%
+      );
+      pointer-events: none;
+    }
+
+    /* ==========================================================================
+       SECTION 1: LEFT SECTION – LOGO (3D HOT POT IDENTITY)
+       ========================================================================== */
+    .navbar-left {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+      z-index: 10;
+    }
+
+    .brand-logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      cursor: pointer;
+      position: relative;
+      padding: 6px 8px;
+      border-radius: var(--radius-md);
+      transition: transform 0.4s var(--ease-bounce);
+      user-select: none;
+    }
+
+    .brand-logo:hover {
+      transform: translateY(-2px) scale(1.02);
+    }
+
+    /* Hot Pot Icon Visual Container */
+    .pot-icon-wrapper {
+      position: relative;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      filter: drop-shadow(0 4px 12px rgba(211, 84, 0, 0.45));
+      transition: transform 0.5s var(--ease-bounce), filter 0.4s ease;
+    }
+
+    .brand-logo:hover .pot-icon-wrapper {
+      transform: rotate(-4deg) scale(1.08);
+      filter: drop-shadow(0 6px 18px rgba(229, 160, 0, 0.7));
+    }
+
+    /* Hot Pot SVG Elements */
+    .hotpot-svg {
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+    }
+
+    /* Rising Steam Curves */
+    .steam-path {
+      fill: none;
+      stroke: url(#steamGradient);
+      stroke-width: 2.2;
+      stroke-linecap: round;
+      stroke-dasharray: 40;
+      stroke-dashoffset: 40;
+      opacity: 0.85;
+      animation: riseSteam 3.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    }
+
+    .steam-path-1 {
+      animation-delay: 0s;
+    }
+
+    .steam-path-2 {
+      animation-delay: 1.1s;
+    }
+
+    .steam-path-3 {
+      animation-delay: 2.2s;
+    }
+
+    @keyframes riseSteam {
+      0% {
+        stroke-dashoffset: 40;
+        opacity: 0;
+        transform: translateY(4px) scaleX(0.9);
+      }
+      30% {
+        opacity: 0.95;
+      }
+      70% {
+        opacity: 0.6;
+      }
+      100% {
+        stroke-dashoffset: -40;
+        opacity: 0;
+        transform: translateY(-14px) scaleX(1.15);
+      }
+    }
+
+    /* Bubbling Broth Embers */
+    .broth-bubble {
+      animation: simmerBubble 2s ease-in-out infinite alternate;
+    }
+    .bubble-1 { animation-delay: 0.2s; }
+    .bubble-2 { animation-delay: 0.8s; }
+    .bubble-3 { animation-delay: 1.4s; }
+
+    @keyframes simmerBubble {
+      0% { transform: translateY(0) scale(0.9); opacity: 0.6; }
+      100% { transform: translateY(-2px) scale(1.15); opacity: 1; }
+    }
+
+    /* Brand Typography */
+    .brand-text-block, .brand-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .brand-title, .brand-name {
+      font-family: 'Cinzel', serif;
+      font-size: 1.22rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      background: var(--gradient-gold);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .brand-flame-dot, .flame-glow-pip {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--color-orange);
+      box-shadow: 0 0 10px var(--color-amber);
+      animation: pulseGlow 1.8s ease-in-out infinite;
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { transform: scale(1); opacity: 0.8; }
+      50% { transform: scale(1.4); opacity: 1; box-shadow: 0 0 14px var(--color-amber); }
+    }
+
+    .brand-subtitle, .brand-sub {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.28em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-top: 3px;
+      transition: color 0.3s ease;
+    }
+
+    .brand-logo:hover .brand-subtitle, .brand-sub {
+      color: var(--color-amber);
+    }
+
+    /* ==========================================================================
+       SECTION 2: CENTER SECTION – NAVIGATION MENU (WITH MOVING SPRING PILL)
+       ========================================================================== */
+    .navbar-center {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .nav-menu-list {
+      display: flex;
+      align-items: center;
+      list-style: none;
+      gap: 4px;
+      position: relative;
+      padding: 4px;
+      background: rgba(0, 0, 0, 0.15);
+      border-radius: var(--radius-full);
+      border: 1px solid rgba(229, 160, 0, 0.08);
+    }
+
+    [data-theme="light"] .nav-menu-list {
+      background: rgba(0, 0, 0, 0.03);
+    }
+
+    /* Moving Spring Pill Indicator (Framer-Motion layoutId style) */
+    .nav-magnetic-indicator {
+      position: absolute;
+      top: 4px;
+      left: 0;
+      height: calc(100% - 8px);
+      background: var(--bg-active);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-full);
+      pointer-events: none;
+      transition: transform 0.35s var(--ease-bounce), width 0.35s var(--ease-bounce), opacity 0.25s ease;
+      opacity: 0;
+      box-shadow: 0 2px 10px rgba(211, 84, 0, 0.25), inset 0 1px 1px rgba(255, 243, 224, 0.2);
+      z-index: 1;
+    }
+
+    .nav-item {
+      position: relative;
+      z-index: 2;
+    }
+
+    .nav-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 15px;
+      font-size: 0.91rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      border-radius: var(--radius-full);
+      white-space: nowrap;
+      position: relative;
+      cursor: pointer;
+      transition: color 0.25s ease, transform 0.25s var(--ease-spring);
+      perspective: 400px;
+    }
+
+    .nav-link:hover {
+      color: var(--text-primary);
+      transform: translateY(-1px);
+    }
+
+    .nav-item.active .nav-link {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    /* Subtle Underline Glow for Active State */
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 4px;
+      left: 50%;
+      transform: translateX(-50%) scaleX(0);
+      width: 14px;
+      height: 2px;
+      background: var(--color-amber);
+      border-radius: 2px;
+      box-shadow: 0 0 8px var(--color-amber);
+      transition: transform 0.3s var(--ease-bounce);
+    }
+
+    .nav-item.active .nav-link::after {
+      transform: translateX(-50%) scaleX(1);
+    }
+
+    .dropdown-arrow {
+      transition: transform 0.3s var(--ease-spring);
+    }
+
+    .nav-item:hover .dropdown-arrow,
+    .nav-item.dropdown-open .dropdown-arrow {
+      transform: rotate(180deg);
+    }
+
+    /* Bridge so hover doesn't flicker across the gap */
+    .nav-item.has-dropdown::after,
+    .dashboard-nav-item::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      height: 18px;
+      pointer-events: auto;
+    }
+
+    /* Glassmorphism Dropdown */
+    .dropdown-menu {
+      position: absolute;
+      top: calc(100% + 14px);
+      left: 50%;
+      transform: translateX(-50%) translateY(10px) scale(0.94) rotateX(-8deg);
+      opacity: 0;
+      pointer-events: none;
+      min-width: 260px;
+      background: var(--bg-dropdown);
+      backdrop-filter: blur(28px) saturate(180%);
+      -webkit-backdrop-filter: blur(28px) saturate(180%);
+      border: 1px solid var(--border-glow);
+      border-radius: var(--radius-lg);
+      padding: 10px;
+      box-shadow: var(--shadow-dropdown);
+      transition: transform 0.3s var(--ease-bounce), opacity 0.25s var(--ease-spring);
+      transform-origin: top center;
+      z-index: 100;
+    }
+
+    [dir="rtl"] .dropdown-menu {
+      left: auto;
+      right: 50%;
+      transform: translateX(50%) translateY(10px) scale(0.94) rotateX(-8deg);
+    }
+
+    /* Arrow Bevel at top of Dropdown */
+    .dropdown-menu::before {
+      content: '';
+      position: absolute;
+      top: -6px;
+      left: 50%;
+      transform: translateX(-50%) rotate(45deg);
+      width: 12px;
+      height: 12px;
+      background: inherit;
+      border-top: 1px solid var(--border-glow);
+      border-left: 1px solid var(--border-glow);
+      border-radius: 2px;
+    }
+
+    /* Dropdown Open Triggered by Hover or Click */
+    .nav-item:hover .dropdown-menu,
+    .nav-item.dropdown-open .dropdown-menu {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateX(-50%) translateY(0) scale(1) rotateX(0deg);
+    }
+
+    [dir="rtl"] .nav-item:hover .dropdown-menu,
+    [dir="rtl"] .nav-item.dropdown-open .dropdown-menu {
+      transform: translateX(50%) translateY(0) scale(1) rotateX(0deg);
+    }
+
+    .dropdown-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 16px;
+      border-radius: var(--radius-md);
+      color: var(--text-secondary);
+      font-size: 0.92rem;
+      font-weight: 500;
+      transition: all 0.2s var(--ease-spring);
+      position: relative;
+      overflow: hidden;
+      white-space: nowrap !important;
+      text-decoration: none;
+    }
+
+    .dropdown-item:hover {
+      background: var(--bg-hover);
+      color: var(--text-primary);
+      transform: translateX(4px);
+    }
+
+    [dir="rtl"] .dropdown-item:hover {
+      transform: translateX(-4px);
+    }
+
+    .dropdown-icon-box {
+      width: 34px;
+      height: 34px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(229, 160, 0, 0.12);
+      color: var(--color-amber);
+      border: 1px solid rgba(229, 160, 0, 0.2);
+      flex-shrink: 0;
+      transition: all 0.25s var(--ease-spring);
+    }
+
+    .dropdown-item:hover .dropdown-icon-box {
+      background: var(--gradient-brand);
+      color: #FFF3E0;
+      transform: scale(1.08);
+      box-shadow: 0 4px 12px rgba(211, 84, 0, 0.4);
+    }
+
+    .dropdown-meta {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      white-space: nowrap !important;
+      flex-shrink: 0;
+    }
+
+    .dropdown-title {
+      font-weight: 600;
+      color: var(--text-primary);
+      white-space: nowrap !important;
+      line-height: 1.2;
+      display: block;
+    }
+
+    .dropdown-desc {
+      font-size: 0.74rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+      white-space: nowrap;
+    }
+
+    /* ==========================================================================
+       SECTION 3: RIGHT SECTION – ACTION CONTROLS (DASHBOARD, TOGGLES, 3D BUTTON)
+       ========================================================================== */
+    .navbar-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+      z-index: 10;
+    }
+
+    /* Utility Action Pill Buttons (Dark Mode, RTL) */
+    .action-icon-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.2);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      cursor: pointer;
+      position: relative;
+      transition: all 0.3s var(--ease-spring);
+      perspective: 300px;
+    }
+
+    [data-theme="light"] .action-icon-btn {
+      background: rgba(0, 0, 0, 0.04);
+    }
+
+    .action-icon-btn:hover {
+      color: var(--text-primary);
+      border-color: var(--border-glow);
+      background: var(--bg-hover);
+      transform: translateY(-2px) scale(1.05);
+      box-shadow: 0 4px 14px rgba(229, 160, 0, 0.2);
+    }
+
+    .action-icon-btn:active {
+      transform: translateY(1px) scale(0.96);
+    }
+
+    /* Tooltip Helper */
+    .action-icon-btn[data-tooltip]::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      bottom: -32px;
+      left: 50%;
+      transform: translateX(-50%) translateY(4px);
+      background: var(--bg-dropdown);
+      color: var(--text-primary);
+      font-size: 0.72rem;
+      font-weight: 500;
+      padding: 4px 9px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-glow);
+      white-space: nowrap;
+      pointer-events: none;
+      opacity: 0;
+      transition: all 0.2s var(--ease-spring);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    }
+
+    .action-icon-btn:hover[data-tooltip]::after {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* Theme Toggle Icons */
+    .theme-icon-moon {
+      display: none;
+    }
+    .theme-icon-sun {
+      display: inline-flex;
+    }
+    [data-theme="light"] .theme-icon-sun {
+      display: none;
+    }
+    [data-theme="light"] .theme-icon-moon {
+      display: inline-flex;
+    }
+
+    /* RTL Action Icon */
+    .rtl-icon {
+      width: 18px;
+      height: 18px;
+      stroke: var(--text-primary);
+      transition: transform 0.3s var(--ease-spring);
+    }
+    [dir="rtl"] .rtl-icon {
+      transform: scaleX(-1);
+    }
+
+    /* Dashboard Dropdown in Desktop Nav Links */
+    #dashboardNavDropdown {
+      position: relative;
+    }
+
+    #dashboardNavDropdown .dropdown-menu {
+      left: 50%;
+      right: auto;
+      min-width: 220px;
+      width: max-content;
+      max-width: none;
+      transform: translateX(-50%) translateY(10px) scale(0.94) rotateX(-8deg);
+      transform-origin: top center;
+    }
+
+    [dir="rtl"] #dashboardNavDropdown .dropdown-menu {
+      left: auto;
+      right: 50%;
+      transform: translateX(50%) translateY(10px) scale(0.94) rotateX(-8deg);
+      transform-origin: top center;
+    }
+
+    #dashboardNavDropdown:hover .dropdown-menu,
+    #dashboardNavDropdown.dropdown-open .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateX(-50%) translateY(0) scale(1) rotateX(0deg);
+    }
+
+    [dir="rtl"] #dashboardNavDropdown:hover .dropdown-menu,
+    [dir="rtl"] #dashboardNavDropdown.dropdown-open .dropdown-menu {
+      transform: translateX(50%) translateY(0) scale(1) rotateX(0deg);
+    }
+
+    #dashboardNavDropdown .dropdown-menu::before {
+      left: 50%;
+      right: auto;
+      transform: translateX(-50%) rotate(45deg);
+    }
+
+    [dir="rtl"] #dashboardNavDropdown .dropdown-menu::before {
+      right: auto;
+      left: 50%;
+      transform: translateX(50%) rotate(45deg);
+    }
+
+    .has-dropdown[data-nav="home"] .dropdown-menu {
+      min-width: 160px;
+    }
+
+    /* ==========================================================================
+       EXTRAORDINARY 3D LOGIN BUTTON
+       ========================================================================== */
+    .btn-3d-login {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 10px 22px;
+      font-family: inherit;
+      font-size: 0.92rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: #FFF3E0;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+      background: var(--gradient-brand);
+      border-radius: var(--radius-full);
+      box-shadow: var(--shadow-3d-button);
+      cursor: pointer;
+      user-select: none;
+      transform: translateY(0);
+      transition: transform 0.18s var(--ease-bounce), box-shadow 0.18s var(--ease-bounce), filter 0.2s ease;
+      overflow: hidden;
+    }
+
+    /* Beveled Top Highlight Line */
+    .btn-3d-login::before {
+      content: '';
+      position: absolute;
+      top: 1px;
+      left: 12%;
+      right: 12%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.7), transparent);
+      border-radius: 50%;
+    }
+
+    /* Shimmer Sweep Animation */
+    .btn-3d-login::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -60%;
+      width: 40%;
+      height: 200%;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+      );
+      transform: rotate(25deg);
+      transition: left 0.75s ease;
+    }
+
+    .btn-3d-login:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 0 #641E16, 0 12px 28px rgba(211, 84, 0, 0.55), 0 0 15px rgba(229, 160, 0, 0.4);
+      filter: brightness(1.05);
+    }
+
+    .btn-3d-login:hover::after {
+      left: 140%;
+    }
+
+    .btn-3d-login:active {
+      transform: translateY(3px);
+      box-shadow: var(--shadow-3d-pressed);
+      filter: brightness(0.96);
+    }
+
+    .btn-arrow-icon {
+      transition: transform 0.25s var(--ease-spring);
+    }
+
+    .btn-3d-login:hover .btn-arrow-icon {
+      transform: translateX(4px);
+    }
+
+    [dir="rtl"] .btn-3d-login:hover .btn-arrow-icon {
+      transform: translateX(-4px) rotate(180deg);
+    }
+
+    /* ==========================================================================
+       HAMBURGER TOGGLE BUTTON (MOBILE / TABLET)
+       ========================================================================== */
+    .hamburger-btn {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid var(--border-subtle);
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      position: relative;
+      z-index: 1001;
+      transition: all 0.3s var(--ease-spring);
+    }
+
+    [data-theme="light"] .hamburger-btn {
+      background: rgba(0, 0, 0, 0.05);
+    }
+
+    .hamburger-btn:hover {
+      border-color: var(--border-glow);
+      background: var(--bg-hover);
+      transform: scale(1.05);
+    }
+
+    .hamburger-line {
+      width: 20px;
+      height: 2px;
+      background: var(--text-primary);
+      border-radius: 2px;
+      transition: transform 0.35s var(--ease-bounce), opacity 0.25s ease, width 0.3s ease;
+      transform-origin: center;
+    }
+
+    /* Hamburger to 'X' Transition */
+    .hamburger-btn.active .hamburger-line:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+      background: var(--color-amber);
+    }
+
+    .hamburger-btn.active .hamburger-line:nth-child(2) {
+      opacity: 0;
+      transform: scaleX(0);
+    }
+
+    .hamburger-btn.active .hamburger-line:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+      background: var(--color-amber);
+    }
+
+    /* ==========================================================================
+       MOBILE FULL-HEIGHT NAVIGATION DRAWER
+       ========================================================================== */
+    .mobile-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(14, 8, 6, 0.72);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s var(--ease-spring);
+      z-index: 1050;
+    }
+
+    .mobile-backdrop.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .mobile-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 380px;
+      max-width: 88vw;
+      height: 100vh;
+      background: var(--bg-drawer);
+      backdrop-filter: blur(28px) saturate(180%);
+      -webkit-backdrop-filter: blur(28px) saturate(180%);
+      border-left: 1px solid var(--border-glow);
+      box-shadow: -15px 0 50px rgba(0, 0, 0, 0.85);
+      z-index: 1100;
+      display: flex;
+      flex-direction: column;
+      transform: translateX(105%);
+      transition: transform 0.45s var(--ease-spring);
+      overflow: hidden;
+    }
+
+    [dir="rtl"] .mobile-drawer {
+      right: auto;
+      left: 0;
+      border-left: none;
+      border-right: 1px solid var(--border-glow);
+      box-shadow: 15px 0 50px rgba(0, 0, 0, 0.85);
+      transform: translateX(-105%);
+    }
+
+    .mobile-drawer.open {
+      transform: translateX(0);
+    }
+
+    /* Drawer Header */
+    .drawer-header {
+      padding: 24px 22px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .drawer-close-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(229, 160, 0, 0.1);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s var(--ease-spring);
+    }
+
+    .drawer-close-btn:hover {
+      background: var(--gradient-brand);
+      color: #FFF3E0;
+      transform: rotate(90deg) scale(1.08);
+    }
+
+    /* Drawer Nav Scroll Area */
+    .drawer-nav-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .drawer-nav-body::-webkit-scrollbar {
+      width: 4px;
+    }
+    .drawer-nav-body::-webkit-scrollbar-thumb {
+      background: var(--border-subtle);
+      border-radius: 4px;
+    }
+
+    /* Staggered Item Animation on Drawer Open */
+    .drawer-item {
+      opacity: 0;
+      transform: translateX(25px);
+      transition: opacity 0.35s var(--ease-spring), transform 0.35s var(--ease-spring);
+    }
+
+    [dir="rtl"] .drawer-item {
+      transform: translateX(-25px);
+    }
+
+    .mobile-drawer.open .drawer-item {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* Stagger Delays (1 to 12 items) */
+    .mobile-drawer.open .drawer-item:nth-child(1) { transition-delay: 0.06s; }
+    .mobile-drawer.open .drawer-item:nth-child(2) { transition-delay: 0.10s; }
+    .mobile-drawer.open .drawer-item:nth-child(3) { transition-delay: 0.14s; }
+    .mobile-drawer.open .drawer-item:nth-child(4) { transition-delay: 0.18s; }
+    .mobile-drawer.open .drawer-item:nth-child(5) { transition-delay: 0.22s; }
+    .mobile-drawer.open .drawer-item:nth-child(6) { transition-delay: 0.26s; }
+    .mobile-drawer.open .drawer-item:nth-child(7) { transition-delay: 0.30s; }
+    .mobile-drawer.open .drawer-item:nth-child(8) { transition-delay: 0.34s; }
+    .mobile-drawer.open .drawer-item:nth-child(9) { transition-delay: 0.38s; }
+    .mobile-drawer.open .drawer-item:nth-child(10) { transition-delay: 0.42s; }
+    .mobile-drawer.open .drawer-item:nth-child(11) { transition-delay: 0.46s; }
+    .mobile-drawer.open .drawer-item:nth-child(12) { transition-delay: 0.50s; }
+
+    .drawer-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 13px 16px;
+      border-radius: var(--radius-md);
+      font-size: 1.02rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      background: transparent;
+      width: 100%;
+      text-align: left;
+      transition: all 0.25s var(--ease-spring);
+    }
+
+    [dir="rtl"] .drawer-link {
+      text-align: right;
+    }
+
+    .drawer-link:hover,
+    .drawer-item.active .drawer-link {
+      background: var(--bg-hover);
+      color: var(--text-primary);
+      transform: translateX(4px);
+    }
+
+    [dir="rtl"] .drawer-link:hover,
+    [dir="rtl"] .drawer-item.active .drawer-link {
+      transform: translateX(-4px);
+    }
+
+    .drawer-link-content {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .drawer-icon {
+      color: var(--color-amber);
+    }
+
+    /* Accordion Dropdowns in Drawer */
+    .drawer-accordion {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s var(--ease-spring);
+      padding: 0 0 0 32px;
+    }
+
+    [dir="rtl"] .drawer-accordion {
+      padding: 0 32px 0 0;
+    }
+
+    .drawer-item.accordion-open .drawer-accordion {
+      max-height: 220px;
+    }
+
+    .drawer-item.accordion-open .drawer-arrow {
+      transform: rotate(180deg);
+    }
+
+    .accordion-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      border-radius: var(--radius-sm);
+      transition: all 0.2s ease;
+    }
+
+    .accordion-link:hover {
+      color: var(--text-primary);
+      background: var(--bg-hover);
+    }
+
+    /* Drawer Footer Action Controls */
+    .drawer-footer {
+      padding: 18px 20px 24px;
+      border-top: 1px solid var(--border-subtle);
+      background: rgba(0, 0, 0, 0.2);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .drawer-toggles-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .drawer-toggle-btn {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px;
+      border-radius: var(--radius-md);
+      background: rgba(229, 160, 0, 0.08);
+      border: 1px solid var(--border-subtle);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      transition: all 0.25s var(--ease-spring);
+    }
+
+    .drawer-toggle-btn:hover {
+      background: var(--bg-hover);
+      color: var(--text-primary);
+      border-color: var(--border-glow);
+    }
+
+    .drawer-3d-login-btn {
+      width: 100%;
+      padding: 14px;
+      font-size: 1rem;
+    }
+
+    /* ==========================================================================
+       MODAL WINDOWS (LOGIN & DASHBOARD PREVIEW DIALOGS)
+       ========================================================================== */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(8, 4, 3, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 2000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s var(--ease-spring);
+    }
+
+    .modal-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-card {
+      width: 100%;
+      max-width: 440px;
+      background: var(--bg-dropdown);
+      border: 1px solid var(--border-glow);
+      border-radius: var(--radius-lg);
+      padding: 32px 28px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), 0 0 30px rgba(211, 84, 0, 0.2);
+      transform: translateY(20px) scale(0.95);
+      transition: transform 0.35s var(--ease-bounce);
+      position: relative;
+    }
+
+    .modal-overlay.open .modal-card {
+      transform: translateY(0) scale(1);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(229, 160, 0, 0.1);
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    [dir="rtl"] .modal-close {
+      right: auto;
+      left: 16px;
+    }
+
+    .modal-close:hover {
+      background: var(--color-red);
+      color: #fff;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-label {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 12px 14px;
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      color: var(--text-primary);
+      font-family: inherit;
+      font-size: 0.92rem;
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
+
+    .form-input:focus {
+      border-color: var(--color-amber);
+      box-shadow: 0 0 0 2px rgba(229, 160, 0, 0.2);
+    }
+
+    /* ==========================================================================
+       SAMPLE BODY CONTENT (HERO & SECTIONS TO DEMONSTRATE SCROLL & ACTIVE BEHAVIOR)
+       ========================================================================== */
+    .hero-showcase {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 140px 24px 60px;
+      z-index: 1;
+    }
+
+    /* ==========================================================================
+       LUXURY HOT POT RESTAURANT FOOTER STYLES
+       ========================================================================== */
+    .site-footer {
+      position: relative;
+      width: 100%;
+      padding-top: 130px;
+      padding-bottom: 40px;
+      background: linear-gradient(180deg, var(--bg-body) 0%, rgba(20, 11, 9, 0.96) 20%, #0D0605 100%);
+      border-top: 1px solid var(--border-subtle);
+      overflow: hidden;
+      z-index: 10;
+    }
+
+    [data-theme="light"] .site-footer {
+      background: linear-gradient(180deg, var(--bg-body) 0%, rgba(255, 248, 242, 0.98) 20%, #F5ECE3 100%);
+      border-top-color: rgba(169, 50, 38, 0.15);
+    }
+
+    /* Footer Decorative Ambient Flare */
+    .site-footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 250px;
+      background: radial-gradient(circle, rgba(211, 84, 0, 0.18) 0%, rgba(169, 50, 38, 0.08) 50%, transparent 75%);
+      filter: blur(60px);
+      pointer-events: none;
+    }
+
+    /* 1. Top Call-to-Action Reservation Banner Card */
+    .footer-cta-container {
+      max-width: 1280px;
+      margin: 0 auto 60px;
+      padding: 0 24px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .footer-cta-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(28px) saturate(180%);
+      -webkit-backdrop-filter: blur(28px) saturate(180%);
+      border: 1px solid var(--border-glow);
+      border-radius: var(--radius-lg);
+      padding: 38px 44px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55), 0 0 20px rgba(211, 84, 0, 0.15);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .footer-cta-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 320px;
+      height: 100%;
+      background: radial-gradient(circle at right center, rgba(229, 160, 0, 0.12), transparent 70%);
+      pointer-events: none;
+    }
+
+    .cta-left {
+      max-width: 680px;
+    }
+
+    .cta-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 14px;
+      border-radius: var(--radius-full);
+      background: rgba(46, 204, 113, 0.12);
+      border: 1px solid rgba(46, 204, 113, 0.3);
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #2ECC71;
+      letter-spacing: 0.04em;
+      margin-bottom: 12px;
+    }
+
+    .pulse-indicator {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #2ECC71;
+      box-shadow: 0 0 10px #2ECC71;
+      animation: pulseGreen 1.8s infinite;
+    }
+
+    @keyframes pulseGreen {
+      0%, 100% { transform: scale(1); opacity: 0.9; }
+      50% { transform: scale(1.4); opacity: 0.5; }
+    }
+
+    .cta-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.5rem, 3vw, 2.1rem);
+      font-weight: 800;
+      line-height: 1.2;
+      background: var(--gradient-gold);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 8px;
+    }
+
+    .cta-subtitle {
+      font-size: 0.94rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .cta-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-shrink: 0;
+    }
+
+    .cta-reserve-btn {
+      padding: 13px 28px;
+      font-size: 0.96rem;
+      white-space: nowrap;
+    }
+
+    .cta-secondary-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 22px;
+      border-radius: var(--radius-full);
+      background: rgba(229, 160, 0, 0.08);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-primary);
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: all 0.25s var(--ease-spring);
+      white-space: nowrap;
+    }
+
+    .cta-secondary-btn:hover {
+      background: var(--bg-hover);
+      border-color: var(--border-glow);
+      transform: translateY(-2px);
+    }
+
+    /* 2. Main 5-Column Grid */
+    .footer-grid-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px 60px;
+      display: grid;
+      grid-template-columns: 2fr 1.1fr 1.1fr 1.1fr 1.3fr;
+      gap: 40px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .footer-col {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .footer-brand-logo {
+      padding: 0;
+      margin-bottom: 16px;
+      align-self: flex-start;
+    }
+
+    .footer-brand-bio {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 22px;
+      max-width: 340px;
+    }
+
+    .footer-social-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+
+    .social-icon-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.25s var(--ease-bounce);
+    }
+
+    [data-theme="light"] .social-icon-btn {
+      background: rgba(0, 0, 0, 0.04);
+    }
+
+    .social-icon-btn:hover {
+      color: #FFF3E0;
+      background: var(--gradient-brand);
+      border-color: var(--color-amber);
+      transform: translateY(-3px) scale(1.08);
+      box-shadow: 0 6px 16px rgba(211, 84, 0, 0.4);
+    }
+
+    .footer-awards-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 12px;
+      background: rgba(229, 160, 0, 0.08);
+      border: 1px dashed var(--border-subtle);
+      border-radius: var(--radius-sm);
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: var(--color-amber);
+      align-self: flex-start;
+    }
+
+    .footer-col-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.06rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: 0.06em;
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 8px;
+    }
+
+    .footer-col-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 28px;
+      height: 2px;
+      background: var(--color-amber);
+      border-radius: 2px;
+      box-shadow: 0 0 8px var(--color-amber);
+    }
+
+    [dir="rtl"] .footer-col-title::after {
+      left: auto;
+      right: 0;
+    }
+
+    .footer-links-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      transition: all 0.22s var(--ease-spring);
+    }
+
+    .link-bullet {
+      width: 14px;
+      height: 14px;
+      color: var(--color-amber);
+      opacity: 0.6;
+      transition: transform 0.22s var(--ease-spring), opacity 0.22s ease;
+      flex-shrink: 0;
+    }
+
+    .footer-link:hover {
+      color: var(--text-primary);
+      transform: translateX(4px);
+    }
+
+    [dir="rtl"] .footer-link:hover {
+      transform: translateX(-4px);
+    }
+
+    .footer-link:hover .link-bullet {
+      opacity: 1;
+      transform: translateX(3px);
+    }
+
+    [dir="rtl"] .footer-link:hover .link-bullet {
+      transform: translateX(-3px) rotate(180deg);
+    }
+
+    /* Col 5: Location Details */
+    .footer-info-block {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .info-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 0.88rem;
+    }
+
+    .info-icon {
+      color: var(--color-amber);
+      margin-top: 3px;
+      flex-shrink: 0;
+    }
+
+    .info-muted {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+      line-height: 1.4;
+    }
+
+    .info-muted.highlight {
+      color: var(--color-amber);
+      font-weight: 500;
+    }
+
+    /* 3. VIP Secret Broth Newsletter Card */
+    .footer-newsletter-wrap {
+      max-width: 1280px;
+      margin: 0 auto 50px;
+      padding: 0 24px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .footer-newsletter-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--border-glow);
+      border-radius: var(--radius-lg);
+      padding: 30px 38px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.45);
+    }
+
+    .newsletter-left {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .newsletter-icon-circle {
+      width: 52px;
+      height: 52px;
+      border-radius: var(--radius-md);
+      background: rgba(229, 160, 0, 0.12);
+      border: 1px solid var(--border-glow);
+      color: var(--color-amber);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .newsletter-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--text-primary);
+    }
+
+    .newsletter-desc {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      margin-top: 3px;
+      max-width: 540px;
+    }
+
+    .newsletter-form {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+      max-width: 440px;
+    }
+
+    .newsletter-input {
+      flex: 1;
+      padding: 12px 16px;
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-full);
+      color: var(--text-primary);
+      font-family: inherit;
+      font-size: 0.9rem;
+      outline: none;
+      transition: all 0.25s ease;
+    }
+
+    [data-theme="light"] .newsletter-input {
+      background: #FFFFFF;
+      border-color: rgba(169, 50, 38, 0.2);
+    }
+
+    .newsletter-input:focus {
+      border-color: var(--color-amber);
+      box-shadow: 0 0 0 2px rgba(229, 160, 0, 0.25);
+    }
+
+    .newsletter-submit-btn {
+      padding: 12px 22px;
+      font-size: 0.9rem;
+      white-space: nowrap;
+    }
+
+    /* 4. Bottom Legal & Back to Top Bar */
+    .footer-bottom-bar {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 24px 24px 0;
+      border-top: 1px solid var(--border-subtle);
+      position: relative;
+      z-index: 2;
+    }
+
+    .bottom-bar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      font-size: 0.84rem;
+      color: var(--text-muted);
+    }
+
+    .bottom-copy strong {
+      color: var(--color-amber);
+    }
+
+    .bottom-links {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .bottom-link {
+      color: var(--text-muted);
+      transition: color 0.2s ease;
+    }
+
+    .bottom-link:hover {
+      color: var(--text-primary);
+    }
+
+    .sep {
+      opacity: 0.4;
+    }
+
+    .btn-back-to-top {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 16px;
+      border-radius: var(--radius-full);
+      background: rgba(229, 160, 0, 0.08);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s var(--ease-bounce);
+    }
+
+    .btn-back-to-top:hover {
+      background: var(--bg-hover);
+      color: var(--text-primary);
+      border-color: var(--border-glow);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 14px rgba(229, 160, 0, 0.2);
+    }
+
+    /* ==========================================================================
+       RESPONSIVE BREAKPOINTS (NEST HUB MAX, IPAD PRO 13, TABLET & MOBILE)
+       ========================================================================== */
+
+    /* 1. Large Desktop Screens (1367px and above) */
+    @media (min-width: 1367px) {
+      .hamburger-btn {
+        display: none !important;
+      }
+    }
+
+    /* 2. Google Nest Hub Max & Compact Laptops (1025px - 1366px, height < 900px):
+          - Logo at LEFT
+          - Navbar Menu at CENTER
+          - Remaining Controls (Dashboard, Theme, RTL, Login) at RIGHT */
+    @media (min-width: 1025px) and (max-width: 1366px) and (max-height: 899px) {
+      .navbar-container {
+        height: 68px;
+        padding: 0 16px 0 20px;
+        justify-content: space-between;
+      }
+
+      .navbar-left {
+        display: flex !important;
+        flex-shrink: 0;
+      }
+
+      .navbar-center {
+        display: flex !important;
+      }
+
+      .navbar-right {
+        display: flex !important;
+        gap: 8px;
+        flex-shrink: 0;
+      }
+
+      .hamburger-btn {
+        display: none !important;
+      }
+
+      /* Compact Scaling for Nest Hub Max (1280x800) */
+      .pot-icon-wrapper {
+        width: 40px;
+        height: 40px;
+      }
+
+      .brand-title, .brand-name {
+        font-size: 1.08rem;
+      }
+
+      .brand-subtitle, .brand-sub {
+        font-size: 0.62rem;
+        letter-spacing: 0.22em;
+      }
+
+      .nav-menu-list {
+        gap: 2px;
+        padding: 3px 6px;
+      }
+
+      .nav-link {
+        padding: 6px 11px;
+        font-size: 0.84rem;
+        gap: 4px;
+      }
+
+      .dropdown-arrow {
+        width: 14px;
+        height: 14px;
+      }
+
+      .dashboard-btn {
+        padding: 6px 11px;
+        font-size: 0.82rem;
+        gap: 5px;
+      }
+
+      .action-icon-btn {
+        width: 36px;
+        height: 36px;
+      }
+
+      .btn-3d-login {
+        padding: 8px 16px;
+        font-size: 0.86rem;
+        gap: 6px;
+      }
+    }
+
+    /* 3. iPad Pro 13 Portrait (<= 1024px) & iPad Pro 13 Landscape (1366x1024, height >= 900px):
+          - Logo at LEFT
+          - Hamburger Menu at RIGHT
+          - Center & Right Controls inside Drawer */
+    @media (max-width: 1024px), (min-width: 1025px) and (max-width: 1366px) and (min-height: 900px) {
+      .navbar-center,
+      .navbar-right {
+        display: none !important;
+      }
+
+      .navbar-container {
+        height: 70px;
+        padding: 0 20px 0 24px;
+        justify-content: space-between;
+      }
+
+      .navbar-left {
+        display: flex !important;
+      }
+
+      .hamburger-btn {
+        display: flex !important;
+      }
+
+      .navbar-dock {
+        padding: 14px 20px;
+      }
+
+      .brand-title, .brand-name {
+        font-size: 1.15rem;
+      }
+
+      .mobile-drawer {
+        width: 420px;
+        max-width: 86vw;
+      }
+    }
+
+    /* 4. Tablet & Below: Footer Layout (<= 1024px) */
+    @media (max-width: 1024px) {
+      .site-footer {
+        padding-top: 105px;
+      }
+
+      .footer-grid-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 34px;
+      }
+
+      .footer-col-brand {
+        grid-column: span 2;
+      }
+
+      .footer-cta-card,
+      .footer-newsletter-card {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 30px 24px;
+        gap: 20px;
+      }
+
+      .cta-actions,
+      .newsletter-form {
+        width: 100%;
+        max-width: 100%;
+      }
+    }
+
+    /* Mobile Small: <= 640px */
+    @media (max-width: 640px) {
+      .site-footer {
+        padding-top: 95px;
+      }
+
+      .footer-grid-container {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+
+      .footer-col-brand {
+        grid-column: span 1;
+      }
+
+      .bottom-bar-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+      }
+
+      .bottom-back-to-top {
+        align-self: flex-end;
+      }
+
+      .cta-actions {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .cta-reserve-btn,
+      .cta-secondary-btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .newsletter-form {
+        flex-direction: column;
+      }
+
+      .newsletter-input,
+      .newsletter-submit-btn {
+        width: 100%;
+      }
+    }
+
+    /* Mobile Small: <= 480px */
+    @media (max-width: 480px) {
+      .navbar-dock {
+        padding: 10px 12px;
+      }
+
+      .navbar-container {
+        height: 60px;
+        padding: 0 12px 0 16px;
+      }
+
+      .pot-icon-wrapper {
+        width: 40px;
+        height: 40px;
+      }
+
+      .brand-title, .brand-name {
+        font-size: 0.98rem;
+      }
+
+      .brand-subtitle, .brand-sub {
+        font-size: 0.6rem;
+        letter-spacing: 0.2em;
+      }
+
+      .mobile-drawer {
+        width: 100vw;
+        max-width: 100vw;
+      }
+    }
+
+    /* Accessibility: Reduced Motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    /* ==========================================================================
+       DEDICATED ABOUT PAGE STYLESHEET (HOT POT RESTAURANT – SEVEN SECTIONS)
+       ========================================================================== */
+    .abt-main-container {
+      position: relative;
+      z-index: 2;
+      padding-top: 110px;
+      overflow-x: hidden;
+      color: var(--text-primary);
+    }
+
+    /* Common Section Elements */
+    .abt-section {
+      position: relative;
+      padding: 100px 24px;
+      max-width: 1360px;
+      margin: 0 auto;
+    }
+
+    .abt-fullwidth-section {
+      position: relative;
+      padding: 120px 24px;
+      width: 100%;
+    }
+
+    .abt-section-header {
+      text-align: center;
+      max-width: 820px;
+      margin: 0 auto 60px;
+      position: relative;
+    }
+
+    .abt-section-header.text-start {
+      text-align: left;
+      margin-left: 0;
+    }
+
+    [dir="rtl"] .abt-section-header.text-start {
+      text-align: right;
+      margin-right: 0;
+    }
+
+    .abt-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      border-radius: var(--radius-full);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      background: rgba(229, 160, 0, 0.12);
+      color: var(--color-amber);
+      border: 1px solid var(--border-glow);
+      box-shadow: 0 2px 10px rgba(229, 160, 0, 0.15);
+      margin-bottom: 16px;
+    }
+
+    .abt-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2.1rem, 4.2vw, 3.4rem);
+      font-weight: 800;
+      line-height: 1.18;
+      margin: 12px 0 18px;
+      background: var(--gradient-gold);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: 0.02em;
+    }
+
+    [data-theme="light"] .abt-title {
+      background: linear-gradient(135deg, #641E16 0%, #A93226 50%, #D35400 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .abt-subtitle {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(1rem, 1.4vw, 1.15rem);
+      color: var(--text-secondary);
+      line-height: 1.75;
+      font-weight: 400;
+    }
+
+    /* Common Card Glassmorphism */
+    .abt-glass-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 36px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+      transition: transform 0.4s var(--ease-spring), border-color 0.3s ease, box-shadow 0.4s ease;
+      position: relative;
+    }
+
+    .abt-glass-card:hover {
+      border-color: var(--border-glow);
+      box-shadow: 0 20px 50px rgba(211, 84, 0, 0.25);
+    }
+
+    /* ==========================================================================
+       SECTION 1: OUR IDENTITY & STORY
+       ========================================================================== */
+    .abt-story-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .abt-story-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .abt-story-lead {
+      font-size: 1.12rem;
+      line-height: 1.8;
+      color: var(--text-secondary);
+      margin-bottom: 24px;
+    }
+
+    .abt-drop-cap {
+      float: left;
+      font-family: 'Cinzel', serif;
+      font-size: 3.6rem;
+      line-height: 0.8;
+      padding-top: 4px;
+      padding-right: 12px;
+      padding-bottom: 2px;
+      color: var(--color-amber);
+      font-weight: 900;
+      text-shadow: 0 2px 8px rgba(229, 160, 0, 0.3);
+    }
+
+    [dir="rtl"] .abt-drop-cap {
+      float: right;
+      padding-right: 0;
+      padding-left: 12px;
+    }
+
+    .abt-story-timeline-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin: 36px 0;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.25);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-subtle);
+    }
+
+    [data-theme="light"] .abt-story-timeline-strip {
+      background: rgba(229, 160, 0, 0.05);
+    }
+
+    .abt-timeline-step {
+      border-left: 2px solid var(--color-amber);
+      padding-left: 12px;
+    }
+
+    [dir="rtl"] .abt-timeline-step {
+      border-left: none;
+      border-right: 2px solid var(--color-amber);
+      padding-left: 0;
+      padding-right: 12px;
+    }
+
+    .abt-timeline-year {
+      font-family: 'Cinzel', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--color-amber);
+    }
+
+    .abt-timeline-label {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+      line-height: 1.35;
+    }
+
+    .abt-story-signature {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    .abt-seal-badge {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--gradient-brand);
+      border: 2px solid var(--color-amber);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: #FFF3E0;
+      box-shadow: 0 4px 14px rgba(211, 84, 0, 0.4);
+      flex-shrink: 0;
+    }
+
+    .abt-story-image-wrap {
+      position: relative;
+      perspective: 1200px;
+    }
+
+    .abt-story-mandala {
+      position: absolute;
+      top: -30px;
+      right: -30px;
+      width: 320px;
+      height: 320px;
+      border: 1px dashed rgba(229, 160, 0, 0.25);
+      border-radius: 50%;
+      pointer-events: none;
+      animation: abtRotateSlow 50s linear infinite;
+      z-index: 1;
+    }
+
+    .abt-story-frame {
+      position: relative;
+      z-index: 2;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 2px solid var(--border-glow);
+      box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.6);
+      background: var(--bg-card);
+      aspect-ratio: 4/5;
+    }
+
+    .abt-story-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.8s var(--ease-spring);
+    }
+
+    .abt-story-frame:hover .abt-story-img {
+      transform: scale(1.05);
+    }
+
+    .abt-story-badge {
+      position: absolute;
+      bottom: 24px;
+      left: 24px;
+      z-index: 3;
+      padding: 14px 20px;
+      border-radius: var(--radius-md);
+      background: rgba(28, 16, 13, 0.9);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border-glow);
+      color: #FFF3E0;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    [data-theme="light"] .abt-story-badge {
+      background: rgba(255, 252, 248, 0.95);
+      color: var(--text-primary);
+    }
+
+    .abt-badge-number {
+      font-family: 'Cinzel', serif;
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--color-amber);
+      line-height: 1;
+    }
+
+    .abt-badge-caption {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* ==========================================================================
+       SECTION 2: OUR MISSION & VISION (ASYMMETRICAL DUAL-PANEL)
+       ========================================================================== */
+    .abt-mv-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      position: relative;
+      margin-top: 20px;
+    }
+
+    .abt-mv-panel {
+      padding: 44px;
+      border-radius: var(--radius-lg);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.4s var(--ease-spring), box-shadow 0.4s ease;
+    }
+
+    .abt-mv-panel-mission {
+      background: linear-gradient(145deg, rgba(100, 30, 22, 0.45) 0%, rgba(30, 18, 15, 0.85) 100%);
+      border: 1px solid rgba(169, 50, 38, 0.35);
+      box-shadow: 0 20px 45px rgba(100, 30, 22, 0.25);
+    }
+
+    [data-theme="light"] .abt-mv-panel-mission {
+      background: linear-gradient(145deg, rgba(255, 245, 240, 0.95) 0%, rgba(255, 235, 230, 0.85) 100%);
+      border-color: rgba(169, 50, 38, 0.25);
+    }
+
+    .abt-mv-panel-vision {
+      background: linear-gradient(145deg, rgba(211, 84, 0, 0.25) 0%, rgba(30, 18, 15, 0.85) 100%);
+      border: 1px solid rgba(229, 160, 0, 0.35);
+      box-shadow: 0 20px 45px rgba(211, 84, 0, 0.2);
+      transform: translateY(30px);
+    }
+
+    [data-theme="light"] .abt-mv-panel-vision {
+      background: linear-gradient(145deg, rgba(255, 252, 240, 0.95) 0%, rgba(255, 248, 225, 0.85) 100%);
+      border-color: rgba(229, 160, 0, 0.3);
+    }
+
+    .abt-mv-panel:hover {
+      transform: translateY(-4px) scale(1.01);
+    }
+
+    .abt-mv-panel-vision:hover {
+      transform: translateY(26px) scale(1.01);
+    }
+
+    .abt-mv-icon-box {
+      width: 58px;
+      height: 58px;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+      background: rgba(229, 160, 0, 0.12);
+      border: 1px solid var(--border-glow);
+      color: var(--color-amber);
+    }
+
+    .abt-mv-panel-mission .abt-mv-icon-box {
+      background: rgba(169, 50, 38, 0.2);
+      color: #E74C3C;
+      border-color: rgba(169, 50, 38, 0.4);
+    }
+
+    .abt-mv-heading {
+      font-family: 'Cinzel', serif;
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 14px;
+    }
+
+    .abt-mv-body {
+      font-size: 0.98rem;
+      color: var(--text-secondary);
+      line-height: 1.75;
+      margin-bottom: 24px;
+    }
+
+    .abt-mv-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .abt-mv-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .abt-mv-bullet {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: rgba(229, 160, 0, 0.15);
+      border: 1px solid var(--border-glow);
+      color: var(--color-amber);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .abt-mv-connector {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100px;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    .abt-mv-nexus-node {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--gradient-brand);
+      border: 2px solid var(--color-amber);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FFF3E0;
+      box-shadow: 0 0 24px rgba(229, 160, 0, 0.6);
+      animation: abtPulseGlow 3s ease-in-out infinite;
+    }
+
+    /* ==========================================================================
+       SECTION 3: THE TRADITION OF HOT POT DINING (HERITAGE VERTICAL TIMELINE)
+       ========================================================================== */
+    .abt-tradition-timeline {
+      position: relative;
+      max-width: 1080px;
+      margin: 40px auto 0;
+      padding: 40px 0;
+    }
+
+    .abt-tradition-spine {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 3px;
+      background: linear-gradient(180deg, transparent, var(--color-amber) 15%, var(--color-orange) 85%, transparent);
+      transform: translateX(-50%);
+      box-shadow: 0 0 14px rgba(229, 160, 0, 0.5);
+    }
+
+    [dir="rtl"] .abt-tradition-spine {
+      left: 50%;
+      transform: translateX(50%);
+    }
+
+    .abt-tradition-node {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+      margin-bottom: 60px;
+      position: relative;
+    }
+
+    .abt-tradition-node:nth-child(even) .abt-tradition-card {
+      grid-column: 2;
+    }
+
+    .abt-tradition-node:nth-child(even) .abt-tradition-visual {
+      grid-column: 1;
+      grid-row: 1;
+    }
+
+    .abt-tradition-dot {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--bg-body);
+      border: 3px solid var(--color-amber);
+      box-shadow: 0 0 15px var(--color-amber);
+      z-index: 5;
+    }
+
+    .abt-tradition-card {
+      padding: 32px;
+      border-radius: var(--radius-lg);
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      position: relative;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease;
+    }
+
+    .abt-tradition-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--border-glow);
+    }
+
+    .abt-tradition-era {
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--color-amber);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .abt-tradition-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 12px;
+    }
+
+    .abt-tradition-body {
+      font-size: 0.94rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    .abt-tradition-visual {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--border-glow);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+      aspect-ratio: 16/10;
+      background: var(--bg-card);
+    }
+
+    .abt-tradition-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+
+    .abt-tradition-visual:hover .abt-tradition-img {
+      transform: scale(1.04);
+    }
+
+    /* ==========================================================================
+       SECTION 4: OUR CULINARY PHILOSOPHY (RADIAL / CIRCULAR COMPOSITION)
+       ========================================================================== */
+    .abt-philosophy-wrapper {
+      position: relative;
+      margin-top: 40px;
+      padding: 40px 0;
+    }
+
+    .abt-philosophy-quote-box {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 50px;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.35rem;
+      color: var(--color-amber);
+      line-height: 1.6;
+    }
+
+    .abt-radial-stage {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .abt-radial-center {
+      grid-column: 2;
+      grid-row: 1 / span 2;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .abt-radial-medallion-stage {
+      position: relative;
+      width: 360px;
+      height: 360px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+    }
+
+    .abt-radial-orbit-ring {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      border: 1px dashed rgba(229, 160, 0, 0.35);
+      animation: abtRotateSlow 60s linear infinite;
+      pointer-events: none;
+      transform-origin: center center;
+      box-sizing: border-box;
+    }
+
+    .abt-radial-orbit-ring::after {
+      content: '';
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      right: 10px;
+      bottom: 10px;
+      border-radius: 50%;
+      border: 1px dotted rgba(211, 84, 0, 0.2);
+      pointer-events: none;
+    }
+
+    .abt-radial-medallion {
+      width: 270px;
+      height: 270px;
+      border-radius: 50%;
+      position: relative;
+      overflow: hidden;
+      border: 4px solid var(--color-amber);
+      box-shadow: 0 0 45px rgba(229, 160, 0, 0.4), inset 0 0 30px rgba(0, 0, 0, 0.7);
+      background: var(--bg-card);
+      z-index: 2;
+      box-sizing: border-box;
+      margin: 0 auto;
+      transition: box-shadow 0.4s ease, border-color 0.4s ease;
+    }
+
+    .abt-radial-caption {
+      margin-top: 18px;
+      text-align: center;
+      position: relative;
+      z-index: 3;
+    }
+
+    .abt-medallion-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s var(--ease-spring);
+    }
+
+    .abt-radial-medallion:hover .abt-medallion-img {
+      transform: scale(1.08) rotate(3deg);
+    }
+
+    .abt-pillar-card {
+      padding: 28px;
+      border-radius: var(--radius-md);
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+    }
+
+    .abt-pillar-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--border-glow);
+      box-shadow: 0 12px 30px rgba(211, 84, 0, 0.2);
+    }
+
+    .abt-pillar-tag {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-amber);
+      margin-bottom: 6px;
+    }
+
+    .abt-pillar-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 10px;
+    }
+
+    .abt-pillar-desc {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* ==========================================================================
+       SECTION 5: MASTER CHEFS & FOOD PREPARATION TECHNIQUES (SPLIT-SCREEN)
+       ========================================================================== */
+    .abt-chefs-layout {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .abt-chef-profile-card {
+      position: relative;
+      border-radius: var(--radius-lg);
+      background: var(--bg-card);
+      border: 1px solid var(--border-glow);
+      overflow: hidden;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+    }
+
+    .abt-chef-photo-wrap {
+      position: relative;
+      aspect-ratio: 4/4.5;
+      overflow: hidden;
+      background: var(--bg-surface);
+    }
+
+    .abt-chef-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.7s var(--ease-spring);
+    }
+
+    .abt-chef-profile-card:hover .abt-chef-img {
+      transform: scale(1.04);
+    }
+
+    .abt-chef-info-overlay {
+      padding: 28px 32px;
+      background: linear-gradient(180deg, transparent 0%, rgba(20, 11, 9, 0.95) 40%, rgba(20, 11, 9, 1) 100%);
+      margin-top: -80px;
+      position: relative;
+      z-index: 2;
+    }
+
+    [data-theme="light"] .abt-chef-info-overlay {
+      background: linear-gradient(180deg, transparent 0%, rgba(255, 250, 245, 0.95) 40%, rgba(255, 250, 245, 1) 100%);
+    }
+
+    .abt-chef-name {
+      font-family: 'Cinzel', serif;
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+
+    .abt-chef-title {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--color-amber);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .abt-chef-quote {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      border-left: 2px solid var(--color-amber);
+      padding-left: 12px;
+    }
+
+    [dir="rtl"] .abt-chef-quote {
+      border-left: none;
+      border-right: 2px solid var(--color-amber);
+      padding-left: 0;
+      padding-right: 12px;
+    }
+
+    .abt-prep-rituals {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .abt-ritual-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      padding: 26px;
+      border-radius: var(--radius-md);
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      transition: all 0.3s var(--ease-spring);
+    }
+
+    .abt-ritual-card:hover {
+      transform: translateX(8px);
+      border-color: var(--border-glow);
+      background: var(--bg-hover);
+    }
+
+    [dir="rtl"] .abt-ritual-card:hover {
+      transform: translateX(-8px);
+    }
+
+    .abt-ritual-num {
+      font-family: 'Cinzel', serif;
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--color-amber);
+      line-height: 1;
+      opacity: 0.7;
+      flex-shrink: 0;
+    }
+
+    .abt-ritual-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+    }
+
+    .abt-ritual-desc {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* ==========================================================================
+       SECTION 6: INGREDIENT SOURCING & QUALITY STANDARDS (PROGRESSION JOURNEY)
+       ========================================================================== */
+    .abt-sourcing-banner {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-bottom: 50px;
+      border: 1px solid var(--border-glow);
+      aspect-ratio: 21/9;
+      background: var(--bg-card);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4);
+    }
+
+    .abt-sourcing-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .abt-sourcing-banner-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(20, 11, 9, 0.85) 0%, rgba(20, 11, 9, 0.4) 60%, transparent 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 48px;
+    }
+
+    [data-theme="light"] .abt-sourcing-banner-overlay {
+      background: linear-gradient(90deg, rgba(255, 250, 245, 0.9) 0%, rgba(255, 250, 245, 0.5) 60%, transparent 100%);
+    }
+
+    .abt-banner-heading {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.6rem, 2.6vw, 2.3rem);
+      font-weight: 800;
+      color: var(--text-primary);
+      max-width: 500px;
+      line-height: 1.25;
+      margin-bottom: 12px;
+    }
+
+    .abt-banner-quote {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      max-width: 440px;
+      line-height: 1.6;
+    }
+
+    .abt-journey-stages {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      position: relative;
+    }
+
+    .abt-stage-card {
+      padding: 28px 24px;
+      border-radius: var(--radius-md);
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+      position: relative;
+    }
+
+    .abt-stage-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--border-glow);
+    }
+
+    .abt-stage-badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+      background: rgba(229, 160, 0, 0.12);
+      border: 1px solid var(--border-subtle);
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--color-amber);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .abt-stage-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+
+    .abt-stage-text {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .abt-quality-seals-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 40px;
+    }
+
+    .abt-seal-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 20px;
+      border-radius: var(--radius-full);
+      background: rgba(0, 0, 0, 0.2);
+      border: 1px solid var(--border-subtle);
+    }
+
+    [data-theme="light"] .abt-seal-item {
+      background: rgba(255, 255, 255, 0.85);
+      border-color: rgba(169, 50, 38, 0.15);
+    }
+
+    .abt-seal-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(229, 160, 0, 0.15);
+      color: var(--color-amber);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .abt-seal-text {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      line-height: 1.3;
+    }
+
+    /* ==========================================================================
+       SECTION 7: UNIQUE DINING EXPERIENCE (IMMERSIVE CLOSING FINALE)
+       ========================================================================== */
+    .abt-experience-backdrop {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      min-height: 600px;
+      display: flex;
+      align-items: center;
+      padding: 60px 48px;
+      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.6);
+      border: 1px solid var(--border-glow);
+      background: var(--bg-card);
+    }
+
+    .abt-experience-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: brightness(0.65) contrast(1.1);
+      transition: transform 1.2s var(--ease-spring);
+    }
+
+    .abt-experience-backdrop:hover .abt-experience-bg {
+      transform: scale(1.03);
+    }
+
+    .abt-experience-card {
+      position: relative;
+      z-index: 2;
+      max-width: 640px;
+      padding: 44px;
+      border-radius: var(--radius-lg);
+      background: rgba(22, 13, 11, 0.88);
+      backdrop-filter: blur(28px) saturate(180%);
+      -webkit-backdrop-filter: blur(28px) saturate(180%);
+      border: 1px solid var(--border-glow);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+    }
+
+    [data-theme="light"] .abt-experience-card {
+      background: rgba(255, 250, 245, 0.94);
+      border-color: rgba(211, 84, 0, 0.35);
+    }
+
+    .abt-experience-quote {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      color: var(--color-amber);
+      line-height: 1.6;
+      margin: 20px 0 24px;
+      padding: 14px 20px;
+      background: rgba(229, 160, 0, 0.08);
+      border-left: 3px solid var(--color-amber);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    }
+
+    [dir="rtl"] .abt-experience-quote {
+      border-left: none;
+      border-right: 3px solid var(--color-amber);
+      border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+    }
+
+    .abt-experience-body {
+      font-size: 0.96rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 28px;
+    }
+
+    .abt-experience-action-row {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .abt-experience-btn {
+      text-decoration: none;
+    }
+
+    /* ==========================================================================
+       ANIMATIONS (FRAMER-MOTION PHYSICS REPLICATIONS VIA CSS & JS INTERSECTION)
+       ========================================================================== */
+    @keyframes abtRotateSlow {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes abtPulseGlow {
+      0%, 100% { transform: scale(1); box-shadow: 0 0 15px rgba(229, 160, 0, 0.4); }
+      50% { transform: scale(1.08); box-shadow: 0 0 30px rgba(229, 160, 0, 0.8); }
+    }
+
+    @keyframes abtLevitate {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+    .abt-scroll-reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.8s var(--ease-spring), transform 0.8s var(--ease-spring);
+      will-change: opacity, transform;
+    }
+
+    .abt-scroll-reveal.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Stagger delays */
+    .abt-delay-1 { transition-delay: 0.12s; }
+    .abt-delay-2 { transition-delay: 0.24s; }
+    .abt-delay-3 { transition-delay: 0.36s; }
+    .abt-delay-4 { transition-delay: 0.48s; }
+
+    /* Image reveal enhancement - default fully visible to guarantee images render immediately across all browsers */
+    .abt-clip-reveal {
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+      opacity: 1;
+      transform: scale(1);
+      transition: transform 0.8s var(--ease-spring), opacity 0.8s var(--ease-spring);
+    }
+
+    .abt-clip-reveal.in-view {
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .abt-scroll-reveal,
+      .abt-clip-reveal {
+        opacity: 1 !important;
+        transform: none !important;
+        clip-path: none !important;
+        transition: none !important;
+      }
+    }
+
+    /* ==========================================================================
+       RESPONSIVE DESIGN (DESKTOP, LAPTOP, TABLET, MOBILE)
+       ========================================================================== */
+    @media (max-width: 1024px) {
+      .abt-story-grid,
+      .abt-chefs-layout {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .abt-mv-container {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .abt-mv-panel-vision {
+        transform: translateY(0);
+      }
+
+      .abt-mv-connector {
+        display: none;
+      }
+
+      .abt-radial-stage {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+      }
+
+      .abt-radial-center {
+        grid-column: 1;
+        grid-row: auto;
+        margin-bottom: 24px;
+      }
+
+      .abt-journey-stages {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .abt-quality-seals-row {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .abt-section {
+        padding: 60px 16px;
+      }
+
+      .abt-fullwidth-section {
+        padding: 70px 16px;
+      }
+
+      .abt-story-timeline-strip {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+
+      .abt-tradition-spine {
+        left: 20px;
+        transform: none;
+      }
+
+      [dir="rtl"] .abt-tradition-spine {
+        left: auto;
+        right: 20px;
+        transform: none;
+      }
+
+      .abt-tradition-dot {
+        left: 20px;
+        transform: translate(-50%, -50%);
+      }
+
+      [dir="rtl"] .abt-tradition-dot {
+        left: auto;
+        right: 20px;
+        transform: translate(50%, -50%);
+      }
+
+      .abt-tradition-node {
+        grid-template-columns: 1fr;
+        padding-left: 45px;
+        gap: 20px;
+      }
+
+      [dir="rtl"] .abt-tradition-node {
+        padding-left: 0;
+        padding-right: 45px;
+      }
+
+      .abt-tradition-node:nth-child(even) .abt-tradition-card,
+      .abt-tradition-node:nth-child(even) .abt-tradition-visual {
+        grid-column: 1;
+      }
+
+      .abt-journey-stages {
+        grid-template-columns: 1fr;
+      }
+
+      .abt-quality-seals-row {
+        grid-template-columns: 1fr;
+      }
+
+      .abt-sourcing-banner {
+        aspect-ratio: auto;
+        min-height: 380px;
+      }
+
+      .abt-sourcing-banner-overlay {
+        padding: 24px;
+      }
+
+      .abt-experience-backdrop {
+        padding: 30px 20px;
+        min-height: 480px;
+      }
+
+      .abt-experience-card {
+        padding: 28px 20px;
+      }
+
+      .abt-radial-medallion-stage {
+        width: 300px;
+        height: 300px;
+      }
+
+      .abt-radial-medallion {
+        width: 220px;
+        height: 220px;
+      }
+    }
+
+  </style>
+
+<style id="navEnhanceStyles">
+
+    /* ==========================================================================
+       PIXEL-PERFECT ACTIVE CAPSULE & ZERO ALIGNMENT DEFECTS
+       ========================================================================== */
+    /* 1. Eliminate the conflicting/misaligned 14px underline bar */
+    .nav-link::after,
+    .nav-item.active .nav-link::after {
+      display: none !important;
+      content: none !important;
+      width: 0 !important;
+      height: 0 !important;
+      opacity: 0 !important;
+    }
+
+    /* 2. Hide redundant floating JS magnetic indicator that drifts with entrance animation */
+    .nav-magnetic-indicator {
+      display: none !important;
+    }
+
+    /* 3. Pure CSS Perfectly Centered Active Pill on the Active Item */
+    .nav-item.active .nav-link {
+      color: var(--color-amber) !important;
+      font-weight: 600 !important;
+      background: var(--bg-active) !important;
+      border: 1px solid rgba(229, 160, 0, 0.45) !important;
+      box-shadow: 0 0 14px rgba(229, 160, 0, 0.22), inset 0 1px 1px rgba(255, 243, 224, 0.2) !important;
+      border-radius: var(--radius-full) !important;
+      transform: none !important;
+    }
+
+    [data-theme="light"] .nav-item.active .nav-link {
+      color: #D35400 !important;
+      background: rgba(211, 84, 0, 0.12) !important;
+      border: 1px solid rgba(211, 84, 0, 0.4) !important;
+      box-shadow: 0 0 12px rgba(211, 84, 0, 0.15) !important;
+    }
+
+    /* Clean Subtle Hover on Inactive Items */
+    .nav-item:not(.active) .nav-link:hover {
+      color: var(--text-primary) !important;
+      background: rgba(255, 255, 255, 0.06) !important;
+      border-radius: var(--radius-full) !important;
+    }
+    [data-theme="light"] .nav-item:not(.active) .nav-link:hover {
+      background: rgba(0, 0, 0, 0.05) !important;
+    }
+
+    /* Dropdown active item highlight */
+    .dropdown-item.active {
+      background: rgba(229, 160, 0, 0.12) !important;
+      color: var(--color-amber) !important;
+    }
+
+    /* Mobile Drawer Active Item */
+    .drawer-item.active > .drawer-link,
+    .drawer-item.active .drawer-link-content span {
+      color: var(--color-amber) !important;
+      font-weight: 700 !important;
+    }
+    .drawer-item.active > .drawer-link {
+      background: var(--bg-hover) !important;
+      border-left: 3px solid var(--color-amber) !important;
+    }
+
+    /* Desktop Navigation Responsive Spacing */
+    @media (min-width: 1025px) and (max-width: 1320px) {
+      .nav-link {
+        padding: 7px 11px !important;
+        font-size: 0.83rem !important;
+        gap: 3px !important;
+      }
+      .nav-menu-list {
+        gap: 2px !important;
+        padding: 3px 4px !important;
+      }
+    }
+  
+</style>
+
+
+  <style id="contentVisibilityGuaranteed">
+    /* ==========================================================================
+       RESILIENT CONTENT VISIBILITY GUARANTEE
+       Ensures all storytelling sections, cards, grids, and headings are
+       immediately and fully visible across all browsers and devices.
+       ========================================================================== */
+    .abt-scroll-reveal,
+    .cnt-reveal,
+    .exp-reveal,
+    .exp-reveal-left,
+    .exp-reveal-right,
+    .exp-reveal-scale,
+    .gal-reveal,
+    .home2-fade-in,
+    .hp-reveal,
+    .hp-reveal-left,
+    .hp-reveal-right,
+    .hp-reveal-scale,
+    .mp-reveal,
+    .mp-reveal-left,
+    .mp-reveal-right,
+    .mp-reveal-scale,
+    .ofr-reveal,
+    .ofr-reveal-left,
+    .ofr-reveal-right,
+    .ofr-reveal-scale,
+    .rsv-reveal,
+    .rsv-reveal-left,
+    .rsv-reveal-right,
+    .rsv-reveal-scale {
+      opacity: 1 !important;
+      transform: none !important;
+      visibility: visible !important;
+    }
+  
+    /* ==========================================================================
+       LIGHT MODE BRAND LOGO HIGH-CONTRAST VISIBILITY
+       ========================================================================== */
+    [data-theme="light"] .brand-title,
+    [data-theme="light"] .brand-name {
+      background: linear-gradient(135deg, #872605 0%, #B84705 35%, #D35400 65%, #641E16 100%) !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+      filter: drop-shadow(0 1px 1px rgba(135, 38, 5, 0.15)) !important;
+      font-weight: 800 !important;
+    }
+
+    [data-theme="light"] .brand-subtitle,
+    [data-theme="light"] .brand-sub {
+      color: #5D2417 !important;
+      font-weight: 700 !important;
+      letter-spacing: 0.28em !important;
+    }
+
+    [data-theme="light"] .brand-flame-dot,
+    [data-theme="light"] .flame-glow-pip {
+      background: #C0392B !important;
+      box-shadow: 0 0 8px rgba(192, 57, 43, 0.5), 0 0 2px #C0392B !important;
+    }
+
+    [data-theme="light"] .steam-path {
+      stroke: #D35400 !important;
+      opacity: 0.85 !important;
+    }
+
+    [data-theme="light"] .pot-icon-wrapper {
+      filter: drop-shadow(0 3px 8px rgba(211, 84, 0, 0.25)) !important;
+    }
+
+  </style>
+
+</head>
+<body>
+
+  <!-- Ambient Glow Backdrop -->
+  <div class="ambient-glow" aria-hidden="true"></div>
+
+  <!-- ========================================================================
+       TOP FIXED NAVIGATION DOCK
+       ======================================================================== -->
+    <!-- ========================================================================
+       TOP FIXED NAVIGATION DOCK
+       ======================================================================== -->
+    <!-- ========================================================================
+       TOP FIXED NAVIGATION DOCK
+       ======================================================================== -->
+    <!-- ========================================================================
+       TOP FIXED NAVIGATION DOCK
+       ======================================================================== -->
+  <header class="navbar-dock" id="navbarDock">
+    <nav class="navbar-container" id="navbarContainer" role="navigation" aria-label="Main Navigation">
+      
+      <!-- ====================================================================
+           1. LEFT SECTION – BRAND LOGO
+           ==================================================================== -->
+      <div class="navbar-left">
+        <a href="index.html" class="brand-logo" id="brandLogo" aria-label="HOT POT RESTAURANT Home">
+          
+          <!-- Steaming 3D Hot Pot Vector Illustration -->
+          <div class="pot-icon-wrapper">
+            <svg class="hotpot-svg" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <!-- Broth Gradients -->
+                <linearGradient id="spicyBrothGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#C0392B"/>
+                  <stop offset="60%" stop-color="#922B21"/>
+                  <stop offset="100%" stop-color="#641E16"/>
+                </linearGradient>
+
+                <linearGradient id="herbalBrothGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#FFF3E0"/>
+                  <stop offset="50%" stop-color="#F39C12"/>
+                  <stop offset="100%" stop-color="#B7950B"/>
+                </linearGradient>
+
+                <!-- Pot Rim Metallic Gold Gradient -->
+                <linearGradient id="goldPotGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#FFF8E7"/>
+                  <stop offset="35%" stop-color="#F5B041"/>
+                  <stop offset="70%" stop-color="#D4AC0D"/>
+                  <stop offset="100%" stop-color="#7D6608"/>
+                </linearGradient>
+
+                <!-- Undulating Steam Gradients -->
+                <linearGradient id="steamGradient" x1="0%" y1="100%" x2="0%" y2="0%">
+                  <stop offset="0%" stop-color="#E5A000" stop-opacity="0.9"/>
+                  <stop offset="50%" stop-color="#FFF3E0" stop-opacity="0.8"/>
+                  <stop offset="100%" stop-color="#FFF3E0" stop-opacity="0"/>
+                </linearGradient>
+
+                <!-- Pot Body Gradient -->
+                <linearGradient id="potBodyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="#56150F"/>
+                  <stop offset="60%" stop-color="#3A0D08"/>
+                  <stop offset="100%" stop-color="#1E0704"/>
+                </linearGradient>
+              </defs>
+
+              <!-- Rising Animated Steam Curves -->
+              <g class="steam-group">
+                <path class="steam-path steam-path-1" d="M24 24C22 18 28 14 26 8" />
+                <path class="steam-path steam-path-2" d="M32 22C34 16 30 12 33 6" />
+                <path class="steam-path steam-path-3" d="M40 24C42 18 36 14 38 8" />
+              </g>
+
+              <!-- Pot Stove Base Glow -->
+              <ellipse cx="32" cy="56" rx="18" ry="4" fill="rgba(211, 84, 0, 0.45)" filter="blur(2px)"/>
+
+              <!-- Outer Pot Base & Handles -->
+              <path d="M12 36C10 36 8 38 8 40C8 42 10 44 12 44" stroke="url(#goldPotGrad)" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M52 36C54 36 56 38 56 40C56 42 54 44 52 44" stroke="url(#goldPotGrad)" stroke-width="2.5" stroke-linecap="round"/>
+
+              <!-- Pot Solid Cauldron Body -->
+              <path d="M14 34C14 46 22 53 32 53C42 53 50 46 50 34H14Z" fill="url(#potBodyGrad)" stroke="url(#goldPotGrad)" stroke-width="1.8"/>
+
+              <!-- Dual Broth Elliptical Surface -->
+              <ellipse cx="32" cy="34" rx="18" ry="8" fill="#1A0A08" stroke="url(#goldPotGrad)" stroke-width="2"/>
+
+              <!-- Yin-Yang Divided Broths (Spicy Red & Golden Herbal) -->
+              <!-- Left: Spicy Red Chili Broth -->
+              <path d="M14 34C14 38.4 22 42 32 42C32 38 28 34 32 30C22 30 14 31.8 14 34Z" fill="url(#spicyBrothGrad)"/>
+              
+              <!-- Right: Golden Herbal Broth -->
+              <path d="M50 34C50 38.4 42 42 32 42C32 38 36 34 32 30C42 30 50 31.8 50 34Z" fill="url(#herbalBrothGrad)"/>
+
+              <!-- S-Curve Broth Divider -->
+              <path d="M32 26C30 30 34 34 32 42" stroke="url(#goldPotGrad)" stroke-width="1.5" stroke-linecap="round"/>
+
+              <!-- Simmering Broth Embers & Spices -->
+              <circle class="broth-bubble bubble-1" cx="22" cy="36" r="1.4" fill="#FF5722"/>
+              <circle class="broth-bubble bubble-2" cx="26" cy="38" r="1" fill="#FFA000"/>
+              <circle class="broth-bubble bubble-3" cx="42" cy="36" r="1.3" fill="#FFE082"/>
+              <circle cx="38" cy="34" r="1" fill="#C0392B"/> <!-- Goji Berry -->
+            </svg>
+          </div>
+
+          <!-- Brand Typography -->
+          <div class="brand-text-block brand-text">
+            <span class="brand-title brand-name">
+              HOT POT
+              <span class="brand-flame-dot flame-glow-pip"></span>
+            </span>
+            <span class="brand-subtitle brand-sub">RESTAURANT</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- ====================================================================
+           2. CENTER SECTION – NAVIGATION MENU (10 ITEMS WITH DROPDOWN)
+           ==================================================================== -->
+      <div class="navbar-center" id="navCenter">
+        <ul class="nav-menu-list" id="navMenuList">
+          
+          <!-- Moving Active/Hover Spring Pill Indicator -->
+          <div class="nav-magnetic-indicator" id="magneticIndicator" aria-hidden="true"></div>
+
+          <!-- 1. Home (Dropdown: Home 1, Home 2) -->
+          <li class="nav-item has-dropdown " data-nav="home">
+            <a href="index.html" class="nav-link" id="homeDropdownTrigger" aria-haspopup="true" aria-expanded="false">
+              <span>Home</span>
+              <svg class="icon dropdown-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </a>
+            
+            <!-- Glassmorphism Dropdown -->
+            <div class="dropdown-menu" role="menu" aria-labelledby="homeDropdownTrigger">
+              <a href="index.html" class="dropdown-item" role="menuitem">
+                <div class="dropdown-icon-box">
+                  <svg class="icon" viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                </div>
+                <div class="dropdown-meta">
+                  <span class="dropdown-title">Home 1</span>
+                </div>
+              </a>
+              <a href="home-2.html" class="dropdown-item" role="menuitem">
+                <div class="dropdown-icon-box">
+                  <svg class="icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                </div>
+                <div class="dropdown-meta">
+                  <span class="dropdown-title">Home 2</span>
+                </div>
+              </a>
+            </div>
+          </li>
+
+          <!-- 2. About -->
+          <li class="nav-item active" data-nav="about">
+            <a href="about.html" class="nav-link">About</a>
+          </li>
+
+          <!-- 3. Menu -->
+          <li class="nav-item " data-nav="menu">
+            <a href="menu.html" class="nav-link">Menu</a>
+          </li>
+
+          <!-- 4. Experience -->
+          <li class="nav-item " data-nav="experience">
+            <a href="experience.html" class="nav-link">Experience</a>
+          </li>
+
+          <!-- 5. Reservations -->
+          <li class="nav-item " data-nav="reservations">
+            <a href="reservations.html" class="nav-link">Reservations</a>
+          </li>
+
+          <!-- 6. Offers -->
+          <li class="nav-item " data-nav="offers">
+            <a href="offers.html" class="nav-link">Offers</a>
+          </li>
+
+          <!-- 7. Gallery -->
+          <li class="nav-item " data-nav="gallery">
+            <a href="gallery.html" class="nav-link">Gallery</a>
+          </li>
+
+          <!-- 8. Contact -->
+          <li class="nav-item " data-nav="contact">
+            <a href="contact.html" class="nav-link">Contact</a>
+          </li>
+
+          <!-- 9. Dashboard (Dropdown: Admin Dashboard & User Dashboard) -->
+          <li class="nav-item has-dropdown dashboard-nav-item " data-nav="dashboard" id="dashboardNavDropdown">
+            <a href="admin-dashboard.html" class="nav-link" id="dashboardDropdownTrigger" aria-haspopup="true" aria-expanded="false">
+              <svg class="icon" viewBox="0 0 24 24" style="width: 15px; height: 15px; margin-right: 4px;"><rect width="7" height="9" x="3" y="3" rx="1"></rect><rect width="7" height="5" x="14" y="3" rx="1"></rect><rect width="7" height="9" x="14" y="12" rx="1"></rect><rect width="7" height="5" x="3" y="16" rx="1"></rect></svg>
+              <span>Dashboard</span>
+              <svg class="icon dropdown-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </a>
+
+            <!-- Glassmorphism Dropdown -->
+            <div class="dropdown-menu" role="menu" aria-labelledby="dashboardDropdownTrigger">
+              <a href="admin-dashboard.html" class="dropdown-item" id="adminDashboardLink" role="menuitem">
+                <div class="dropdown-icon-box">
+                  <svg class="icon" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                </div>
+                <div class="dropdown-meta">
+                  <span class="dropdown-title">Admin Dashboard</span>
+                </div>
+              </a>
+              <a href="user-dashboard.html" class="dropdown-item" id="userDashboardLink" role="menuitem">
+                <div class="dropdown-icon-box">
+                  <svg class="icon" viewBox="0 0 24 24"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                </div>
+                <div class="dropdown-meta">
+                  <span class="dropdown-title">User Dashboard</span>
+                </div>
+              </a>
+            </div>
+          </li>
+
+        </ul>
+      </div>
+
+      <!-- ====================================================================
+           3. RIGHT SECTION – ACTION CONTROLS (TOGGLES & 3D LOGIN)
+           ==================================================================== -->
+      <div class="navbar-right">
+
+        <!-- 1. Dark Mode Toggle -->
+        <button class="action-icon-btn" id="themeToggleBtn" aria-label="Toggle Dark / Light Theme" data-tooltip="Switch Theme">
+          <svg class="icon theme-icon-sun" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2"></path>
+            <path d="M12 20v2"></path>
+            <path d="m4.93 4.93 1.41 1.41"></path>
+            <path d="m17.66 17.66 1.41 1.41"></path>
+            <path d="M2 12h2"></path>
+            <path d="M20 12h2"></path>
+            <path d="m6.34 17.66-1.41 1.41"></path>
+            <path d="m19.07 4.93-1.41 1.41"></path>
+          </svg>
+          <svg class="icon theme-icon-moon" viewBox="0 0 24 24">
+            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+          </svg>
+        </button>
+
+        <!-- 2. RTL / LTR Toggle (Icon Only) -->
+        <button class="action-icon-btn" id="rtlToggleBtn" aria-label="Toggle Text Direction" data-tooltip="LTR / RTL">
+          <svg class="icon rtl-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m16 3 4 4-4 4"></path>
+            <path d="M20 7H4"></path>
+            <path d="m8 21-4-4 4-4"></path>
+            <path d="M4 17h16"></path>
+          </svg>
+        </button>
+
+        <!-- 3. Unique 3D Login Button -->
+        <button class="btn-3d-login" id="loginBtn" aria-label="Sign In to Member Club">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path><polyline points="10 17 15 12 10 7"></polyline><line x1="15" y1="12" x2="3" y2="12"></line></svg>
+          <span>Login</span>
+          <svg class="icon btn-arrow-icon" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </button>
+
+      </div>
+
+      <!-- Hamburger Button (Mobile / Tablet) -->
+      <button class="hamburger-btn" id="hamburgerBtn" aria-label="Open Navigation Menu" aria-expanded="false">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+
+    </nav>
+  </header>
+
+  <!-- ========================================================================
+       MOBILE NAVIGATION DRAWER & BACKDROP
+       ======================================================================== -->
+  <div class="mobile-backdrop" id="mobileBackdrop" aria-hidden="true"></div>
+
+    <!-- ========================================================================
+       MOBILE NAVIGATION DRAWER & BACKDROP
+       ======================================================================== -->
+  <div class="mobile-backdrop" id="mobileBackdrop" aria-hidden="true"></div>
+
+    <!-- ========================================================================
+       MOBILE NAVIGATION DRAWER & BACKDROP
+       ======================================================================== -->
+  <div class="mobile-backdrop" id="mobileBackdrop" aria-hidden="true"></div>
+
+    <!-- ========================================================================
+       MOBILE NAVIGATION DRAWER & BACKDROP
+       ======================================================================== -->
+  <div class="mobile-backdrop" id="mobileBackdrop" aria-hidden="true"></div>
+
+  <aside class="mobile-drawer" id="mobileDrawer" aria-label="Mobile Navigation Drawer">
+    
+    <!-- Drawer Header -->
+    <div class="drawer-header">
+      <div class="brand-text-block">
+        <span class="brand-title" style="font-size: 1.1rem;">
+          HOT POT
+          <span class="brand-flame-dot"></span>
+        </span>
+        <span class="brand-subtitle">RESTAURANT</span>
+      </div>
+      <button class="drawer-close-btn" id="drawerCloseBtn" aria-label="Close navigation menu">
+        <svg class="icon" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+
+    <!-- Drawer Navigation Links -->
+    <div class="drawer-nav-body">
+
+      <!-- Home (Accordion) -->
+      <div class="drawer-item has-accordion " id="drawerHomeAccordion" data-nav="home">
+        <button class="drawer-link accordion-trigger" aria-expanded="false">
+          <div class="drawer-link-content">
+            <svg class="icon drawer-icon" viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
+            <span>Home</span>
+          </div>
+          <svg class="icon drawer-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="drawer-accordion">
+          <a href="index.html" class="accordion-link drawer-action-close">
+            <svg class="icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <span>Home 1</span>
+          </a>
+          <a href="home-2.html" class="accordion-link drawer-action-close">
+            <svg class="icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <span>Home 2</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- About -->
+      <div class="drawer-item active" data-nav="about">
+        <a href="about.html" class="drawer-link drawer-action-close">
+          <div class="drawer-link-content">
+            <svg class="icon drawer-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+            <span>About Us</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- Menu -->
+      <div class="drawer-item " data-nav="menu">
+        <a href="menu.html" class="drawer-link drawer-action-close">
+          <div class="drawer-link-content">
+            <svg class="icon drawer-icon" viewBox="0 0 24 24"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"></path><path d="M7 2v20"></path><path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"></path></svg>
+            <span>Menu & Broths</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- Experience -->
+      <div class="drawer-item " data-nav="experience">
+        <a href="experience.html" class="drawer-link drawer-action-close">
+          <div class="drawer-link-content">
+            <svg class="icon drawer-icon" viewBox="0 0 24 24"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"></path></svg>
+            <span>Experience</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- Reservations -->
+      <div class="drawer-item " data-nav="reservations">
+        <a href="reservations.html" class="drawer-link drawer-action-close">
+          <div class="drawer-link-content">
+            <svg class="icon drawer-icon" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+            <span>Reservations</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- Offers -->
+      <div class="drawer-item " data-nav="offers">
+        <a href="offers.html" class="drawer-link drawer-action-close">
+          <div class="drawer-link-content">
+            <svg class="icon drawer-icon" viewBox="0 0 24 24"><path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z"></path><circle cx="7.5" cy="7.5" r=".5" fill="currentColor"></circle></svg>
+            <span>Offers</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- Gallery -->
+      <div class="drawer-item " data-nav="gallery">
+        <a href="gallery.html" class="drawer-link drawer-action-close">
+          <div class="drawer-link-content">
+            <svg class="icon drawer-icon" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect><circle cx="9" cy="9" r="2"></circle><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"></path></svg>
+            <span>Gallery</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- Contact -->
+      <div class="drawer-item " data-nav="contact">
+        <a href="contact.html" class="drawer-link drawer-action-close">
+          <div class="drawer-link-content">
+            <svg class="icon drawer-icon" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            <span>Contact</span>
+          </div>
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Drawer Footer Actions -->
+    <div class="drawer-footer">
+      <div class="drawer-toggles-row">
+        <!-- Mobile Dark Mode Toggle -->
+        <button class="drawer-toggle-btn" id="mobileThemeToggle">
+          <svg class="icon theme-icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
+          <svg class="icon theme-icon-moon" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
+          <span id="mobileThemeLabel">Theme</span>
+        </button>
+
+        <!-- Mobile RTL Toggle -->
+        <button class="drawer-toggle-btn" id="mobileRtlToggle">
+          <svg class="icon rtl-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m16 3 4 4-4 4"></path>
+            <path d="M20 7H4"></path>
+            <path d="m8 21-4-4 4-4"></path>
+            <path d="M4 17h16"></path>
+          </svg>
+          <span id="mobileRtlLabel">LTR Layout</span>
+        </button>
+      </div>
+
+      <!-- Mobile Login Button -->
+      <button class="drawer-login-btn" id="mobileLoginBtn">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path><polyline points="10 17 15 12 10 7"></polyline><line x1="15" y1="12" x2="3" y2="12"></line></svg>
+        <span>Sign In to Member Club</span>
+      </button>
+    </div>
+
+  </aside>
+
+  <!-- ========================================================================
+       MODAL WINDOW (LOGIN / SIGN IN)
+       ======================================================================== -->
+  <div class="modal-overlay" id="loginModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-card">
+      <button class="modal-close" id="closeModalBtn" aria-label="Close dialog">
+        <svg class="icon" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+
+      <div style="text-align: center; margin-bottom: 24px;">
+        <span class="brand-title" style="font-size: 1.4rem; justify-content: center;">
+          HOT POT
+          <span class="brand-flame-dot"></span>
+        </span>
+        <h2 id="modalTitle" style="font-family: 'Cinzel', serif; font-size: 1.3rem; margin-top: 8px; color: var(--text-primary);">
+          VIP Club Member Access
+        </h2>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 4px;">
+          Experience imperial dining privileges & secret broth pairings
+        </p>
+      </div>
+
+      <form id="loginForm">
+        <div class="form-group">
+          <label class="form-label" for="loginEmail">Email / Member ID</label>
+          <input type="email" id="loginEmail" class="form-input" placeholder="connoisseur@hotpot.com" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="loginPassword">Passcode</label>
+          <input type="password" id="loginPassword" class="form-input" placeholder="••••••••" required>
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 22px; font-size: 0.82rem; color: var(--text-muted);">
+          <label style="display: flex; align-items: center; gap: 6px; cursor: pointer;">
+            <input type="checkbox" checked style="accent-color: var(--color-orange);"> Remember me
+          </label>
+          <a href="#forgot" style="color: var(--color-amber);">Forgot passcode?</a>
+        </div>
+        <button type="submit" class="btn-3d-login" style="width: 100%; padding: 13px;">
+          <span>Enter Imperial Lounge</span>
+          <svg class="icon btn-arrow-icon" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  
+
+  <!-- ========================================================================
+       HOT POT RESTAURANT – COMPLETE 7-SECTION ABOUT PAGE STORYTELLING
+       ======================================================================== -->
+  <main class="abt-main-container" id="mainContent">
+
+    <!-- ======================================================================
+         SECTION 1: ABOUT OUR RESTAURANT – OUR IDENTITY & STORY
+         ====================================================================== -->
+    <section class="abt-section abt-story-section" id="story" aria-labelledby="storyHeading">
+      <div class="abt-story-grid">
+        
+        <!-- Story Text Column -->
+        <div class="abt-story-content abt-scroll-reveal">
+          <div class="abt-pill">
+            <svg class="icon" viewBox="0 0 24 24" style="width: 14px; height: 14px;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <span>Our Origin & Identity • Est. 1998</span>
+          </div>
+
+          <h1 class="abt-title" id="storyHeading">Born of Riverbank Fire, Forged in Golden Harmony</h1>
+
+          <p class="abt-story-lead">
+            <span class="abt-drop-cap">I</span>n the late autumn of 1998 along the misty, cliff-hung riverbanks of Chongqing, our culinary pilgrimage began around a solitary hand-hammered copper cauldron. Boatmen and traveling merchants gathered at twilight, drawn by the intoxicating aroma of slow-simmered beef tallow, wild Sichuan peppercorns, and roasted chilies dancing over glowing charcoal.
+          </p>
+
+          <p class="abt-subtitle" style="margin-bottom: 24px;">
+            The Celestial Cauldron was founded on a singular conviction: that hot pot is not merely an eating method, but a sacred communal ritual of connection. In an increasingly fragmented world, gathering around a shared, boiling broth dissolves social boundaries, inviting family, friends, and strangers to share the same heat, rhythm, and joy.
+          </p>
+
+          <!-- Milestone Timeline Strip -->
+          <div class="abt-story-timeline-strip">
+            <div class="abt-timeline-step">
+              <span class="abt-timeline-year">1998</span>
+              <p class="abt-timeline-label">Riverbank Dockside Copper Cauldron</p>
+            </div>
+            <div class="abt-timeline-step">
+              <span class="abt-timeline-year">2008</span>
+              <p class="abt-timeline-label">Formulation of the 36-Spice Broth Canon</p>
+            </div>
+            <div class="abt-timeline-step">
+              <span class="abt-timeline-year">2018</span>
+              <p class="abt-timeline-label">Celestial Temple Architectural Sanctuary</p>
+            </div>
+            <div class="abt-timeline-step">
+              <span class="abt-timeline-year">2026</span>
+              <p class="abt-timeline-label">Michelin Selected & Grand Broth Guild</p>
+            </div>
+          </div>
+
+          <!-- Signature & Seal -->
+          <div class="abt-story-signature">
+            <div class="abt-seal-badge" title="Master Broth Artisan Seal">鼎香</div>
+            <div>
+              <strong style="display: block; font-family: 'Cinzel', serif; font-size: 1.05rem; color: var(--text-primary);">Master Artisan Chen Bao-Lin</strong>
+              <span style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em;">Founder & Broth Custodian</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Story Visual Showcase Column -->
+        <div class="abt-story-image-wrap abt-scroll-reveal abt-delay-2">
+          <div class="abt-story-mandala" aria-hidden="true"></div>
+          <div class="abt-story-frame abt-clip-reveal">
+            <img src="images/about-restaurant-story.jpg" alt="Ancestral hot pot culinary heritage and simmering discipline" class="abt-story-img" loading="eager" decoding="async">
+          </div>
+          <!-- Floating Stat Badge -->
+          <div class="abt-story-badge">
+            <div class="abt-badge-number">28+</div>
+            <div class="abt-badge-caption">Years of Ancestral Simmering Discipline</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECTION 2: OUR MISSION & VISION (ASYMMETRICAL DUAL-PANEL)
+         ====================================================================== -->
+    <section class="abt-section abt-mission-vision-section" id="mission-vision" aria-labelledby="mvHeading">
+      <div class="abt-section-header">
+        <div class="abt-pill">
+          <svg class="icon" viewBox="0 0 24 24" style="width: 14px; height: 14px;"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+          <span>Guiding Principles</span>
+        </div>
+        <h2 class="abt-title" id="mvHeading">Our Sacred Mission & Enduring Vision</h2>
+        <p class="abt-subtitle">
+          Anchored by deep ancestral reverence and driven by contemporary culinary innovation, we craft dining experiences where every cauldron tells a story of hospitality, integrity, and communion.
+        </p>
+      </div>
+
+      <!-- Hospitality Values Visual Anchor -->
+      <div class="abt-mv-visual-banner abt-scroll-reveal" style="position: relative; border-radius: var(--radius-lg); overflow: hidden; margin-bottom: 36px; border: 1px solid var(--border-glow); aspect-ratio: 21/8; max-height: 320px; box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4);">
+        <img src="images/about-mission-vision.jpg" alt="Hospitality values and communal dining sanctuary in our luxury hot pot restaurant" class="abt-story-img" loading="eager" decoding="async">
+        <div style="position: absolute; inset: 0; background: linear-gradient(90deg, rgba(20, 11, 9, 0.88) 0%, rgba(20, 11, 9, 0.4) 65%, transparent 100%); display: flex; flex-direction: column; justify-content: center; padding: 36px 44px;">
+          <span class="abt-pill" style="align-self: flex-start; margin-bottom: 6px;">Communal Harmony</span>
+          <p style="font-family: 'Cinzel', serif; font-size: clamp(1.2rem, 2vw, 1.6rem); font-weight: 700; color: #FFF3E0; margin: 0 0 8px; max-width: 520px; line-height: 1.3;">
+            "Food prepared with reverence creates moments of timeless fellowship."
+          </p>
+          <span style="font-size: 0.82rem; color: var(--color-amber); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600;">The Celestial Cauldron Hospitality Charter</span>
+        </div>
+      </div>
+
+      <!-- Asymmetrical Dual-Panel Composition -->
+      <div class="abt-mv-container">
+        
+        <!-- Left Panel: Mission (Mala Fire / Heritage Burgundy Mood) -->
+        <div class="abt-mv-panel abt-mv-panel-mission abt-scroll-reveal">
+          <div class="abt-mv-icon-box">
+            <svg class="icon" viewBox="0 0 24 24" style="width: 28px; height: 28px;"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"></path></svg>
+          </div>
+          <h3 class="abt-mv-heading">Our Sacred Mission</h3>
+          <p class="abt-mv-body">
+            To preserve the unadulterated soul of classical hot pot by marrying time-honored tallow rendering techniques with ethical, single-origin sourcing—providing an imperial sanctuary where guests experience the warmth of true culinary hospitality.
+          </p>
+          <ul class="abt-mv-list">
+            <li class="abt-mv-item">
+              <span class="abt-mv-bullet"><svg class="icon" viewBox="0 0 24 24" style="width: 12px; height: 12px;"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+              <span><strong>Pure Ancestral Fidelity:</strong> Zero synthetic extracts or shortcuts; every master broth is simmered 18 hours from whole marrow bones and wild botanicals.</span>
+            </li>
+            <li class="abt-mv-item">
+              <span class="abt-mv-bullet"><svg class="icon" viewBox="0 0 24 24" style="width: 12px; height: 12px;"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+              <span><strong>The Dignity of Communion:</strong> Upholding the cultural ethos of <em>Tong Guo</em> (同锅), ensuring all dining guests are welcomed and cherished as family.</span>
+            </li>
+            <li class="abt-mv-item">
+              <span class="abt-mv-bullet"><svg class="icon" viewBox="0 0 24 24" style="width: 12px; height: 12px;"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+              <span><strong>Rigorous Guest Care:</strong> Dedicated broth sommeliers calibrating tableside temperatures and personalized spice dipping alchemy.</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Center Connecting Nexus Node -->
+        <div class="abt-mv-connector" aria-hidden="true">
+          <div class="abt-mv-nexus-node">
+            <svg class="icon" viewBox="0 0 24 24" style="width: 22px; height: 22px;"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a5 5 0 0 0 0 10 5 5 0 0 1 0 10"></path><circle cx="12" cy="7" r="1.5" fill="currentColor"></circle><circle cx="12" cy="17" r="1.5" fill="currentColor"></circle></svg>
+          </div>
+        </div>
+
+        <!-- Right Panel: Vision (Golden Herbal / Celestial Amber Mood) -->
+        <div class="abt-mv-panel abt-mv-panel-vision abt-scroll-reveal abt-delay-2">
+          <div class="abt-mv-icon-box">
+            <svg class="icon" viewBox="0 0 24 24" style="width: 28px; height: 28px;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          </div>
+          <h3 class="abt-mv-heading">Our Enduring Vision</h3>
+          <p class="abt-mv-body">
+            To establish our sanctuaries as the worldwide benchmark of Haute Asian Communal Gastronomy, redefining traditional hot pot as a multi-sensory, Michelin-recognized culinary artform celebrated across continents.
+          </p>
+          <ul class="abt-mv-list">
+            <li class="abt-mv-item">
+              <span class="abt-mv-bullet"><svg class="icon" viewBox="0 0 24 24" style="width: 12px; height: 12px;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></span>
+              <span><strong>Global Gastronomic Heritage:</strong> Introducing international food capitals to the courtly ritual of communal broth tasting and Wagyu pairing.</span>
+            </li>
+            <li class="abt-mv-item">
+              <span class="abt-mv-bullet"><svg class="icon" viewBox="0 0 24 24" style="width: 12px; height: 12px;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></span>
+              <span><strong>Multi-Sensory Sanctuary Design:</strong> Pioneering smokeless acoustic dining suites where light, scent, and temperature evolve with each dining course.</span>
+            </li>
+            <li class="abt-mv-item">
+              <span class="abt-mv-bullet"><svg class="icon" viewBox="0 0 24 24" style="width: 12px; height: 12px;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></span>
+              <span><strong>Generational Archiving:</strong> Funding botanical conservation programs across Sichuan and Yunnan to safeguard rare indigenous chili cultivars.</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECTION 3: THE TRADITION OF HOT POT DINING (HERITAGE VERTICAL TIMELINE)
+         ====================================================================== -->
+    <section class="abt-section abt-tradition-section" id="tradition" aria-labelledby="traditionHeading">
+      <div class="abt-section-header">
+        <div class="abt-pill">
+          <svg class="icon" viewBox="0 0 24 24" style="width: 14px; height: 14px;"><path d="M12 8v4l3 3"></path><circle cx="12" cy="12" r="9"></circle></svg>
+          <span>Cultural Heritage</span>
+        </div>
+        <h2 class="abt-title" id="traditionHeading">A Thousand Winters Around the Shared Hearth</h2>
+        <p class="abt-subtitle">
+          From ancient bronze cauldrons over charcoal pits to courtly imperial banquets, hot pot is a living ritual of human fellowship and warmth.
+        </p>
+      </div>
+
+      <!-- Vertical Timeline Path -->
+      <div class="abt-tradition-timeline">
+        <div class="abt-tradition-spine" aria-hidden="true"></div>
+
+        <!-- Node 1: Tang & Song Origins -->
+        <div class="abt-tradition-node abt-scroll-reveal">
+          <div class="abt-tradition-dot" aria-hidden="true"></div>
+          <div class="abt-tradition-card">
+            <span class="abt-tradition-era">Circa 800 AD • Tang Dynasty</span>
+            <h3 class="abt-tradition-title">The Bronze Hearth of Wei Lu</h3>
+            <p class="abt-tradition-body">
+              Early Chinese scholars and villagers gathered during winter solstices around bronze vessels called <em>Ding</em> (鼎). Meat, mountain mushrooms, and wild ginger were simmered together in clean spring water, creating the communal ritual of <em>Wei Lu</em> (围炉)—encircling the stove for protection against frost and spirit replenishment.
+            </p>
+          </div>
+          <div class="abt-tradition-visual abt-clip-reveal">
+            <img src="images/about-cultural-tradition.jpg" alt="Traditional hot pot cultural heritage and ancestral copper cauldron" class="abt-tradition-img" loading="eager" decoding="async">
+          </div>
+        </div>
+
+        <!-- Node 2: The River Boatmen of Chaotianmen -->
+        <div class="abt-tradition-node abt-scroll-reveal abt-delay-1">
+          <div class="abt-tradition-dot" aria-hidden="true"></div>
+          <div class="abt-tradition-card">
+            <span class="abt-tradition-era">19th Century • Chaotianmen Docks</span>
+            <h3 class="abt-tradition-title">The Alchemy of Dockside Mala</h3>
+            <p class="abt-tradition-body">
+              Along the rugged junctions of the Yangtze and Jialing rivers, boat trackers and dockers invented the bold, tallow-based hot pot. To repel damp river chill and preserve food, they simmered cattle tallow with whole dried chilies, mountain peppercorns, and star anise in divided clay pots, planting the seeds of classical Sichuan Mala broth.
+            </p>
+          </div>
+          <div class="abt-tradition-visual" style="display: flex; align-items: center; justify-content: center; background: rgba(100, 30, 22, 0.25); border: 1px solid var(--border-glow); padding: 30px; text-align: center;">
+            <div>
+              <span style="font-family: 'Cinzel', serif; font-size: 2.2rem; color: var(--color-amber); display: block; margin-bottom: 8px;">围炉聚饮</span>
+              <p style="font-size: 0.88rem; color: var(--text-secondary); max-width: 320px; line-height: 1.6;">
+                "Social distinctions vanish in the rising vapor; kings and rivermen alike must wait for the broth to boil."
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Node 3: The Imperial Banquets -->
+        <div class="abt-tradition-node abt-scroll-reveal abt-delay-2">
+          <div class="abt-tradition-dot" aria-hidden="true"></div>
+          <div class="abt-tradition-card">
+            <span class="abt-tradition-era">18th Century • Qing Dynasty Court</span>
+            <h3 class="abt-tradition-title">The Thousand Elders Feast</h3>
+            <p class="abt-tradition-body">
+              Emperor Qianlong revered hot pot so deeply that he hosted the historic "Banquet of a Thousand Elders" inside the Forbidden City, serving over 1,550 ornate silver and copper cauldrons brimming with game birds, ginseng, and wolfberry elixirs to elders from across the empire—cementing hot pot as the pinnacle of imperial hospitality.
+            </p>
+          </div>
+          <div class="abt-tradition-visual" style="display: flex; align-items: center; justify-content: center; background: rgba(229, 160, 0, 0.1); border: 1px solid var(--border-glow); padding: 30px; text-align: center;">
+            <div>
+              <span style="font-family: 'Cinzel', serif; font-size: 2.2rem; color: var(--color-amber); display: block; margin-bottom: 8px;">一鼎乾坤</span>
+              <p style="font-size: 0.88rem; color: var(--text-secondary); max-width: 320px; line-height: 1.6;">
+                A single cauldron encompassing Heaven, Earth, Fire, and Water in delicious harmony.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Node 4: Modern Haute Sanctuary -->
+        <div class="abt-tradition-node abt-scroll-reveal abt-delay-3">
+          <div class="abt-tradition-dot" aria-hidden="true"></div>
+          <div class="abt-tradition-card">
+            <span class="abt-tradition-era">Present Era • The Celestial Cauldron</span>
+            <h3 class="abt-tradition-title">The Haute Gastronomy Era</h3>
+            <p class="abt-tradition-body">
+              Today, our restaurant elevates this millennia-old tradition into a Michelin-level dining symphony. We combine smokeless magnetic induction tables, Miyazaki A5 Wagyu precision slicing, and 18-hour collagen extraction while fiercely guarding the ancient warmth of sharing food with those we love.
+            </p>
+          </div>
+          <div class="abt-tradition-visual" style="display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(169, 50, 38, 0.3), rgba(229, 160, 0, 0.2)); border: 1px solid var(--border-glow); padding: 30px; text-align: center;">
+            <div>
+              <span style="font-family: 'Cinzel', serif; font-size: 1.8rem; color: #FFF3E0; display: block; margin-bottom: 8px;">Haute Asian Gastronomy</span>
+              <p style="font-size: 0.85rem; color: var(--color-amber); font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;">
+                Where Heritage Meets Modern Luxury
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECTION 4: OUR CULINARY PHILOSOPHY (RADIAL / CIRCULAR COMPOSITION)
+         ====================================================================== -->
+    <section class="abt-section abt-philosophy-section" id="philosophy" aria-labelledby="philosophyHeading">
+      <div class="abt-section-header">
+        <div class="abt-pill">
+          <svg class="icon" viewBox="0 0 24 24" style="width: 14px; height: 14px;"><circle cx="12" cy="12" r="10"></circle><polygon points="12 6 12 12 16 14"></polygon></svg>
+          <span>Gastronomic Doctrine</span>
+        </div>
+        <h2 class="abt-title" id="philosophyHeading">The Equilibrium of Five Harmonious Flavours</h2>
+        <p class="abt-subtitle">
+          Rooted in ancient Taoist culinary metaphysics, our broths embody <em>Wu Wei Tiao He</em> (五味调和)—the harmonious union of opposing forces in one boiling cauldron.
+        </p>
+      </div>
+
+      <div class="abt-philosophy-quote-box abt-scroll-reveal">
+        "In the cauldron, fire and water cease their war; they marry to create life, aroma, and memories."
+      </div>
+
+      <!-- Radial Abstract Composition -->
+      <div class="abt-radial-stage">
+
+        <!-- Pillar 1: North (Wu Wei) -->
+        <div class="abt-pillar-card abt-scroll-reveal" style="grid-column: 1; grid-row: 1;">
+          <span class="abt-pillar-tag">Doctrine I • Balance</span>
+          <h3 class="abt-pillar-title">Wu Wei Equilibrium (五味)</h3>
+          <p class="abt-pillar-desc">
+            Sweetness from rock sugar and dates balances the pungency of ginger and Sichuan peppercorns, while deep umami from marrow grounds the vibrant heat. No single note screams; every flavor sings in chorus.
+          </p>
+        </div>
+
+        <!-- Central Medallion Core -->
+        <div class="abt-radial-center abt-scroll-reveal abt-delay-1">
+          <div class="abt-radial-medallion-stage">
+            <div class="abt-radial-orbit-ring" aria-hidden="true"></div>
+            <div class="abt-radial-medallion">
+              <img src="images/about-culinary-philosophy.jpg" alt="Culinary artistry and cooking philosophy of balanced hot pot broths" class="abt-medallion-img" loading="eager" decoding="async">
+            </div>
+          </div>
+          <div class="abt-radial-caption">
+            <span style="font-family: 'Cinzel', serif; font-size: 0.95rem; font-weight: 700; color: var(--color-amber); letter-spacing: 0.14em; text-transform: uppercase;">
+              Yin-Yang Twin Cauldron Alchemy
+            </span>
+          </div>
+        </div>
+
+        <!-- Pillar 2: East (Ma & La) -->
+        <div class="abt-pillar-card abt-scroll-reveal abt-delay-2" style="grid-column: 3; grid-row: 1;">
+          <span class="abt-pillar-tag">Doctrine II • Resonance</span>
+          <h3 class="abt-pillar-title">The Symphony of Ma & La (麻辣)</h3>
+          <p class="abt-pillar-desc">
+            True Mala is not punishing heat. It is an intricate resonance: Hanyuan tribute peppercorns induce a delicate 50Hz tingling vibration on the palate, opening taste receptors to the fruity, roasted notes of 7 chili varietals.
+          </p>
+        </div>
+
+        <!-- Pillar 3: South (The 18-Hour Simmer) -->
+        <div class="abt-pillar-card abt-scroll-reveal abt-delay-3" style="grid-column: 1; grid-row: 2;">
+          <span class="abt-pillar-tag">Doctrine III • Patience</span>
+          <h3 class="abt-pillar-title">The 18-Hour Slow Simmer (慢炖)</h3>
+          <p class="abt-pillar-desc">
+            Time is our most indispensable ingredient. Cattle femur marrow bones and old farm chickens are simmered at an unbroken 98°C for eighteen hours, emulsifying collagen into a velvet broth that coats the palate.
+          </p>
+        </div>
+
+        <!-- Pillar 4: West (Botanical Temperance) -->
+        <div class="abt-pillar-card abt-scroll-reveal abt-delay-4" style="grid-column: 3; grid-row: 2;">
+          <span class="abt-pillar-tag">Doctrine IV • Temperance</span>
+          <h3 class="abt-pillar-title">Botanical Wholesomeness (药膳)</h3>
+          <p class="abt-pillar-desc">
+            To balance the warmth of chili and tallow, we infuse high-altitude medicinal botanicals—Yunnan wild morels, goji berries, angelica sinensis, and codonopsis—ensuring gentle digestion and deep bodily vitality.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECTION 5: MASTER CHEFS & FOOD PREPARATION TECHNIQUES (SPLIT-SCREEN)
+         ====================================================================== -->
+    <section class="abt-section abt-chefs-section" id="master-chefs" aria-labelledby="chefsHeading">
+      <div class="abt-section-header">
+        <div class="abt-pill">
+          <svg class="icon" viewBox="0 0 24 24" style="width: 14px; height: 14px;"><path d="M6 13.87A4 4 0 0 1 7.41 6a5.11 5.11 0 0 1 1.05-1.54 5 5 0 0 1 7.08 0A5.11 5.11 0 0 1 16.59 6 4 4 0 0 1 18 13.87V21H6Z"></path><line x1="6" y1="17" x2="18" y2="17"></line></svg>
+          <span>Culinary Maestros</span>
+        </div>
+        <h2 class="abt-title" id="chefsHeading">Guardians of the Sacred Simmering Flame</h2>
+        <p class="abt-subtitle">
+          Meet the master artisans who dedicate their lives to the craft of broth formulation, precision tableside butchery, and ancestral cooking rituals.
+        </p>
+      </div>
+
+      <!-- Split-Screen Editorial Composition -->
+      <div class="abt-chefs-layout">
+        
+        <!-- Chef Profile Spotlight -->
+        <div class="abt-chef-profile-card abt-scroll-reveal">
+          <div class="abt-chef-photo-wrap abt-clip-reveal">
+            <img src="images/about-master-chef.jpg" alt="Executive Master Chef Chen Bao-Lin performing ancestral tableside hot pot ritual" class="abt-chef-img" loading="eager" decoding="async">
+          </div>
+          <div class="abt-chef-info-overlay">
+            <h3 class="abt-chef-name">Executive Master Chef Chen Bao-Lin</h3>
+            <p class="abt-chef-title">Grand Master of the Sichuan Broth Guild • 40 Years Mastery</p>
+            <p class="abt-chef-quote">
+              "A hot pot cauldron is a living prayer. The flame must listen to the tallow; the tallow must listen to the botanicals; and the chef must listen to the guest."
+            </p>
+          </div>
+        </div>
+
+        <!-- Preparation Techniques Visual Process Flow -->
+        <div class="abt-prep-rituals abt-scroll-reveal abt-delay-2">
+          
+          <!-- Ritual 1 -->
+          <div class="abt-ritual-card">
+            <span class="abt-ritual-num">01</span>
+            <div>
+              <h4 class="abt-ritual-title">Chao Liao (The 6-Hour Spice Bloom)</h4>
+              <p class="abt-ritual-desc">
+                Conducted every dawn inside hammered copper kettles. 36 individual spices—including hand-cracked star anise, aged tangerine peel, and dried cardamom pods—are stirred continuously by hand in pure clarified tallow over low flame to extract delicate volatile aromas without scorching.
+              </p>
+            </div>
+          </div>
+
+          <!-- Ritual 2 -->
+          <div class="abt-ritual-card">
+            <span class="abt-ritual-num">02</span>
+            <div>
+              <h4 class="abt-ritual-title">Triple-Filter Collagen Clarification</h4>
+              <p class="abt-ritual-desc">
+                Our golden herbal chicken and mushroom broths undergo three separate filtering stages through fine Japanese silk sieves, separating impurities while preserving natural emulsified lipids for crystal-clear velvet richness.
+              </p>
+            </div>
+          </div>
+
+          <!-- Ritual 3 -->
+          <div class="abt-ritual-card">
+            <span class="abt-ritual-num">03</span>
+            <div>
+              <h4 class="abt-ritual-title">The 1.8mm Precision Wagyu Shave</h4>
+              <p class="abt-ritual-desc">
+                Using hand-forged Sakai yanagiba knives, master carvers slice chilled Miyazaki A5 ribeye into gossamer 1.8mm ribbons designed specifically for the legendary <em>Qi Shang Ba Xia</em> (七上八下 - "Seven Up, Eight Down") 8-second flash cook.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECTION 6: INGREDIENT SOURCING & QUALITY STANDARDS (PROGRESSION JOURNEY)
+         ====================================================================== -->
+    <section class="abt-section abt-sourcing-section" id="ingredient-sourcing" aria-labelledby="sourcingHeading">
+      <div class="abt-section-header">
+        <div class="abt-pill">
+          <svg class="icon" viewBox="0 0 24 24" style="width: 14px; height: 14px;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          <span>Purity & Verification</span>
+        </div>
+        <h2 class="abt-title" id="sourcingHeading">From Highland Mist to Boiling Hearth</h2>
+        <p class="abt-subtitle">
+          We do not merely purchase ingredients; we commission harvests. Every botanical, mushroom, and cut of meat carries a certified lineage of purity.
+        </p>
+      </div>
+
+      <!-- Sourcing Banner Card -->
+      <div class="abt-sourcing-banner abt-scroll-reveal">
+        <img src="images/about-ingredient-sourcing.jpg" alt="Carefully selected fresh ingredients and pristine farm-to-table harvest" class="abt-sourcing-img" loading="eager" decoding="async">
+        <div class="abt-sourcing-banner-overlay">
+          <span class="abt-pill" style="align-self: flex-start; margin-bottom: 8px;">Traceability Protocol</span>
+          <h3 class="abt-banner-heading">Uncompromising Standards of Natural Freshness</h3>
+          <p class="abt-banner-quote">
+            "If an ingredient does not elevate the broth, it does not cross our kitchen threshold. No exceptions. No substitutes."
+          </p>
+        </div>
+      </div>
+
+      <!-- 4-Stage Progressive Journey -->
+      <div class="abt-journey-stages">
+        
+        <!-- Stage 1 -->
+        <div class="abt-stage-card abt-scroll-reveal">
+          <span class="abt-stage-badge">Stage 01</span>
+          <h4 class="abt-stage-title">Alpine Terroir Procurement</h4>
+          <p class="abt-stage-text">
+            Wild morels foraged at 3,200m in the Tibetan Plateau, Hanyuan tribute peppercorns hand-plucked during autumn dew, and A5 Wagyu directly imported from Miyazaki Prefecture.
+          </p>
+        </div>
+
+        <!-- Stage 2 -->
+        <div class="abt-stage-card abt-scroll-reveal abt-delay-1">
+          <span class="abt-stage-badge">Stage 02</span>
+          <h4 class="abt-stage-title">Sub-Zero Cold Chain Express</h4>
+          <p class="abt-stage-text">
+            Continuous GPS-monitored refrigerated air transport maintaining temperatures between 0°C and 2°C, ensuring ingredients arrive from farm to kitchen within 24 hours of harvest.
+          </p>
+        </div>
+
+        <!-- Stage 3 -->
+        <div class="abt-stage-card abt-scroll-reveal abt-delay-2">
+          <span class="abt-stage-badge">Stage 03</span>
+          <h4 class="abt-stage-title">Morning Botanical Scrutiny</h4>
+          <p class="abt-stage-text">
+            At 5:00 AM daily, our culinary directors inspect each shipment, testing moisture content, leaf crispness, and aroma volatile levels. Only the top 15% of produce is accepted.
+          </p>
+        </div>
+
+        <!-- Stage 4 -->
+        <div class="abt-stage-card abt-scroll-reveal abt-delay-3">
+          <span class="abt-stage-badge">Stage 04</span>
+          <h4 class="abt-stage-title">Chilled Sanctuary Presentation</h4>
+          <p class="abt-stage-text">
+            Plated tableside over hand-carved crystal ice beds and mountain spring water mist, locking in peak crispness until the moment ingredients are immersed into simmering broth.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Floating Quality Seals Row -->
+      <div class="abt-quality-seals-row abt-scroll-reveal abt-delay-2">
+        <div class="abt-seal-item">
+          <div class="abt-seal-icon"><svg class="icon" viewBox="0 0 24 24" style="width: 18px; height: 18px;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div>
+          <span class="abt-seal-text">100% Certified Miyazaki A5 Wagyu Traceability</span>
+        </div>
+        <div class="abt-seal-item">
+          <div class="abt-seal-icon"><svg class="icon" viewBox="0 0 24 24" style="width: 18px; height: 18px;"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+          <span class="abt-seal-text">Zero Synthetic MSG, Additives, or Artificial Oils</span>
+        </div>
+        <div class="abt-seal-item">
+          <div class="abt-seal-icon"><svg class="icon" viewBox="0 0 24 24" style="width: 18px; height: 18px;"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg></div>
+          <span class="abt-seal-text">Daily 12-Hour Morning Farm-to-Table Harvest</span>
+        </div>
+        <div class="abt-seal-item">
+          <div class="abt-seal-icon"><svg class="icon" viewBox="0 0 24 24" style="width: 18px; height: 18px;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></div>
+          <span class="abt-seal-text">Foraged Highland Fungi & Pure Mountain Spring Water</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECTION 7: UNIQUE DINING EXPERIENCE – WHAT MAKES US DIFFERENT
+         ====================================================================== -->
+    <section class="abt-fullwidth-section abt-experience-section" id="dining-experience" aria-labelledby="experienceHeading">
+      <div class="abt-experience-backdrop abt-scroll-reveal">
+        <img src="images/about-dining-experience.jpg" alt="Distinctive restaurant interior and luxury hospitality atmosphere" class="abt-experience-bg" loading="eager" decoding="async">
+        
+        <!-- Asymmetrical Floating Pavilion Card -->
+        <div class="abt-experience-card abt-scroll-reveal abt-delay-1">
+          <div class="abt-pill">
+            <svg class="icon" viewBox="0 0 24 24" style="width: 14px; height: 14px;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <span>The Transcendent Hearth</span>
+          </div>
+
+          <h2 class="abt-title" id="experienceHeading" style="font-size: clamp(1.8rem, 3.2vw, 2.7rem);">
+            Where Ancient Fire Becomes Unforgettable Hospitality
+          </h2>
+
+          <p class="abt-experience-body">
+            Dining with us is an immersive sensory performance. Stepping through our courtyard of carved mahogany lattice screens and glowing paper lanterns, you are transported into a sanctuary where culinary discipline and communal joy embrace. Private acoustic booths, customized smokeless induction cauldrons, and tableside broth sommeliers guide you through every nuance of spice and harmony.
+          </p>
+
+          <blockquote class="abt-experience-quote">
+            "A hot pot is never merely a meal; it is a hearth of human connection, an ancient cauldron where friendship simmers, laughter flows, and memories are forged in golden warmth."
+          </blockquote>
+
+          <div class="abt-experience-action-row">
+            <a href="navbar.html#experience" class="btn-3d-login abt-experience-btn">
+              <span>Explore Our Dining Sanctuaries</span>
+              <svg class="icon btn-arrow-icon" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
+            <button class="cta-secondary-btn" onclick="openLoginModal();" style="cursor: pointer;">
+              <svg class="icon" viewBox="0 0 24 24" style="width: 16px; height: 16px;"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+              <span>Reserve a VIP Cauldron</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ========================================================================
+       ENTIRE FOOTER CONTENT (DIRECTLY DERIVED FROM NAVBAR STRUCTURE & IDENTITY)
+       ======================================================================== -->
+  <footer class="site-footer" id="siteFooter" role="contentinfo">
+    
+    <!-- 1. Top Call-to-Action Reservation Banner Card -->
+    <div class="footer-cta-container">
+      <div class="footer-cta-card">
+        <div class="cta-left">
+          <div class="cta-badge">
+            <span class="pulse-indicator"></span>
+            <span>Live Kitchen Status • Master Broths Simmering at 98°C</span>
+          </div>
+          <h2 class="cta-title">The Sacred Art of Simmering Perfection</h2>
+          <p class="cta-subtitle">
+            Indulge in 18-hour simmered bone marrow broths, hand-carved Miyazaki A5 Wagyu, and artisan dipping oils crafted inside an immersive 3D sensory dining temple.
+          </p>
+        </div>
+        <div class="cta-actions">
+          <button class="btn-3d-login cta-reserve-btn" onclick="openLoginModal();">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path><polyline points="10 17 15 12 10 7"></polyline><line x1="15" y1="12" x2="3" y2="12"></line></svg>
+            <span>VIP Table Booking</span>
+          </button>
+          <a href="#contact" class="cta-secondary-btn">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            <span>Concierge Hotline</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. Main 5-Column Grid (Derived from Navbar Architecture) -->
+    <div class="footer-grid-container">
+      
+      <!-- Col 1: Brand & Steaming Pot Identity -->
+      <div class="footer-col footer-col-brand" id="footerColAbout">
+        <a href="#home" class="brand-logo footer-brand-logo" aria-label="HOT POT RESTAURANT">
+          <!-- Steaming 3D Hot Pot Vector Illustration -->
+          <div class="pot-icon-wrapper" style="width: 52px; height: 52px;">
+            <svg class="hotpot-svg" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Rising Steam Curves -->
+              <g class="steam-group">
+                <path class="steam-path steam-path-1" d="M24 24C22 18 28 14 26 8" />
+                <path class="steam-path steam-path-2" d="M32 22C34 16 30 12 33 6" />
+                <path class="steam-path steam-path-3" d="M40 24C42 18 36 14 38 8" />
+              </g>
+              <ellipse cx="32" cy="56" rx="18" ry="4" fill="rgba(211, 84, 0, 0.45)" filter="blur(2px)"/>
+              <path d="M12 36C10 36 8 38 8 40C8 42 10 44 12 44" stroke="url(#goldPotGrad)" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M52 36C54 36 56 38 56 40C56 42 54 44 52 44" stroke="url(#goldPotGrad)" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M14 34C14 46 22 53 32 53C42 53 50 46 50 34H14Z" fill="url(#potBodyGrad)" stroke="url(#goldPotGrad)" stroke-width="1.8"/>
+              <ellipse cx="32" cy="34" rx="18" ry="8" fill="#1A0A08" stroke="url(#goldPotGrad)" stroke-width="2"/>
+              <path d="M14 34C14 38.4 22 42 32 42C32 38 28 34 32 30C22 30 14 31.8 14 34Z" fill="url(#spicyBrothGrad)"/>
+              <path d="M50 34C50 38.4 42 42 32 42C32 38 36 34 32 30C42 30 50 31.8 50 34Z" fill="url(#herbalBrothGrad)"/>
+              <path d="M32 26C30 30 34 34 32 42" stroke="url(#goldPotGrad)" stroke-width="1.5" stroke-linecap="round"/>
+              <circle class="broth-bubble bubble-1" cx="22" cy="36" r="1.4" fill="#FF5722"/>
+              <circle class="broth-bubble bubble-2" cx="26" cy="38" r="1" fill="#FFA000"/>
+              <circle class="broth-bubble bubble-3" cx="42" cy="36" r="1.3" fill="#FFE082"/>
+            </svg>
+          </div>
+          <div class="brand-text-block">
+            <span class="brand-title" style="font-size: 1.35rem;">
+              HOT POT
+              <span class="brand-flame-dot"></span>
+            </span>
+            <span class="brand-subtitle">RESTAURANT</span>
+          </div>
+        </a>
+
+        <p class="footer-brand-bio">
+          Where dynastic Asian broth artistry meets contemporary luxury dining. Each cauldron is an alchemical tribute to Sichuan mala fire, yellow-feather chicken collagen, and courtly culinary rituals.
+        </p>
+
+        <!-- Social Media Icons (3D circular buttons) -->
+        <div class="footer-social-row">
+          <a href="#instagram" class="social-icon-btn" aria-label="Follow on Instagram" title="Instagram">
+            <svg class="icon" viewBox="0 0 24 24"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+          </a>
+          <a href="#tiktok" class="social-icon-btn" aria-label="Follow on TikTok" title="TikTok">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path></svg>
+          </a>
+          <a href="#wechat" class="social-icon-btn" aria-label="WeChat and Xiaohongshu" title="WeChat / RED">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+          </a>
+          <a href="#youtube" class="social-icon-btn" aria-label="YouTube Channel" title="YouTube">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+          </a>
+          <a href="#facebook" class="social-icon-btn" aria-label="Facebook Page" title="Facebook">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+          </a>
+        </div>
+
+        <div class="footer-awards-badge">
+          <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"></circle><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"></path></svg>
+          <span>Michelin Selected 2026 • Grand Broth Guild</span>
+        </div>
+      </div>
+
+      <!-- Col 2: Experiences (from Navbar: Home 1, Home 2, Experience, Gallery) -->
+      <div class="footer-col" id="footerColExperience">
+        <h3 class="footer-col-title">The Experiences</h3>
+        <ul class="footer-links-list">
+          <li>
+            <a href="#home1" class="footer-link">
+              <svg class="icon link-bullet" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              <span>Home 1: Imperial Palace Copper Pot</span>
+            </a>
+          </li>
+          <li>
+            <a href="#home2" class="footer-link">
+              <svg class="icon link-bullet" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              <span>Home 2: Cyber Hot Pot Lounge</span>
+            </a>
+          </li>
+          <li>
+            <a href="#experience" class="footer-link">
+              <svg class="icon link-bullet" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              <span>24-Ingredient Sauce Sanctuary</span>
+            </a>
+          </li>
+          <li>
+            <a href="#experience" class="footer-link">
+              <svg class="icon link-bullet" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              <span>Private Imperial Copper Suites</span>
+            </a>
+          </li>
+          <li>
+            <a href="#experience" class="footer-link">
+              <svg class="icon link-bullet" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              <span>Tableside Flame Rituals</span>
+            </a>
+          </li>
+          <li>
+            <a href="#gallery" class="footer-link">
+              <svg class="icon link-bullet" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              <span>Visual Symphony & Gallery</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Menus & Master Broths (from Navbar: Menu, Offers) -->
+      <div class="footer-col" id="footerColMenu">
+        <h3 class="footer-col-title">Master Broths & Cuts</h3>
+        <ul class="footer-links-list">
+          <li>
+            <a href="#menu" class="footer-link">
+              <svg class="icon link-bullet" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              <span>Sichuan Mala Tallow Broth</span>
+            </a>
+          </li>
+          <li>
+            <a href="#menu" class="footer-link">
+              <svg class="icon link-bullet" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              <span>Golden Collagen Chicken Elixir</span>
+            </a>
+          </li>
+          <li>
+            <a href="#menu" class="footer-link">
+              <svg class="icon link-bullet" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              <span>Wild Yunnan Morel Herbal Pot</span>
+            </a>
+          </li>
+          <li>
+            <a href="#menu" class="footer-link">
+              <svg class="icon link-bullet" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              <span>Miyazaki A5 Wagyu Ribeye</span>
+            </a>
+          </li>
+          <li>
+            <a href="#offers" class="footer-link">
+              <svg class="icon link-bullet" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              <span>Offers & Late-Night Flights</span>
+            </a>
+          </li>
+          <li>
+            <a href="#menu" class="footer-link">
+              <svg class="icon link-bullet" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              <span>Handmade Black Truffle Prawn Paste</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Col 4: Portals & Concierge (from Navbar: Dashboard, Reservations, Login) -->
+      <div class="footer-col" id="footerColReservations">
+        <h3 class="footer-col-title">Portals & VIP Club</h3>
+        <ul class="footer-links-list">
+          <li>
+            <a href="#admin-dashboard" class="footer-link" id="footerAdminLink">
+              <svg class="icon link-bullet" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              <span>Admin Kitchen Console</span>
+            </a>
+          </li>
+          <li>
+            <a href="#user-dashboard" class="footer-link" id="footerUserLink">
+              <svg class="icon link-bullet" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              <span>VIP Chili Club User Portal</span>
+            </a>
+          </li>
+          <li>
+            <a href="#login" class="footer-link" id="footerLoginLink">
+              <svg class="icon link-bullet" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              <span>VIP Connoisseur Sign In</span>
+            </a>
+          </li>
+          <li>
+            <a href="#reservations" class="footer-link" id="footerReservationLink">
+              <svg class="icon link-bullet" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              <span>Online Table Reservations</span>
+            </a>
+          </li>
+          <li>
+            <a href="#banquet" class="footer-link" id="footerBanquetLink">
+              <svg class="icon link-bullet" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              <span>Private Banquet Buyouts</span>
+            </a>
+          </li>
+          <li>
+            <a href="#contact" class="footer-link">
+              <svg class="icon link-bullet" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              <span>Valet & Lost Belongings</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Col 5: Location & Sanctuary Hours (from Navbar: Contact) -->
+      <div class="footer-col" id="footerColContact">
+        <div id="contact" style="position:relative;top:-100px;"></div>
+        <h3 class="footer-col-title">Dining Sanctuary</h3>
+        
+        <div class="footer-info-block">
+          <div class="info-row">
+            <svg class="icon info-icon" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <div>
+              <strong>88 Imperial Dragon Way</strong>
+              <div class="info-muted">Celestial Pavilion, Suite 900</div>
+            </div>
+          </div>
+
+          <div class="info-row">
+            <svg class="icon info-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            <div>
+              <strong>Daily Dining Hours</strong>
+              <div class="info-muted">Lunch: 11:30 AM – 3:00 PM</div>
+              <div class="info-muted">Dinner: 5:00 PM – 11:00 PM</div>
+              <div class="info-muted highlight">Late Night Pot: 11:00 PM – 3:30 AM</div>
+            </div>
+          </div>
+
+          <div class="info-row">
+            <svg class="icon info-icon" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            <div>
+              <strong>+1 (800) 888-POTS (7687)</strong>
+              <div class="info-muted">Valet Parking & Private VIP Entrance</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 3. VIP Secret Broth Society Newsletter Section -->
+    <div class="footer-newsletter-wrap">
+      <div class="footer-newsletter-card">
+        <div class="newsletter-left">
+          <div class="newsletter-icon-circle">
+            <svg class="icon" style="width: 24px; height: 24px;" viewBox="0 0 24 24"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"></path></svg>
+          </div>
+          <div>
+            <h3 class="newsletter-title">Join The Secret Broth Society</h3>
+            <p class="newsletter-desc">Receive secret off-menu broth recipes, seasonal A5 Wagyu flight invitations, and priority table allocations.</p>
+          </div>
+        </div>
+        <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Welcome to the Secret Broth Society! Check your inbox for your VIP welcome gift.'); this.reset();">
+          <input type="email" placeholder="Enter your imperial email..." required class="newsletter-input" aria-label="Email address for VIP newsletter">
+          <button type="submit" class="btn-3d-login newsletter-submit-btn">
+            <span>Subscribe</span>
+            <svg class="icon btn-arrow-icon" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- 4. Bottom Legal & Back to Top Bar -->
+    <div class="footer-bottom-bar">
+      <div class="bottom-bar-inner">
+        <div class="bottom-copy">
+          © 2026 <strong>HOT POT RESTAURANT</strong>. All rights reserved. Crafting imperial dining memories since 1898.
+        </div>
+
+        <div class="bottom-links">
+          <a href="#privacy" class="bottom-link" onclick="alert('Privacy policy: Your data is protected by imperial confidentiality standards.'); return false;">Privacy Policy</a>
+          <span class="sep">•</span>
+          <a href="#terms" class="bottom-link" onclick="alert('Terms of dining: Traditional etiquette and communal respect observed.'); return false;">Terms of Service</a>
+          <span class="sep">•</span>
+          <a href="#allergens" class="bottom-link" onclick="alert('Allergen guide: Peanut oils, sesame, shellfish and dynastic chili warnings available tableside.'); return false;">Dietary & Allergen Guide</a>
+          <span class="sep">•</span>
+          <a href="#accessibility" class="bottom-link">Accessibility</a>
+        </div>
+
+        <div class="bottom-back-to-top">
+          <button class="btn-back-to-top" id="backToTopBtn" aria-label="Back to Top of Page">
+            <span>Back to Top</span>
+            <svg class="icon" viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"></polyline></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </footer>
+
+  <!-- ========================================================================
+       JAVASCRIPT: INTERACTION CONTROLLER & FRAMER-MOTION PHYSICS SIMULATION
+       ======================================================================== -->
+  <script>
+    (function() {
+      'use strict';
+
+      // --- DOM ELEMENT REFERENCES ---
+      const navbarDock = document.getElementById('navbarDock');
+      const navbarContainer = document.getElementById('navbarContainer');
+      const navMenuList = document.getElementById('navMenuList');
+      const magneticIndicator = document.getElementById('magneticIndicator');
+      const navItems = document.querySelectorAll('.nav-item');
+      
+      const themeToggleBtn = document.getElementById('themeToggleBtn');
+      const mobileThemeToggle = document.getElementById('mobileThemeToggle');
+      const mobileThemeLabel = document.getElementById('mobileThemeLabel');
+      
+      const rtlToggleBtn = document.getElementById('rtlToggleBtn');
+      const mobileRtlToggle = document.getElementById('mobileRtlToggle');
+      const mobileRtlLabel = document.getElementById('mobileRtlLabel');
+      
+      const loginBtn = document.getElementById('loginBtn');
+      const mobileLoginBtn = document.getElementById('mobileLoginBtn');
+      const loginModal = document.getElementById('loginModal');
+      const closeModalBtn = document.getElementById('closeModalBtn');
+      
+      const hamburgerBtn = document.getElementById('hamburgerBtn');
+      const mobileDrawer = document.getElementById('mobileDrawer');
+      const mobileBackdrop = document.getElementById('mobileBackdrop');
+      const drawerCloseBtn = document.getElementById('drawerCloseBtn');
+      const drawerActionCloses = document.querySelectorAll('.drawer-action-close');
+      
+      const dashboardNavDropdown = document.getElementById('dashboardNavDropdown');
+      const dashboardDropdownTrigger = document.getElementById('dashboardDropdownTrigger');
+
+      // --- 1. DYNAMIC MOUSE SPOTLIGHT (INTERACTIVE 3D LIGHTING) ---
+      navbarContainer.addEventListener('mousemove', (e) => {
+        const rect = navbarContainer.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        navbarContainer.style.setProperty('--mouse-x', `${x}px`);
+        navbarContainer.style.setProperty('--mouse-y', `${y}px`);
+
+        // Subtle 3D tilt tracking cursor
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const deltaX = (x - centerX) / centerX;
+        const deltaY = (y - centerY) / centerY;
+        
+        // Gentle tilt maximum 2.5deg
+        navbarContainer.style.transform = `perspective(1200px) rotateX(${-deltaY * 2.5}deg) rotateY(${deltaX * 2.5}deg)`;
+      });
+
+      navbarContainer.addEventListener('mouseleave', () => {
+        navbarContainer.style.transform = 'perspective(1200px) rotateX(0deg) rotateY(0deg)';
+      });
+
+      // --- 2. MOVING ACTIVE / HOVER SPRING PILL INDICATOR ---
+      function updateIndicatorPosition(targetEl) {
+        if (!targetEl || !magneticIndicator) return;
+        const rect = targetEl.getBoundingClientRect();
+        const listRect = navMenuList.getBoundingClientRect();
+        
+        const offsetLeft = rect.left - listRect.left;
+        const width = rect.width;
+
+        magneticIndicator.style.opacity = '1';
+        magneticIndicator.style.width = `${width}px`;
+        magneticIndicator.style.transform = `translateX(${offsetLeft}px)`;
+      }
+
+      // Initial active item position
+      const initialActiveItem = document.querySelector('.nav-item.active .nav-link');
+      if (initialActiveItem) {
+        setTimeout(() => updateIndicatorPosition(initialActiveItem), 250);
+      }
+
+      navItems.forEach(item => {
+        const link = item.querySelector('.nav-link');
+
+        // Hover tracking
+        item.addEventListener('mouseenter', () => {
+          updateIndicatorPosition(link);
+        });
+
+        // Click active state selection
+        link.addEventListener('click', (e) => {
+          // If not a dropdown parent or if clicking a section link
+          navItems.forEach(n => n.classList.remove('active'));
+          item.classList.add('active');
+          updateIndicatorPosition(link);
+        });
+      });
+
+      // Reset indicator back to active on mouse leave
+      navMenuList.addEventListener('mouseleave', () => {
+        const activeItem = document.querySelector('.nav-item.active .nav-link');
+        if (activeItem) {
+          updateIndicatorPosition(activeItem);
+        } else {
+          magneticIndicator.style.opacity = '0';
+        }
+      });
+
+      // --- 3. SCROLL-AWARE NAVBAR STYLING (GLASSMORPHISM & DEPTH) ---
+      let lastScrollY = window.scrollY;
+      function handleScroll() {
+        const currentScrollY = window.scrollY;
+        if (currentScrollY > 30) {
+          navbarDock.classList.add('scrolled');
+        } else {
+          navbarDock.classList.remove('scrolled');
+        }
+        lastScrollY = currentScrollY;
+      }
+      window.addEventListener('scroll', handleScroll, { passive: true });
+      handleScroll();
+
+      // Note: Automatic scroll spy is disabled because this is a dedicated page;
+      // scrolling down and up preserves the active navbar indicator on this page.
+
+      // --- 4. DARK / LIGHT THEME TOGGLE ---
+      function setTheme(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem('hotpot_theme', theme);
+
+        const isDark = theme === 'dark';
+        if (mobileThemeLabel) {
+          mobileThemeLabel.textContent = isDark ? 'Light Mode' : 'Dark Mode';
+        }
+      }
+
+      function toggleTheme() {
+        const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        setTheme(newTheme);
+      }
+
+      // Initialize theme from storage
+      const savedTheme = localStorage.getItem('hotpot_theme') || 'dark';
+      setTheme(savedTheme);
+
+      themeToggleBtn.addEventListener('click', toggleTheme);
+      if (mobileThemeToggle) mobileThemeToggle.addEventListener('click', toggleTheme);
+
+      // --- 5. RTL / LTR LAYOUT TOGGLE ---
+      function setRTL(isRTL) {
+        document.documentElement.setAttribute('dir', isRTL ? 'rtl' : 'ltr');
+        localStorage.setItem('hotpot_rtl', isRTL ? 'true' : 'false');
+        
+        if (rtlToggleBtn) rtlToggleBtn.setAttribute('data-tooltip', isRTL ? 'Switch to LTR' : 'Switch to RTL');
+        if (mobileRtlLabel) mobileRtlLabel.textContent = isRTL ? 'LTR Layout' : 'RTL Layout';
+
+        // Recalculate magnetic indicator
+        setTimeout(() => {
+          const activeItem = document.querySelector('.nav-item.active .nav-link');
+          if (activeItem) updateIndicatorPosition(activeItem);
+        }, 150);
+      }
+
+      function toggleRTL() {
+        const currentRTL = document.documentElement.getAttribute('dir') === 'rtl';
+        setRTL(!currentRTL);
+      }
+
+      const savedRTL = localStorage.getItem('hotpot_rtl') === 'true';
+      if (savedRTL) setRTL(true);
+
+      rtlToggleBtn.addEventListener('click', toggleRTL);
+      if (mobileRtlToggle) mobileRtlToggle.addEventListener('click', toggleRTL);
+
+      // --- 6. MOBILE HAMBURGER & FULL-HEIGHT DRAWER ---
+      function openDrawer() {
+        mobileDrawer.classList.add('open');
+        mobileBackdrop.classList.add('open');
+        hamburgerBtn.classList.add('active');
+        hamburgerBtn.setAttribute('aria-expanded', 'true');
+        document.body.classList.add('scroll-locked');
+      }
+
+      function closeDrawer() {
+        mobileDrawer.classList.remove('open');
+        mobileBackdrop.classList.remove('open');
+        hamburgerBtn.classList.remove('active');
+        hamburgerBtn.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('scroll-locked');
+      }
+
+      hamburgerBtn.addEventListener('click', () => {
+        if (mobileDrawer.classList.contains('open')) {
+          closeDrawer();
+        } else {
+          openDrawer();
+        }
+      });
+
+      drawerCloseBtn.addEventListener('click', closeDrawer);
+      mobileBackdrop.addEventListener('click', closeDrawer);
+
+      // Close drawer when any mobile nav link is clicked
+      drawerActionCloses.forEach(link => {
+        link.addEventListener('click', () => {
+          closeDrawer();
+        });
+      });
+
+      // Mobile Accordion Dropdowns
+      const accordionTriggers = document.querySelectorAll('.accordion-trigger');
+      accordionTriggers.forEach(trigger => {
+        trigger.addEventListener('click', (e) => {
+          const parentItem = trigger.closest('.drawer-item');
+          const isOpen = parentItem.classList.contains('accordion-open');
+          
+          // Close other open accordions
+          document.querySelectorAll('.drawer-item.accordion-open').forEach(el => {
+            if (el !== parentItem) el.classList.remove('accordion-open');
+          });
+
+          if (isOpen) {
+            parentItem.classList.remove('accordion-open');
+            trigger.setAttribute('aria-expanded', 'false');
+          } else {
+            parentItem.classList.add('accordion-open');
+            trigger.setAttribute('aria-expanded', 'true');
+          }
+        });
+      });
+
+      /* UNIVERSAL LOGO & LOGIN REDIRECTS */
+      document.querySelectorAll('.brand-logo, .footer-brand-logo').forEach(function(el) {
+        el.addEventListener('click', function(e) {
+          e.preventDefault();
+          window.location.href = 'index.html';
+        });
+      });
+
+      document.querySelectorAll('#loginBtn, #mobileLoginBtn, #footerLoginLink, #ofrMemberLoginBtn').forEach(function(el) {
+        el.addEventListener('click', function(e) {
+          e.preventDefault();
+          window.location.href = 'login.html';
+        });
+      });
+
+      // --- 7. MODAL WINDOW (LOGIN & AUTH) ---
+      function openLoginModal() {
+        window.location.href = 'login.html';
+      }
+
+      function closeLoginModal() {
+        loginModal.classList.remove('open');
+        document.body.classList.remove('scroll-locked');
+      }
+
+      // Expose globally for any button/link invocations
+      window.openLoginModal = openLoginModal;
+      window.closeLoginModal = closeLoginModal;
+
+      loginBtn.addEventListener('click', openLoginModal);
+      if (mobileLoginBtn) mobileLoginBtn.addEventListener('click', openLoginModal);
+      closeModalBtn.addEventListener('click', closeLoginModal);
+      
+      loginModal.addEventListener('click', (e) => {
+        if (e.target === loginModal) closeLoginModal();
+      });
+
+      // Login form submission handler
+      const loginForm = document.getElementById('loginForm');
+      if (loginForm) {
+        loginForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          alert('Logged in successfully! Welcome to the VIP Imperial Lounge.');
+          closeLoginModal();
+          loginForm.reset();
+        });
+      }
+
+      // Dashboard dropdown action links (demo alerts & click toggle)
+      if (dashboardDropdownTrigger && dashboardNavDropdown) {
+        dashboardDropdownTrigger.addEventListener('click', (e) => {
+          e.preventDefault();
+          if (getComputedStyle(navCenter).display !== 'none') {
+            const isOpen = dashboardNavDropdown.classList.toggle('dropdown-open');
+            dashboardDropdownTrigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+          }
+        });
+      }
+
+      const homeDropdownTrigger = document.getElementById('homeDropdownTrigger');
+      const homeDropdownItem = homeDropdownTrigger ? homeDropdownTrigger.closest('.nav-item') : null;
+      if (homeDropdownTrigger && homeDropdownItem) {
+        homeDropdownTrigger.addEventListener('click', (e) => {
+          e.preventDefault();
+          // If in 3-section view (Desktop / Nest Hub Max) and clicking the dropdown
+          if (getComputedStyle(navCenter).display !== 'none') {
+            const isOpen = homeDropdownItem.classList.toggle('dropdown-open');
+            homeDropdownTrigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+          }
+        });
+      }
+
+      // Click outside to close dropdowns
+      document.addEventListener('click', (e) => {
+        if (dashboardNavDropdown && !dashboardNavDropdown.contains(e.target)) {
+          dashboardNavDropdown.classList.remove('dropdown-open');
+          if (dashboardDropdownTrigger) dashboardDropdownTrigger.setAttribute('aria-expanded', 'false');
+        }
+        if (homeDropdownItem && !homeDropdownItem.contains(e.target)) {
+          homeDropdownItem.classList.remove('dropdown-open');
+          if (homeDropdownTrigger) homeDropdownTrigger.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      // Dropdown items click handlers
+      const adminDashboardLink = document.getElementById('adminDashboardLink');
+      // Navigates cleanly to admin-dashboard.html
+
+      const userDashboardLink = document.getElementById('userDashboardLink');
+      // Navigates cleanly to user-dashboard.html
+
+      const mobileAdminLink = document.getElementById('mobileAdminLink');
+      if (mobileAdminLink) {
+        mobileAdminLink.addEventListener('click', (e) => {
+          closeDrawer();
+        });
+      }
+      const mobileUserLink = document.getElementById('mobileUserLink');
+      if (mobileUserLink) {
+        mobileUserLink.addEventListener('click', (e) => {
+          closeDrawer();
+        });
+      }
+
+      // Footer portal links
+      const footerAdminLink = document.getElementById('footerAdminLink');
+      if (footerAdminLink) {
+        footerAdminLink.addEventListener('click', (e) => {
+          e.preventDefault();
+          alert('Welcome to Kitchen & Table Admin Console (12 Active Cauldrons, 3 VIP Reservations pending)');
+        });
+      }
+      const footerUserLink = document.getElementById('footerUserLink');
+      if (footerUserLink) {
+        footerUserLink.addEventListener('click', (e) => {
+          e.preventDefault();
+          alert('Welcome back, VIP Chili Connoisseur! You have 850 Spice Points and 1 Free Wagyu Platter.');
+        });
+      }
+      const footerLoginLink = document.getElementById('footerLoginLink');
+      if (footerLoginLink) {
+        footerLoginLink.addEventListener('click', (e) => {
+          e.preventDefault();
+          openLoginModal();
+        });
+      }
+      const footerReservationLink = document.getElementById('footerReservationLink');
+      if (footerReservationLink) {
+        footerReservationLink.addEventListener('click', (e) => {
+          e.preventDefault();
+          openLoginModal();
+        });
+      }
+      const footerBanquetLink = document.getElementById('footerBanquetLink');
+      if (footerBanquetLink) {
+        footerBanquetLink.addEventListener('click', (e) => {
+          e.preventDefault();
+          openLoginModal();
+        });
+      }
+
+      // Back to Top smooth scroll
+      const backToTopBtn = document.getElementById('backToTopBtn');
+      if (backToTopBtn) {
+        backToTopBtn.addEventListener('click', () => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+
+      // --- 8. ACCESSIBILITY: KEYBOARD NAVIGATION & ESCAPE KEY ---
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          if (loginModal.classList.contains('open')) {
+            closeLoginModal();
+          }
+          if (mobileDrawer.classList.contains('open')) {
+            closeDrawer();
+          }
+        }
+      });
+
+      // Window resize handler: recalculate indicator position
+      window.addEventListener('resize', () => {
+        const activeItem = document.querySelector('.nav-item.active .nav-link');
+        if (activeItem) updateIndicatorPosition(activeItem);
+        if (getComputedStyle(navCenter).display !== 'none' && mobileDrawer.classList.contains('open')) {
+          closeDrawer();
+        }
+      });
+
+    
+
+      // ======================================================================
+      // ABOUT PAGE CONTROLLER: SCROLL REVEALS & 3D INTERACTION EFFECTS
+      // ======================================================================
+      (function initAboutPageEffects() {
+        // 1. Intersection Observer for Scroll Reveals & Clipping Transitions
+        const revealElements = document.querySelectorAll('.abt-scroll-reveal, .abt-clip-reveal');
+        
+        if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          const observerOptions = {
+            root: null,
+            rootMargin: '80px 0px 80px 0px',
+            threshold: 0.02
+          };
+
+          const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('in-view');
+                observer.unobserve(entry.target);
+              }
+            });
+          }, observerOptions);
+
+          revealElements.forEach(el => revealObserver.observe(el));
+          
+          // Safety timeout: ensure in-view is granted to guarantee images and cards are never stuck hidden
+          setTimeout(() => {
+            revealElements.forEach(el => el.classList.add('in-view'));
+          }, 400);
+        } else {
+          // Immediate fallback
+          revealElements.forEach(el => el.classList.add('in-view'));
+        }
+
+        // 2. 3D Perspective Card Tilt Interactions
+        const tiltCards = document.querySelectorAll('.abt-mv-panel, .abt-chef-profile-card, .abt-glass-card');
+        
+        tiltCards.forEach(card => {
+          card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const deltaX = (x - centerX) / centerX;
+            const deltaY = (y - centerY) / centerY;
+
+            card.style.transform = `perspective(1000px) rotateX(${-deltaY * 3.5}deg) rotateY(${deltaX * 3.5}deg) scale(1.01)`;
+          });
+
+          card.addEventListener('mouseleave', () => {
+            card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)';
+          });
+        });
+
+        // 3. Radial Philosophy Medallion Interactive Hover
+        const pillarCards = document.querySelectorAll('.abt-pillar-card');
+        const centerMedallion = document.querySelector('.abt-radial-medallion');
+        
+        if (centerMedallion && pillarCards.length) {
+          pillarCards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+              centerMedallion.style.boxShadow = '0 0 55px rgba(229, 160, 0, 0.7), inset 0 0 35px rgba(211, 84, 0, 0.6)';
+              centerMedallion.style.borderColor = 'var(--color-orange)';
+            });
+            card.addEventListener('mouseleave', () => {
+              centerMedallion.style.boxShadow = '0 0 45px rgba(229, 160, 0, 0.4), inset 0 0 30px rgba(0, 0, 0, 0.7)';
+              centerMedallion.style.borderColor = 'var(--color-amber)';
+            });
+          });
+        }
+
+        // 4. Set Active Navigation Indicator on About Link
+        const aboutNavItem = document.querySelector('.nav-item[data-nav="about"]');
+        if (aboutNavItem) {
+          document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+          aboutNavItem.classList.add('active');
+          const aboutLink = aboutNavItem.querySelector('.nav-link');
+          if (aboutLink && typeof updateIndicatorPosition === 'function') {
+            setTimeout(() => updateIndicatorPosition(aboutLink), 200);
+          }
+        }
+      })();
+
+})();
+  </script>
+
+<script id="navSyncScript">
+(function() {
+  function syncActiveNav() {
+    const rawPath = (window.location.pathname.split('/').pop() || 'index.html').toLowerCase();
+    const path = rawPath.replace(/[?#].*$/, '');
+    let targetNav = 'home';
+    
+    if (path === 'home-2.html') {
+      targetNav = 'home';
+    } else if (path === 'about.html') {
+      targetNav = 'about';
+    } else if (path === 'menu.html') {
+      targetNav = 'menu';
+    } else if (path === 'experience.html') {
+      targetNav = 'experience';
+    } else if (path === 'reservation.html' || path === 'reservations.html') {
+      targetNav = 'reservations';
+    } else if (path === 'offers.html') {
+      targetNav = 'offers';
+    } else if (path === 'gallery.html') {
+      targetNav = 'gallery';
+    } else if (path === 'contact.html') {
+      targetNav = 'contact';
+    } else if (path === 'admin-dashboard.html' || path === 'user-dashboard.html') {
+      targetNav = 'dashboard';
+    } else if (path === 'index.html' || path === '') {
+      targetNav = 'home';
+    }
+
+    // Synchronize desktop navbar
+    const navItems = document.querySelectorAll('.nav-menu-list .nav-item');
+    navItems.forEach(item => {
+      const link = item.querySelector('.nav-link');
+      if (item.getAttribute('data-nav') === targetNav) {
+        item.classList.add('active');
+        if (typeof updateIndicatorPosition === 'function' && link) {
+          updateIndicatorPosition(link);
+        }
+      } else {
+        item.classList.remove('active');
+      }
+    });
+
+    // Synchronize mobile drawer
+    document.querySelectorAll('.mobile-drawer .drawer-item').forEach(item => {
+      if (item.getAttribute('data-nav') === targetNav) {
+        item.classList.add('active');
+      } else {
+        item.classList.remove('active');
+      }
+    });
+  }
+
+  // Run on DOM ready, load, and resize
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      setTimeout(syncActiveNav, 100);
+      setTimeout(syncActiveNav, 300);
+    });
+  } else {
+    setTimeout(syncActiveNav, 100);
+    setTimeout(syncActiveNav, 300);
+  }
+  window.addEventListener('load', syncActiveNav);
+  window.addEventListener('resize', () => {
+    const activeLink = document.querySelector('.nav-item.active .nav-link');
+    if (typeof updateIndicatorPosition === 'function' && activeLink) {
+      updateIndicatorPosition(activeLink);
+    }
+  });
+})();
+</script>
+
+</body>
+</html>

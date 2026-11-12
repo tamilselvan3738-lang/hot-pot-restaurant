@@ -1,0 +1,937 @@
+/* ==========================================================================
+   HOT POT RESTAURANT – GALLERY PAGE EXCLUSIVE LUXURY STYLES (.gal-*)
+   7 Distinct Photographic Exhibition Sections + Responsive Lightbox System
+   ========================================================================== */
+
+:root {
+  --gal-gold: #d4a853;
+  --gal-gold-light: #f3dfa2;
+  --gal-gold-dark: #997328;
+  --gal-crimson: #c93b2b;
+  --gal-crimson-glow: rgba(201, 59, 43, 0.35);
+  --gal-jade: #2a7b7a;
+  --gal-moss: #4a7c59;
+  --gal-amber: #e89838;
+  --gal-bg-deep: #0a0604;
+  --gal-bg-card: #150f0b;
+  --gal-bg-elevated: #1e150f;
+  --gal-border-subtle: rgba(212, 168, 83, 0.15);
+  --gal-border-focus: rgba(212, 168, 83, 0.45);
+  --gal-text-main: #fbf8f3;
+  --gal-text-muted: #b8a99a;
+  --gal-text-faint: #7a6e63;
+  --gal-ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+  --gal-ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+[data-theme="light"] {
+  --gal-bg-deep: #f9f5ee;
+  --gal-bg-card: #ffffff;
+  --gal-bg-elevated: #f1ebd9;
+  --gal-border-subtle: rgba(153, 115, 40, 0.2);
+  --gal-border-focus: rgba(153, 115, 40, 0.5);
+  --gal-text-main: #1c140d;
+  --gal-text-muted: #5c4e3f;
+  --gal-text-faint: #8c7b6c;
+}
+
+[data-theme="light"] body,
+html[data-theme="light"] body {
+  background-color: var(--gal-bg-deep) !important;
+}
+
+/* Base Main Container */
+.gal-main {
+  background-color: var(--gal-bg-deep);
+  color: var(--gal-text-main);
+  overflow-x: hidden;
+  position: relative;
+  font-family: 'Cinzel', 'Noto Serif SC', 'Playfair Display', Georgia, serif;
+}
+
+/* Global Section Typography & Accents */
+.gal-section {
+  position: relative;
+  padding: 100px 5% 120px;
+  max-width: 1440px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.gal-header-block {
+  text-align: center;
+  max-width: 820px;
+  margin: 0 auto 60px;
+  position: relative;
+}
+
+.gal-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 6px 18px;
+  border-radius: 999px;
+  background: rgba(212, 168, 83, 0.08);
+  border: 1px solid var(--gal-border-subtle);
+  color: var(--gal-gold);
+  margin-bottom: 20px;
+}
+
+.gal-title {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--gal-text-main);
+  margin: 0 0 18px;
+  letter-spacing: -0.01em;
+}
+
+.gal-title-accent {
+  background: linear-gradient(135deg, var(--gal-gold-light) 0%, var(--gal-gold) 60%, var(--gal-crimson) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.gal-subtitle {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--gal-text-muted);
+  font-weight: 400;
+  margin: 0 auto;
+}
+
+/* Framer Motion Spring Reveals */
+.gal-reveal {
+  opacity: 0;
+  transform: translateY(38px);
+  transition: opacity 0.85s var(--gal-ease-spring), transform 0.85s var(--gal-ease-spring);
+  will-change: opacity, transform;
+}
+
+.gal-reveal.gal-in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.gal-delay-1 { transition-delay: 0.12s; }
+.gal-delay-2 { transition-delay: 0.24s; }
+.gal-delay-3 { transition-delay: 0.36s; }
+.gal-delay-4 { transition-delay: 0.48s; }
+
+/* Interactive Image Item (Lightbox Trigger) */
+.gal-interactive-item {
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.5s var(--gal-ease-spring), box-shadow 0.5s var(--gal-ease-spring);
+}
+
+.gal-interactive-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.8s var(--gal-ease-spring), filter 0.8s var(--gal-ease-spring);
+}
+
+.gal-interactive-item:hover img {
+  transform: scale(1.06);
+}
+
+/* Magnify pill indicator */
+.gal-magnify-pill {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(14, 9, 6, 0.85);
+  backdrop-filter: blur(8px);
+  color: var(--gal-gold);
+  border: 1px solid var(--gal-border-subtle);
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.35s ease, transform 0.35s var(--gal-ease-spring);
+  pointer-events: none;
+  z-index: 4;
+}
+
+.gal-interactive-item:hover .gal-magnify-pill {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==========================================================================
+   SECTION 1: SIGNATURE BROTH PHOTOGRAPHY (Asymmetrical Exhibition + Flowing Masks)
+   ========================================================================== */
+.gal-sec-broths {
+  padding-top: 130px;
+}
+
+.gal-broth-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 36px;
+  align-items: stretch;
+}
+
+.gal-broth-primary {
+  position: relative;
+  border-radius: 24px;
+  border: 1px solid var(--gal-border-subtle);
+  background: var(--gal-bg-card);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.gal-broth-primary .gal-media-wrap {
+  height: 480px;
+  position: relative;
+  overflow: hidden;
+}
+
+.gal-broth-primary .gal-info-wrap {
+  padding: 32px;
+  background: linear-gradient(180deg, rgba(21, 15, 11, 0) 0%, var(--gal-bg-card) 20%);
+  position: relative;
+  z-index: 2;
+}
+
+.gal-broth-stacked {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.gal-broth-card-h {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  border-radius: 20px;
+  border: 1px solid var(--gal-border-subtle);
+  background: var(--gal-bg-card);
+  overflow: hidden;
+  align-items: center;
+}
+
+.gal-broth-card-h .gal-media-wrap {
+  height: 100%;
+  min-height: 220px;
+  position: relative;
+}
+
+.gal-broth-card-h .gal-info-wrap {
+  padding: 24px 28px;
+}
+
+.gal-tag {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--gal-gold);
+  margin-bottom: 8px;
+  display: inline-block;
+}
+
+.gal-item-name {
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--gal-text-main);
+  margin: 0 0 10px;
+}
+
+.gal-item-desc {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--gal-text-muted);
+  margin: 0 0 16px;
+}
+
+.gal-spec-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.gal-pill {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.72rem;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--gal-text-muted);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="light"] .gal-pill {
+  background: rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+/* ==========================================================================
+   SECTION 2: PREMIUM MEAT PLATTERS (Diagonal Editorial Planes)
+   ========================================================================== */
+.gal-sec-meats {
+  background: radial-gradient(circle at 80% 20%, rgba(201, 59, 43, 0.08) 0%, transparent 60%);
+}
+
+.gal-meats-editorial {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.gal-meat-card {
+  background: var(--gal-bg-card);
+  border-radius: 22px;
+  border: 1px solid var(--gal-border-subtle);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: transform 0.6s var(--gal-ease-spring), border-color 0.4s ease;
+}
+
+.gal-meat-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--gal-gold);
+}
+
+.gal-meat-plane {
+  height: 320px;
+  position: relative;
+  overflow: hidden;
+  clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
+  transition: clip-path 0.5s var(--gal-ease-spring);
+}
+
+.gal-meat-card:hover .gal-meat-plane {
+  clip-path: polygon(0 0, 100% 0, 100% 96%, 0 98%);
+}
+
+.gal-meat-info {
+  padding: 26px 28px 30px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.gal-marbling-badge {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  background: rgba(14, 9, 6, 0.85);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--gal-gold);
+  color: var(--gal-gold-light);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  padding: 5px 12px;
+  border-radius: 6px;
+  z-index: 3;
+}
+
+/* ==========================================================================
+   SECTION 3: FRESH SEAFOOD COLLECTION (Flowing Oceanic Currents)
+   ========================================================================== */
+.gal-sec-seafood {
+  position: relative;
+  background: radial-gradient(circle at 20% 80%, rgba(42, 123, 122, 0.12) 0%, transparent 60%);
+}
+
+.gal-seafood-flow {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 36px;
+  align-items: center;
+}
+
+.gal-seafood-hero {
+  border-radius: 26px;
+  border: 1px solid var(--gal-border-subtle);
+  background: var(--gal-bg-card);
+  overflow: hidden;
+  position: relative;
+}
+
+.gal-seafood-hero .gal-media-wrap {
+  height: 460px;
+  position: relative;
+}
+
+.gal-seafood-hero-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 34px;
+  background: linear-gradient(0deg, rgba(8, 14, 18, 0.95) 0%, rgba(8, 14, 18, 0.75) 50%, transparent 100%);
+  z-index: 2;
+}
+
+[data-theme="light"] .gal-seafood-hero-content {
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.8) 55%, transparent 100%);
+}
+
+.gal-seafood-pair {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.gal-seafood-tile {
+  background: var(--gal-bg-card);
+  border-radius: 20px;
+  border: 1px solid var(--gal-border-subtle);
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  align-items: center;
+}
+
+.gal-seafood-tile .gal-media-wrap {
+  height: 100%;
+  min-height: 200px;
+}
+
+.gal-seafood-tile .gal-tile-info {
+  padding: 22px 26px;
+}
+
+/* ==========================================================================
+   SECTION 4: VEGETABLE & INGREDIENT GALLERY (Botanical Organic Modular)
+   ========================================================================== */
+.gal-sec-harvest {
+  background: radial-gradient(circle at 50% 50%, rgba(74, 124, 89, 0.08) 0%, transparent 70%);
+}
+
+.gal-harvest-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.gal-harvest-card {
+  background: var(--gal-bg-card);
+  border-radius: 28px 10px 28px 10px;
+  border: 1px solid var(--gal-border-subtle);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: transform 0.5s var(--gal-ease-spring), border-radius 0.5s ease;
+}
+
+.gal-harvest-card:hover {
+  transform: translateY(-6px);
+  border-radius: 14px 28px 14px 28px;
+}
+
+.gal-harvest-media {
+  height: 300px;
+  overflow: hidden;
+  position: relative;
+}
+
+.gal-harvest-info {
+  padding: 26px 28px;
+}
+
+.gal-leaf-tag {
+  color: #6db385;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ==========================================================================
+   SECTION 5: RESTAURANT INTERIOR PHOTOGRAPHY (Architectural Perspective)
+   ========================================================================== */
+.gal-sec-interior {
+  perspective: 1200px;
+}
+
+.gal-interior-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 32px;
+}
+
+.gal-interior-panoramic {
+  grid-column: 1 / -1;
+  background: var(--gal-bg-card);
+  border-radius: 24px;
+  border: 1px solid var(--gal-border-subtle);
+  overflow: hidden;
+  position: relative;
+}
+
+.gal-interior-panoramic .gal-media-wrap {
+  height: 460px;
+}
+
+.gal-interior-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 36px 40px;
+  background: linear-gradient(180deg, transparent 0%, rgba(10, 6, 4, 0.92) 100%);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+[data-theme="light"] .gal-interior-overlay {
+  background: linear-gradient(180deg, transparent 0%, rgba(255, 255, 255, 0.92) 100%);
+}
+
+.gal-interior-subcard {
+  background: var(--gal-bg-card);
+  border-radius: 20px;
+  border: 1px solid var(--gal-border-subtle);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.gal-interior-subcard .gal-media-wrap {
+  height: 310px;
+}
+
+.gal-interior-subcard .gal-info-wrap {
+  padding: 24px 28px;
+}
+
+/* ==========================================================================
+   SECTION 6: FAMILY DINING MOMENTS (Cinematic Storytelling Sequence)
+   ========================================================================== */
+.gal-sec-moments {
+  background: radial-gradient(circle at 10% 50%, rgba(212, 168, 83, 0.08) 0%, transparent 60%);
+}
+
+.gal-story-filmstrip {
+  display: grid;
+  grid-template-columns: 1.1fr 1.3fr 1.1fr;
+  gap: 30px;
+  align-items: stretch;
+}
+
+.gal-story-frame {
+  background: var(--gal-bg-card);
+  border-radius: 22px;
+  border: 1px solid var(--gal-border-subtle);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: transform 0.5s var(--gal-ease-spring);
+}
+
+.gal-story-frame:hover {
+  transform: translateY(-8px) scale(1.01);
+}
+
+.gal-story-frame.gal-story-featured {
+  border-color: rgba(212, 168, 83, 0.4);
+}
+
+.gal-story-media {
+  height: 330px;
+  position: relative;
+  overflow: hidden;
+}
+
+.gal-story-frame.gal-story-featured .gal-story-media {
+  height: 380px;
+}
+
+.gal-story-caption {
+  padding: 26px 28px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.gal-quote-accent {
+  font-style: italic;
+  font-family: 'Cinzel', serif;
+  font-size: 1.05rem;
+  color: var(--gal-gold-light);
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+[data-theme="light"] .gal-quote-accent {
+  color: var(--gal-gold-dark);
+}
+
+/* ==========================================================================
+   SECTION 7: SPECIAL EVENT PHOTOGRAPHY (Irregular Mosaic + VIP Concierge)
+   ========================================================================== */
+.gal-sec-events {
+  padding-bottom: 140px;
+}
+
+.gal-mosaic-container {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 32px;
+  margin-bottom: 50px;
+}
+
+.gal-mosaic-lead {
+  background: var(--gal-bg-card);
+  border-radius: 26px;
+  border: 1px solid var(--gal-border-subtle);
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.gal-mosaic-lead .gal-media-wrap {
+  height: 480px;
+  position: relative;
+}
+
+.gal-mosaic-lead .gal-info-wrap {
+  padding: 32px 36px;
+}
+
+.gal-mosaic-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.gal-mosaic-sub {
+  background: var(--gal-bg-card);
+  border-radius: 20px;
+  border: 1px solid var(--gal-border-subtle);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.gal-mosaic-sub .gal-media-wrap {
+  height: 230px;
+  position: relative;
+}
+
+.gal-mosaic-sub .gal-info-wrap {
+  padding: 20px 24px;
+}
+
+/* Event Concierge VIP Banner */
+.gal-event-cta {
+  background: linear-gradient(135deg, rgba(212, 168, 83, 0.12) 0%, rgba(201, 59, 43, 0.1) 100%), var(--gal-bg-card);
+  border: 1px solid var(--gal-border-focus);
+  border-radius: 24px;
+  padding: 46px 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.gal-cta-text h3 {
+  font-size: 1.8rem;
+  margin: 0 0 10px;
+  color: var(--gal-text-main);
+}
+
+.gal-cta-text p {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.98rem;
+  color: var(--gal-text-muted);
+  margin: 0;
+  max-width: 600px;
+  line-height: 1.6;
+}
+
+.gal-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 36px;
+  background: linear-gradient(135deg, var(--gal-gold) 0%, var(--gal-gold-dark) 100%);
+  color: #120c06;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 0.92rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  text-decoration: none;
+  box-shadow: 0 10px 24px rgba(212, 168, 83, 0.25);
+  transition: transform 0.35s var(--gal-ease-spring), box-shadow 0.35s ease;
+  white-space: nowrap;
+}
+
+.gal-cta-btn:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 14px 30px rgba(212, 168, 83, 0.35);
+}
+
+/* ==========================================================================
+   INTERACTIVE LIGHTBOX MODAL SYSTEM
+   ========================================================================== */
+.gal-lightbox-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(8, 5, 3, 0.94);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  z-index: 100000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s var(--gal-ease-spring), visibility 0.4s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  box-sizing: border-box;
+}
+
+.gal-lightbox-backdrop.gal-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.gal-lightbox-dialog {
+  max-width: 1100px;
+  width: 100%;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background: var(--gal-bg-card);
+  border: 1px solid var(--gal-border-subtle);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8);
+  transform: scale(0.95);
+  transition: transform 0.4s var(--gal-ease-spring);
+}
+
+.gal-lightbox-backdrop.gal-active .gal-lightbox-dialog {
+  transform: scale(1);
+}
+
+.gal-lb-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--gal-border-subtle);
+  background: var(--gal-bg-elevated);
+}
+
+.gal-lb-category {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gal-gold);
+}
+
+.gal-lb-counter {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.8rem;
+  color: var(--gal-text-faint);
+}
+
+.gal-lb-close {
+  background: transparent;
+  border: none;
+  color: var(--gal-text-muted);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 4px 8px;
+  line-height: 1;
+  border-radius: 6px;
+  transition: color 0.2s, transform 0.2s;
+}
+
+.gal-lb-close:hover {
+  color: var(--gal-gold);
+  transform: scale(1.15);
+}
+
+.gal-lb-stage {
+  position: relative;
+  height: 58vh;
+  min-height: 340px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000000;
+  overflow: hidden;
+}
+
+.gal-lb-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+  user-select: none;
+  transition: opacity 0.3s ease, transform 0.3s var(--gal-ease-spring);
+}
+
+.gal-lb-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(18, 12, 8, 0.75);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--gal-border-subtle);
+  color: var(--gal-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.3rem;
+  transition: background 0.2s, transform 0.2s, border-color 0.2s;
+  z-index: 10;
+}
+
+.gal-lb-arrow:hover {
+  background: var(--gal-gold);
+  color: #120c06;
+  border-color: var(--gal-gold);
+  transform: translateY(-50%) scale(1.08);
+}
+
+.gal-lb-prev { left: 20px; }
+.gal-lb-next { right: 20px; }
+
+.gal-lb-footer {
+  padding: 22px 28px;
+  background: var(--gal-bg-card);
+}
+
+.gal-lb-title {
+  font-size: 1.35rem;
+  color: var(--gal-text-main);
+  margin: 0 0 6px;
+}
+
+.gal-lb-caption {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--gal-text-muted);
+  margin: 0;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN BREAKPOINTS
+   ========================================================================== */
+@media (max-width: 1100px) {
+  .gal-broth-grid,
+  .gal-seafood-flow,
+  .gal-mosaic-container {
+    grid-template-columns: 1fr;
+  }
+  .gal-broth-card-h,
+  .gal-seafood-tile {
+    grid-template-columns: 240px 1fr;
+  }
+  .gal-story-filmstrip {
+    grid-template-columns: 1fr;
+  }
+  .gal-meats-editorial,
+  .gal-harvest-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .gal-section {
+    padding: 70px 4% 80px;
+  }
+  .gal-sec-broths {
+    padding-top: 100px;
+  }
+  .gal-meats-editorial,
+  .gal-harvest-grid,
+  .gal-interior-layout {
+    grid-template-columns: 1fr;
+  }
+  .gal-broth-card-h,
+  .gal-seafood-tile {
+    grid-template-columns: 1fr;
+  }
+  .gal-broth-card-h .gal-media-wrap,
+  .gal-seafood-tile .gal-media-wrap {
+    height: 220px;
+  }
+  .gal-interior-panoramic .gal-media-wrap {
+    height: 320px;
+  }
+  .gal-event-cta {
+    flex-direction: column;
+    text-align: center;
+    padding: 32px 24px;
+  }
+  .gal-lightbox-backdrop {
+    padding: 12px;
+  }
+  .gal-lb-stage {
+    height: 45vh;
+  }
+  .gal-lb-arrow {
+    width: 38px;
+    height: 38px;
+    font-size: 1rem;
+  }
+}
+
+/* Prefers Reduced Motion Safety */
+@media (prefers-reduced-motion: reduce) {
+  .gal-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .gal-interactive-item img,
+  .gal-interactive-item:hover img,
+  .gal-meat-card,
+  .gal-story-frame {
+    transition: none !important;
+    transform: none !important;
+  }
+}

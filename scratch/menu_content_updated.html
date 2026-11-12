@@ -1,0 +1,1338 @@
+  <!-- ========================================================================
+       MENU PAGE MAIN CONTENT: 7 EXTRAORDINARY INTERACTIVE SECTIONS
+       ======================================================================== -->
+  <main class="mp-main" id="menuMainContent">
+
+    <!-- --------------------------------------------------------------------
+         STICKY CATEGORY DOCK & LIVE SEARCH / DIETARY FILTER BAR
+         -------------------------------------------------------------------- -->
+    <nav class="mp-sticky-dock" id="mpStickyDock" aria-label="Menu Category Navigation">
+      <div class="mp-dock-inner">
+        
+        <!-- Category Navigation Buttons -->
+        <div class="mp-category-nav" id="mpCategoryNav">
+          <a href="#broths" class="mp-cat-btn active" data-section="broths">
+            <span>🍲 Signature Broths</span>
+          </a>
+          <a href="#proteins" class="mp-cat-btn" data-section="proteins">
+            <span>🥩 Premium Meats</span>
+          </a>
+          <a href="#seafood" class="mp-cat-btn" data-section="seafood">
+            <span>🦐 Ocean Harvest</span>
+          </a>
+          <a href="#garden" class="mp-cat-btn" data-section="garden">
+            <span>🥬 Garden & Tofu</span>
+          </a>
+          <a href="#noodles" class="mp-cat-btn" data-section="noodles">
+            <span>🍜 Noodles & Rice</span>
+          </a>
+          <a href="#sauces" class="mp-cat-btn" data-section="sauces">
+            <span>🍶 Dipping Sauces</span>
+          </a>
+          <a href="#guide" class="mp-cat-btn" data-section="guide">
+            <span>📋 Menu Guide</span>
+          </a>
+        </div>
+
+        <!-- Search & Dietary Filter Pills -->
+        <div class="mp-dock-filters">
+          <div class="mp-search-box">
+            <svg class="icon mp-search-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <input type="text" id="mpMenuSearch" class="mp-search-input" placeholder="Search 60+ dishes, broths..." aria-label="Search menu items">
+          </div>
+          <div class="mp-dietary-pills" id="mpDietaryPills">
+            <button class="mp-dietary-pill active" data-filter="all">All</button>
+            <button class="mp-dietary-pill" data-filter="vegan">Vegan</button>
+            <button class="mp-dietary-pill" data-filter="gf">GF</button>
+            <button class="mp-dietary-pill" data-filter="chef">Chef's</button>
+          </div>
+        </div>
+
+      </div>
+    </nav>
+
+    <!-- --------------------------------------------------------------------
+         SECTION 1: The Art of Broth – Signature Broth Collection
+         -------------------------------------------------------------------- -->
+    <section class="mp-section mp-broth-section" id="broths" aria-label="Signature Broth Collection">
+      <div class="mp-flare" style="top: 10%; right: 5%; width: 450px; height: 450px; background: rgba(169, 50, 38, 0.25);"></div>
+      <div class="mp-flare" style="bottom: 10%; left: 5%; width: 400px; height: 400px; background: rgba(229, 160, 0, 0.2);"></div>
+
+      <div class="mp-container">
+        
+        <header class="mp-header mp-reveal">
+          <span class="mp-pill">
+            <span class="mp-pill-dot"></span>
+            Haute Laboratory of Broth Artistry
+          </span>
+          <h1 class="mp-title">
+            The Alchemy of The <span class="mp-gradient-text">Simmering Cauldron</span>
+          </h1>
+          <p class="mp-subtitle">
+            Every dining ritual begins with the foundation. Our master broths simmer uninterrupted for up to 18 hours, marrying rare Chinese medicinal botanicals with slow-extracted marrow and organic harvest infusions.
+          </p>
+        </header>
+
+        <!-- Interactive Split-Pot Simulator & Vessel Configurator -->
+        <div class="mp-pot-simulator mp-reveal-scale">
+          <div style="text-align: center; margin-bottom: 24px;">
+            <span class="mp-badge-dietary mp-badge-chef" style="margin-bottom: 8px;">Interactive Pot Configurator</span>
+            <h2 style="font-family: 'Cinzel', serif; font-size: 1.4rem; color: var(--text-primary);">
+              Configure Your Imperial Cauldron
+            </h2>
+            <p style="font-size: 0.88rem; color: var(--text-secondary);">
+              Choose between Single Sovereign, Yin-Yang Dual Split, or Imperial Nine-Grid vessel.
+            </p>
+          </div>
+
+          <div class="mp-sim-grid">
+            
+            <!-- Left Broth Choice -->
+            <div class="mp-sim-side">
+              <label class="mp-sim-title" for="simBrothLeft">
+                <span>Left Chamber:</span>
+                <span id="simBrothLeftName" style="color: var(--color-amber);">Sichuan Mala Broth</span>
+              </label>
+              <select id="simBrothLeft" class="mp-sim-select">
+                <option value="mala" data-price="22" data-color="#A93226" selected>Signature Sichuan Mala Broth ($22.00)</option>
+                <option value="chili" data-price="20" data-color="#D35400">Spicy Chili Broth ($20.00)</option>
+                <option value="chicken" data-price="22" data-color="#E5A000">Traditional Herbal Chicken Broth ($22.00)</option>
+                <option value="tomato" data-price="19" data-color="#C0392B">Rich Tomato Broth ($19.00)</option>
+                <option value="mushroom" data-price="24" data-color="#6D4C41">Creamy Mushroom Broth ($24.00)</option>
+                <option value="clear" data-price="18" data-color="#558B2F">Clear Vegetable Broth ($18.00)</option>
+                <option value="seafood" data-price="26" data-color="#0288D1">Seafood Broth ($26.00)</option>
+                <option value="sukiyaki" data-price="21" data-color="#3E2723">Japanese Sukiyaki Broth ($21.00)</option>
+              </select>
+              <div style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.5;">
+                Simmered with 24 toasted spices, premium beef tallow, and wild Sichuan red numbing peppercorns.
+              </div>
+            </div>
+
+            <!-- Central Cauldron Visual Demonstration -->
+            <div class="mp-sim-vessel-wrap">
+              <div class="mp-sim-cauldron" id="simCauldronVisual" style="position: relative;">
+                <img src="images/menu-split-pot.jpg" alt="Simmering Yin-Yang dual split hot pot with aromatic steam" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.85; filter: saturate(1.2);">
+                <div class="mp-cauldron-half left" id="simHalfLeft" style="opacity: 0.55;">
+                  <div class="mp-sim-steam"></div>
+                  <span style="position: relative; z-index: 3; font-size: 0.75rem; font-weight: 800; color: #FFF; text-transform: uppercase; text-shadow: 0 2px 6px #000;">Side A</span>
+                </div>
+                <div class="mp-cauldron-half right" id="simHalfRight" style="opacity: 0.55;">
+                  <div class="mp-sim-steam"></div>
+                  <span style="position: relative; z-index: 3; font-size: 0.75rem; font-weight: 800; color: #FFF; text-transform: uppercase; text-shadow: 0 2px 6px #000;">Side B</span>
+                </div>
+              </div>
+              <div class="mp-sim-total-price" id="simTotalPrice">
+                Estimated Cauldron Base: $21.50
+              </div>
+              <span style="font-size: 0.78rem; color: var(--text-muted);">Solid Brass Hammered Dual Split Pot Included</span>
+            </div>
+
+            <!-- Right Broth Choice -->
+            <div class="mp-sim-side">
+              <label class="mp-sim-title" for="simBrothRight">
+                <span>Right Chamber:</span>
+                <span id="simBrothRightName" style="color: var(--color-amber);">Herbal Chicken Broth</span>
+              </label>
+              <select id="simBrothRight" class="mp-sim-select">
+                <option value="mala" data-price="22" data-color="#A93226">Signature Sichuan Mala Broth ($22.00)</option>
+                <option value="chili" data-price="20" data-color="#D35400">Spicy Chili Broth ($20.00)</option>
+                <option value="chicken" data-price="22" data-color="#E5A000" selected>Traditional Herbal Chicken Broth ($22.00)</option>
+                <option value="tomato" data-price="19" data-color="#C0392B">Rich Tomato Broth ($19.00)</option>
+                <option value="mushroom" data-price="24" data-color="#6D4C41">Creamy Mushroom Broth ($24.00)</option>
+                <option value="clear" data-price="18" data-color="#558B2F">Clear Vegetable Broth ($18.00)</option>
+                <option value="seafood" data-price="26" data-color="#0288D1">Seafood Broth ($26.00)</option>
+                <option value="sukiyaki" data-price="21" data-color="#3E2723">Japanese Sukiyaki Broth ($21.00)</option>
+              </select>
+              <div style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.5;">
+                Infused with organic free-range hen, codonopsis root, wolfberries, and imperial red dates.
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Broth Spice Level Interactive Guide -->
+        <div class="mp-spice-guide mp-reveal">
+          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;">
+            <div>
+              <span class="mp-pill" style="margin-bottom: 6px;">Spice Calibration</span>
+              <h3 style="font-family: 'Cinzel', serif; font-size: 1.25rem; color: var(--text-primary);">
+                The Broth Spice Level Index
+              </h3>
+            </div>
+            <span style="font-size: 0.84rem; color: var(--text-muted);">
+              Click any tier below to calibrate recommended dips & broth pairings
+            </span>
+          </div>
+
+          <div class="mp-spice-scale" id="mpSpiceScale">
+            <div class="mp-spice-tier active" data-spice="0">
+              <div class="mp-spice-peppers">○</div>
+              <div class="mp-spice-tier-num">Level 0</div>
+              <div class="mp-spice-tier-name">Pure Serenity</div>
+            </div>
+            <div class="mp-spice-tier" data-spice="1">
+              <div class="mp-spice-peppers">🌶️</div>
+              <div class="mp-spice-tier-num">Level 1</div>
+              <div class="mp-spice-tier-name">Gentle Ember</div>
+            </div>
+            <div class="mp-spice-tier" data-spice="2">
+              <div class="mp-spice-peppers">🌶️🌶️</div>
+              <div class="mp-spice-tier-num">Level 2</div>
+              <div class="mp-spice-tier-name">Sizzling Lantern</div>
+            </div>
+            <div class="mp-spice-tier" data-spice="3">
+              <div class="mp-spice-peppers">🌶️🌶️🌶️</div>
+              <div class="mp-spice-tier-num">Level 3</div>
+              <div class="mp-spice-tier-name">Sichuan Mala</div>
+            </div>
+            <div class="mp-spice-tier" data-spice="4">
+              <div class="mp-spice-peppers">🌶️🌶️🌶️🌶️</div>
+              <div class="mp-spice-tier-num">Level 4</div>
+              <div class="mp-spice-tier-name">Volcanic Cauldron</div>
+            </div>
+            <div class="mp-spice-tier" data-spice="5">
+              <div class="mp-spice-peppers">🔥🔥🔥🔥🔥</div>
+              <div class="mp-spice-tier-num">Level 5</div>
+              <div class="mp-spice-tier-name">Dragon Fire</div>
+            </div>
+          </div>
+          
+          <div id="spiceTierDetails" style="margin-top: 18px; padding: 14px 20px; background: var(--bg-card); border-radius: var(--radius-sm); font-size: 0.88rem; color: var(--text-secondary); border-left: 3px solid var(--color-amber);">
+            <strong>Level 0: Pure Serenity</strong> — Gentle and soothing with zero chili heat. Perfect for savoring natural ingredient umami. Featured in Herbal Chicken, Rich Tomato, Creamy Mushroom, Clear Veg, and Sukiyaki.
+          </div>
+        </div>
+
+        <!-- Asymmetric Broth Gallery Grid (All 8 Broths) -->
+        <div class="mp-broth-grid">
+          
+          <!-- 1. Signature Sichuan Mala Broth (Featured Large) -->
+          <article class="mp-broth-card featured mp-reveal-left" data-category="broth" data-dietary="gf chef" data-title="Signature Sichuan Mala Broth">
+            <div class="mp-broth-visual">
+              <img src="images/menu-sichuan-mala.jpg" alt="Signature Sichuan Mala Broth simmering with 24 toasted spices and tallow" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div class="mp-broth-content">
+              <div>
+                <div class="mp-broth-badges">
+                  <span class="mp-badge-dietary mp-badge-chef">Chef Signature</span>
+                  <span class="mp-badge-dietary mp-badge-gf">Gluten-Free</span>
+                  <span class="mp-badge-dietary mp-badge-halal">Halal Beef</span>
+                </div>
+                <h3 class="mp-broth-name">Signature Sichuan Mala Broth</h3>
+                <p class="mp-broth-desc">
+                  Slow-rendered prime beef tallow steeped for 16 hours with hand-picked Hanyuan red peppercorns, roasted lantern chilies, fermented Pixian bean paste, and 24 traditional warming botanicals. Produces our signature euphoric numbness and multi-layered spicy depth.
+                </p>
+              </div>
+              <div class="mp-broth-footer">
+                <div class="mp-broth-heat-meter">
+                  <span>Spice Level:</span>
+                  <strong style="color: #E74C3C;">🌶️🌶️🌶️🌶️ (4/5)</strong>
+                </div>
+                <span class="mp-price-tag">$22.00</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- 2. Spicy Chili Broth -->
+          <article class="mp-broth-card standard mp-reveal-right" data-category="broth" data-dietary="vegan" data-title="Spicy Chili Broth">
+            <div class="mp-broth-visual"><img src="images/menu-spicy-chili.jpg" alt="Spicy Chili Broth with roasted chilies and hot pepper oil" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <div class="mp-broth-content">
+              <div>
+                <div class="mp-broth-badges">
+                  <span class="mp-badge-dietary mp-badge-vegan">100% Vegan</span>
+                  <span class="mp-badge-dietary mp-badge-gf">Dairy-Free</span>
+                </div>
+                <h3 class="mp-broth-name">Spicy Chili Broth</h3>
+                <p class="mp-broth-desc">
+                  A lighter, invigorating fiery stock created from fermented bird's-eye chili mash, charred garlic bulbs, scallion oil, and scorched dried habanero oil without heavy tallow.
+                </p>
+              </div>
+              <div class="mp-broth-footer">
+                <div class="mp-broth-heat-meter">
+                  <span style="color: #E74C3C;">🌶️🌶️🌶️🌶️🌶️ (5/5)</span>
+                </div>
+                <span class="mp-price-tag">$20.00</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- 3. Traditional Herbal Chicken Broth -->
+          <article class="mp-broth-card standard mp-reveal" data-category="broth" data-dietary="gf" data-title="Traditional Herbal Chicken Broth">
+            <div class="mp-broth-visual">
+              <img src="images/menu-herbal-chicken.jpg" alt="Traditional Herbal Chicken Broth with organic hen and goji berries" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div class="mp-broth-content">
+              <div>
+                <div class="mp-broth-badges">
+                  <span class="mp-badge-dietary mp-badge-gf">Gluten-Free</span>
+                  <span class="mp-badge-dietary mp-badge-chef">Collagen Rich</span>
+                </div>
+                <h3 class="mp-broth-name">Traditional Herbal Chicken Broth</h3>
+                <p class="mp-broth-desc">
+                  Simmered with whole pasture-raised organic hens, codonopsis root, astragalus, Ningxia goji berries, and Xinjiang red dates for natural restorative energy.
+                </p>
+              </div>
+              <div class="mp-broth-footer">
+                <div class="mp-broth-heat-meter">
+                  <span>Mild (0/5)</span>
+                </div>
+                <span class="mp-price-tag">$22.00</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- 4. Rich Tomato Broth -->
+          <article class="mp-broth-card standard mp-reveal" data-category="broth" data-dietary="vegan gf" data-title="Rich Tomato Broth">
+            <div class="mp-broth-visual"><img src="images/menu-rich-tomato.jpg" alt="Rich Tomato Broth with sweet corn and stewed plum tomatoes" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <div class="mp-broth-content">
+              <div>
+                <div class="mp-broth-badges">
+                  <span class="mp-badge-dietary mp-badge-vegan">100% Vegan</span>
+                  <span class="mp-badge-dietary mp-badge-gf">Gluten-Free</span>
+                </div>
+                <h3 class="mp-broth-name">Rich Tomato Broth</h3>
+                <p class="mp-broth-desc">
+                  Over five pounds of sun-ripened plum tomatoes stewed with sweet corn cobs, bay leaves, and roasted shallots to yield a velvety sweet-and-tangy broth beloved across all generations.
+                </p>
+              </div>
+              <div class="mp-broth-footer">
+                <div class="mp-broth-heat-meter">
+                  <span>Sweet & Tangy (0/5)</span>
+                </div>
+                <span class="mp-price-tag">$19.00</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- 5. Creamy Mushroom Broth (Medium Span) -->
+          <article class="mp-broth-card medium mp-reveal-left" data-category="broth" data-dietary="vegan gf" data-title="Creamy Mushroom Broth">
+            <div class="mp-broth-visual">
+              <img src="images/menu-yunnan-mushroom.jpg" alt="Wild Yunnan Creamy Mushroom Broth with black truffles" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div class="mp-broth-content">
+              <div>
+                <div class="mp-broth-badges">
+                  <span class="mp-badge-dietary mp-badge-vegan">Vegetarian</span>
+                  <span class="mp-badge-dietary mp-badge-chef">Truffle Infused</span>
+                </div>
+                <h3 class="mp-broth-name">Creamy Mushroom Broth</h3>
+                <p class="mp-broth-desc">
+                  Wild Yunnan morels, French porcini, king oyster mushrooms, and shaved black truffles slow-steeped with vegetable marrow velouté into a silky, earthy umami haven.
+                </p>
+              </div>
+              <div class="mp-broth-footer">
+                <div class="mp-broth-heat-meter">
+                  <span>Velvety Earth (0/5)</span>
+                </div>
+                <span class="mp-price-tag">$24.00</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- 6. Clear Vegetable Broth (Medium Span) -->
+          <article class="mp-broth-card medium mp-reveal-right" data-category="broth" data-dietary="vegan gf" data-title="Clear Vegetable Broth">
+            <div class="mp-broth-visual"><img src="images/menu-clear-vegetable.jpg" alt="Clear Vegetable Broth brewed with daikon, kelp, and sweet herbs" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <div class="mp-broth-content">
+              <div>
+                <div class="mp-broth-badges">
+                  <span class="mp-badge-dietary mp-badge-vegan">100% Vegan</span>
+                  <span class="mp-badge-dietary mp-badge-gf">Low Calorie</span>
+                </div>
+                <h3 class="mp-broth-name">Clear Vegetable Broth</h3>
+                <p class="mp-broth-desc">
+                  Crystal-pure mountain spring extraction brewed with sweet white daikon radish, Hokkaido kombu kelp, charred scallion stalks, and sweet carrots. Ultra-clean and delicate.
+                </p>
+              </div>
+              <div class="mp-broth-footer">
+                <div class="mp-broth-heat-meter">
+                  <span>Crystal Delicate (0/5)</span>
+                </div>
+                <span class="mp-price-tag">$18.00</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- 7. Seafood Broth (Medium Span) -->
+          <article class="mp-broth-card medium mp-reveal-left" data-category="broth" data-dietary="gf" data-title="Seafood Broth">
+            <div class="mp-broth-visual"><img src="images/menu-seafood-broth.jpg" alt="Seafood Broth with blue swimmer crab, dried scallops, and tiger prawns" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <div class="mp-broth-content">
+              <div>
+                <div class="mp-broth-badges">
+                  <span class="mp-badge-dietary mp-badge-gf">Pescatarian</span>
+                  <span class="mp-badge-dietary mp-badge-chef">Shellfish Reduction</span>
+                </div>
+                <h3 class="mp-broth-name">Seafood Broth</h3>
+                <p class="mp-broth-desc">
+                  Blue swimmer crab shells, dried Conpoy Hokkaido scallops, roasted tiger prawn heads, and bonito reduction boiled until golden and rich with briny sweetness.
+                </p>
+              </div>
+              <div class="mp-broth-footer">
+                <div class="mp-broth-heat-meter">
+                  <span>Sea Warmth (1/5)</span>
+                </div>
+                <span class="mp-price-tag">$26.00</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- 8. Japanese Sukiyaki Broth (Medium Span) -->
+          <article class="mp-broth-card medium mp-reveal-right" data-category="broth" data-dietary="chef" data-title="Japanese Sukiyaki Broth">
+            <div class="mp-broth-visual"><img src="images/menu-sukiyaki.jpg" alt="Japanese Sukiyaki Broth with sweet mirin and aged hon-shoyu soy" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <div class="mp-broth-content">
+              <div>
+                <div class="mp-broth-badges">
+                  <span class="mp-badge-dietary mp-badge-chef">Tokyo Heritage</span>
+                  <span class="mp-badge-dietary mp-badge-gf">Aged Shoyu</span>
+                </div>
+                <h3 class="mp-broth-name">Japanese Sukiyaki Broth</h3>
+                <p class="mp-broth-desc">
+                  A classic Tokyo sweet-savory reduction created from aged artisanal soy sauce, golden mirin sweet rice wine, caramelized white onions, and pure turbinado sugar.
+                </p>
+              </div>
+              <div class="mp-broth-footer">
+                <div class="mp-broth-heat-meter">
+                  <span>Sweet Savory (0/5)</span>
+                </div>
+                <span class="mp-price-tag">$21.00</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- --------------------------------------------------------------------
+         SECTION 2: Premium Protein Selection
+         -------------------------------------------------------------------- -->
+    <section class="mp-section mp-protein-section" id="proteins" aria-label="Premium Protein Selection">
+      <div class="mp-flare" style="top: 20%; left: 8%; width: 480px; height: 480px; background: rgba(169, 50, 38, 0.22);"></div>
+
+      <div class="mp-container">
+        
+        <header class="mp-header mp-reveal">
+          <span class="mp-pill">
+            <span class="mp-pill-dot"></span>
+            Imperial Master Butchery
+          </span>
+          <h2 class="mp-title">
+            Micro-Shaved Marbled <span class="mp-gradient-text">Proteins</span>
+          </h2>
+          <p class="mp-subtitle">
+            Precision-sliced upon order to exactly 1.8mm to 2.2mm thickness. Each cut flashes to melt-in-the-mouth tenderness within 6 to 12 seconds in your bubbling cauldron.
+          </p>
+        </header>
+
+        <div class="mp-butcher-board">
+          
+          <!-- Spotlight Master Wagyu Card -->
+          <article class="mp-wagyu-spotlight mp-reveal-scale" data-category="meat" data-dietary="chef gf" data-title="Australian Wagyu Beef">
+            <div class="mp-wagyu-visual">
+              <img src="images/menu-wagyu-beef.jpg" alt="Australian Wagyu Beef Ribeye MBS 8-9+ with intricate snowflake marbling" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            
+            <div class="mp-wagyu-info">
+              <div class="mp-broth-badges">
+                <span class="mp-badge-dietary mp-badge-chef">Royal Centerpiece</span>
+                <span class="mp-badge-dietary mp-badge-gf">MBS 8-9+</span>
+                <span class="mp-badge-dietary mp-badge-halal">Halal Certified</span>
+              </div>
+              <h3 style="font-family: 'Cinzel', serif; font-size: 1.8rem; font-weight: 800; color: var(--text-primary); margin-bottom: 10px;">
+                Australian Wagyu Beef Ribeye
+              </h3>
+              <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.65; margin-bottom: 16px;">
+                Purebred Wagyu raised on natural grains for 450 days. Characterized by intricate lacy intramuscular marbling that dissolves instantaneously in simmering broth, unleashing rich sweet nutty buttery undertones.
+              </p>
+
+              <!-- Interactive Portion Selector -->
+              <div style="font-size: 0.82rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em;">
+                Select Serving Portion:
+              </div>
+              <div class="mp-portion-switch" id="wagyuPortionSwitch">
+                <button class="mp-portion-btn active" data-grams="150" data-price="38.00">Standard 150g</button>
+                <button class="mp-portion-btn" data-grams="250" data-price="58.00">Connoisseur 250g</button>
+                <button class="mp-portion-btn" data-grams="400" data-price="88.00">Banquet 400g</button>
+              </div>
+
+              <div style="display: flex; align-items: baseline; gap: 12px; margin-top: 10px;">
+                <span class="mp-price-tag" id="wagyuPriceTag" style="font-size: 2rem;">$38.00</span>
+                <span style="font-size: 0.82rem; color: var(--text-muted);">Recommended quick immersion: 8 seconds</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- 2. Premium Beef Slices -->
+          <article class="mp-meat-card mp-reveal" data-category="meat" data-dietary="gf" data-title="Premium Beef Slices">
+            <div class="mp-meat-visual"><img src="images/menu-beef-slices.jpg" alt="Black Angus Prime Ribeye Striploin Ribbons" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <div class="mp-meat-body">
+              <div class="mp-broth-badges">
+                <span class="mp-badge-dietary mp-badge-gf">Gluten-Free</span>
+              </div>
+              <h3 class="mp-meat-title">Premium Beef Slices</h3>
+              <p class="mp-meat-desc">
+                Black Angus prime striploin ribbons, balanced lean muscle with fine marbling edge. Provides robust beef sweetness with tender chew.
+              </p>
+              <div class="mp-broth-footer">
+                <span style="font-size: 0.82rem; color: var(--text-muted);">200g portion</span>
+                <span class="mp-price-tag">$24.00</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- 3. Tender Lamb Slices -->
+          <article class="mp-meat-card mp-reveal" data-category="meat" data-dietary="gf" data-title="Tender Lamb Slices">
+            <div class="mp-meat-visual"><img src="images/menu-lamb-slices.jpg" alt="Tender New Zealand Lamb Shoulder Slices" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <div class="mp-meat-body">
+              <div class="mp-broth-badges">
+                <span class="mp-badge-dietary mp-badge-halal">Halal</span>
+                <span class="mp-badge-dietary mp-badge-gf">GF</span>
+              </div>
+              <h3 class="mp-meat-title">Tender Lamb Slices</h3>
+              <p class="mp-meat-desc">
+                Pasture-fed young yearling lamb shoulder shaved paper-thin. Incredibly aromatic when dipped into spicy mala broth with garlic sesame oil.
+              </p>
+              <div class="mp-broth-footer">
+                <span style="font-size: 0.82rem; color: var(--text-muted);">200g portion</span>
+                <span class="mp-price-tag">$22.00</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- 4. Fresh Chicken Slices -->
+          <article class="mp-meat-card mp-reveal" data-category="meat" data-dietary="gf" data-title="Fresh Chicken Slices">
+            <div class="mp-meat-visual"><img src="images/menu-chicken-slices.jpg" alt="Free-Range Tender Chicken Breast Slices with Shaoxing Wine" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <div class="mp-meat-body">
+              <div class="mp-broth-badges">
+                <span class="mp-badge-dietary mp-badge-gf">Low Fat</span>
+              </div>
+              <h3 class="mp-meat-title">Fresh Chicken Slices</h3>
+              <p class="mp-meat-desc">
+                Tender chicken breast hand-sliced and marinated lightly in ginger juice and egg white velveting technique for unbelievable tenderness.
+              </p>
+              <div class="mp-broth-footer">
+                <span style="font-size: 0.82rem; color: var(--text-muted);">220g portion</span>
+                <span class="mp-price-tag">$18.00</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- 5. Duroc Pork Belly -->
+          <article class="mp-meat-card mp-reveal" data-category="meat" data-dietary="gf" data-title="Pork Belly">
+            <div class="mp-meat-visual"><img src="images/menu-pork-belly.jpg" alt="Heritage Duroc Pork Belly Ribbons" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <div class="mp-meat-body">
+              <div class="mp-broth-badges">
+                <span class="mp-badge-dietary mp-badge-gf">Gluten-Free</span>
+              </div>
+              <h3 class="mp-meat-title">Pork Belly Ribbons</h3>
+              <p class="mp-meat-desc">
+                Heritage Duroc pork belly with clear alternating ribbons of sweet fat and savory meat. Sweet, succulent, and luscious.
+              </p>
+              <div class="mp-broth-footer">
+                <span style="font-size: 0.82rem; color: var(--text-muted);">200g portion</span>
+                <span class="mp-price-tag">$19.00</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- 6. Marinated Meat Selections -->
+          <article class="mp-meat-card mp-reveal" data-category="meat" data-dietary="chef" data-title="Marinated Meat Selections">
+            <div class="mp-meat-visual"><img src="images/menu-marinated-meats.jpg" alt="Garlic Black Pepper & Sichuan Cumin Marinated Beef Duo" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <div class="mp-meat-body">
+              <div class="mp-broth-badges">
+                <span class="mp-badge-dietary mp-badge-chef">House Special</span>
+              </div>
+              <h3 class="mp-meat-title">Marinated Meat Selections</h3>
+              <p class="mp-meat-desc">
+                Twin tasting duo: Garlic crushed black-pepper beef strips and Sichuan chili-cumin beef cubes aged in Shaoxing wine marinade.
+              </p>
+              <div class="mp-broth-footer">
+                <span style="font-size: 0.82rem; color: var(--text-muted);">250g duo</span>
+                <span class="mp-price-tag">$25.00</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- 7. Mixed Meat Platters -->
+          <article class="mp-meat-card mp-reveal" data-category="meat" data-dietary="chef gf" data-title="Mixed Meat Platters">
+            <div class="mp-meat-visual">
+              <img src="images/menu-meat-platter.jpg" alt="Grand Imperial Meat Platter with Wagyu roses and Angus striploin" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div class="mp-meat-body">
+              <div class="mp-broth-badges">
+                <span class="mp-badge-dietary mp-badge-chef">Feast Platter</span>
+                <span class="mp-badge-dietary mp-badge-gf">GF</span>
+              </div>
+              <h3 class="mp-meat-title">Mixed Meat Platter</h3>
+              <p class="mp-meat-desc">
+                The ultimate carnivore exhibition: Australian Wagyu ribbons, Black Angus striploin, New Zealand lamb, and Duroc pork belly arranged on dry-ice lacquered stand.
+              </p>
+              <div class="mp-broth-footer">
+                <span style="font-size: 0.82rem; color: var(--text-muted);">450g grand portion</span>
+                <span class="mp-price-tag">$48.00</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- --------------------------------------------------------------------
+         SECTION 3: Ocean Harvest – Seafood Selection
+         -------------------------------------------------------------------- -->
+    <section class="mp-section mp-seafood-section" id="seafood" aria-label="Ocean Harvest Seafood Selection">
+      <div class="mp-flare" style="top: 15%; right: 10%; width: 450px; height: 450px; background: rgba(0, 180, 216, 0.18);"></div>
+
+      <div class="mp-container">
+        
+        <header class="mp-header mp-reveal">
+          <span class="mp-pill" style="border-color: rgba(0, 180, 216, 0.4); color: #00B4D8; background: rgba(0, 180, 216, 0.1);">
+            <span class="mp-pill-dot" style="background: #00B4D8; box-shadow: 0 0 8px #00B4D8;"></span>
+            Deep Sea Harvest
+          </span>
+          <h2 class="mp-title">
+            Ocean Harvest <span class="mp-gradient-text">Treasures</span>
+          </h2>
+          <p class="mp-subtitle">
+            Delivered live every dawn from sustainable coastal fisheries. Shellfish and delicate ocean fillets that infuse natural briny sweetness into every simmer.
+          </p>
+        </header>
+
+        <!-- Neptune Tower Focal Showcase -->
+        <div class="mp-seafood-showcase mp-reveal-scale">
+          <div class="mp-seafood-tower-visual">
+            <img src="images/menu-seafood-tower.jpg" alt="Neptune Sovereign Seafood Platter with King prawns, scallops, and squid" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+
+          <div>
+            <div class="mp-broth-badges">
+              <span class="mp-badge-dietary" style="background: rgba(0, 180, 216, 0.2); color: #80DEEA; border: 1px solid #00B4D8;">Grand Tower</span>
+              <span class="mp-badge-dietary mp-badge-gf">Gluten-Free</span>
+            </div>
+            <h3 style="font-family: 'Cinzel', serif; font-size: 1.8rem; font-weight: 700; color: var(--text-primary); margin-bottom: 12px;">
+              Premium Seafood Platter
+            </h3>
+            <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 20px;">
+              The sovereign catch: Jumbo Australian King Tiger prawns, fresh sashimi sea bass fillets, tender baby calamari, Hokkaido sea scallops, and hand-folded wontons. A show-stopping banquet centerpiece.
+            </p>
+            <div style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 20px;">
+              Allergens: Contains Crustaceans, Mollusks, and Finfish.
+            </div>
+            <div style="display: flex; align-items: center; justify-content: space-between;">
+              <span class="mp-price-tag" style="color: #00B4D8; font-size: 1.8rem;">$54.00</span>
+              <span style="font-size: 0.84rem; color: var(--text-muted);">Serves 2-4 Connoisseurs</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Remaining 6 Seafood Items -->
+        <div class="mp-seafood-grid">
+          
+          <!-- 1. Fresh Prawns -->
+          <article class="mp-seafood-card mp-reveal" data-category="seafood" data-dietary="gf" data-title="Fresh Prawns">
+            <div class="mp-seafood-thumb">
+              <img src="images/menu-tiger-prawns.jpg" alt="Fresh Australian King Tiger Prawns" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <h3 class="mp-seafood-title">Fresh King Prawns</h3>
+            <p class="mp-seafood-desc">Whole jumbo Australian king prawns, sweet, crisp, and peeled tableside on request.</p>
+            <div class="mp-broth-footer">
+              <span style="font-size: 0.78rem; color: var(--text-muted);">6 pieces</span>
+              <span class="mp-price-tag" style="font-size: 1.15rem;">$26.00</span>
+            </div>
+          </article>
+
+          <!-- 2. Fish Fillets -->
+          <article class="mp-seafood-card mp-reveal" data-category="seafood" data-dietary="gf" data-title="Fish Fillets">
+            <div class="mp-seafood-thumb"><img src="images/menu-fish-fillets.jpg" alt="Fresh Wild Sea Bass & Red Snapper Fillets" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <h3 class="mp-seafood-title">Fresh Fish Fillets</h3>
+            <p class="mp-seafood-desc">Sashimi-grade red snapper and wild sea bass fillets, delicate, flaky, and non-fishy.</p>
+            <div class="mp-broth-footer">
+              <span style="font-size: 0.78rem; color: var(--text-muted);">180g portion</span>
+              <span class="mp-price-tag" style="font-size: 1.15rem;">$22.00</span>
+            </div>
+          </article>
+
+          <!-- 3. Squid Rings -->
+          <article class="mp-seafood-card mp-reveal" data-category="seafood" data-dietary="gf" data-title="Squid Rings">
+            <div class="mp-seafood-thumb"><img src="images/menu-squid-rings.jpg" alt="Tender Scored Calamari Blooms" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <h3 class="mp-seafood-title">Tender Squid Rings</h3>
+            <p class="mp-seafood-desc">Scored calamari blooms that curl gracefully into succulent tender curls after 15 seconds.</p>
+            <div class="mp-broth-footer">
+              <span style="font-size: 0.78rem; color: var(--text-muted);">200g portion</span>
+              <span class="mp-price-tag" style="font-size: 1.15rem;">$18.00</span>
+            </div>
+          </article>
+
+          <!-- 4. Crab Sticks -->
+          <article class="mp-seafood-card mp-reveal" data-category="seafood" data-title="Crab Sticks">
+            <div class="mp-seafood-thumb"><img src="images/menu-crab-sticks.jpg" alt="Artisanal Snow Crab Portions" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <h3 class="mp-seafood-title">Crab Sticks</h3>
+            <p class="mp-seafood-desc">Artisanal snow crab leg portions with delicate sweet ocean flavor and flaky texture.</p>
+            <div class="mp-broth-footer">
+              <span style="font-size: 0.78rem; color: var(--text-muted);">8 pieces</span>
+              <span class="mp-price-tag" style="font-size: 1.15rem;">$16.00</span>
+            </div>
+          </article>
+
+          <!-- 5. Fish Balls -->
+          <article class="mp-seafood-card mp-reveal" data-category="seafood" data-title="Fish Balls">
+            <div class="mp-seafood-thumb"><img src="images/menu-fish-balls.jpg" alt="Hand-Beaten Golden Flying-Fish Roe Balls" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <h3 class="mp-seafood-title">Flying-Fish Roe Balls</h3>
+            <p class="mp-seafood-desc">Hand-beaten golden fish balls filled with popping tobiko flying fish roe inside.</p>
+            <div class="mp-broth-footer">
+              <span style="font-size: 0.78rem; color: var(--text-muted);">6 pieces</span>
+              <span class="mp-price-tag" style="font-size: 1.15rem;">$14.00</span>
+            </div>
+          </article>
+
+          <!-- 6. Seafood Dumplings -->
+          <article class="mp-seafood-card mp-reveal" data-category="seafood" data-dietary="chef" data-title="Seafood Dumplings">
+            <div class="mp-seafood-thumb"><img src="images/menu-seafood-dumplings.jpg" alt="Handmade Silk Scallop & Tiger Prawn Wontons" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <h3 class="mp-seafood-title">Seafood Dumplings</h3>
+            <p class="mp-seafood-desc">Hand-folded scallop and tiger prawn wontons enclosed in translucent, gossamer silk wrappers.</p>
+            <div class="mp-broth-footer">
+              <span style="font-size: 0.78rem; color: var(--text-muted);">6 pieces</span>
+              <span class="mp-price-tag" style="font-size: 1.15rem;">$18.00</span>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- --------------------------------------------------------------------
+         SECTION 4: Garden Harvest – Vegetables, Tofu & Hot Pot Add-ons
+         -------------------------------------------------------------------- -->
+    <section class="mp-section mp-garden-section" id="garden" aria-label="Garden Harvest Vegetables and Tofu">
+      <div class="mp-flare" style="top: 30%; left: 5%; width: 450px; height: 450px; background: rgba(76, 175, 80, 0.18);"></div>
+
+      <div class="mp-container">
+        
+        <header class="mp-header mp-reveal">
+          <span class="mp-pill" style="border-color: rgba(76, 175, 80, 0.4); color: #81C784; background: rgba(76, 175, 80, 0.1);">
+            <span class="mp-pill-dot" style="background: #81C784; box-shadow: 0 0 8px #81C784;"></span>
+            Soil, Forest & Organic Farmstead
+          </span>
+          <h2 class="mp-title">
+            Garden Greens, <span class="mp-gradient-text">Fungi & Artisan Tofu</span>
+          </h2>
+          <p class="mp-subtitle">
+            Crisp market greens, wild mountain fungi, and artisanal soybean curds that soak up the fragrant essences of our slow-simmered master broths.
+          </p>
+        </header>
+
+        <div class="mp-garden-columns">
+          
+          <!-- Column A: Vegetables Selection -->
+          <div class="mp-garden-group-card mp-reveal-left">
+            <div style="height: 190px; border-radius: var(--radius-md); overflow: hidden; margin-bottom: 20px;">
+              <img src="images/menu-vegetables-platter.jpg" alt="Fresh harvest of wild Yunnan mushrooms, bok choy, and sweet lotus roots" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <h3 class="mp-garden-group-title">
+              <span>Fresh Farm Vegetables</span>
+              <span class="mp-badge-dietary mp-badge-vegan">100% Vegan</span>
+            </h3>
+
+            <div class="mp-garden-item-row" data-title="Chinese Cabbage">
+              <div class="mp-item-info">
+                <span class="mp-item-name">Chinese Cabbage (Napa Cabbage)</span>
+                <span class="mp-item-desc">Sweet, tender heart leaves that soak up simmering broth juices.</span>
+              </div>
+              <span class="mp-price-tag" style="font-size: 1.1rem;">$7.00</span>
+            </div>
+
+            <div class="mp-garden-item-row" data-title="Bok Choy">
+              <div class="mp-item-info">
+                <span class="mp-item-name">Baby Bok Choy</span>
+                <span class="mp-item-desc">Shanghai crisp greens with sweet juicy crunch and rich minerals.</span>
+              </div>
+              <span class="mp-price-tag" style="font-size: 1.1rem;">$7.00</span>
+            </div>
+
+            <div class="mp-garden-item-row" data-title="Fresh Spinach">
+              <div class="mp-item-info">
+                <span class="mp-item-name">Fresh Sweet Spinach</span>
+                <span class="mp-item-desc">Tender young spinach leaves, requires only 8 seconds in the pot.</span>
+              </div>
+              <span class="mp-price-tag" style="font-size: 1.1rem;">$8.00</span>
+            </div>
+
+            <div class="mp-garden-item-row" data-title="Lotus Root">
+              <div class="mp-item-info">
+                <span class="mp-item-name">Crunchy Lotus Root</span>
+                <span class="mp-item-desc">Delicately sliced wheels with refreshing texture and subtle sweetness.</span>
+              </div>
+              <span class="mp-price-tag" style="font-size: 1.1rem;">$9.00</span>
+            </div>
+
+            <div class="mp-garden-item-row" data-title="Sweet Corn">
+              <div class="mp-item-info">
+                <span class="mp-item-name">Golden Sweet Corn</span>
+                <span class="mp-item-desc">Sweet yellow corn cobs that add natural sugar to boiling broth.</span>
+              </div>
+              <span class="mp-price-tag" style="font-size: 1.1rem;">$7.00</span>
+            </div>
+
+            <div class="mp-garden-item-row" data-title="Enoki Mushrooms">
+              <div class="mp-item-info">
+                <span class="mp-item-name">Golden Enoki Mushrooms</span>
+                <span class="mp-item-desc">Slender golden-needle clusters with clean bite and toothsome chew.</span>
+              </div>
+              <span class="mp-price-tag" style="font-size: 1.1rem;">$8.00</span>
+            </div>
+
+            <div class="mp-garden-item-row" data-title="Shiitake Mushrooms">
+              <div class="mp-item-info">
+                <span class="mp-item-name">Star-Carved Shiitake Mushrooms</span>
+                <span class="mp-item-desc">Meaty forest caps hand-carved with imperial star emblems.</span>
+              </div>
+              <span class="mp-price-tag" style="font-size: 1.1rem;">$9.00</span>
+            </div>
+
+            <div class="mp-garden-item-row" data-title="Seasonal Vegetables">
+              <div class="mp-item-info">
+                <span class="mp-item-name">Seasonal Wild Mountain Greens</span>
+                <span class="mp-item-desc">Tong Hao chrysanthemum greens and bamboo shoot tips.</span>
+              </div>
+              <span class="mp-price-tag" style="font-size: 1.1rem;">$10.00</span>
+            </div>
+
+            <div class="mp-garden-item-row" data-title="Fresh Vegetable Platters" style="background: rgba(76, 175, 80, 0.1); border-radius: var(--radius-sm); padding: 12px 8px;">
+              <div class="mp-item-info">
+                <span class="mp-item-name" style="color: var(--color-amber); font-weight: 700;">Imperial Green Meadow Platter</span>
+                <span class="mp-item-desc">8-variety chef's basket of market greens, fungi, and sweet roots.</span>
+              </div>
+              <span class="mp-price-tag" style="font-size: 1.25rem;">$22.00</span>
+            </div>
+
+          </div>
+
+          <!-- Column B: Tofu & Hot Pot Add-ons -->
+          <div class="mp-garden-group-card mp-reveal-right">
+            <div style="height: 190px; border-radius: var(--radius-md); overflow: hidden; margin-bottom: 20px;">
+              <img src="images/menu-tofu-beancurd.jpg" alt="Artisanal silken tofu, golden fried tofu, and rolled yuba sheets" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <h3 class="mp-garden-group-title">
+              <span>Artisan Tofu & Add-ons</span>
+              <span class="mp-badge-dietary mp-badge-gf">Plant Protein</span>
+            </h3>
+
+            <div class="mp-garden-item-row" data-title="Silken Tofu">
+              <div class="mp-item-info">
+                <span class="mp-item-name">Organic Silken Tofu</span>
+                <span class="mp-item-desc">Hand-pressed daily non-GMO organic soybean curd, melts like custard.</span>
+              </div>
+              <span class="mp-price-tag" style="font-size: 1.1rem;">$7.00</span>
+            </div>
+
+            <div class="mp-garden-item-row" data-title="Fried Tofu">
+              <div class="mp-item-info">
+                <span class="mp-item-name">Golden Fried Tofu Cubes</span>
+                <span class="mp-item-desc">Crisp exterior with aerated honeycomb interior that drinks broth.</span>
+              </div>
+              <span class="mp-price-tag" style="font-size: 1.1rem;">$8.00</span>
+            </div>
+
+            <div class="mp-garden-item-row" data-title="Bean Curd Sheets">
+              <div class="mp-item-info">
+                <span class="mp-item-name">Rolled Bean Curd Sheets (Yuba)</span>
+                <span class="mp-item-desc">Sun-dried crispy bean curd skin that blooms into rich ribbons.</span>
+              </div>
+              <span class="mp-price-tag" style="font-size: 1.1rem;">$9.00</span>
+            </div>
+
+            <div class="mp-garden-item-row" data-title="Tofu Puffs">
+              <div class="mp-item-info">
+                <span class="mp-item-name">Airy Tofu Puffs</span>
+                <span class="mp-item-desc">Soft, pillowy sponge tofu pockets, explosive bursts of broth in each bite.</span>
+              </div>
+              <span class="mp-price-tag" style="font-size: 1.1rem;">$7.00</span>
+            </div>
+
+            <div class="mp-garden-item-row" data-title="Cheese Balls">
+              <div class="mp-item-info">
+                <span class="mp-item-name">Molten Cheese Mochi Balls</span>
+                <span class="mp-item-desc">Bouncy golden spheres filled with bubbling molten cheddar cheese.</span>
+              </div>
+              <span class="mp-price-tag" style="font-size: 1.1rem;">$12.00</span>
+            </div>
+
+            <div class="mp-garden-item-row" data-title="Fish Tofu">
+              <div class="mp-item-info">
+                <span class="mp-item-name">Handmade Fish Tofu</span>
+                <span class="mp-item-desc">Pan-seared square cakes combining pureed white fish and soymilk.</span>
+              </div>
+              <span class="mp-price-tag" style="font-size: 1.1rem;">$10.00</span>
+            </div>
+
+            <div class="mp-garden-item-row" data-title="Assorted Hot Pot Balls" style="background: rgba(229, 160, 0, 0.1); border-radius: var(--radius-sm); padding: 12px 8px;">
+              <div class="mp-item-info">
+                <span class="mp-item-name" style="color: var(--color-amber); font-weight: 700;">Grand Assorted Hot Pot Ball Sampler</span>
+                <span class="mp-item-desc">Beef tendon balls, lobster balls, cheese mochi, and cuttlefish balls (8 pcs).</span>
+              </div>
+              <span class="mp-price-tag" style="font-size: 1.25rem;">$18.00</span>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- --------------------------------------------------------------------
+         SECTION 5: Noodles & Rice – The Perfect Finish to Your Pot
+         -------------------------------------------------------------------- -->
+    <section class="mp-section mp-grain-section" id="noodles" aria-label="Noodles and Rice Selection">
+      <div class="mp-flare" style="top: 20%; right: 15%; width: 400px; height: 400px; background: rgba(229, 160, 0, 0.2);"></div>
+
+      <div class="mp-container">
+        
+        <header class="mp-header mp-reveal">
+          <span class="mp-pill">
+            <span class="mp-pill-dot"></span>
+            The Essential Finale
+          </span>
+          <h2 class="mp-title">
+            Artisanal Noodles & <span class="mp-gradient-text">Steamed Grains</span>
+          </h2>
+          <p class="mp-subtitle">
+            After proteins and harvest greens have infused your broth with extraordinary depth, introduce our hand-crafted noodles to absorb the ultimate flavor essence.
+          </p>
+        </header>
+
+        <div class="mp-grain-grid">
+          
+          <!-- 1. Japanese Udon Noodles -->
+          <article class="mp-grain-card regular mp-reveal" data-category="grain" data-dietary="vegan" data-title="Japanese Udon Noodles">
+            <div>
+              <div class="mp-grain-visual"><img src="images/menu-sanuki-udon.jpg" alt="Thick Japanese Sanuki Udon Wheat Noodles" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;"></div>
+              <h3 style="font-family: 'Cinzel'; font-size: 1.15rem; font-weight: 700; color: var(--text-primary); margin-bottom: 6px;">
+                Japanese Sanuki Udon
+              </h3>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 12px;">
+                Thick wheat noodles crafted with high-elasticity kneaded dough. Unrivaled chewy spring and broth cling.
+              </p>
+            </div>
+            <div class="mp-broth-footer">
+              <span style="font-size: 0.78rem; color: var(--text-muted);">Single portion</span>
+              <span class="mp-price-tag">$7.00</span>
+            </div>
+          </article>
+
+          <!-- 2. Ramen Noodles -->
+          <article class="mp-grain-card regular mp-reveal" data-category="grain" data-title="Ramen Noodles">
+            <div>
+              <div class="mp-grain-visual"><img src="images/menu-ramen-noodles.jpg" alt="Hand-Pulled Alkali Curly Egg Ramen" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;"></div>
+              <h3 style="font-family: 'Cinzel'; font-size: 1.15rem; font-weight: 700; color: var(--text-primary); margin-bottom: 6px;">
+                Hand-Pulled Ramen
+              </h3>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 12px;">
+                Alkali curly egg noodles that hold firm al dente snap even in furiously boiling broth.
+              </p>
+            </div>
+            <div class="mp-broth-footer">
+              <span style="font-size: 0.78rem; color: var(--text-muted);">Single portion</span>
+              <span class="mp-price-tag">$7.00</span>
+            </div>
+          </article>
+
+          <!-- 3. Glass Noodles -->
+          <article class="mp-grain-card regular mp-reveal" data-category="grain" data-dietary="vegan gf" data-title="Glass Noodles">
+            <div>
+              <div class="mp-grain-visual"><img src="images/menu-glass-noodles.jpg" alt="Translucent Sweet Potato Glass Vermicelli" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;"></div>
+              <h3 style="font-family: 'Cinzel'; font-size: 1.15rem; font-weight: 700; color: var(--text-primary); margin-bottom: 6px;">
+                Translucent Glass Noodles
+              </h3>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 12px;">
+                Sweet potato starch vermicelli that turns completely crystal glass-clear and slippery-silky.
+              </p>
+            </div>
+            <div class="mp-broth-footer">
+              <span style="font-size: 0.78rem; color: var(--text-muted);">Gluten-Free</span>
+              <span class="mp-price-tag">$6.00</span>
+            </div>
+          </article>
+
+          <!-- 4. Rice Noodles -->
+          <article class="mp-grain-card regular mp-reveal" data-category="grain" data-dietary="vegan gf" data-title="Rice Noodles">
+            <div>
+              <div class="mp-grain-visual"><img src="images/menu-flat-rice-noodles.jpg" alt="Southern Flat Rice Ho Fun Ribbon Noodles" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;"></div>
+              <h3 style="font-family: 'Cinzel'; font-size: 1.15rem; font-weight: 700; color: var(--text-primary); margin-bottom: 6px;">
+                Southern Flat Rice Noodles
+              </h3>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 12px;">
+                Wide silky ribbon noodles made from freshly stone-milled rice flour. Pure delicacy.
+              </p>
+            </div>
+            <div class="mp-broth-footer">
+              <span style="font-size: 0.78rem; color: var(--text-muted);">Gluten-Free</span>
+              <span class="mp-price-tag">$6.00</span>
+            </div>
+          </article>
+
+          <!-- 5. Steamed Jasmine Rice -->
+          <article class="mp-grain-card regular mp-reveal" data-category="grain" data-dietary="vegan gf" data-title="Steamed Jasmine Rice">
+            <div>
+              <div class="mp-grain-visual"><img src="images/menu-jasmine-rice.jpg" alt="Steamed Royal Thai Jasmine Rice with Sesame" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;"></div>
+              <h3 style="font-family: 'Cinzel'; font-size: 1.15rem; font-weight: 700; color: var(--text-primary); margin-bottom: 6px;">
+                Steamed Royal Jasmine Rice
+              </h3>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 12px;">
+                Aromatic Thai Hom Mali grain steamed with pandan leaves and toasted white sesame seeds.
+              </p>
+            </div>
+            <div class="mp-broth-footer">
+              <span style="font-size: 0.78rem; color: var(--text-muted);">Per bowl</span>
+              <span class="mp-price-tag">$4.00</span>
+            </div>
+          </article>
+
+          <!-- 6. Wok Fried Rice -->
+          <article class="mp-grain-card regular mp-reveal" data-category="grain" data-dietary="chef" data-title="Fried Rice">
+            <div>
+              <div class="mp-grain-visual"><img src="images/menu-fried-rice.jpg" alt="Wok-Tossed XO Seafood Fried Rice with Scallions" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;"></div>
+              <h3 style="font-family: 'Cinzel'; font-size: 1.15rem; font-weight: 700; color: var(--text-primary); margin-bottom: 6px;">
+                XO Seafood Fried Rice
+              </h3>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 12px;">
+                High-heat wok-tossed jasmine rice with artisanal XO conpoy sauce, scallions, and egg ribbon.
+              </p>
+            </div>
+            <div class="mp-broth-footer">
+              <span style="font-size: 0.78rem; color: var(--text-muted);">Sharing bowl</span>
+              <span class="mp-price-tag">$14.00</span>
+            </div>
+          </article>
+
+          <!-- 7. Specialty Noodle Platters (Wide Span) -->
+          <article class="mp-grain-card wide mp-reveal-scale" data-category="grain" data-dietary="chef" data-title="Specialty Noodle Platters">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center;">
+              <div>
+                <span class="mp-badge-dietary mp-badge-chef" style="margin-bottom: 8px;">Signature Carousel</span>
+                <h3 style="font-family: 'Cinzel'; font-size: 1.4rem; font-weight: 700; color: var(--text-primary); margin-bottom: 8px;">
+                  Grand Tri-Color Noodle Carousel
+                </h3>
+                <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6;">
+                  A vibrant tasting carousel: Emerald baby spinach noodles, golden Japanese pumpkin noodles, and hearty highland buckwheat noodles. Hand-folded into intricate blossom nests.
+                </p>
+              </div>
+              <div class="mp-grain-visual" style="height: 150px; margin: 0;">
+                <img src="images/menu-noodles-feast.jpg" alt="Handcrafted artisan noodles and imperial steamed grains spread" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
+              </div>
+            </div>
+            <div class="mp-broth-footer" style="margin-top: 16px;">
+              <span style="font-size: 0.82rem; color: var(--text-muted);">Serves 2-3 guests</span>
+              <span class="mp-price-tag">$16.00</span>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- --------------------------------------------------------------------
+         SECTION 6: Signature Dipping Sauces, Desserts & Beverages
+         -------------------------------------------------------------------- -->
+    <section class="mp-section mp-sauce-section" id="sauces" aria-label="Dipping Sauces Desserts and Beverages">
+      <div class="mp-flare" style="top: 25%; left: 10%; width: 450px; height: 450px; background: rgba(169, 50, 38, 0.2);"></div>
+
+      <div class="mp-container">
+        
+        <header class="mp-header mp-reveal">
+          <span class="mp-pill">
+            <span class="mp-pill-dot"></span>
+            The Sauce Alchemist Bar
+          </span>
+          <h2 class="mp-title">
+            Signature Dipping Sauces & <span class="mp-gradient-text">Condiment Alchemy</span>
+          </h2>
+          <p class="mp-subtitle">
+            Hot pot is an individual culinary adventure. Balance heat and richness with custom-crafted dipping sauces, then conclude your feast with chilled traditional desserts and artisan teas.
+          </p>
+        </header>
+
+        <!-- Interactive Sauce Alchemy Mixer -->
+        <div class="mp-sauce-mixer mp-reveal-scale">
+          <div style="height: 220px; border-radius: var(--radius-md); overflow: hidden; margin-bottom: 24px;">
+            <img src="images/menu-sauce-ritual.jpg" alt="Tableside sauce alchemy and Wagyu flame-sear ritual" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+          <div style="text-align: center; margin-bottom: 20px;">
+            <span class="mp-badge-dietary mp-badge-chef">Interactive Sauce Bar Formula</span>
+            <h3 style="font-family: 'Cinzel', serif; font-size: 1.35rem; color: var(--text-primary); margin-top: 6px;">
+              Discover Your Master Condiment Formula
+            </h3>
+            <p style="font-size: 0.86rem; color: var(--text-secondary);">
+              Click any sauce base below to uncover recommended tableside pairings.
+            </p>
+          </div>
+
+          <div class="mp-sauce-palette-grid">
+            
+            <div class="mp-sauce-dish selected" data-sauce="sesame">
+              <div class="mp-sauce-blob" style="background: radial-gradient(circle, #D7CCC8 10%, #8D6E63 80%);"></div>
+              <h4 style="font-family: 'Cinzel'; font-size: 1.05rem; font-weight: 700; color: var(--text-primary);">Sesame Paste Sauce</h4>
+              <p style="font-size: 0.78rem; color: var(--text-muted); margin-top: 4px;">Stone-ground white sesame, fermented beancurd, chive blossom paste.</p>
+              <span class="mp-price-tag" style="font-size: 1rem; margin-top: 8px;">$4.00</span>
+            </div>
+
+            <div class="mp-sauce-dish" data-sauce="garlic">
+              <div class="mp-sauce-blob" style="background: radial-gradient(circle, #FFE082 10%, #D35400 80%);"></div>
+              <h4 style="font-family: 'Cinzel'; font-size: 1.05rem; font-weight: 700; color: var(--text-primary);">Garlic Soy Sauce</h4>
+              <p style="font-size: 0.78rem; color: var(--text-muted); margin-top: 4px;">Aged dark soy, roasted garlic puree, scallion oil, toasted sesame.</p>
+              <span class="mp-price-tag" style="font-size: 1rem; margin-top: 8px;">$3.50</span>
+            </div>
+
+            <div class="mp-sauce-dish" data-sauce="chili">
+              <div class="mp-sauce-blob" style="background: radial-gradient(circle, #FF5722 10%, #A93226 80%);"></div>
+              <h4 style="font-family: 'Cinzel'; font-size: 1.05rem; font-weight: 700; color: var(--text-primary);">Homemade Chili Oil</h4>
+              <p style="font-size: 0.78rem; color: var(--text-muted); margin-top: 4px;">Toasted chili crisp, cracked cardamom, and sizzling shallot oil.</p>
+              <span class="mp-price-tag" style="font-size: 1rem; margin-top: 8px;">$4.00</span>
+            </div>
+
+            <div class="mp-sauce-dish" data-sauce="peanut">
+              <div class="mp-sauce-blob" style="background: radial-gradient(circle, #FFE0B2 10%, #A1887F 80%);"></div>
+              <h4 style="font-family: 'Cinzel'; font-size: 1.05rem; font-weight: 700; color: var(--text-primary);">Peanut Dipping Sauce</h4>
+              <p style="font-size: 0.78rem; color: var(--text-muted); margin-top: 4px;">Creamy crushed peanut butter, hoisin glaze, and cilantro crunch.</p>
+              <span class="mp-price-tag" style="font-size: 1rem; margin-top: 8px;">$4.50</span>
+            </div>
+
+          </div>
+
+          <!-- Spring Onion, Coriander, & Custom Combination Notice -->
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 24px;">
+            <div style="background: var(--bg-surface); padding: 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); text-align: center;">
+              <span style="font-family: 'Cinzel'; font-weight: 700; color: var(--text-primary);">Spring Onion Sauce</span>
+              <p style="font-size: 0.76rem; color: var(--text-muted); margin-top: 2px;">Wok-seared ginger & scallion oil ($3.50)</p>
+            </div>
+            <div style="background: var(--bg-surface); padding: 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); text-align: center;">
+              <span style="font-family: 'Cinzel'; font-weight: 700; color: var(--text-primary);">Coriander Sauce</span>
+              <p style="font-size: 0.76rem; color: var(--text-muted); margin-top: 2px;">Fresh pounded wild cilantro & lime ($3.50)</p>
+            </div>
+            <div style="background: rgba(229, 160, 0, 0.12); padding: 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-glow); text-align: center;">
+              <span style="font-family: 'Cinzel'; font-weight: 700; color: var(--color-amber);">Unlimited Alchemist Bar</span>
+              <p style="font-size: 0.76rem; color: var(--text-muted); margin-top: 2px;">Mix all 18 house condiments ($6.00/person)</p>
+            </div>
+          </div>
+        </div>
+</div>
+    </section>
+
+    <!-- --------------------------------------------------------------------
+         SECTION 7: Complete Menu Guide – Prices, Dietary & Food Information
+         -------------------------------------------------------------------- -->
+    <section class="mp-section mp-guide-section" id="guide" aria-label="Menu Guide Prices Allergens and Dietary Information">
+      <div class="mp-container">
+        
+        <header class="mp-header mp-reveal">
+          <span class="mp-pill">
+            <span class="mp-pill-dot"></span>
+            Culinary Transparency & Guest Advisory
+          </span>
+          <h2 class="mp-title">
+            The Complete <span class="mp-gradient-text">Menu Guide</span>
+          </h2>
+          <p class="mp-subtitle">
+            Detailed pricing tiers, verified dietary classification, complete food allergen disclosure, ingredient provenance, and nutritional metrics.
+          </p>
+        </header>
+
+        <!-- Ambient Dining Room Guide Banner -->
+        <div style="height: 220px; border-radius: var(--radius-md); overflow: hidden; margin-bottom: 30px; border: 1px solid var(--border-glow);" class="mp-reveal-scale">
+          <img src="images/menu-dining-ambience.jpg" alt="Imperial dining room ambiance with glowing amber lanterns" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+
+        <!-- Expandable Information Panels Accordion -->
+        <div class="mp-accordion-wrap mp-reveal">
+          
+          <!-- Panel 1: Complete Price List -->
+          <div class="mp-acc-item open" id="accPriceList">
+            <button class="mp-acc-header" aria-expanded="true">
+              <span>1. Complete Price Schedule & Ordering Format</span>
+              <svg class="icon mp-acc-icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="mp-acc-body">
+              <p>Hot pot ordering is structured around your shared broth cauldron plus individualized dish selections. Prices are listed in AUD inclusive of GST with no hidden corkage fees.</p>
+              <table class="mp-table">
+                <thead>
+                  <tr>
+                    <th>Category</th>
+                    <th>Standard Range</th>
+                    <th>Premium / Feast Selection</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Master Broths (Single / Dual Split)</td>
+                    <td>$18.00 – $22.00</td>
+                    <td>Seafood Elixir ($26.00)</td>
+                  </tr>
+                  <tr>
+                    <td>Meats & Farmed Poultry</td>
+                    <td>$18.00 – $25.00</td>
+                    <td>Australian Wagyu Ribeye ($38.00 - $88.00)</td>
+                  </tr>
+                  <tr>
+                    <td>Live Seafood Catch</td>
+                    <td>$14.00 – $26.00</td>
+                    <td>Neptune Sovereign Tower ($54.00)</td>
+                  </tr>
+                  <tr>
+                    <td>Organic Garden Greens & Tofu</td>
+                    <td>$7.00 – $10.00</td>
+                    <td>Imperial Green Meadow Basket ($22.00)</td>
+                  </tr>
+                  <tr>
+                    <td>Noodles, Grains & Rice</td>
+                    <td>$4.00 – $7.00</td>
+                    <td>Tri-Color Noodle Carousel ($16.00)</td>
+                  </tr>
+                  <tr>
+                    <td>Dipping Sauces & Alchemist Bar</td>
+                    <td>$3.50 – $4.50</td>
+                    <td>Unlimited 18-Sauce Buffet ($6.00 / guest)</td>
+                  </tr>
+                  <tr>
+                    <td>Desserts, Teas & Mocktails</td>
+                    <td>$5.00 – $9.00</td>
+                    <td>Smoked Lychee Mocktail ($10.00)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Panel 2: Vegetarian & Vegan Indicators -->
+          <div class="mp-acc-item" id="accDietary">
+            <button class="mp-acc-header" aria-expanded="false">
+              <span>2. Vegetarian, Vegan & Halal Dietary Standards</span>
+              <svg class="icon mp-acc-icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="mp-acc-body">
+              <p>We respect religious, ethical, and lifestyle dining requirements. All kitchen stations utilize separate preparation tools to eliminate cross-contamination.</p>
+              <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 14px;">
+                <div style="background: var(--bg-surface); padding: 16px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
+                  <strong style="color: #81C784;">[VEGAN] 100% Plant-Based</strong>
+                  <p style="font-size: 0.84rem; margin-top: 4px;">Zero animal by-products, dairy, or honey. Applicable to Rich Tomato Broth, Clear Vegetable Broth, all market vegetables, and non-egg bean curds.</p>
+                </div>
+                <div style="background: var(--bg-surface); padding: 16px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
+                  <strong style="color: #FFD54F;">[GF] Gluten-Free Confirmed</strong>
+                  <p style="font-size: 0.84rem; margin-top: 4px;">Contains no wheat or barley gluten. Gluten-free tamari soy sauce available upon request at our sauce bar.</p>
+                </div>
+                <div style="background: var(--bg-surface); padding: 16px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
+                  <strong style="color: #80CBC4;">[HALAL] Certified Halal</strong>
+                  <p style="font-size: 0.84rem; margin-top: 4px;">Our Wagyu beef, Black Angus beef, and New Zealand lamb shoulder are certified 100% Halal slaughtered.</p>
+                </div>
+                <div style="background: var(--bg-surface); padding: 16px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
+                  <strong style="color: #FF8A80;">[CHEF] Signature Recipe</strong>
+                  <p style="font-size: 0.84rem; margin-top: 4px;">Proprietary culinary compositions crafted by Executive Master Chef with dynastic spice heritage.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Panel 3: Food Allergy Information -->
+          <div class="mp-acc-item" id="accAllergens">
+            <button class="mp-acc-header" aria-expanded="false">
+              <span>3. Comprehensive Food Allergy Matrix & Notice</span>
+              <svg class="icon mp-acc-icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="mp-acc-body">
+              <div style="background: rgba(169, 50, 38, 0.15); border: 1px solid rgba(169, 50, 38, 0.4); padding: 16px; border-radius: var(--radius-sm); margin-bottom: 16px;">
+                <strong style="color: #FF8A80; font-size: 0.95rem;">CRITICAL GUEST ALLERGY ADVISORY:</strong>
+                <p style="font-size: 0.86rem; color: var(--text-primary); margin-top: 4px; line-height: 1.5;">
+                  Our dining room operates active boiling cauldrons and a communal sauce bar where peanuts, tree nuts, sesame seeds, soybeans, shellfish, crustaceans, fish, eggs, and wheat are regularly handled. While our team enforces strict separation protocols, airborne vapors and aerosolized chili oils cannot be guaranteed 100% allergen-free. Please notify our head waitstaff immediately upon arrival if you have severe anaphylactic allergies.
+                </p>
+              </div>
+
+              <table class="mp-table">
+                <thead>
+                  <tr>
+                    <th>Item Group</th>
+                    <th>Major Common Allergens</th>
+                    <th>Safe Customization Options</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Mala & Chili Broths</td>
+                    <td>Soybean (Pixian paste), Beef Tallow</td>
+                    <td>Clear Vegetable or Tomato Broth</td>
+                  </tr>
+                  <tr>
+                    <td>Seafood & Fish Balls</td>
+                    <td>Crustaceans (Prawns), Mollusks (Scallops), Eggs</td>
+                    <td>Prime Beef, Chicken Slices, Tofu</td>
+                  </tr>
+                  <tr>
+                    <td>Sauce Alchemist Bar</td>
+                    <td>Peanuts, Sesame, Soy, Wheat (Gluten)</td>
+                    <td>Pure Garlic, Scallion, Chili, & Tamari Soy</td>
+                  </tr>
+                  <tr>
+                    <td>Noodles & Pastas</td>
+                    <td>Wheat (Gluten), Eggs (Ramen)</td>
+                    <td>Glass Noodles (Sweet potato) or Jasmine Rice</td>
+                  </tr>
+                  <tr>
+                    <td>Desserts & Sweets</td>
+                    <td>Dairy (Ice cream), Soy</td>
+                    <td>Fresh Fruit Platter, Cold-Pressed Juices</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Panel 4: Ingredient Details & Artisan Provenance -->
+          <div class="mp-acc-item" id="accProvenance">
+            <button class="mp-acc-header" aria-expanded="false">
+              <span>4. Ingredient Sourcing & Culinary Provenance</span>
+              <svg class="icon mp-acc-icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="mp-acc-body">
+              <p>We believe extraordinary hot pot is born strictly from uncompromising ingredient integrity. We source directly from certified ethical growers and producers:</p>
+              <ul style="padding-left: 20px; margin-top: 10px; line-height: 1.8; font-size: 0.88rem;">
+                <li><strong>Australian Full-Blood Wagyu:</strong> Sourced from Darling Downs, grain-fed for 450 days to guarantee verified MBS 8-9+ marbling.</li>
+                <li><strong>Yunnan Wild Morel & Black Truffle:</strong> Foraged in the high-elevation alpine forests of Yunnan, air-shipped weekly.</li>
+                <li><strong>Hanyuan Red Peppercorns:</strong> Hand-picked tribute peppercorns grown at 1,800m elevation in Sichuan for maximum fragrant citrus tingling.</li>
+                <li><strong>Organic Free-Range Hen:</strong> Certified chemical-free, free-roaming poultry providing authentic natural gelatinous collagen.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Panel 5: Nutritional Information & Wellness -->
+          <div class="mp-acc-item" id="accNutrition">
+            <button class="mp-acc-header" aria-expanded="false">
+              <span>5. Nutritional Information & Broth Sodium Balancing</span>
+              <svg class="icon mp-acc-icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="mp-acc-body">
+              <p>Hot pot offers one of the most balanced culinary formats available, providing abundant lean protein, clean vitamins from blanched vegetables, and healing bone mineral collagen.</p>
+              <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 14px;">
+                <div style="background: var(--bg-surface); padding: 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); text-align: center;">
+                  <span style="font-size: 1.2rem; font-weight: 800; color: var(--color-amber);">High Collagen</span>
+                  <p style="font-size: 0.78rem; color: var(--text-muted); margin-top: 4px;">18-hour marrow bone reduction supports joint mobility & skin elasticity.</p>
+                </div>
+                <div style="background: var(--bg-surface); padding: 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); text-align: center;">
+                  <span style="font-size: 1.2rem; font-weight: 800; color: #81C784;">Nutrient Preserving</span>
+                  <p style="font-size: 0.78rem; color: var(--text-muted); margin-top: 4px;">Flash-blanching greens preserves up to 92% of live vitamins and enzymes.</p>
+                </div>
+                <div style="background: var(--bg-surface); padding: 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); text-align: center;">
+                  <span style="font-size: 1.2rem; font-weight: 800; color: #00B4D8;">Low Sodium Option</span>
+                  <p style="font-size: 0.78rem; color: var(--text-muted); margin-top: 4px;">Ask your server for pure hot mineral water kettle dilution at any time.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>

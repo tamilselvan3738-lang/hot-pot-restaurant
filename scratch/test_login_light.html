@@ -1,0 +1,1348 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VIP Member Login | HOT POT RESTAURANT</title>
+  <meta name="description" content="Access your exclusive Hot Pot Restaurant Imperial Dining Club membership, reservations, and broth privileges.">
+  <meta name="theme-color" content="#120A08">
+
+  <!-- Google Fonts Preconnect (Identical to index.html) -->
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="alternate icon" type="image/png" href="images/favicon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       DESIGN TOKENS & COLOR THEMES (MATCHING INDEX.HTML)
+       ========================================================================== */
+    :root {
+      /* Brand Color Palette */
+      --color-burgundy: #641E16;
+      --color-red: #A93226;
+      --color-orange: #D35400;
+      --color-amber: #E5A000;
+      --color-cream: #FFF3E0;
+      --color-charcoal: #241A17;
+
+      /* Dark Theme (Default) */
+      --bg-body: #0d0806;
+      --bg-surface: #170f0c;
+      --bg-card: rgba(26, 17, 13, 0.88);
+      --bg-input: rgba(14, 8, 6, 0.7);
+      --bg-input-focus: rgba(22, 13, 10, 0.95);
+      
+      --text-primary: #FFF3E0;
+      --text-secondary: #D4BBA8;
+      --text-muted: #9E8373;
+      --text-faint: #6e5c51;
+      
+      --border-subtle: rgba(229, 160, 0, 0.18);
+      --border-glow: rgba(229, 160, 0, 0.55);
+      --border-input: rgba(229, 160, 0, 0.22);
+      
+      --shadow-card: 0 25px 65px -12px rgba(0, 0, 0, 0.8), 0 0 45px rgba(211, 84, 0, 0.15);
+      --shadow-3d-button: 0 4px 0 #641E16, 0 8px 24px rgba(211, 84, 0, 0.45);
+      --shadow-3d-pressed: 0 1px 0 #641E16, 0 3px 10px rgba(211, 84, 0, 0.3);
+
+      --gradient-brand: linear-gradient(135deg, #A93226 0%, #D35400 50%, #E5A000 100%);
+      --gradient-brand-hover: linear-gradient(135deg, #C0392B 0%, #E67E22 50%, #F39C12 100%);
+      --gradient-gold: linear-gradient(135deg, #FFF3E0 0%, #E5A000 50%, #D35400 100%);
+      --grid-line-color: rgba(229, 160, 0, 0.06);
+
+      --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 24px;
+      --radius-full: 9999px;
+    }
+
+    /* Light Theme */
+    [data-theme="light"] {
+      --bg-body: #FAF5F0;
+      --bg-surface: #FFFFFF;
+      --bg-card: rgba(255, 255, 255, 0.94);
+      --bg-input: #FFFFFF;
+      --bg-input-focus: #FFFFFF;
+      
+      --text-primary: #241A17;
+      --text-secondary: #5C463D;
+      --text-muted: #8A7266;
+      --text-faint: #A69286;
+      
+      --border-subtle: rgba(169, 50, 38, 0.16);
+      --border-glow: rgba(211, 84, 0, 0.45);
+      --border-input: rgba(169, 50, 38, 0.22);
+      
+      --shadow-card: 0 20px 50px -10px rgba(100, 30, 22, 0.12), 0 0 30px rgba(229, 160, 0, 0.08);
+      --shadow-3d-button: 0 4px 0 #501711, 0 8px 20px rgba(211, 84, 0, 0.35);
+      --shadow-3d-pressed: 0 1px 0 #501711, 0 3px 8px rgba(211, 84, 0, 0.25);
+      --grid-line-color: rgba(169, 50, 38, 0.05);
+    }
+
+    /* RTL Direction Overrides */
+    [dir="rtl"] {
+      text-align: right;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* REMOVE ALL SCROLLBARS GLOBALLY */
+    html, body {
+      height: 100vh;
+      width: 100vw;
+      overflow: hidden;
+      scrollbar-width: none; /* Firefox */
+      -ms-overflow-style: none; /* IE and Edge */
+    }
+
+    *::-webkit-scrollbar,
+    html::-webkit-scrollbar,
+    body::-webkit-scrollbar {
+      display: none !important;
+      width: 0 !important;
+      height: 0 !important;
+    }
+
+    body {
+      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-body);
+      color: var(--text-primary);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      transition: background-color 0.4s var(--ease-spring), color 0.4s var(--ease-spring);
+    }
+
+    /* ==========================================================================
+       GRID BACKGROUND & AMBIENT GLOW
+       ========================================================================== */
+    .login-grid-bg {
+      position: fixed;
+      inset: 0;
+      background-image: 
+        linear-gradient(to right, var(--grid-line-color) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--grid-line-color) 1px, transparent 1px);
+      background-size: 34px 34px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .login-ambient-glow {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 580px;
+      height: 580px;
+      background: radial-gradient(circle, rgba(211, 84, 0, 0.14) 0%, rgba(100, 30, 22, 0.08) 45%, transparent 70%);
+      filter: blur(50px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    [data-theme="light"] .login-ambient-glow {
+      background: radial-gradient(circle, rgba(229, 160, 0, 0.12) 0%, rgba(211, 84, 0, 0.06) 45%, transparent 70%);
+    }
+
+    /* ==========================================================================
+       FLOATING TOP RIGHT ACTIONS (RTL & THEME)
+       ========================================================================== */
+    .top-actions-bar {
+      position: fixed;
+      top: 18px;
+      right: 24px;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    [dir="rtl"] .top-actions-bar {
+      right: auto;
+      left: 24px;
+    }
+
+    .action-icon-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      backdrop-filter: blur(8px);
+      transition: all 0.25s var(--ease-spring);
+    }
+
+    [data-theme="light"] .action-icon-btn {
+      background: rgba(0, 0, 0, 0.03);
+    }
+
+    .action-icon-btn:hover {
+      color: var(--color-amber);
+      border-color: var(--color-amber);
+      transform: scale(1.08);
+      background: rgba(229, 160, 0, 0.08);
+    }
+
+    .action-icon-btn:active {
+      transform: scale(0.96);
+    }
+
+    .action-icon-btn svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+    }
+
+    /* Theme icon visibility */
+    .theme-icon-sun { display: block; }
+    .theme-icon-moon { display: none; }
+
+    [data-theme="light"] .theme-icon-sun { display: none; }
+    [data-theme="light"] .theme-icon-moon { display: block; }
+
+    /* ==========================================================================
+       MAIN CENTERPIECE CARD (REDUCED HEIGHT & COMPACT PROPORTIONS)
+       ========================================================================== */
+    .login-main {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      max-width: 430px;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+
+    .login-card {
+      width: 100%;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 24px 28px 22px;
+      box-shadow: var(--shadow-card);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      position: relative;
+      animation: cardEntrance 0.75s var(--ease-spring) forwards;
+    }
+
+    @keyframes cardEntrance {
+      0% {
+        opacity: 0;
+        transform: translateY(20px) scale(0.97);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    /* Card Top Brand Header */
+    .brand-logo {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      text-decoration: none;
+      cursor: pointer;
+      position: relative;
+      padding: 6px 8px;
+      border-radius: var(--radius-md);
+      transition: transform 0.4s var(--ease-bounce);
+      user-select: none;
+      margin-bottom: 20px;
+    }
+
+    .brand-logo:hover {
+      transform: translateY(-2px) scale(1.02);
+    }
+
+    .card-brand-header {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 20px;
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+      transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.25s ease;
+    }
+
+    .card-brand-header:hover {
+      transform: translateY(-2px) scale(1.02);
+    }
+
+    .card-brand-header:hover .brand-title {
+      color: var(--color-amber);
+    }
+
+    .logo-glow-wrapper {
+      position: relative;
+      margin-bottom: 0;
+    }
+
+    .logo-glow-wrapper::before {
+      content: '';
+      position: absolute;
+      inset: -6px;
+      background: radial-gradient(circle, rgba(211, 84, 0, 0.45) 0%, rgba(169, 50, 38, 0.2) 60%, transparent 80%);
+      filter: blur(10px);
+      border-radius: 50%;
+      z-index: 0;
+    }
+
+    .pot-icon-wrapper {
+      position: relative;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      filter: drop-shadow(0 4px 12px rgba(211, 84, 0, 0.5));
+      transition: transform 0.5s var(--ease-bounce);
+      z-index: 1;
+    }
+
+    .login-card:hover .pot-icon-wrapper {
+      transform: rotate(-3deg) scale(1.05);
+    }
+
+    .hotpot-svg {
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+    }
+
+    .steam-path {
+      fill: none;
+      stroke: url(#steamGradient);
+      stroke-width: 2.2;
+      stroke-linecap: round;
+      stroke-dasharray: 40;
+      stroke-dashoffset: 40;
+      opacity: 0.85;
+      animation: riseSteam 3.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    }
+    .steam-path-1 { animation-delay: 0s; }
+    .steam-path-2 { animation-delay: 1.1s; }
+    .steam-path-3 { animation-delay: 2.2s; }
+
+    @keyframes riseSteam {
+      0% {
+        stroke-dashoffset: 40;
+        opacity: 0;
+        transform: translateY(2px) scaleX(0.85);
+      }
+      25% {
+        opacity: 0.9;
+      }
+      80% {
+        opacity: 0.7;
+      }
+      100% {
+        stroke-dashoffset: 0;
+        opacity: 0;
+        transform: translateY(-10px) scaleX(1.2);
+      }
+    }
+
+    .broth-bubble {
+      animation: simmerPulse 2.4s ease-in-out infinite;
+    }
+
+    .bubble-1 { animation-delay: 0.2s; }
+    .bubble-2 { animation-delay: 0.9s; }
+    .bubble-3 { animation-delay: 1.7s; }
+
+    @keyframes simmerPulse {
+      0%, 100% { transform: scale(1); opacity: 0.8; }
+      50% { transform: scale(1.35); opacity: 1; }
+    }
+
+    .brand-text, .brand-text-block {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+      text-align: left;
+    }
+
+    .brand-name, .brand-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.22rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      background: var(--gradient-gold);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      line-height: 1;
+    }
+
+    .flame-glow-pip, .brand-flame-dot {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--color-orange);
+      box-shadow: 0 0 10px var(--color-amber);
+      animation: pulseGlow 1.8s ease-in-out infinite;
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { transform: scale(1); opacity: 0.8; box-shadow: 0 0 8px var(--color-amber); }
+      50% { transform: scale(1.3); opacity: 1; box-shadow: 0 0 16px var(--color-orange); }
+    }
+
+    .brand-sub, .brand-subtitle {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.28em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-top: 3px;
+      transition: color 0.3s ease;
+    }
+
+    .brand-logo:hover .brand-sub,
+    .brand-logo:hover .brand-subtitle {
+      color: var(--color-amber);
+    }
+
+    /* ==========================================================================
+       FORM STYLES & CONTROLS (COMPACT)
+       ========================================================================== */
+    .login-form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .form-label {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      letter-spacing: 0.01em;
+    }
+
+    .input-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 9px 13px;
+      background: var(--bg-input);
+      border: 1px solid var(--border-input);
+      border-radius: var(--radius-sm);
+      color: var(--text-primary);
+      font-family: inherit;
+      font-size: 0.9rem;
+      outline: none;
+      transition: all 0.25s ease;
+    }
+
+    .form-input:focus {
+      background: var(--bg-input-focus);
+      border-color: var(--color-amber);
+      box-shadow: 0 0 0 3px rgba(229, 160, 0, 0.18);
+    }
+
+    .form-input::placeholder {
+      color: var(--text-faint);
+    }
+
+    /* Password eye toggle */
+    .input-wrapper.has-toggle .form-input {
+      padding-right: 38px;
+    }
+
+    [dir="rtl"] .input-wrapper.has-toggle .form-input {
+      padding-right: 13px;
+      padding-left: 38px;
+    }
+
+    .password-toggle-btn {
+      position: absolute;
+      right: 10px;
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      padding: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.2s ease;
+    }
+
+    [dir="rtl"] .password-toggle-btn {
+      right: auto;
+      left: 10px;
+    }
+
+    .password-toggle-btn:hover {
+      color: var(--color-amber);
+    }
+
+    .password-toggle-btn svg {
+      width: 17px;
+      height: 17px;
+      stroke: currentColor;
+      stroke-width: 2;
+      fill: none;
+    }
+
+    /* Options Row: Remember Me & Forgot */
+    .form-options-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.82rem;
+      margin-top: -2px;
+    }
+
+    .checkbox-label {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      cursor: pointer;
+      color: var(--text-secondary);
+      user-select: none;
+    }
+
+    .checkbox-label input[type="checkbox"] {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 15px;
+      height: 15px;
+      border: 1px solid var(--border-input);
+      border-radius: 4px;
+      background: var(--bg-input);
+      cursor: pointer;
+      position: relative;
+      transition: all 0.2s ease;
+    }
+
+    .checkbox-label input[type="checkbox"]:checked {
+      background: var(--color-orange);
+      border-color: var(--color-orange);
+    }
+
+    .checkbox-label input[type="checkbox"]:checked::after {
+      content: '';
+      position: absolute;
+      left: 4px;
+      top: 2px;
+      width: 4px;
+      height: 7px;
+      border: solid #FFF3E0;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+    }
+
+    .forgot-link {
+      color: var(--color-amber);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .forgot-link:hover {
+      color: #FFB74D;
+      text-decoration: underline;
+    }
+
+    /* ==========================================================================
+       3D PRIMARY LOGIN BUTTON
+       ========================================================================== */
+    .btn-3d-submit {
+      position: relative;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 20px;
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #FFF3E0;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+      background: var(--gradient-brand);
+      border: none;
+      border-radius: var(--radius-sm);
+      box-shadow: var(--shadow-3d-button);
+      cursor: pointer;
+      user-select: none;
+      transform: translateY(0);
+      transition: transform 0.18s var(--ease-bounce), box-shadow 0.18s var(--ease-bounce), filter 0.2s ease;
+      overflow: hidden;
+      margin-top: 2px;
+    }
+
+    .btn-3d-submit::before {
+      content: '';
+      position: absolute;
+      top: 1px;
+      left: 10%;
+      right: 10%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.7), transparent);
+    }
+
+    .btn-3d-submit::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -60%;
+      width: 40%;
+      height: 200%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transform: rotate(25deg);
+      transition: left 0.75s ease;
+    }
+
+    .btn-3d-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 0 #641E16, 0 10px 22px rgba(211, 84, 0, 0.55), 0 0 15px rgba(229, 160, 0, 0.4);
+      filter: brightness(1.05);
+    }
+
+    .btn-3d-submit:hover::after {
+      left: 140%;
+    }
+
+    .btn-3d-submit:active {
+      transform: translateY(2px);
+      box-shadow: var(--shadow-3d-pressed);
+      filter: brightness(0.96);
+    }
+
+    .btn-3d-submit svg {
+      width: 15px;
+      height: 15px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2.2;
+    }
+
+    /* ==========================================================================
+       DIVIDER & SOCIAL LOGINS
+       ========================================================================== */
+    .divider-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin: 6px 0 2px;
+    }
+
+    .divider-line {
+      flex: 1;
+      height: 1px;
+      background: var(--border-subtle);
+    }
+
+    .divider-text {
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+      font-weight: 600;
+    }
+
+    .social-btn-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .social-auth-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 38px;
+      border-radius: var(--radius-sm);
+      background: var(--bg-input);
+      border: 1px solid var(--border-input);
+      cursor: pointer;
+      transition: all 0.25s var(--ease-spring);
+    }
+
+    .social-auth-btn:hover {
+      background: var(--bg-input-focus);
+      border-color: var(--color-amber);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    }
+
+    .social-auth-btn:active {
+      transform: translateY(1px);
+    }
+
+    .social-auth-btn svg {
+      width: 19px;
+      height: 19px;
+    }
+
+    /* ==========================================================================
+       SECONDARY OUTLINE BUTTON (CREATE NEW ACCOUNT)
+       ========================================================================== */
+    .btn-outline-signup {
+      width: 100%;
+      padding: 9px 16px;
+      border-radius: var(--radius-sm);
+      background: transparent;
+      border: 1px solid var(--border-input);
+      color: var(--text-primary);
+      font-family: inherit;
+      font-size: 0.86rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-decoration: none;
+      transition: all 0.25s var(--ease-spring);
+      margin-top: 2px;
+    }
+
+    .btn-outline-signup:hover {
+      background: rgba(229, 160, 0, 0.08);
+      border-color: var(--color-amber);
+      color: var(--color-amber);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline-signup:active {
+      transform: translateY(1px);
+    }
+
+    /* Feedback Alert Toast */
+    .login-toast {
+      position: absolute;
+      top: -16px;
+      left: 50%;
+      transform: translateX(-50%) translateY(-100%);
+      background: linear-gradient(135deg, #1e120f, #2d1a16);
+      border: 1px solid var(--color-amber);
+      color: var(--color-cream);
+      padding: 8px 18px;
+      border-radius: var(--radius-full);
+      font-size: 0.82rem;
+      font-weight: 600;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.35s var(--ease-spring);
+      z-index: 100;
+      white-space: nowrap;
+    }
+
+    .login-toast.active {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* ==========================================================================
+       FIXED BOTTOM FOOTER
+       ========================================================================== */
+    .login-footer {
+      position: fixed;
+      bottom: 12px;
+      left: 0;
+      right: 0;
+      z-index: 10;
+      text-align: center;
+      font-size: 0.76rem;
+      color: var(--text-faint);
+      pointer-events: auto;
+    }
+
+    .login-footer a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin: 0 6px;
+      transition: color 0.2s ease;
+    }
+
+    .login-footer a:hover {
+      color: var(--color-amber);
+    }
+
+    /* ==========================================================================
+       RESPONSIVE BREAKPOINTS
+       ========================================================================== */
+    @media (max-width: 480px) {
+      .top-actions-bar {
+        top: 12px;
+        right: 14px;
+      }
+      [dir="rtl"] .top-actions-bar {
+        left: 14px;
+      }
+      .login-card {
+        padding: 22px 18px 20px;
+        border-radius: 16px;
+      }
+      .login-main {
+        padding: 8px 12px;
+      }
+    }
+  
+/* === FULL MOBILE RESPONSIVE ENGINE (320px, 480px, 768px, 1024px) === */
+/* 1. Global Box Sizing & Anti-Overflow */
+html {
+  box-sizing: border-box !important;
+  overflow-x: hidden !important;
+  max-width: 100vw !important;
+  width: 100% !important;
+  -webkit-text-size-adjust: 100%;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit !important;
+}
+
+body {
+  overflow-x: hidden !important;
+  max-width: 100vw !important;
+  width: 100% !important;
+  position: relative !important;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+}
+
+/* 2. Media Asset Fluidity */
+img, svg, video, canvas, picture {
+  max-width: 100% !important;
+  height: auto;
+}
+
+/* 3. Text & Inline Element Boundaries */
+h1, h2, h3, h4, h5, h6, p, span, a, li, blockquote, dt, dd, th, td, label {
+  overflow-wrap: break-word !important;
+  word-break: break-word !important;
+}
+
+/* 4. Universal Form Element Adaptability */
+button, input, select, textarea {
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* 5. RTL Directional Icon Alignment */
+[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+}
+
+[dir="rtl"] .icon-left, [dir="rtl"] svg.icon-left {
+  margin-left: 8px !important;
+  margin-right: 0 !important;
+}
+
+[dir="rtl"] .icon-right, [dir="rtl"] svg.icon-right {
+  margin-right: 8px !important;
+  margin-left: 0 !important;
+  transform: scaleX(-1);
+}
+
+/* --- LOGIN.HTML RESPONSIVE BREAKPOINTS --- */
+@media (max-width: 1024px) {
+  .login-main { padding: 40px 20px; }
+}
+
+@media (max-width: 768px) {
+  .login-main { padding: 30px 16px; }
+  .login-card { max-width: 100%; width: 100%; }
+}
+
+@media (max-width: 480px) {
+  .login-main { padding: 20px 12px; min-height: 100vh; }
+  .login-card { padding: 20px 16px 18px; border-radius: 16px; width: 100%; max-width: 100%; }
+  .card-title { font-size: 1.4rem; }
+  .card-subtitle { font-size: 0.85rem; }
+  .social-auth-grid { gap: 8px; }
+  .social-auth-btn { height: 42px; font-size: 0.82rem; padding: 0 8px; }
+  .remember-forgot-row { flex-wrap: wrap; gap: 8px; }
+  .btn-3d-submit { height: 46px; font-size: 0.92rem; width: 100%; }
+}
+
+@media (max-width: 320px) {
+  .login-main { padding: 12px 8px; }
+  .login-card { padding: 16px 10px 14px; border-radius: 12px; }
+  .card-title { font-size: 1.25rem; }
+  .brand-title { font-size: 1.15rem; }
+  .social-auth-grid { grid-template-columns: 1fr; gap: 6px; }
+  .social-auth-btn { height: 38px; font-size: 0.8rem; width: 100%; }
+  .input-wrapper input { font-size: 0.85rem; padding: 10px 12px 10px 36px; }
+  .btn-3d-submit { height: 44px; font-size: 0.88rem; }
+  .top-actions-bar { top: 8px; left: 8px; gap: 6px; }
+  [dir="rtl"] .top-actions-bar { left: auto; right: 8px; }
+  .action-icon-btn { width: 34px; height: 34px; }
+}
+/* === END MOBILE RESPONSIVE ENGINE === */
+</style>
+
+  <style id="contentVisibilityGuaranteed">
+    /* ==========================================================================
+       RESILIENT CONTENT VISIBILITY GUARANTEE
+       Ensures all storytelling sections, cards, grids, and headings are
+       immediately and fully visible across all browsers and devices.
+       ========================================================================== */
+    .abt-scroll-reveal,
+    .cnt-reveal,
+    .exp-reveal,
+    .exp-reveal-left,
+    .exp-reveal-right,
+    .exp-reveal-scale,
+    .gal-reveal,
+    .home2-fade-in,
+    .hp-reveal,
+    .hp-reveal-left,
+    .hp-reveal-right,
+    .hp-reveal-scale,
+    .mp-reveal,
+    .mp-reveal-left,
+    .mp-reveal-right,
+    .mp-reveal-scale,
+    .ofr-reveal,
+    .ofr-reveal-left,
+    .ofr-reveal-right,
+    .ofr-reveal-scale,
+    .rsv-reveal,
+    .rsv-reveal-left,
+    .rsv-reveal-right,
+    .rsv-reveal-scale {
+      opacity: 1 !important;
+      transform: none !important;
+      visibility: visible !important;
+    }
+  </style>
+
+</head>
+<body>
+
+  <!-- Background Grids & Amber Atmosphere -->
+  <div class="login-grid-bg" aria-hidden="true"></div>
+  <div class="login-ambient-glow" aria-hidden="true"></div>
+
+  <!-- Floating Header Actions (RTL & Theme) -->
+  <aside class="top-actions-bar">
+    <!-- RTL Direction Switcher -->
+    <button class="action-icon-btn" id="rtlToggleBtn" aria-label="Toggle Text Direction" title="Toggle RTL / LTR">
+      <svg class="icon rtl-icon" viewBox="0 0 24 24">
+        <path d="m16 3 4 4-4 4"></path>
+        <path d="M20 7H4"></path>
+        <path d="m8 21-4-4 4-4"></path>
+        <path d="M4 17h16"></path>
+      </svg>
+    </button>
+
+    <!-- Theme Switcher (Dark / Light) -->
+    <button class="action-icon-btn" id="themeToggleBtn" aria-label="Toggle Dark / Light Theme" title="Switch Theme">
+      <!-- Sun Icon (Active in Dark mode) -->
+      <svg class="icon theme-icon-sun" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="4"></circle>
+        <path d="M12 2v2"></path>
+        <path d="M12 20v2"></path>
+        <path d="m4.93 4.93 1.41 1.41"></path>
+        <path d="m17.66 17.66 1.41 1.41"></path>
+        <path d="M2 12h2"></path>
+        <path d="M20 12h2"></path>
+        <path d="m6.34 17.66-1.41 1.41"></path>
+        <path d="m19.07 4.93-1.41 1.41"></path>
+      </svg>
+      <!-- Moon Icon (Active in Light mode) -->
+      <svg class="icon theme-icon-moon" viewBox="0 0 24 24">
+        <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+      </svg>
+    </button>
+  </aside>
+
+  <!-- Main Login Centerpiece (Compact Reduced Height) -->
+  <main class="login-main">
+    <div class="login-card" id="loginCard">
+      <!-- Interactive Notification Toast -->
+      <div class="login-toast" id="loginToast">Welcome back to the Imperial Lounge!</div>
+
+      <!-- Authentic Hot Pot Brand Logo Header (Redirects to index.html) -->
+      <a href="index.html" class="brand-logo" id="brandLogo" aria-label="HOT POT RESTAURANT Home">
+        <div class="pot-icon-wrapper">
+          <svg class="hotpot-svg" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="spicyBrothGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#C0392B"/>
+                <stop offset="60%" stop-color="#922B21"/>
+                <stop offset="100%" stop-color="#641E16"/>
+              </linearGradient>
+
+              <linearGradient id="herbalBrothGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#FFF3E0"/>
+                <stop offset="50%" stop-color="#F39C12"/>
+                <stop offset="100%" stop-color="#B7950B"/>
+              </linearGradient>
+
+              <linearGradient id="goldPotGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#FFF8E7"/>
+                <stop offset="35%" stop-color="#F5B041"/>
+                <stop offset="70%" stop-color="#D4AC0D"/>
+                <stop offset="100%" stop-color="#7D6608"/>
+              </linearGradient>
+
+              <linearGradient id="steamGradient" x1="0%" y1="100%" x2="0%" y2="0%">
+                <stop offset="0%" stop-color="#E5A000" stop-opacity="0.9"/>
+                <stop offset="50%" stop-color="#FFF3E0" stop-opacity="0.8"/>
+                <stop offset="100%" stop-color="#FFF3E0" stop-opacity="0"/>
+              </linearGradient>
+
+              <linearGradient id="potBodyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#56150F"/>
+                <stop offset="60%" stop-color="#3A0D08"/>
+                <stop offset="100%" stop-color="#1E0704"/>
+              </linearGradient>
+            </defs>
+
+            <!-- Rising Animated Steam Curves -->
+            <g class="steam-group">
+              <path class="steam-path steam-path-1" d="M24 24C22 18 28 14 26 8" />
+              <path class="steam-path steam-path-2" d="M32 22C34 16 30 12 33 6" />
+              <path class="steam-path steam-path-3" d="M40 24C42 18 36 14 38 8" />
+            </g>
+
+            <!-- Pot Stove Base Glow -->
+            <ellipse cx="32" cy="56" rx="18" ry="4" fill="rgba(211, 84, 0, 0.45)" filter="blur(2px)"/>
+
+            <!-- Outer Pot Base & Handles -->
+            <path d="M12 36C10 36 8 38 8 40C8 42 10 44 12 44" stroke="url(#goldPotGrad)" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M52 36C54 36 56 38 56 40C56 42 54 44 52 44" stroke="url(#goldPotGrad)" stroke-width="2.5" stroke-linecap="round"/>
+
+            <!-- Pot Solid Cauldron Body -->
+            <path d="M14 34C14 46 22 53 32 53C42 53 50 46 50 34H14Z" fill="url(#potBodyGrad)" stroke="url(#goldPotGrad)" stroke-width="1.8"/>
+
+            <!-- Dual Broth Elliptical Surface -->
+            <ellipse cx="32" cy="34" rx="18" ry="8" fill="#1A0A08" stroke="url(#goldPotGrad)" stroke-width="2"/>
+
+            <!-- Yin-Yang Divided Broths (Spicy Red & Golden Herbal) -->
+            <path d="M14 34C14 38.4 22 42 32 42C32 38 28 34 32 30C22 30 14 31.8 14 34Z" fill="url(#spicyBrothGrad)"/>
+            <path d="M50 34C50 38.4 42 42 32 42C32 38 36 34 32 30C42 30 50 31.8 50 34Z" fill="url(#herbalBrothGrad)"/>
+
+            <!-- S-Curve Broth Divider -->
+            <path d="M32 26C30 30 34 34 32 42" stroke="url(#goldPotGrad)" stroke-width="1.5" stroke-linecap="round"/>
+
+            <!-- Simmering Broth Embers & Spices -->
+            <circle class="broth-bubble bubble-1" cx="22" cy="36" r="1.4" fill="#FF5722"/>
+            <circle class="broth-bubble bubble-2" cx="26" cy="38" r="1" fill="#FFA000"/>
+            <circle class="broth-bubble bubble-3" cx="42" cy="36" r="1.3" fill="#FFE082"/>
+            <circle cx="38" cy="34" r="1" fill="#C0392B"/>
+          </svg>
+        </div>
+
+        <!-- Brand Typography -->
+        <div class="brand-text">
+          <span class="brand-name">
+            HOT POT
+            <span class="flame-glow-pip"></span>
+          </span>
+          <span class="brand-sub">RESTAURANT</span>
+        </div>
+      </a>
+
+      <!-- Authentication Form -->
+      <form class="login-form" id="mainLoginForm" autocomplete="on">
+        <!-- Username or Email Field -->
+        <div class="form-group">
+          <label class="form-label" for="loginUser">Username or Email</label>
+          <div class="input-wrapper">
+            <input 
+              type="text" 
+              id="loginUser" 
+              name="username" 
+              class="form-input" 
+              placeholder="e.g. secure@example.com" 
+              required
+              autocomplete="username">
+          </div>
+        </div>
+
+        <!-- Password Field with Show/Hide Eye Toggle -->
+        <div class="form-group">
+          <label class="form-label" for="loginPass">Password</label>
+          <div class="input-wrapper has-toggle">
+            <input 
+              type="password" 
+              id="loginPass" 
+              name="password" 
+              class="form-input" 
+              placeholder="Enter your password" 
+              required
+              autocomplete="current-password">
+            <button type="button" class="password-toggle-btn" id="togglePasswordBtn" aria-label="Toggle password visibility">
+              <!-- Eye Icon (Hide by default) -->
+              <svg id="eyeIcon" viewBox="0 0 24 24">
+                <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+              <!-- Eye Off Icon (Hidden initially) -->
+              <svg id="eyeOffIcon" viewBox="0 0 24 24" style="display: none;">
+                <path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"></path>
+                <path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"></path>
+                <path d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"></path>
+                <line x1="2" y1="2" x2="22" y2="22"></line>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Remember Me & Forgot Password Row -->
+        <div class="form-options-row">
+          <label class="checkbox-label" for="rememberMe">
+            <input type="checkbox" id="rememberMe" checked>
+            <span>Remember me</span>
+          </label>
+          <a href="#forgot" class="forgot-link" id="forgotPasswordLink">Forgot Password?</a>
+        </div>
+
+        <!-- 3D Luxury Login Button -->
+        <button type="submit" class="btn-3d-submit" id="submitLoginBtn">
+          <svg viewBox="0 0 24 24">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+          </svg>
+          <span>Log In</span>
+        </button>
+
+        <!-- Divider -->
+        <div class="divider-row">
+          <span class="divider-line"></span>
+          <span class="divider-text">Or Continue With</span>
+          <span class="divider-line"></span>
+        </div>
+
+        <!-- Social Media Authentication Grid -->
+        <div class="social-btn-row">
+          <!-- Google -->
+          <button type="button" class="social-auth-btn" id="googleLoginBtn" aria-label="Sign in with Google" title="Google">
+            <svg viewBox="0 0 24 24">
+              <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17Z"/>
+              <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.33 24 12 24Z"/>
+              <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.18 0 9.99 0 12s.45 3.82 1.25 5.42l4.03-3.15Z"/>
+              <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98Z"/>
+            </svg>
+          </button>
+
+          <!-- Facebook -->
+          <button type="button" class="social-auth-btn" id="facebookLoginBtn" aria-label="Sign in with Facebook" title="Facebook">
+            <svg viewBox="0 0 24 24" fill="#1877F2">
+              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073Z"/>
+            </svg>
+          </button>
+
+          <!-- Apple -->
+          <button type="button" class="social-auth-btn" id="appleLoginBtn" aria-label="Sign in with Apple" title="Apple">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.87c.66-.82 1.11-1.96.99-3.1-.97.04-2.17.65-2.85 1.45-.6.69-1.12 1.83-1 2.95 1.1.09 2.2-.48 2.86-1.3Z"/>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Create New Account Button -->
+        <button type="button" class="btn-outline-signup" id="createAccountBtn">
+          Create New Account
+        </button>
+      </form>
+    </div>
+  </main>
+
+  <!-- Fixed Bottom Footer Information -->
+  <footer class="login-footer">
+    <p>
+      &copy; 2026 HOT POT Restaurant. All Rights Reserved.
+      <span aria-hidden="true">&bull;</span>
+      <a href="reservation.html">Book Table</a>
+      <span aria-hidden="true">&bull;</span>
+      <a href="contact.html">VIP Concierge</a>
+    </p>
+  </footer>
+
+  <!-- ==========================================================================
+       LOGIN PAGE INTERACTIVITY & THEME CONTROLLER
+       ========================================================================== -->
+  <script>
+    (function() {
+      // 1. Theme Management (Synced with index.html)
+      const themeToggleBtn = document.getElementById('themeToggleBtn');
+
+      function setTheme(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+        try {
+          localStorage.setItem('hotpot_theme', theme);
+        } catch(e) {}
+      }
+
+      function toggleTheme() {
+        const current = document.documentElement.getAttribute('data-theme') || 'dark';
+        setTheme(current === 'dark' ? 'light' : 'dark');
+      }
+
+      // Initialize saved theme
+      try {
+        const savedTheme = localStorage.getItem('hotpot_theme') || 'dark';
+        setTheme(savedTheme);
+      } catch(e) {}
+
+      if (themeToggleBtn) {
+        themeToggleBtn.addEventListener('click', toggleTheme);
+      }
+
+      // 2. RTL Direction Management (Synced with index.html)
+      const rtlToggleBtn = document.getElementById('rtlToggleBtn');
+
+      function setRTL(isRTL) {
+        document.documentElement.setAttribute('dir', isRTL ? 'rtl' : 'ltr');
+        try {
+          localStorage.setItem('hotpot_rtl', isRTL ? 'true' : 'false');
+        } catch(e) {}
+      }
+
+      function toggleRTL() {
+        const current = document.documentElement.getAttribute('dir') === 'rtl';
+        setRTL(!current);
+      }
+
+      // Initialize saved RTL
+      try {
+        const savedRTL = localStorage.getItem('hotpot_rtl') === 'true';
+        setRTL(savedRTL);
+      } catch(e) {}
+
+      if (rtlToggleBtn) {
+        rtlToggleBtn.addEventListener('click', toggleRTL);
+      }
+
+      // 3. Password Visibility Toggle
+      const togglePassBtn = document.getElementById('togglePasswordBtn');
+      const passInput = document.getElementById('loginPass');
+      const eyeIcon = document.getElementById('eyeIcon');
+      const eyeOffIcon = document.getElementById('eyeOffIcon');
+
+      if (togglePassBtn && passInput) {
+        togglePassBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          const isPassword = passInput.type === 'password';
+          passInput.type = isPassword ? 'text' : 'password';
+          if (eyeIcon && eyeOffIcon) {
+            eyeIcon.style.display = isPassword ? 'none' : 'block';
+            eyeOffIcon.style.display = isPassword ? 'block' : 'none';
+          }
+        });
+      }
+
+      // 4. Form Submission & Feedback Toast
+      const form = document.getElementById('mainLoginForm');
+      const toast = document.getElementById('loginToast');
+
+      function showToast(msg) {
+        if (!toast) return;
+        toast.textContent = msg;
+        toast.classList.add('active');
+        setTimeout(() => {
+          toast.classList.remove('active');
+        }, 3200);
+      }
+
+      if (form) {
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const userVal = document.getElementById('loginUser')?.value.trim() || 'Connoisseur';
+          showToast(`Welcome back, ${userVal}! Opening your table portal...`);
+          setTimeout(() => {
+            window.location.href = 'index.html';
+          }, 1400);
+        });
+      }
+
+      // 5. Social Login Buttons Click Simulation
+      const googleBtn = document.getElementById('googleLoginBtn');
+      const fbBtn = document.getElementById('facebookLoginBtn');
+      const appleBtn = document.getElementById('appleLoginBtn');
+
+      [googleBtn, fbBtn, appleBtn].forEach(btn => {
+        if (btn) {
+          btn.addEventListener('click', () => {
+            showToast(`Connecting to ${btn.getAttribute('title')} secure authentication...`);
+          });
+        }
+      });
+
+      // 6. Create Account Button Simulation
+      const createBtn = document.getElementById('createAccountBtn');
+      if (createBtn) {
+        createBtn.addEventListener('click', () => {
+          showToast('VIP Club membership registration is opening...');
+          setTimeout(() => {
+            window.location.href = 'registeration.html';
+          }, 600);
+        });
+      }
+
+      // 7. Forgot Password Link Simulation
+      const forgotLink = document.getElementById('forgotPasswordLink');
+      if (forgotLink) {
+        forgotLink.addEventListener('click', (e) => {
+          e.preventDefault();
+          const userVal = document.getElementById('loginUser')?.value.trim();
+          if (userVal) {
+            showToast(`Passcode reset instructions dispatched to ${userVal}`);
+          } else {
+            showToast('Please enter your email above to receive a passcode reset link.');
+          }
+        });
+      }
+
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,5256 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Authentic Brand Hot Pot Favicon -->
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="alternate icon" type="image/png" href="images/favicon.png">
+
+  <title>HOT POT RESTAURANT – Haute Imperial Broth & Modern Dining</title>
+  
+  <!-- Premium Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       CSS VARIABLES & DESIGN TOKENS
+       ========================================================================== */
+    :root {
+      /* Brand Color Palette */
+      --color-burgundy: #641E16;
+      --color-red: #A93226;
+      --color-orange: #D35400;
+      --color-amber: #E5A000;
+      --color-cream: #FFF3E0;
+      --color-charcoal: #241A17;
+
+      /* Dark Theme (Default) */
+      --bg-body: #120A08;
+      --bg-surface: #1E120F;
+      --bg-nav: rgba(30, 18, 15, 0.72);
+      --bg-nav-scrolled: rgba(22, 13, 11, 0.92);
+      --bg-dropdown: rgba(28, 16, 13, 0.88);
+      --bg-drawer: rgba(24, 14, 12, 0.96);
+      --bg-card: rgba(45, 26, 22, 0.6);
+      --bg-hover: rgba(229, 160, 0, 0.12);
+      --bg-active: rgba(211, 84, 0, 0.22);
+      
+      --text-primary: #FFF3E0;
+      --text-secondary: #D4BBA8;
+      --text-muted: #9E8373;
+      
+      --border-subtle: rgba(229, 160, 0, 0.18);
+      --border-glow: rgba(229, 160, 0, 0.5);
+      --border-highlight: rgba(255, 243, 224, 0.25);
+      
+      --shadow-nav: 0 20px 45px -10px rgba(0, 0, 0, 0.65), 0 0 20px rgba(211, 84, 0, 0.15);
+      --shadow-dropdown: 0 25px 50px -12px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(229, 160, 0, 0.2);
+      --shadow-3d-button: 0 4px 0 #641E16, 0 8px 24px rgba(211, 84, 0, 0.45);
+      --shadow-3d-pressed: 0 1px 0 #641E16, 0 3px 10px rgba(211, 84, 0, 0.3);
+
+      --gradient-brand: linear-gradient(135deg, #A93226 0%, #D35400 50%, #E5A000 100%);
+      --gradient-brand-hover: linear-gradient(135deg, #C0392B 0%, #E67E22 50%, #F39C12 100%);
+      --gradient-gold: linear-gradient(135deg, #FFF3E0 0%, #E5A000 50%, #D35400 100%);
+      --gradient-steam: radial-gradient(circle, rgba(255, 243, 224, 0.8) 0%, rgba(229, 160, 0, 0.3) 50%, transparent 75%);
+
+      /* Framer-style Spring Curves */
+      --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+      --ease-smooth: cubic-bezier(0.25, 0.1, 0.25, 1);
+      
+      --radius-full: 9999px;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --radius-sm: 8px;
+
+      /* Cursor Spotlight Coordinates */
+      --mouse-x: 50%;
+      --mouse-y: 50%;
+    }
+
+    /* Light Theme */
+    [data-theme="light"] {
+      --bg-body: #FAF5F0;
+      --bg-surface: #FFFFFF;
+      --bg-nav: rgba(255, 250, 245, 0.82);
+      --bg-nav-scrolled: rgba(255, 255, 255, 0.95);
+      --bg-dropdown: rgba(255, 252, 248, 0.95);
+      --bg-drawer: rgba(255, 250, 245, 0.98);
+      --bg-card: rgba(255, 255, 255, 0.85);
+      --bg-hover: rgba(211, 84, 0, 0.08);
+      --bg-active: rgba(211, 84, 0, 0.14);
+      
+      --text-primary: #241A17;
+      --text-secondary: #5C463D;
+      --text-muted: #8A7266;
+      
+      --border-subtle: rgba(169, 50, 38, 0.15);
+      --border-glow: rgba(211, 84, 0, 0.4);
+      --border-highlight: rgba(255, 255, 255, 0.9);
+      
+      --shadow-nav: 0 16px 36px -10px rgba(100, 30, 22, 0.18), 0 0 15px rgba(229, 160, 0, 0.12);
+      --shadow-dropdown: 0 20px 45px -12px rgba(100, 30, 22, 0.22), 0 0 0 1px rgba(211, 84, 0, 0.15);
+      --shadow-3d-button: 0 4px 0 #501711, 0 8px 20px rgba(211, 84, 0, 0.35);
+      --shadow-3d-pressed: 0 1px 0 #501711, 0 3px 8px rgba(211, 84, 0, 0.25);
+    }
+
+    /* RTL Direction Overrides */
+    [dir="rtl"] {
+      text-align: right;
+    }
+
+    /* ==========================================================================
+       RESET & BASE STYLES
+       ========================================================================== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-body);
+      color: var(--text-primary);
+      min-height: 100vh;
+      overflow-x: hidden;
+      line-height: 1.6;
+      transition: background-color 0.4s var(--ease-spring), color 0.4s var(--ease-spring);
+    }
+
+    body.scroll-locked {
+      overflow: hidden !important;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: all 0.25s var(--ease-spring);
+    }
+
+    button {
+      font-family: inherit;
+      border: none;
+      background: none;
+      cursor: pointer;
+      color: inherit;
+    }
+
+    /* SVG Icon Helpers */
+    .icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 18px;
+      height: 18px;
+      stroke-width: 2;
+      stroke: currentColor;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: transform 0.3s var(--ease-spring), stroke 0.3s var(--ease-spring);
+      flex-shrink: 0;
+    }
+
+    /* Ambient Background Glow */
+    .ambient-glow {
+      position: fixed;
+      top: -200px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 900px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(211, 84, 0, 0.18) 0%, rgba(169, 50, 38, 0.1) 40%, transparent 70%);
+      filter: blur(80px);
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.8;
+      transition: opacity 0.5s ease;
+    }
+
+    [data-theme="light"] .ambient-glow {
+      opacity: 0.45;
+      background: radial-gradient(circle, rgba(229, 160, 0, 0.22) 0%, rgba(211, 84, 0, 0.12) 40%, transparent 70%);
+    }
+
+    /* ==========================================================================
+       TOP FIXED NAVIGATION WRAPPER (FLOATING 3D DOCK)
+       ========================================================================== */
+    .navbar-dock {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 18px 24px;
+      display: flex;
+      justify-content: center;
+      pointer-events: none; /* Allows clicks through padding edges */
+      transition: padding 0.4s var(--ease-spring);
+    }
+
+    /* Dock Scrolled State */
+    .navbar-dock.scrolled {
+      padding: 10px 16px;
+    }
+
+    /* ==========================================================================
+       FLOATING 3D GLASS CONTAINER
+       ========================================================================== */
+    .navbar-container {
+      pointer-events: auto;
+      width: 100%;
+      max-width: 1440px;
+      height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px 0 28px;
+      background: var(--bg-nav);
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      border-radius: var(--radius-full);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-nav);
+      position: relative;
+      transform-style: preserve-3d;
+      perspective: 1200px;
+      transition: all 0.4s var(--ease-spring);
+
+      /* Entrance Animation (Framer Motion equivalent) */
+      opacity: 0;
+      transform: translateY(-28px) scale(0.96);
+      animation: navbarEntrance 0.85s var(--ease-bounce) 0.1s forwards;
+    }
+
+    @keyframes navbarEntrance {
+      0% {
+        opacity: 0;
+        transform: translateY(-28px) scale(0.96);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    /* Scrolled Navbar Style */
+    .navbar-dock.scrolled .navbar-container {
+      height: 66px;
+      background: var(--bg-nav-scrolled);
+      box-shadow: 0 14px 40px -8px rgba(0, 0, 0, 0.75), 0 0 1px 1px var(--border-glow);
+      border-color: var(--border-glow);
+      padding: 0 16px 0 22px;
+    }
+
+    /* Dynamic Cursor Spotlight Effect */
+    .navbar-container::before {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: inherit;
+      padding: 1px;
+      background: radial-gradient(
+        350px circle at var(--mouse-x) var(--mouse-y),
+        var(--border-glow),
+        transparent 65%
+      );
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+      opacity: 0.85;
+      transition: opacity 0.3s ease;
+    }
+
+    /* Subtle Inner Ambient Glow */
+    .navbar-container::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: radial-gradient(
+        400px circle at var(--mouse-x) var(--mouse-y),
+        rgba(229, 160, 0, 0.06),
+        transparent 60%
+      );
+      pointer-events: none;
+    }
+
+    /* ==========================================================================
+       SECTION 1: LEFT SECTION – LOGO (3D HOT POT IDENTITY)
+       ========================================================================== */
+    .navbar-left {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+      z-index: 10;
+    }
+
+    .brand-logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      cursor: pointer;
+      position: relative;
+      padding: 6px 8px;
+      border-radius: var(--radius-md);
+      transition: transform 0.4s var(--ease-bounce);
+      user-select: none;
+    }
+
+    .brand-logo:hover {
+      transform: translateY(-2px) scale(1.02);
+    }
+
+    /* Hot Pot Icon Visual Container */
+    .pot-icon-wrapper {
+      position: relative;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      filter: drop-shadow(0 4px 12px rgba(211, 84, 0, 0.45));
+      transition: transform 0.5s var(--ease-bounce), filter 0.4s ease;
+    }
+
+    .brand-logo:hover .pot-icon-wrapper {
+      transform: rotate(-4deg) scale(1.08);
+      filter: drop-shadow(0 6px 18px rgba(229, 160, 0, 0.7));
+    }
+
+    /* Hot Pot SVG Elements */
+    .hotpot-svg {
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+    }
+
+    /* Rising Steam Curves */
+    .steam-path {
+      fill: none;
+      stroke: url(#steamGradient);
+      stroke-width: 2.2;
+      stroke-linecap: round;
+      stroke-dasharray: 40;
+      stroke-dashoffset: 40;
+      opacity: 0.85;
+      animation: riseSteam 3.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    }
+
+    .steam-path-1 {
+      animation-delay: 0s;
+    }
+
+    .steam-path-2 {
+      animation-delay: 1.1s;
+    }
+
+    .steam-path-3 {
+      animation-delay: 2.2s;
+    }
+
+    @keyframes riseSteam {
+      0% {
+        stroke-dashoffset: 40;
+        opacity: 0;
+        transform: translateY(4px) scaleX(0.9);
+      }
+      30% {
+        opacity: 0.95;
+      }
+      70% {
+        opacity: 0.6;
+      }
+      100% {
+        stroke-dashoffset: -40;
+        opacity: 0;
+        transform: translateY(-14px) scaleX(1.15);
+      }
+    }
+
+    /* Bubbling Broth Embers */
+    .broth-bubble {
+      animation: simmerBubble 2s ease-in-out infinite alternate;
+    }
+    .bubble-1 { animation-delay: 0.2s; }
+    .bubble-2 { animation-delay: 0.8s; }
+    .bubble-3 { animation-delay: 1.4s; }
+
+    @keyframes simmerBubble {
+      0% { transform: translateY(0) scale(0.9); opacity: 0.6; }
+      100% { transform: translateY(-2px) scale(1.15); opacity: 1; }
+    }
+
+    /* Brand Typography */
+    .brand-text-block, .brand-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .brand-title, .brand-name {
+      font-family: 'Cinzel', serif;
+      font-size: 1.22rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      background: var(--gradient-gold);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .brand-flame-dot, .flame-glow-pip {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--color-orange);
+      box-shadow: 0 0 10px var(--color-amber);
+      animation: pulseGlow 1.8s ease-in-out infinite;
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { transform: scale(1); opacity: 0.8; }
+      50% { transform: scale(1.4); opacity: 1; box-shadow: 0 0 14px var(--color-amber); }
+    }
+
+    .brand-subtitle, .brand-sub {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.28em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-top: 3px;
+      transition: color 0.3s ease;
+    }
+
+    .brand-logo:hover .brand-subtitle, .brand-sub {
+      color: var(--color-amber);
+    }
+
+    /* ==========================================================================
+       SECTION 2: CENTER SECTION – NAVIGATION MENU (WITH MOVING SPRING PILL)
+       ========================================================================== */
+    .navbar-center {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .nav-menu-list {
+      display: flex;
+      align-items: center;
+      list-style: none;
+      gap: 4px;
+      position: relative;
+      padding: 4px;
+      background: rgba(0, 0, 0, 0.15);
+      border-radius: var(--radius-full);
+      border: 1px solid rgba(229, 160, 0, 0.08);
+    }
+
+    [data-theme="light"] .nav-menu-list {
+      background: rgba(0, 0, 0, 0.03);
+    }
+
+    /* Moving Spring Pill Indicator (Framer-Motion layoutId style) */
+    .nav-magnetic-indicator {
+      position: absolute;
+      top: 4px;
+      left: 0;
+      height: calc(100% - 8px);
+      background: var(--bg-active);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-full);
+      pointer-events: none;
+      transition: transform 0.35s var(--ease-bounce), width 0.35s var(--ease-bounce), opacity 0.25s ease;
+      opacity: 0;
+      box-shadow: 0 2px 10px rgba(211, 84, 0, 0.25), inset 0 1px 1px rgba(255, 243, 224, 0.2);
+      z-index: 1;
+    }
+
+    .nav-item {
+      position: relative;
+      z-index: 2;
+    }
+
+    .nav-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 15px;
+      font-size: 0.91rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      border-radius: var(--radius-full);
+      white-space: nowrap;
+      position: relative;
+      cursor: pointer;
+      transition: color 0.25s ease, transform 0.25s var(--ease-spring);
+      perspective: 400px;
+    }
+
+    .nav-link:hover {
+      color: var(--text-primary);
+      transform: translateY(-1px);
+    }
+
+    .nav-item.active .nav-link {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    /* Subtle Underline Glow for Active State */
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 4px;
+      left: 50%;
+      transform: translateX(-50%) scaleX(0);
+      width: 14px;
+      height: 2px;
+      background: var(--color-amber);
+      border-radius: 2px;
+      box-shadow: 0 0 8px var(--color-amber);
+      transition: transform 0.3s var(--ease-bounce);
+    }
+
+    .nav-item.active .nav-link::after {
+      transform: translateX(-50%) scaleX(1);
+    }
+
+    .dropdown-arrow {
+      transition: transform 0.3s var(--ease-spring);
+    }
+
+    .nav-item:hover .dropdown-arrow,
+    .nav-item.dropdown-open .dropdown-arrow {
+      transform: rotate(180deg);
+    }
+
+    /* Bridge so hover doesn't flicker across the gap */
+    .nav-item.has-dropdown::after,
+    .dashboard-nav-item::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      height: 18px;
+      pointer-events: auto;
+    }
+
+    /* Glassmorphism Dropdown */
+    .dropdown-menu {
+      position: absolute;
+      top: calc(100% + 14px);
+      left: 50%;
+      transform: translateX(-50%) translateY(10px) scale(0.94) rotateX(-8deg);
+      opacity: 0;
+      pointer-events: none;
+      min-width: 260px;
+      background: var(--bg-dropdown);
+      backdrop-filter: blur(28px) saturate(180%);
+      -webkit-backdrop-filter: blur(28px) saturate(180%);
+      border: 1px solid var(--border-glow);
+      border-radius: var(--radius-lg);
+      padding: 10px;
+      box-shadow: var(--shadow-dropdown);
+      transition: transform 0.3s var(--ease-bounce), opacity 0.25s var(--ease-spring);
+      transform-origin: top center;
+      z-index: 100;
+    }
+
+    [dir="rtl"] .dropdown-menu {
+      left: auto;
+      right: 50%;
+      transform: translateX(50%) translateY(10px) scale(0.94) rotateX(-8deg);
+    }
+
+    /* Arrow Bevel at top of Dropdown */
+    .dropdown-menu::before {
+      content: '';
+      position: absolute;
+      top: -6px;
+      left: 50%;
+      transform: translateX(-50%) rotate(45deg);
+      width: 12px;
+      height: 12px;
+      background: var(--bg-dropdown);
+      border-top: 1px solid var(--border-glow);
+      border-left: 1px solid var(--border-glow);
+      border-radius: 2px;
+    }
+
+    /* Dropdown Open Triggered by Hover or Click */
+    .nav-item:hover .dropdown-menu,
+    .nav-item.dropdown-open .dropdown-menu {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateX(-50%) translateY(0) scale(1) rotateX(0deg);
+    }
+
+    [dir="rtl"] .nav-item:hover .dropdown-menu,
+    [dir="rtl"] .nav-item.dropdown-open .dropdown-menu {
+      transform: translateX(50%) translateY(0) scale(1) rotateX(0deg);
+    }
+
+    .dropdown-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 16px;
+      border-radius: var(--radius-md);
+      color: var(--text-secondary);
+      font-size: 0.92rem;
+      font-weight: 500;
+      transition: all 0.2s var(--ease-spring);
+      position: relative;
+      overflow: hidden;
+      white-space: nowrap !important;
+      text-decoration: none;
+    }
+
+    .dropdown-item:hover {
+      background: var(--bg-hover);
+      color: var(--text-primary);
+      transform: translateX(4px);
+    }
+
+    [dir="rtl"] .dropdown-item:hover {
+      transform: translateX(-4px);
+    }
+
+    .dropdown-icon-box {
+      width: 34px;
+      height: 34px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(229, 160, 0, 0.12);
+      color: var(--color-amber);
+      border: 1px solid rgba(229, 160, 0, 0.2);
+      flex-shrink: 0;
+      transition: all 0.25s var(--ease-spring);
+    }
+
+    .dropdown-item:hover .dropdown-icon-box {
+      background: var(--gradient-brand);
+      color: #FFF3E0;
+      transform: scale(1.08);
+      box-shadow: 0 4px 12px rgba(211, 84, 0, 0.4);
+    }
+
+    .dropdown-meta {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      white-space: nowrap !important;
+      flex-shrink: 0;
+    }
+
+    .dropdown-title {
+      font-weight: 600;
+      color: var(--text-primary);
+      white-space: nowrap !important;
+      line-height: 1.2;
+      display: block;
+    }
+
+    .dropdown-desc {
+      font-size: 0.74rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+      white-space: nowrap;
+    }
+
+    /* ==========================================================================
+       SECTION 3: RIGHT SECTION – ACTION CONTROLS (DASHBOARD, TOGGLES, 3D BUTTON)
+       ========================================================================== */
+    .navbar-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+      z-index: 10;
+    }
+
+    /* Utility Action Pill Buttons (Dark Mode, RTL) */
+    .action-icon-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.2);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      cursor: pointer;
+      position: relative;
+      transition: all 0.3s var(--ease-spring);
+      perspective: 300px;
+    }
+
+    [data-theme="light"] .action-icon-btn {
+      background: rgba(0, 0, 0, 0.04);
+    }
+
+    .action-icon-btn:hover {
+      color: var(--text-primary);
+      border-color: var(--border-glow);
+      background: var(--bg-hover);
+      transform: translateY(-2px) scale(1.05);
+      box-shadow: 0 4px 14px rgba(229, 160, 0, 0.2);
+    }
+
+    .action-icon-btn:active {
+      transform: translateY(1px) scale(0.96);
+    }
+
+    /* Tooltip Helper */
+    .action-icon-btn[data-tooltip]::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      bottom: -32px;
+      left: 50%;
+      transform: translateX(-50%) translateY(4px);
+      background: var(--bg-dropdown);
+      color: var(--text-primary);
+      font-size: 0.72rem;
+      font-weight: 500;
+      padding: 4px 9px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-glow);
+      white-space: nowrap;
+      pointer-events: none;
+      opacity: 0;
+      transition: all 0.2s var(--ease-spring);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    }
+
+    .action-icon-btn:hover[data-tooltip]::after {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* Theme Toggle Icons */
+    .theme-icon-moon {
+      display: none;
+    }
+    .theme-icon-sun {
+      display: inline-flex;
+    }
+    [data-theme="light"] .theme-icon-sun {
+      display: none;
+    }
+    [data-theme="light"] .theme-icon-moon {
+      display: inline-flex;
+    }
+
+    /* RTL Action Icon */
+    .rtl-icon {
+      width: 18px;
+      height: 18px;
+      stroke: var(--text-primary);
+      transition: transform 0.3s var(--ease-spring);
+    }
+    [dir="rtl"] .rtl-icon {
+      transform: scaleX(-1);
+    }
+
+    /* Dashboard Dropdown in Desktop Nav Links */
+    #dashboardNavDropdown {
+      position: relative;
+    }
+
+    #dashboardNavDropdown .dropdown-menu {
+      left: 50%;
+      right: auto;
+      min-width: 220px;
+      width: max-content;
+      max-width: none;
+      transform: translateX(-50%) translateY(10px) scale(0.94) rotateX(-8deg);
+      transform-origin: top center;
+    }
+
+    [dir="rtl"] #dashboardNavDropdown .dropdown-menu {
+      left: auto;
+      right: 50%;
+      transform: translateX(50%) translateY(10px) scale(0.94) rotateX(-8deg);
+      transform-origin: top center;
+    }
+
+    #dashboardNavDropdown:hover .dropdown-menu,
+    #dashboardNavDropdown.dropdown-open .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateX(-50%) translateY(0) scale(1) rotateX(0deg);
+    }
+
+    [dir="rtl"] #dashboardNavDropdown:hover .dropdown-menu,
+    [dir="rtl"] #dashboardNavDropdown.dropdown-open .dropdown-menu {
+      transform: translateX(50%) translateY(0) scale(1) rotateX(0deg);
+    }
+
+    #dashboardNavDropdown .dropdown-menu::before {
+      left: 50%;
+      right: auto;
+      transform: translateX(-50%) rotate(45deg);
+      background: var(--bg-dropdown);
+    }
+
+    [dir="rtl"] #dashboardNavDropdown .dropdown-menu::before {
+      right: auto;
+      left: 50%;
+      transform: translateX(50%) rotate(45deg);
+      background: var(--bg-dropdown);
+    }
+
+    .has-dropdown[data-nav="home"] .dropdown-menu {
+      min-width: 160px;
+    }
+
+    /* ==========================================================================
+       EXTRAORDINARY 3D LOGIN BUTTON
+       ========================================================================== */
+    .btn-3d-login {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 10px 22px;
+      font-family: inherit;
+      font-size: 0.92rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: #FFF3E0;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+      background: var(--gradient-brand);
+      border-radius: var(--radius-full);
+      box-shadow: var(--shadow-3d-button);
+      cursor: pointer;
+      user-select: none;
+      transform: translateY(0);
+      transition: transform 0.18s var(--ease-bounce), box-shadow 0.18s var(--ease-bounce), filter 0.2s ease;
+      overflow: hidden;
+    }
+
+    /* Beveled Top Highlight Line */
+    .btn-3d-login::before {
+      content: '';
+      position: absolute;
+      top: 1px;
+      left: 12%;
+      right: 12%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.7), transparent);
+      border-radius: 50%;
+    }
+
+    /* Shimmer Sweep Animation */
+    .btn-3d-login::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -60%;
+      width: 40%;
+      height: 200%;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+      );
+      transform: rotate(25deg);
+      transition: left 0.75s ease;
+    }
+
+    .btn-3d-login:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 0 #641E16, 0 12px 28px rgba(211, 84, 0, 0.55), 0 0 15px rgba(229, 160, 0, 0.4);
+      filter: brightness(1.05);
+    }
+
+    .btn-3d-login:hover::after {
+      left: 140%;
+    }
+
+    .btn-3d-login:active {
+      transform: translateY(3px);
+      box-shadow: var(--shadow-3d-pressed);
+      filter: brightness(0.96);
+    }
+
+    .btn-arrow-icon {
+      transition: transform 0.25s var(--ease-spring);
+    }
+
+    .btn-3d-login:hover .btn-arrow-icon {
+      transform: translateX(4px);
+    }
+
+    [dir="rtl"] .btn-3d-login:hover .btn-arrow-icon {
+      transform: translateX(-4px) rotate(180deg);
+    }
+
+    /* ==========================================================================
+       HAMBURGER TOGGLE BUTTON (MOBILE / TABLET)
+       ========================================================================== */
+    .hamburger-btn {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid var(--border-subtle);
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      position: relative;
+      z-index: 1001;
+      transition: all 0.3s var(--ease-spring);
+    }
+
+    [data-theme="light"] .hamburger-btn {
+      background: rgba(0, 0, 0, 0.05);
+    }
+
+    .hamburger-btn:hover {
+      border-color: var(--border-glow);
+      background: var(--bg-hover);
+      transform: scale(1.05);
+    }
+
+    .hamburger-line {
+      width: 20px;
+      height: 2px;
+      background: var(--text-primary);
+      border-radius: 2px;
+      transition: transform 0.35s var(--ease-bounce), opacity 0.25s ease, width 0.3s ease;
+      transform-origin: center;
+    }
+
+    /* Hamburger to 'X' Transition */
+    .hamburger-btn.active .hamburger-line:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+      background: var(--color-amber);
+    }
+
+    .hamburger-btn.active .hamburger-line:nth-child(2) {
+      opacity: 0;
+      transform: scaleX(0);
+    }
+
+    .hamburger-btn.active .hamburger-line:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+      background: var(--color-amber);
+    }
+
+    /* ==========================================================================
+       MOBILE FULL-HEIGHT NAVIGATION DRAWER
+       ========================================================================== */
+    .mobile-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(14, 8, 6, 0.72);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s var(--ease-spring);
+      z-index: 1050;
+    }
+
+    .mobile-backdrop.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .mobile-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 380px;
+      max-width: 88vw;
+      height: 100vh;
+      background: var(--bg-drawer);
+      backdrop-filter: blur(28px) saturate(180%);
+      -webkit-backdrop-filter: blur(28px) saturate(180%);
+      border-left: 1px solid var(--border-glow);
+      box-shadow: -15px 0 50px rgba(0, 0, 0, 0.85);
+      z-index: 1100;
+      display: flex;
+      flex-direction: column;
+      transform: translateX(105%);
+      transition: transform 0.45s var(--ease-spring);
+      overflow: hidden;
+    }
+
+    [dir="rtl"] .mobile-drawer {
+      right: auto;
+      left: 0;
+      border-left: none;
+      border-right: 1px solid var(--border-glow);
+      box-shadow: 15px 0 50px rgba(0, 0, 0, 0.85);
+      transform: translateX(-105%);
+    }
+
+    .mobile-drawer.open {
+      transform: translateX(0);
+    }
+
+    /* Drawer Header */
+    .drawer-header {
+      padding: 24px 22px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .drawer-close-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(229, 160, 0, 0.1);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s var(--ease-spring);
+    }
+
+    .drawer-close-btn:hover {
+      background: var(--gradient-brand);
+      color: #FFF3E0;
+      transform: rotate(90deg) scale(1.08);
+    }
+
+    /* Drawer Nav Scroll Area */
+    .drawer-nav-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .drawer-nav-body::-webkit-scrollbar {
+      width: 4px;
+    }
+    .drawer-nav-body::-webkit-scrollbar-thumb {
+      background: var(--border-subtle);
+      border-radius: 4px;
+    }
+
+    /* Staggered Item Animation on Drawer Open */
+    .drawer-item {
+      opacity: 0;
+      transform: translateX(25px);
+      transition: opacity 0.35s var(--ease-spring), transform 0.35s var(--ease-spring);
+    }
+
+    [dir="rtl"] .drawer-item {
+      transform: translateX(-25px);
+    }
+
+    .mobile-drawer.open .drawer-item {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* Stagger Delays (1 to 12 items) */
+    .mobile-drawer.open .drawer-item:nth-child(1) { transition-delay: 0.06s; }
+    .mobile-drawer.open .drawer-item:nth-child(2) { transition-delay: 0.10s; }
+    .mobile-drawer.open .drawer-item:nth-child(3) { transition-delay: 0.14s; }
+    .mobile-drawer.open .drawer-item:nth-child(4) { transition-delay: 0.18s; }
+    .mobile-drawer.open .drawer-item:nth-child(5) { transition-delay: 0.22s; }
+    .mobile-drawer.open .drawer-item:nth-child(6) { transition-delay: 0.26s; }
+    .mobile-drawer.open .drawer-item:nth-child(7) { transition-delay: 0.30s; }
+    .mobile-drawer.open .drawer-item:nth-child(8) { transition-delay: 0.34s; }
+    .mobile-drawer.open .drawer-item:nth-child(9) { transition-delay: 0.38s; }
+    .mobile-drawer.open .drawer-item:nth-child(10) { transition-delay: 0.42s; }
+    .mobile-drawer.open .drawer-item:nth-child(11) { transition-delay: 0.46s; }
+    .mobile-drawer.open .drawer-item:nth-child(12) { transition-delay: 0.50s; }
+
+    .drawer-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 13px 16px;
+      border-radius: var(--radius-md);
+      font-size: 1.02rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      background: transparent;
+      width: 100%;
+      text-align: left;
+      transition: all 0.25s var(--ease-spring);
+    }
+
+    [dir="rtl"] .drawer-link {
+      text-align: right;
+    }
+
+    .drawer-link:hover,
+    .drawer-item.active .drawer-link {
+      background: var(--bg-hover);
+      color: var(--text-primary);
+      transform: translateX(4px);
+    }
+
+    [dir="rtl"] .drawer-link:hover,
+    [dir="rtl"] .drawer-item.active .drawer-link {
+      transform: translateX(-4px);
+    }
+
+    .drawer-link-content {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .drawer-icon {
+      color: var(--color-amber);
+    }
+
+    /* Accordion Dropdowns in Drawer */
+    .drawer-accordion {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s var(--ease-spring);
+      padding: 0 0 0 32px;
+    }
+
+    [dir="rtl"] .drawer-accordion {
+      padding: 0 32px 0 0;
+    }
+
+    .drawer-item.accordion-open .drawer-accordion {
+      max-height: 220px;
+    }
+
+    .drawer-item.accordion-open .drawer-arrow {
+      transform: rotate(180deg);
+    }
+
+    .accordion-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      border-radius: var(--radius-sm);
+      transition: all 0.2s ease;
+    }
+
+    .accordion-link:hover {
+      color: var(--text-primary);
+      background: var(--bg-hover);
+    }
+
+    /* Drawer Footer Action Controls */
+    .drawer-footer {
+      padding: 18px 20px 24px;
+      border-top: 1px solid var(--border-subtle);
+      background: rgba(0, 0, 0, 0.2);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .drawer-toggles-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .drawer-toggle-btn {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px;
+      border-radius: var(--radius-md);
+      background: rgba(229, 160, 0, 0.08);
+      border: 1px solid var(--border-subtle);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      transition: all 0.25s var(--ease-spring);
+    }
+
+    .drawer-toggle-btn:hover {
+      background: var(--bg-hover);
+      color: var(--text-primary);
+      border-color: var(--border-glow);
+    }
+
+    .drawer-3d-login-btn {
+      width: 100%;
+      padding: 14px;
+      font-size: 1rem;
+    }
+
+    /* ==========================================================================
+       MODAL WINDOWS (LOGIN & DASHBOARD PREVIEW DIALOGS)
+       ========================================================================== */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(8, 4, 3, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 2000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s var(--ease-spring);
+    }
+
+    .modal-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-card {
+      width: 100%;
+      max-width: 440px;
+      background: var(--bg-dropdown);
+      border: 1px solid var(--border-glow);
+      border-radius: var(--radius-lg);
+      padding: 32px 28px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), 0 0 30px rgba(211, 84, 0, 0.2);
+      transform: translateY(20px) scale(0.95);
+      transition: transform 0.35s var(--ease-bounce);
+      position: relative;
+    }
+
+    .modal-overlay.open .modal-card {
+      transform: translateY(0) scale(1);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(229, 160, 0, 0.1);
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    [dir="rtl"] .modal-close {
+      right: auto;
+      left: 16px;
+    }
+
+    .modal-close:hover {
+      background: var(--color-red);
+      color: #fff;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-label {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 12px 14px;
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      color: var(--text-primary);
+      font-family: inherit;
+      font-size: 0.92rem;
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
+
+    .form-input:focus {
+      border-color: var(--color-amber);
+      box-shadow: 0 0 0 2px rgba(229, 160, 0, 0.2);
+    }
+
+    /* ==========================================================================
+       HOMEPAGE SPECIFIC LUXURY STYLES (7 UNIQUE SECTIONS)
+       ========================================================================== */
+    .hp-main {
+      position: relative;
+      width: 100%;
+      overflow-x: hidden;
+      z-index: 2;
+    }
+
+    /* Shared Section Foundations */
+    .hp-section {
+      position: relative;
+      width: 100%;
+      padding: 120px 24px;
+      overflow: hidden;
+      scroll-margin-top: 100px;
+    }
+
+    .hp-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Section Headers */
+    .hp-header {
+      text-align: center;
+      max-width: 820px;
+      margin: 0 auto 64px;
+    }
+
+    .hp-header.hp-header-left {
+      text-align: left;
+      margin: 0 0 48px;
+    }
+
+    [dir="rtl"] .hp-header.hp-header-left {
+      text-align: right;
+    }
+
+    /* Premium Pill Eyebrow */
+    .hp-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      border-radius: var(--radius-full);
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      background: rgba(229, 160, 0, 0.12);
+      border: 1px solid var(--border-glow);
+      color: var(--color-amber);
+      margin-bottom: 20px;
+      backdrop-filter: blur(12px);
+    }
+
+    .hp-pill-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--color-orange);
+      box-shadow: 0 0 8px var(--color-amber);
+      animation: hpPulse 2s infinite ease-in-out;
+    }
+
+    @keyframes hpPulse {
+      0%, 100% { opacity: 0.4; transform: scale(0.9); }
+      50% { opacity: 1; transform: scale(1.3); }
+    }
+
+    .hp-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2.2rem, 4vw, 3.4rem);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--text-primary);
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
+    }
+
+    .hp-gradient-text {
+      background: var(--gradient-brand);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hp-subtitle {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--text-secondary);
+      font-weight: 400;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .hp-header-left .hp-subtitle {
+      margin: 0;
+    }
+
+    /* Ambient Section Flares */
+    .hp-flare {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(90px);
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.35;
+    }
+
+    /* --------------------------------------------------------------------------
+       SECTION 1: HERO
+       -------------------------------------------------------------------------- */
+    .hp-hero-section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 140px;
+      padding-bottom: 80px;
+      background: radial-gradient(circle at 50% 20%, rgba(100, 30, 22, 0.45) 0%, var(--bg-body) 70%);
+    }
+
+    [data-theme="light"] .hp-hero-section {
+      background: radial-gradient(circle at 50% 20%, rgba(229, 160, 0, 0.15) 0%, var(--bg-body) 75%);
+    }
+
+    .hp-hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: center;
+      gap: 60px;
+    }
+
+    .hp-hero-content {
+      text-align: left;
+    }
+
+    [dir="rtl"] .hp-hero-content {
+      text-align: right;
+    }
+
+    .hp-hero-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2.6rem, 5vw, 4.2rem);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      margin-bottom: 24px;
+    }
+
+    .hp-hero-desc {
+      font-size: 1.12rem;
+      line-height: 1.75;
+      color: var(--text-secondary);
+      margin-bottom: 36px;
+      max-width: 580px;
+    }
+
+    .hp-hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+
+    .hp-cta-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 32px;
+      border-radius: var(--radius-full);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #FFF3E0;
+      background: var(--gradient-brand);
+      box-shadow: var(--shadow-3d-button);
+      transition: all 0.25s var(--ease-spring);
+      cursor: pointer;
+      text-decoration: none;
+      border: none;
+    }
+
+    .hp-cta-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 0 #501711, 0 14px 28px rgba(211, 84, 0, 0.55);
+      background: var(--gradient-brand-hover);
+    }
+
+    .hp-cta-primary:active {
+      transform: translateY(2px);
+      box-shadow: var(--shadow-3d-pressed);
+    }
+
+    .hp-cta-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 28px;
+      border-radius: var(--radius-full);
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      background: rgba(0, 0, 0, 0.2);
+      border: 1px solid var(--border-subtle);
+      transition: all 0.25s var(--ease-spring);
+      cursor: pointer;
+      text-decoration: none;
+      backdrop-filter: blur(10px);
+    }
+
+    [data-theme="light"] .hp-cta-secondary {
+      background: rgba(255, 255, 255, 0.6);
+      border-color: rgba(169, 50, 38, 0.25);
+    }
+
+    .hp-cta-secondary:hover {
+      border-color: var(--border-glow);
+      background: var(--bg-hover);
+      transform: translateY(-2px);
+      color: var(--text-primary);
+    }
+
+    /* Metrics Bar */
+    .hp-metrics-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .hp-metric-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hp-metric-val {
+      font-family: 'Cinzel', serif;
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: var(--color-amber);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .hp-metric-label {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 500;
+    }
+
+    /* Hero Visual Card */
+    .hp-hero-visual {
+      position: relative;
+      perspective: 1200px;
+    }
+
+    .hp-hero-frame {
+      position: relative;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.8), 0 0 0 1px var(--border-glow);
+      transition: transform 0.4s var(--ease-spring);
+      aspect-ratio: 4 / 3.4;
+      background: var(--bg-card);
+    }
+
+    .hp-hero-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s var(--ease-smooth);
+    }
+
+    .hp-hero-visual:hover .hp-hero-frame img {
+      transform: scale(1.04);
+    }
+
+    /* Floating Badges */
+    .hp-floating-badge {
+      position: absolute;
+      background: var(--bg-dropdown);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--border-glow);
+      border-radius: var(--radius-md);
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: var(--shadow-dropdown);
+      z-index: 3;
+      transition: transform 0.3s var(--ease-spring);
+    }
+
+    .hp-badge-top-right {
+      top: -20px;
+      right: -20px;
+    }
+
+    [dir="rtl"] .hp-badge-top-right {
+      right: auto;
+      left: -20px;
+    }
+
+    .hp-badge-bot-left {
+      bottom: -24px;
+      left: -20px;
+    }
+
+    [dir="rtl"] .hp-badge-bot-left {
+      left: auto;
+      right: -20px;
+    }
+
+    .hp-badge-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--gradient-brand);
+      color: #FFF3E0;
+      flex-shrink: 0;
+    }
+
+    .hp-badge-title {
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.2;
+    }
+
+    .hp-badge-subtitle {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* --------------------------------------------------------------------------
+       SECTION 2: BROTH COLLECTION
+       -------------------------------------------------------------------------- */
+    .hp-broths-section {
+      background: linear-gradient(180deg, var(--bg-body) 0%, rgba(20, 11, 9, 0.7) 50%, var(--bg-body) 100%);
+    }
+
+    [data-theme="light"] .hp-broths-section {
+      background: linear-gradient(180deg, var(--bg-body) 0%, rgba(255, 245, 235, 0.7) 50%, var(--bg-body) 100%);
+    }
+
+    .hp-broth-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+
+    .hp-broth-card {
+      position: relative;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: all 0.35s var(--ease-spring);
+      display: flex;
+      flex-direction: column;
+      backdrop-filter: blur(16px);
+    }
+
+    .hp-broth-card:hover {
+      border-color: var(--border-glow);
+      transform: translateY(-8px);
+      box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.7), 0 0 20px rgba(229, 160, 0, 0.15);
+    }
+
+    .hp-broth-img-box {
+      position: relative;
+      width: 100%;
+      height: 250px;
+      overflow: hidden;
+    }
+
+    .hp-broth-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s var(--ease-smooth);
+    }
+
+    .hp-broth-card:hover .hp-broth-img-box img {
+      transform: scale(1.08);
+    }
+
+    .hp-broth-heat-badge {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: rgba(18, 10, 8, 0.85);
+      backdrop-filter: blur(8px);
+      padding: 6px 12px;
+      border-radius: var(--radius-full);
+      font-size: 0.74rem;
+      font-weight: 700;
+      color: #FFF3E0;
+      border: 1px solid var(--border-glow);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    [dir="rtl"] .hp-broth-heat-badge {
+      right: auto;
+      left: 14px;
+    }
+
+    .hp-broth-body {
+      padding: 28px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hp-broth-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+
+    .hp-tag {
+      font-size: 0.68rem;
+      font-weight: 600;
+      padding: 3px 9px;
+      border-radius: var(--radius-full);
+      background: rgba(229, 160, 0, 0.1);
+      color: var(--color-amber);
+      border: 1px solid rgba(229, 160, 0, 0.2);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .hp-broth-name {
+      font-family: 'Cinzel', serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 12px;
+      line-height: 1.25;
+    }
+
+    .hp-broth-desc {
+      font-size: 0.92rem;
+      line-height: 1.65;
+      color: var(--text-secondary);
+      margin-bottom: 20px;
+      flex: 1;
+    }
+
+    .hp-broth-notes {
+      padding-top: 16px;
+      border-top: 1px solid var(--border-subtle);
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hp-broth-notes strong {
+      color: var(--color-amber);
+    }
+
+    /* Twin Pot Feature Strip */
+    .hp-twin-pot-strip {
+      margin-top: 50px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 28px 36px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      backdrop-filter: blur(16px);
+    }
+
+    /* --------------------------------------------------------------------------
+       SECTION 3: FEATURED COMBINATIONS
+       -------------------------------------------------------------------------- */
+    .hp-combos-section {
+      background: var(--bg-body);
+    }
+
+    .hp-combo-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+      margin-bottom: 50px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 28px;
+      padding: 32px;
+      backdrop-filter: blur(16px);
+      transition: all 0.35s var(--ease-spring);
+    }
+
+    .hp-combo-row:hover {
+      border-color: var(--border-glow);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px -10px rgba(0,0,0,0.6);
+    }
+
+    .hp-combo-row:nth-child(even) {
+      direction: rtl;
+    }
+
+    .hp-combo-row:nth-child(even) > * {
+      direction: ltr;
+    }
+
+    [dir="rtl"] .hp-combo-row:nth-child(even) > * {
+      direction: rtl;
+    }
+
+    .hp-combo-img-wrap {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      aspect-ratio: 16 / 10;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    }
+
+    .hp-combo-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .hp-combo-row:hover .hp-combo-img-wrap img {
+      transform: scale(1.06);
+    }
+
+    .hp-combo-details {
+      padding: 12px 20px;
+    }
+
+    .hp-combo-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 14px;
+    }
+
+    .hp-combo-desc {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: var(--text-secondary);
+      margin-bottom: 22px;
+    }
+
+    .hp-combo-specs {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-bottom: 24px;
+      padding: 16px;
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-subtle);
+    }
+
+    [data-theme="light"] .hp-combo-specs {
+      background: rgba(255, 255, 255, 0.5);
+    }
+
+    .hp-spec-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .hp-spec-val {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--color-amber);
+    }
+
+    /* --------------------------------------------------------------------------
+       SECTION 4: FRESH INGREDIENTS & VEGETARIAN
+       -------------------------------------------------------------------------- */
+    .hp-ingredients-section {
+      background: radial-gradient(circle at 80% 50%, rgba(100, 30, 22, 0.3) 0%, var(--bg-body) 60%);
+    }
+
+    .hp-ing-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+    .hp-ing-card {
+      position: relative;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 28px;
+      overflow: hidden;
+      padding: 32px;
+      backdrop-filter: blur(16px);
+      transition: all 0.35s var(--ease-spring);
+    }
+
+    .hp-ing-card:hover {
+      border-color: var(--border-glow);
+      transform: translateY(-6px);
+      box-shadow: 0 25px 50px -10px rgba(0, 0, 0, 0.6);
+    }
+
+    .hp-ing-img-wrap {
+      width: 100%;
+      height: 280px;
+      border-radius: 18px;
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+
+    .hp-ing-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .hp-ing-card:hover .hp-ing-img-wrap img {
+      transform: scale(1.05);
+    }
+
+    .hp-ing-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 12px;
+    }
+
+    .hp-ing-desc {
+      font-size: 0.94rem;
+      line-height: 1.65;
+      color: var(--text-secondary);
+      margin-bottom: 20px;
+    }
+
+    .hp-checklist {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 10px;
+    }
+
+    .hp-checklist li {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .hp-checklist-icon {
+      color: var(--color-amber);
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+
+    /* --------------------------------------------------------------------------
+       SECTION 5: COMMUNAL DINING EXPERIENCE
+       -------------------------------------------------------------------------- */
+    .hp-communal-section {
+      background: linear-gradient(180deg, var(--bg-body) 0%, rgba(20, 11, 9, 0.85) 50%, var(--bg-body) 100%);
+    }
+
+    .hp-communal-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 40px;
+      margin-bottom: 50px;
+      align-items: stretch;
+    }
+
+    .hp-communal-feature-img {
+      position: relative;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 25px 50px -10px rgba(0, 0, 0, 0.7);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .hp-communal-feature-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hp-communal-quote-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 32px;
+      background: linear-gradient(0deg, rgba(14, 7, 6, 0.95) 0%, rgba(14, 7, 6, 0.6) 70%, transparent 100%);
+      color: #FFF3E0;
+    }
+
+    .hp-communal-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      font-style: italic;
+      line-height: 1.5;
+      margin-bottom: 6px;
+    }
+
+    .hp-communal-side-img {
+      position: relative;
+      border-radius: 28px;
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.6);
+    }
+
+    .hp-communal-side-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hp-pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .hp-pillar-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      transition: all 0.3s var(--ease-spring);
+      backdrop-filter: blur(14px);
+    }
+
+    .hp-pillar-card:hover {
+      border-color: var(--border-glow);
+      transform: translateY(-6px);
+      background: var(--bg-hover);
+    }
+
+    .hp-pillar-num {
+      font-family: 'Cinzel', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--color-amber);
+      opacity: 0.6;
+      margin-bottom: 12px;
+    }
+
+    .hp-pillar-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.08rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+
+    .hp-pillar-desc {
+      font-size: 0.86rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
+    }
+
+    /* --------------------------------------------------------------------------
+       SECTION 6: CHEF'S SPECIALS & OFFERS
+       -------------------------------------------------------------------------- */
+    .hp-specials-section {
+      background: radial-gradient(circle at 20% 50%, rgba(169, 50, 38, 0.25) 0%, var(--bg-body) 65%);
+    }
+
+    .hp-specials-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+    }
+
+    .hp-special-card {
+      position: relative;
+      background: var(--bg-card);
+      border: 1px solid var(--border-glow);
+      border-radius: 28px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 25px 50px -15px rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(20px);
+      transition: all 0.35s var(--ease-spring);
+    }
+
+    .hp-special-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 35px 70px -15px rgba(0, 0, 0, 0.8), 0 0 25px rgba(229, 160, 0, 0.2);
+    }
+
+    .hp-special-img-box {
+      position: relative;
+      width: 100%;
+      height: 300px;
+      overflow: hidden;
+    }
+
+    .hp-special-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+
+    .hp-special-card:hover .hp-special-img-box img {
+      transform: scale(1.06);
+    }
+
+    .hp-special-badge {
+      position: absolute;
+      top: 18px;
+      left: 18px;
+      background: var(--gradient-brand);
+      color: #FFF3E0;
+      padding: 7px 16px;
+      border-radius: var(--radius-full);
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      box-shadow: 0 4px 15px rgba(211, 84, 0, 0.5);
+    }
+
+    [dir="rtl"] .hp-special-badge {
+      left: auto;
+      right: 18px;
+    }
+
+    .hp-special-body {
+      padding: 32px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hp-special-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.55rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 14px;
+    }
+
+    .hp-special-desc {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: var(--text-secondary);
+      margin-bottom: 24px;
+      flex: 1;
+    }
+
+    .hp-special-footer {
+      padding-top: 20px;
+      border-top: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .hp-special-perk {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--color-amber);
+    }
+
+    /* --------------------------------------------------------------------------
+       SECTION 7: RESERVE TABLE CTA
+       -------------------------------------------------------------------------- */
+    .hp-reserve-section {
+      background: radial-gradient(circle at 50% 50%, rgba(100, 30, 22, 0.45) 0%, #0E0706 80%);
+      padding: 140px 24px;
+    }
+
+    .hp-reserve-card {
+      position: relative;
+      max-width: 1040px;
+      margin: 0 auto;
+      border-radius: 36px;
+      overflow: hidden;
+      border: 1px solid var(--border-glow);
+      box-shadow: 0 35px 80px -15px rgba(0, 0, 0, 0.85), 0 0 30px rgba(229, 160, 0, 0.2);
+    }
+
+    .hp-reserve-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.28) contrast(1.1);
+      transition: transform 0.8s ease;
+    }
+
+    .hp-reserve-card:hover .hp-reserve-bg {
+      transform: scale(1.03);
+    }
+
+    .hp-reserve-content {
+      position: relative;
+      z-index: 2;
+      padding: 70px 60px;
+      text-align: center;
+      background: linear-gradient(180deg, rgba(22, 12, 10, 0.65) 0%, rgba(14, 7, 6, 0.9) 100%);
+      backdrop-filter: blur(12px);
+    }
+
+    .hp-reserve-form-box {
+      max-width: 760px;
+      margin: 36px auto 28px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 20px;
+      border-radius: 20px;
+      border: 1px solid var(--border-subtle);
+    }
+
+    [data-theme="light"] .hp-reserve-form-box {
+      background: rgba(255, 255, 255, 0.85);
+    }
+
+    .hp-form-group {
+      text-align: left;
+    }
+
+    [dir="rtl"] .hp-form-group {
+      text-align: right;
+    }
+
+    .hp-form-label {
+      display: block;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-amber);
+      margin-bottom: 6px;
+      font-weight: 700;
+    }
+
+    .hp-select-field {
+      width: 100%;
+      padding: 10px 14px;
+      border-radius: var(--radius-sm);
+      background: var(--bg-surface);
+      color: var(--text-primary);
+      border: 1px solid var(--border-subtle);
+      font-size: 0.88rem;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
+
+    .hp-select-field:focus {
+      border-color: var(--color-amber);
+    }
+
+    .hp-reserve-actions {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    /* Responsive Queries */
+    @media (max-width: 1024px) {
+      .hp-hero-grid,
+      .hp-communal-grid,
+      .hp-ing-split,
+      .hp-specials-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .hp-broth-grid,
+      .hp-pillars-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .hp-reserve-form-box {
+        grid-template-columns: 1fr;
+      }
+      .hp-metrics-row {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .hp-combo-row,
+      .hp-combo-row:nth-child(even) {
+        grid-template-columns: 1fr;
+        direction: ltr !important;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hp-section {
+        padding: 80px 18px;
+      }
+      .hp-broth-grid,
+      .hp-pillars-grid {
+        grid-template-columns: 1fr;
+      }
+      .hp-reserve-content {
+        padding: 40px 20px;
+      }
+      .hp-metrics-row {
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+      .hp-floating-badge {
+        display: none;
+      }
+    }
+
+    /* Motion Animation Base Classes (Scroll-Triggered) */
+    .hp-reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .hp-reveal.hp-revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .hp-reveal-left {
+      opacity: 0;
+      transform: translateX(-40px);
+      transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .hp-reveal-left.hp-revealed {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .hp-reveal-right {
+      opacity: 0;
+      transform: translateX(40px);
+      transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .hp-reveal-right.hp-revealed {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .hp-reveal-scale {
+      opacity: 0;
+      transform: scale(0.92);
+      transition: opacity 0.8s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .hp-reveal-scale.hp-revealed {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hp-reveal,
+      .hp-reveal-left,
+      .hp-reveal-right,
+      .hp-reveal-scale {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+    }
+
+
+    /* ==========================================================================
+       LUXURY HOT POT RESTAURANT FOOTER STYLES
+       ========================================================================== */
+    .site-footer {
+      position: relative;
+      width: 100%;
+      padding-top: 130px;
+      padding-bottom: 40px;
+      background: linear-gradient(180deg, var(--bg-body) 0%, rgba(20, 11, 9, 0.96) 20%, #0D0605 100%);
+      border-top: 1px solid var(--border-subtle);
+      overflow: hidden;
+      z-index: 10;
+    }
+
+    [data-theme="light"] .site-footer {
+      background: linear-gradient(180deg, var(--bg-body) 0%, rgba(255, 248, 242, 0.98) 20%, #F5ECE3 100%);
+      border-top-color: rgba(169, 50, 38, 0.15);
+    }
+
+    /* Footer Decorative Ambient Flare */
+    .site-footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 250px;
+      background: radial-gradient(circle, rgba(211, 84, 0, 0.18) 0%, rgba(169, 50, 38, 0.08) 50%, transparent 75%);
+      filter: blur(60px);
+      pointer-events: none;
+    }
+
+    /* 1. Top Call-to-Action Reservation Banner Card */
+    .footer-cta-container {
+      max-width: 1280px;
+      margin: 0 auto 60px;
+      padding: 0 24px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .footer-cta-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(28px) saturate(180%);
+      -webkit-backdrop-filter: blur(28px) saturate(180%);
+      border: 1px solid var(--border-glow);
+      border-radius: var(--radius-lg);
+      padding: 38px 44px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55), 0 0 20px rgba(211, 84, 0, 0.15);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .footer-cta-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 320px;
+      height: 100%;
+      background: radial-gradient(circle at right center, rgba(229, 160, 0, 0.12), transparent 70%);
+      pointer-events: none;
+    }
+
+    .cta-left {
+      max-width: 680px;
+    }
+
+    .cta-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 14px;
+      border-radius: var(--radius-full);
+      background: rgba(46, 204, 113, 0.12);
+      border: 1px solid rgba(46, 204, 113, 0.3);
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #2ECC71;
+      letter-spacing: 0.04em;
+      margin-bottom: 12px;
+    }
+
+    .pulse-indicator {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #2ECC71;
+      box-shadow: 0 0 10px #2ECC71;
+      animation: pulseGreen 1.8s infinite;
+    }
+
+    @keyframes pulseGreen {
+      0%, 100% { transform: scale(1); opacity: 0.9; }
+      50% { transform: scale(1.4); opacity: 0.5; }
+    }
+
+    .cta-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.5rem, 3vw, 2.1rem);
+      font-weight: 800;
+      line-height: 1.2;
+      background: var(--gradient-gold);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 8px;
+    }
+
+    .cta-subtitle {
+      font-size: 0.94rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .cta-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-shrink: 0;
+    }
+
+    .cta-reserve-btn {
+      padding: 13px 28px;
+      font-size: 0.96rem;
+      white-space: nowrap;
+    }
+
+    .cta-secondary-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 22px;
+      border-radius: var(--radius-full);
+      background: rgba(229, 160, 0, 0.08);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-primary);
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: all 0.25s var(--ease-spring);
+      white-space: nowrap;
+    }
+
+    .cta-secondary-btn:hover {
+      background: var(--bg-hover);
+      border-color: var(--border-glow);
+      transform: translateY(-2px);
+    }
+
+    /* 2. Main 5-Column Grid */
+    .footer-grid-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px 60px;
+      display: grid;
+      grid-template-columns: 2fr 1.1fr 1.1fr 1.1fr 1.3fr;
+      gap: 40px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .footer-col {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .footer-brand-logo {
+      padding: 0;
+      margin-bottom: 16px;
+      align-self: flex-start;
+    }
+
+    .footer-brand-bio {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 22px;
+      max-width: 340px;
+    }
+
+    .footer-social-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+
+    .social-icon-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.25s var(--ease-bounce);
+    }
+
+    [data-theme="light"] .social-icon-btn {
+      background: rgba(0, 0, 0, 0.04);
+    }
+
+    .social-icon-btn:hover {
+      color: #FFF3E0;
+      background: var(--gradient-brand);
+      border-color: var(--color-amber);
+      transform: translateY(-3px) scale(1.08);
+      box-shadow: 0 6px 16px rgba(211, 84, 0, 0.4);
+    }
+
+    .footer-awards-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 12px;
+      background: rgba(229, 160, 0, 0.08);
+      border: 1px dashed var(--border-subtle);
+      border-radius: var(--radius-sm);
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: var(--color-amber);
+      align-self: flex-start;
+    }
+
+    .footer-col-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.06rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: 0.06em;
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 8px;
+    }
+
+    .footer-col-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 28px;
+      height: 2px;
+      background: var(--color-amber);
+      border-radius: 2px;
+      box-shadow: 0 0 8px var(--color-amber);
+    }
+
+    [dir="rtl"] .footer-col-title::after {
+      left: auto;
+      right: 0;
+    }
+
+    .footer-links-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      transition: all 0.22s var(--ease-spring);
+    }
+
+    .link-bullet {
+      width: 14px;
+      height: 14px;
+      color: var(--color-amber);
+      opacity: 0.6;
+      transition: transform 0.22s var(--ease-spring), opacity 0.22s ease;
+      flex-shrink: 0;
+    }
+
+    .footer-link:hover {
+      color: var(--text-primary);
+      transform: translateX(4px);
+    }
+
+    [dir="rtl"] .footer-link:hover {
+      transform: translateX(-4px);
+    }
+
+    .footer-link:hover .link-bullet {
+      opacity: 1;
+      transform: translateX(3px);
+    }
+
+    [dir="rtl"] .footer-link:hover .link-bullet {
+      transform: translateX(-3px) rotate(180deg);
+    }
+
+    /* Col 5: Location Details */
+    .footer-info-block {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .info-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 0.88rem;
+    }
+
+    .info-icon {
+      color: var(--color-amber);
+      margin-top: 3px;
+      flex-shrink: 0;
+    }
+
+    .info-muted {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+      line-height: 1.4;
+    }
+
+    .info-muted.highlight {
+      color: var(--color-amber);
+      font-weight: 500;
+    }
+
+    /* 3. VIP Secret Broth Newsletter Card */
+    .footer-newsletter-wrap {
+      max-width: 1280px;
+      margin: 0 auto 50px;
+      padding: 0 24px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .footer-newsletter-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--border-glow);
+      border-radius: var(--radius-lg);
+      padding: 30px 38px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.45);
+    }
+
+    .newsletter-left {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .newsletter-icon-circle {
+      width: 52px;
+      height: 52px;
+      border-radius: var(--radius-md);
+      background: rgba(229, 160, 0, 0.12);
+      border: 1px solid var(--border-glow);
+      color: var(--color-amber);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .newsletter-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--text-primary);
+    }
+
+    .newsletter-desc {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      margin-top: 3px;
+      max-width: 540px;
+    }
+
+    .newsletter-form {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+      max-width: 440px;
+    }
+
+    .newsletter-input {
+      flex: 1;
+      padding: 12px 16px;
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-full);
+      color: var(--text-primary);
+      font-family: inherit;
+      font-size: 0.9rem;
+      outline: none;
+      transition: all 0.25s ease;
+    }
+
+    [data-theme="light"] .newsletter-input {
+      background: #FFFFFF;
+      border-color: rgba(169, 50, 38, 0.2);
+    }
+
+    .newsletter-input:focus {
+      border-color: var(--color-amber);
+      box-shadow: 0 0 0 2px rgba(229, 160, 0, 0.25);
+    }
+
+    .newsletter-submit-btn {
+      padding: 12px 22px;
+      font-size: 0.9rem;
+      white-space: nowrap;
+    }
+
+    /* 4. Bottom Legal & Back to Top Bar */
+    .footer-bottom-bar {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 24px 24px 0;
+      border-top: 1px solid var(--border-subtle);
+      position: relative;
+      z-index: 2;
+    }
+
+    .bottom-bar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      font-size: 0.84rem;
+      color: var(--text-muted);
+    }
+
+    .bottom-copy strong {
+      color: var(--color-amber);
+    }
+
+    .bottom-links {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .bottom-link {
+      color: var(--text-muted);
+      transition: color 0.2s ease;
+    }
+
+    .bottom-link:hover {
+      color: var(--text-primary);
+    }
+
+    .sep {
+      opacity: 0.4;
+    }
+
+    .btn-back-to-top {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 16px;
+      border-radius: var(--radius-full);
+      background: rgba(229, 160, 0, 0.08);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s var(--ease-bounce);
+    }
+
+    .btn-back-to-top:hover {
+      background: var(--bg-hover);
+      color: var(--text-primary);
+      border-color: var(--border-glow);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 14px rgba(229, 160, 0, 0.2);
+    }
+
+    /* ==========================================================================
+       RESPONSIVE BREAKPOINTS (NEST HUB MAX, IPAD PRO 13, TABLET & MOBILE)
+       ========================================================================== */
+
+    /* 1. Large Desktop Screens (1367px and above) */
+    @media (min-width: 1367px) {
+      .hamburger-btn {
+        display: none !important;
+      }
+    }
+
+    /* 2. Google Nest Hub Max & Compact Laptops (1025px - 1366px, height < 900px):
+          - Logo at LEFT
+          - Navbar Menu at CENTER
+          - Remaining Controls (Dashboard, Theme, RTL, Login) at RIGHT */
+    @media (min-width: 1025px) and (max-width: 1366px) and (max-height: 899px) {
+      .navbar-container {
+        height: 68px;
+        padding: 0 16px 0 20px;
+        justify-content: space-between;
+      }
+
+      .navbar-left {
+        display: flex !important;
+        flex-shrink: 0;
+      }
+
+      .navbar-center {
+        display: flex !important;
+      }
+
+      .navbar-right {
+        display: flex !important;
+        gap: 8px;
+        flex-shrink: 0;
+      }
+
+      .hamburger-btn {
+        display: none !important;
+      }
+
+      /* Compact Scaling for Nest Hub Max (1280x800) */
+      .pot-icon-wrapper {
+        width: 40px;
+        height: 40px;
+      }
+
+      .brand-title, .brand-name {
+        font-size: 1.08rem;
+      }
+
+      .brand-subtitle, .brand-sub {
+        font-size: 0.62rem;
+        letter-spacing: 0.22em;
+      }
+
+      .nav-menu-list {
+        gap: 2px;
+        padding: 3px 6px;
+      }
+
+      .nav-link {
+        padding: 6px 11px;
+        font-size: 0.84rem;
+        gap: 4px;
+      }
+
+      .dropdown-arrow {
+        width: 14px;
+        height: 14px;
+      }
+
+      .dashboard-btn {
+        padding: 6px 11px;
+        font-size: 0.82rem;
+        gap: 5px;
+      }
+
+      .action-icon-btn {
+        width: 36px;
+        height: 36px;
+      }
+
+      .btn-3d-login {
+        padding: 8px 16px;
+        font-size: 0.86rem;
+        gap: 6px;
+      }
+    }
+
+    /* 3. iPad Pro 13 Portrait (<= 1024px) & iPad Pro 13 Landscape (1366x1024, height >= 900px):
+          - Logo at LEFT
+          - Hamburger Menu at RIGHT
+          - Center & Right Controls inside Drawer */
+    @media (max-width: 1024px), (min-width: 1025px) and (max-width: 1366px) and (min-height: 900px) {
+      .navbar-center,
+      .navbar-right {
+        display: none !important;
+      }
+
+      .navbar-container {
+        height: 70px;
+        padding: 0 20px 0 24px;
+        justify-content: space-between;
+      }
+
+      .navbar-left {
+        display: flex !important;
+      }
+
+      .hamburger-btn {
+        display: flex !important;
+      }
+
+      .navbar-dock {
+        padding: 14px 20px;
+      }
+
+      .brand-title, .brand-name {
+        font-size: 1.15rem;
+      }
+
+      .mobile-drawer {
+        width: 420px;
+        max-width: 86vw;
+      }
+    }
+
+    /* 4. Tablet & Below: Footer Layout (<= 1024px) */
+    @media (max-width: 1024px) {
+      .site-footer {
+        padding-top: 105px;
+      }
+
+      .footer-grid-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 34px;
+      }
+
+      .footer-col-brand {
+        grid-column: span 2;
+      }
+
+      .footer-cta-card,
+      .footer-newsletter-card {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 30px 24px;
+        gap: 20px;
+      }
+
+      .cta-actions,
+      .newsletter-form {
+        width: 100%;
+        max-width: 100%;
+      }
+    }
+
+    /* Mobile Small: <= 640px */
+    @media (max-width: 640px) {
+      .site-footer {
+        padding-top: 95px;
+      }
+
+      .footer-grid-container {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+
+      .footer-col-brand {
+        grid-column: span 1;
+      }
+
+      .bottom-bar-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+      }
+
+      .bottom-back-to-top {
+        align-self: flex-end;
+      }
+
+      .cta-actions {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .cta-reserve-btn,
+      .cta-secondary-btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .newsletter-form {
+        flex-direction: column;
+      }
+
+      .newsletter-input,
+      .newsletter-submit-btn {
+        width: 100%;
+      }
+    }
+
+    /* Mobile Small: <= 480px */
+    @media (max-width: 480px) {
+      .navbar-dock {
+        padding: 10px 12px;
+      }
+
+      .navbar-container {
+        height: 60px;
+        padding: 0 12px 0 16px;
+      }
+
+      .pot-icon-wrapper {
+        width: 40px;
+        height: 40px;
+      }
+
+      .brand-title, .brand-name {
+        font-size: 0.98rem;
+      }
+
+      .brand-subtitle, .brand-sub {
+        font-size: 0.6rem;
+        letter-spacing: 0.2em;
+      }
+
+      .mobile-drawer {
+        width: 100vw;
+        max-width: 100vw;
+      }
+    }
+
+    /* Accessibility: Reduced Motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+
+<style id="navEnhanceStyles">
+
+    /* ==========================================================================
+       PIXEL-PERFECT ACTIVE CAPSULE & ZERO ALIGNMENT DEFECTS
+       ========================================================================== */
+    /* 1. Eliminate the conflicting/misaligned 14px underline bar */
+    .nav-link::after,
+    .nav-item.active .nav-link::after {
+      display: none !important;
+      content: none !important;
+      width: 0 !important;
+      height: 0 !important;
+      opacity: 0 !important;
+    }
+
+    /* 2. Hide redundant floating JS magnetic indicator that drifts with entrance animation */
+    .nav-magnetic-indicator {
+      display: none !important;
+    }
+
+    /* 3. Pure CSS Perfectly Centered Active Pill on the Active Item */
+    .nav-item.active .nav-link {
+      color: var(--color-amber) !important;
+      font-weight: 600 !important;
+      background: var(--bg-active) !important;
+      border: 1px solid rgba(229, 160, 0, 0.45) !important;
+      box-shadow: 0 0 14px rgba(229, 160, 0, 0.22), inset 0 1px 1px rgba(255, 243, 224, 0.2) !important;
+      border-radius: var(--radius-full) !important;
+      transform: none !important;
+    }
+
+    [data-theme="light"] .nav-item.active .nav-link {
+      color: #D35400 !important;
+      background: rgba(211, 84, 0, 0.12) !important;
+      border: 1px solid rgba(211, 84, 0, 0.4) !important;
+      box-shadow: 0 0 12px rgba(211, 84, 0, 0.15) !important;
+    }
+
+    /* Clean Subtle Hover on Inactive Items */
+    .nav-item:not(.active) .nav-link:hover {
+      color: var(--text-primary) !important;
+      background: rgba(255, 255, 255, 0.06) !important;
+      border-radius: var(--radius-full) !important;
+    }
+    [data-theme="light"] .nav-item:not(.active) .nav-link:hover {
+      background: rgba(0, 0, 0, 0.05) !important;
+    }
+
+    /* Dropdown active item highlight */
+    .dropdown-item.active {
+      background: rgba(229, 160, 0, 0.12) !important;
+      color: var(--color-amber) !important;
+    }
+
+    /* Mobile Drawer Active Item */
+    .drawer-item.active > .drawer-link,
+    .drawer-item.active .drawer-link-content span {
+      color: var(--color-amber) !important;
+      font-weight: 700 !important;
+    }
+    .drawer-item.active > .drawer-link {
+      background: var(--bg-hover) !important;
+      border-left: 3px solid var(--color-amber) !important;
+    }
+
+    /* Desktop Navigation Responsive Spacing */
+    @media (min-width: 1025px) and (max-width: 1320px) {
+      .nav-link {
+        padding: 7px 11px !important;
+        font-size: 0.83rem !important;
+        gap: 3px !important;
+      }
+      .nav-menu-list {
+        gap: 2px !important;
+        padding: 3px 4px !important;
+      }
+    }
+  
+</style>
+
+
+  <style id="contentVisibilityGuaranteed">
+    /* ==========================================================================
+       RESILIENT CONTENT VISIBILITY GUARANTEE
+       Ensures all storytelling sections, cards, grids, and headings are
+       immediately and fully visible across all browsers and devices.
+       ========================================================================== */
+    .abt-scroll-reveal,
+    .cnt-reveal,
+    .exp-reveal,
+    .exp-reveal-left,
+    .exp-reveal-right,
+    .exp-reveal-scale,
+    .gal-reveal,
+    .home2-fade-in,
+    .hp-reveal,
+    .hp-reveal-left,
+    .hp-reveal-right,
+    .hp-reveal-scale,
+    .mp-reveal,
+    .mp-reveal-left,
+    .mp-reveal-right,
+    .mp-reveal-scale,
+    .ofr-reveal,
+    .ofr-reveal-left,
+    .ofr-reveal-right,
+    .ofr-reveal-scale,
+    .rsv-reveal,
+    .rsv-reveal-left,
+    .rsv-reveal-right,
+    .rsv-reveal-scale {
+      opacity: 1 !important;
+      transform: none !important;
+      visibility: visible !important;
+    }
+  
+    /* ==========================================================================
+       LIGHT MODE BRAND LOGO HIGH-CONTRAST VISIBILITY
+       ========================================================================== */
+    [data-theme="light"] .brand-title,
+    [data-theme="light"] .brand-name {
+      background: linear-gradient(135deg, #872605 0%, #B84705 35%, #D35400 65%, #641E16 100%) !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+      filter: drop-shadow(0 1px 1px rgba(135, 38, 5, 0.15)) !important;
+      font-weight: 800 !important;
+    }
+
+    [data-theme="light"] .brand-subtitle,
+    [data-theme="light"] .brand-sub {
+      color: #5D2417 !important;
+      font-weight: 700 !important;
+      letter-spacing: 0.28em !important;
+    }
+
+    [data-theme="light"] .brand-flame-dot,
+    [data-theme="light"] .flame-glow-pip {
+      background: #C0392B !important;
+      box-shadow: 0 0 8px rgba(192, 57, 43, 0.5), 0 0 2px #C0392B !important;
+    }
+
+    [data-theme="light"] .steam-path {
+      stroke: #D35400 !important;
+      opacity: 0.85 !important;
+    }
+
+    [data-theme="light"] .pot-icon-wrapper {
+      filter: drop-shadow(0 3px 8px rgba(211, 84, 0, 0.25)) !important;
+    }
+
+  </style>
+
+</head>
+<body>
+
+  <!-- Ambient Glow Backdrop -->
+  <div class="ambient-glow" aria-hidden="true"></div>
+
+  <!-- ========================================================================
+       TOP FIXED NAVIGATION DOCK
+       ======================================================================== -->
+    <!-- ========================================================================
+       TOP FIXED NAVIGATION DOCK
+       ======================================================================== -->
+    <!-- ========================================================================
+       TOP FIXED NAVIGATION DOCK
+       ======================================================================== -->
+    <!-- ========================================================================
+       TOP FIXED NAVIGATION DOCK
+       ======================================================================== -->
+  <header class="navbar-dock" id="navbarDock">
+    <nav class="navbar-container" id="navbarContainer" role="navigation" aria-label="Main Navigation">
+      
+      <!-- ====================================================================
+           1. LEFT SECTION – BRAND LOGO
+           ==================================================================== -->
+      <div class="navbar-left">
+        <a href="index.html" class="brand-logo" id="brandLogo" aria-label="HOT POT RESTAURANT Home">
+          
+          <!-- Steaming 3D Hot Pot Vector Illustration -->
+          <div class="pot-icon-wrapper">
+            <svg class="hotpot-svg" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <!-- Broth Gradients -->
+                <linearGradient id="spicyBrothGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#C0392B"/>
+                  <stop offset="60%" stop-color="#922B21"/>
+                  <stop offset="100%" stop-color="#641E16"/>
+                </linearGradient>
+
+                <linearGradient id="herbalBrothGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#FFF3E0"/>
+                  <stop offset="50%" stop-color="#F39C12"/>
+                  <stop offset="100%" stop-color="#B7950B"/>
+                </linearGradient>
+
+                <!-- Pot Rim Metallic Gold Gradient -->
+                <linearGradient id="goldPotGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#FFF8E7"/>
+                  <stop offset="35%" stop-color="#F5B041"/>
+                  <stop offset="70%" stop-color="#D4AC0D"/>
+                  <stop offset="100%" stop-color="#7D6608"/>
+                </linearGradient>
+
+                <!-- Undulating Steam Gradients -->
+                <linearGradient id="steamGradient" x1="0%" y1="100%" x2="0%" y2="0%">
+                  <stop offset="0%" stop-color="#E5A000" stop-opacity="0.9"/>
+                  <stop offset="50%" stop-color="#FFF3E0" stop-opacity="0.8"/>
+                  <stop offset="100%" stop-color="#FFF3E0" stop-opacity="0"/>
+                </linearGradient>
+
+                <!-- Pot Body Gradient -->
+                <linearGradient id="potBodyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="#56150F"/>
+                  <stop offset="60%" stop-color="#3A0D08"/>
+                  <stop offset="100%" stop-color="#1E0704"/>
+                </linearGradient>
+              </defs>
+
+              <!-- Rising Animated Steam Curves -->
+              <g class="steam-group">
+                <path class="steam-path steam-path-1" d="M24 24C22 18 28 14 26 8" />
+                <path class="steam-path steam-path-2" d="M32 22C34 16 30 12 33 6" />
+                <path class="steam-path steam-path-3" d="M40 24C42 18 36 14 38 8" />
+              </g>
+
+              <!-- Pot Stove Base Glow -->
+              <ellipse cx="32" cy="56" rx="18" ry="4" fill="rgba(211, 84, 0, 0.45)" filter="blur(2px)"/>
+
+              <!-- Outer Pot Base & Handles -->
+              <path d="M12 36C10 36 8 38 8 40C8 42 10 44 12 44" stroke="url(#goldPotGrad)" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M52 36C54 36 56 38 56 40C56 42 54 44 52 44" stroke="url(#goldPotGrad)" stroke-width="2.5" stroke-linecap="round"/>
+
+              <!-- Pot Solid Cauldron Body -->
+              <path d="M14 34C14 46 22 53 32 53C42 53 50 46 50 34H14Z" fill="url(#potBodyGrad)" stroke="url(#goldPotGrad)" stroke-width="1.8"/>
+
+              <!-- Dual Broth Elliptical Surface -->
+              <ellipse cx="32" cy="34" rx="18" ry="8" fill="#1A0A08" stroke="url(#goldPotGrad)" stroke-width="2"/>
+
+              <!-- Yin-Yang Divided Broths (Spicy Red & Golden Herbal) -->
+              <!-- Left: Spicy Red Chili Broth -->
+              <path d="M14 34C14 38.4 22 42 32 42C32 38 28 34 32 30C22 30 14 31.8 14 34Z" fill="url(#spicyBrothGrad)"/>
+              
+              <!-- Right: Golden Herbal Broth -->
+              <path d="M50 34C50 38.4 42 42 32 42C32 38 36 34 32 30C42 30 50 31.8 50 34Z" fill="url(#herbalBrothGrad)"/>
+
+              <!-- S-Curve Broth Divider -->
+              <path d="M32 26C30 30 34 34 32 42" stroke="url(#goldPotGrad)" stroke-width="1.5" stroke-linecap="round"/>
+
+              <!-- Simmering Broth Embers & Spices -->
+              <circle class="broth-bubble bubble-1" cx="22" cy="36" r="1.4" fill="#FF5722"/>
+              <circle class="broth-bubble bubble-2" cx="26" cy="38" r="1" fill="#FFA000"/>
+              <circle class="broth-bubble bubble-3" cx="42" cy="36" r="1.3" fill="#FFE082"/>
+              <circle cx="38" cy="34" r="1" fill="#C0392B"/> <!-- Goji Berry -->
+            </svg>
+          </div>
+
+          <!-- Brand Typography -->
+          <div class="brand-text-block brand-text">
+            <span class="brand-title brand-name">
+              HOT POT
+              <span class="brand-flame-dot flame-glow-pip"></span>
+            </span>
+            <span class="brand-subtitle brand-sub">RESTAURANT</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- ====================================================================
+           2. CENTER SECTION – NAVIGATION MENU (10 ITEMS WITH DROPDOWN)
+           ==================================================================== -->
+      <div class="navbar-center" id="navCenter">
+        <ul class="nav-menu-list" id="navMenuList">
+          
+          <!-- Moving Active/Hover Spring Pill Indicator -->
+          <div class="nav-magnetic-indicator" id="magneticIndicator" aria-hidden="true"></div>
+
+          <!-- 1. Home (Dropdown: Home 1, Home 2) -->
+          <li class="nav-item has-dropdown active" data-nav="home">
+            <a href="index.html" class="nav-link" id="homeDropdownTrigger" aria-haspopup="true" aria-expanded="false">
+              <span>Home</span>
+              <svg class="icon dropdown-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </a>
+            
+            <!-- Glassmorphism Dropdown -->
+            <div class="dropdown-menu" role="menu" aria-labelledby="homeDropdownTrigger">
+              <a href="index.html" class="dropdown-item" role="menuitem">
+                <div class="dropdown-icon-box">
+                  <svg class="icon" viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                </div>
+                <div class="dropdown-meta">
+                  <span class="dropdown-title">Home 1</span>
+                </div>
+              </a>
+              <a href="home-2.html" class="dropdown-item" role="menuitem">
+                <div class="dropdown-icon-box">
+                  <svg class="icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                </div>
+                <div class="dropdown-meta">
+                  <span class="dropdown-title">Home 2</span>
+                </div>
+              </a>
+            </div>
+          </li>
+
+          <!-- 2. About -->
+          <li class="nav-item " data-nav="about">
+            <a href="about.html" class="nav-link">About</a>
+          </li>
+
+          <!-- 3. Menu -->
+          <li class="nav-item " data-nav="menu">
+            <a href="menu.html" class="nav-link">Menu</a>
+          </li>
+
+          <!-- 4. Experience -->
+          <li class="nav-item " data-nav="experience">
+            <a href="experience.html" class="nav-link">Experience</a>
+          </li>
+
+          <!-- 5. Reservations -->
+          <li class="nav-item " data-nav="reservations">
+            <a href="reservations.html" class="nav-link">Reservations</a>
+          </li>
+
+          <!-- 6. Offers -->
+          <li class="nav-item " data-nav="offers">
+            <a href="offers.html" class="nav-link">Offers</a>
+          </li>
+
+          <!-- 7. Gallery -->
+          <li class="nav-item " data-nav="gallery">
+            <a href="gallery.html" class="nav-link">Gallery</a>
+          </li>
+
+          <!-- 8. Contact -->
+          <li class="nav-item " data-nav="contact">
+            <a href="contact.html" class="nav-link">Contact</a>
+          </li>
+
+          <!-- 9. Dashboard (Dropdown: Admin Dashboard & User Dashboard) -->
+          <li class="nav-item has-dropdown dashboard-nav-item " data-nav="dashboard" id="dashboardNavDropdown">
+            <a href="admin-dashboard.html" class="nav-link" id="dashboardDropdownTrigger" aria-haspopup="true" aria-expanded="false">
+              <svg class="icon" viewBox="0 0 24 24" style="width: 15px; height: 15px; margin-right: 4px;"><rect width="7" height="9" x="3" y="3" rx="1"></rect><rect width="7" height="5" x="14" y="3" rx="1"></rect><rect width="7" height="9" x="14" y="12" rx="1"></rect><rect width="7" height="5" x="3" y="16" rx="1"></rect></svg>
+              <span>Dashboard</span>
+              <svg class="icon dropdown-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </a>
+
+            <!-- Glassmorphism Dropdown -->
+            <div class="dropdown-menu" role="menu" aria-labelledby="dashboardDropdownTrigger">
+              <a href="admin-dashboard.html" class="dropdown-item" id="adminDashboardLink" role="menuitem">
+                <div class="dropdown-icon-box">
+                  <svg class="icon" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                </div>
+                <div class="dropdown-meta">
+                  <span class="dropdown-title">Admin Dashboard</span>
+                </div>
+              </a>
+              <a href="user-dashboard.html" class="dropdown-item" id="userDashboardLink" role="menuitem">
+                <div class="dropdown-icon-box">
+                  <svg class="icon" viewBox="0 0 24 24"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                </div>
+                <div class="dropdown-meta">
+                  <span class="dropdown-title">User Dashboard</span>
+                </div>
+              </a>
+            </div>
+          </li>
+
+        </ul>
+      </div>
+
+      <!-- ====================================================================
+           3. RIGHT SECTION – ACTION CONTROLS (TOGGLES & 3D LOGIN)
+           ==================================================================== -->
+      <div class="navbar-right">
+
+        <!-- 1. Dark Mode Toggle -->
+        <button class="action-icon-btn" id="themeToggleBtn" aria-label="Toggle Dark / Light Theme" data-tooltip="Switch Theme">
+          <svg class="icon theme-icon-sun" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2"></path>
+            <path d="M12 20v2"></path>
+            <path d="m4.93 4.93 1.41 1.41"></path>
+            <path d="m17.66 17.66 1.41 1.41"></path>
+            <path d="M2 12h2"></path>
+            <path d="M20 12h2"></path>
+            <path d="m6.34 17.66-1.41 1.41"></path>
+            <path d="m19.07 4.93-1.41 1.41"></path>
+          </svg>
+          <svg class="icon theme-icon-moon" viewBox="0 0 24 24">
+            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+          </svg>
+        </button>
+
+        <!-- 2. RTL / LTR Toggle (Icon Only) -->
+        <button class="action-icon-btn" id="rtlToggleBtn" aria-label="Toggle Text Direction" data-tooltip="LTR / RTL">
+          <svg class="icon rtl-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m16 3 4 4-4 4"></path>
+            <path d="M20 7H4"></path>
+            <path d="m8 21-4-4 4-4"></path>
+            <path d="M4 17h16"></path>
+          </svg>
+        </button>
+
+        <!-- 3. Unique 3D Login Button -->
+        <button class="btn-3d-login" id="loginBtn" aria-label="Sign In to Member Club">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path><polyline points="10 17 15 12 10 7"></polyline><line x1="15" y1="12" x2="3" y2="12"></line></svg>
+          <span>Login</span>
+          <svg class="icon btn-arrow-icon" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </button>
+
+      </div>
+
+      <!-- Hamburger Button (Mobile / Tablet) -->
+      <button class="hamburger-btn" id="hamburgerBtn" aria-label="Open Navigation Menu" aria-expanded="false">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+
+    </nav>
+  </header>
+
+  <!-- ========================================================================
+       MOBILE NAVIGATION DRAWER & BACKDROP
+       ======================================================================== -->
+  <div class="mobile-backdrop" id="mobileBackdrop" aria-hidden="true"></div>
+
+    <!-- ========================================================================
+       MOBILE NAVIGATION DRAWER & BACKDROP
+       ======================================================================== -->
+  <div class="mobile-backdrop" id="mobileBackdrop" aria-hidden="true"></div>
+
+    <!-- ========================================================================
+       MOBILE NAVIGATION DRAWER & BACKDROP
+       ======================================================================== -->
+  <div class="mobile-backdrop" id="mobileBackdrop" aria-hidden="true"></div>
+
+    <!-- ========================================================================
+       MOBILE NAVIGATION DRAWER & BACKDROP
+       ======================================================================== -->
+  <div class="mobile-backdrop" id="mobileBackdrop" aria-hidden="true"></div>
+
+  <aside class="mobile-drawer" id="mobileDrawer" aria-label="Mobile Navigation Drawer">
+    
+    <!-- Drawer Header -->
+    <div class="drawer-header">
+      <div class="brand-text-block">
+        <span class="brand-title" style="font-size: 1.1rem;">
+          HOT POT
+          <span class="brand-flame-dot"></span>
+        </span>
+        <span class="brand-subtitle">RESTAURANT</span>
+      </div>
+      <button class="drawer-close-btn" id="drawerCloseBtn" aria-label="Close navigation menu">
+        <svg class="icon" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+
+    <!-- Drawer Navigation Links -->
+    <div class="drawer-nav-body">
+
+      <!-- Home (Accordion) -->
+      <div class="drawer-item has-accordion active" id="drawerHomeAccordion" data-nav="home">
+        <button class="drawer-link accordion-trigger" aria-expanded="false">
+          <div class="drawer-link-content">
+            <svg class="icon drawer-icon" viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
+            <span>Home</span>
+          </div>
+          <svg class="icon drawer-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="drawer-accordion">
+          <a href="index.html" class="accordion-link drawer-action-close">
+            <svg class="icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <span>Home 1</span>
+          </a>
+          <a href="home-2.html" class="accordion-link drawer-action-close">
+            <svg class="icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <span>Home 2</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- About -->
+      <div class="drawer-item " data-nav="about">
+        <a href="about.html" class="drawer-link drawer-action-close">
+          <div class="drawer-link-content">
+            <svg class="icon drawer-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+            <span>About Us</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- Menu -->
+      <div class="drawer-item " data-nav="menu">
+        <a href="menu.html" class="drawer-link drawer-action-close">
+          <div class="drawer-link-content">
+            <svg class="icon drawer-icon" viewBox="0 0 24 24"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"></path><path d="M7 2v20"></path><path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"></path></svg>
+            <span>Menu & Broths</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- Experience -->
+      <div class="drawer-item " data-nav="experience">
+        <a href="experience.html" class="drawer-link drawer-action-close">
+          <div class="drawer-link-content">
+            <svg class="icon drawer-icon" viewBox="0 0 24 24"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"></path></svg>
+            <span>Experience</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- Reservations -->
+      <div class="drawer-item " data-nav="reservations">
+        <a href="reservations.html" class="drawer-link drawer-action-close">
+          <div class="drawer-link-content">
+            <svg class="icon drawer-icon" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+            <span>Reservations</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- Offers -->
+      <div class="drawer-item " data-nav="offers">
+        <a href="offers.html" class="drawer-link drawer-action-close">
+          <div class="drawer-link-content">
+            <svg class="icon drawer-icon" viewBox="0 0 24 24"><path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z"></path><circle cx="7.5" cy="7.5" r=".5" fill="currentColor"></circle></svg>
+            <span>Offers</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- Gallery -->
+      <div class="drawer-item " data-nav="gallery">
+        <a href="gallery.html" class="drawer-link drawer-action-close">
+          <div class="drawer-link-content">
+            <svg class="icon drawer-icon" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect><circle cx="9" cy="9" r="2"></circle><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"></path></svg>
+            <span>Gallery</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- Contact -->
+      <div class="drawer-item " data-nav="contact">
+        <a href="contact.html" class="drawer-link drawer-action-close">
+          <div class="drawer-link-content">
+            <svg class="icon drawer-icon" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            <span>Contact</span>
+          </div>
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Drawer Footer Actions -->
+    <div class="drawer-footer">
+      <div class="drawer-toggles-row">
+        <!-- Mobile Dark Mode Toggle -->
+        <button class="drawer-toggle-btn" id="mobileThemeToggle">
+          <svg class="icon theme-icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
+          <svg class="icon theme-icon-moon" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
+          <span id="mobileThemeLabel">Theme</span>
+        </button>
+
+        <!-- Mobile RTL Toggle -->
+        <button class="drawer-toggle-btn" id="mobileRtlToggle">
+          <svg class="icon rtl-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m16 3 4 4-4 4"></path>
+            <path d="M20 7H4"></path>
+            <path d="m8 21-4-4 4-4"></path>
+            <path d="M4 17h16"></path>
+          </svg>
+          <span id="mobileRtlLabel">LTR Layout</span>
+        </button>
+      </div>
+
+      <!-- Mobile Login Button -->
+      <button class="drawer-login-btn" id="mobileLoginBtn">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path><polyline points="10 17 15 12 10 7"></polyline><line x1="15" y1="12" x2="3" y2="12"></line></svg>
+        <span>Sign In to Member Club</span>
+      </button>
+    </div>
+
+  </aside>
+
+  <!-- ========================================================================
+       MODAL WINDOW (LOGIN / SIGN IN)
+       ======================================================================== -->
+  <div class="modal-overlay" id="loginModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-card">
+      <button class="modal-close" id="closeModalBtn" aria-label="Close dialog">
+        <svg class="icon" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+
+      <div style="text-align: center; margin-bottom: 24px;">
+        <span class="brand-title" style="font-size: 1.4rem; justify-content: center;">
+          HOT POT
+          <span class="brand-flame-dot"></span>
+        </span>
+        <h2 id="modalTitle" style="font-family: 'Cinzel', serif; font-size: 1.3rem; margin-top: 8px; color: var(--text-primary);">
+          VIP Club Member Access
+        </h2>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 4px;">
+          Experience imperial dining privileges & secret broth pairings
+        </p>
+      </div>
+
+      <form id="loginForm">
+        <div class="form-group">
+          <label class="form-label" for="loginEmail">Email / Member ID</label>
+          <input type="email" id="loginEmail" class="form-input" placeholder="connoisseur@hotpot.com" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="loginPassword">Passcode</label>
+          <input type="password" id="loginPassword" class="form-input" placeholder="••••••••" required>
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 22px; font-size: 0.82rem; color: var(--text-muted);">
+          <label style="display: flex; align-items: center; gap: 6px; cursor: pointer;">
+            <input type="checkbox" checked style="accent-color: var(--color-orange);"> Remember me
+          </label>
+          <a href="#forgot" style="color: var(--color-amber);">Forgot passcode?</a>
+        </div>
+        <button type="submit" class="btn-3d-login" style="width: 100%; padding: 13px;">
+          <span>Enter Imperial Lounge</span>
+          <svg class="icon btn-arrow-icon" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       HOMEPAGE MAIN CONTENT: 7 EXTRAORDINARY UNIQUE SECTIONS
+       ======================================================================== -->
+  <main class="hp-main" id="mainContent">
+
+    <!-- --------------------------------------------------------------------
+         SECTION 1: Welcome to Our Hot Pot Dining Experience
+         -------------------------------------------------------------------- -->
+    <section class="hp-section hp-hero-section" id="home" aria-label="Welcome to Hot Pot Restaurant">
+      <span id="home1" style="position:relative;top:-100px;"></span>
+      <span id="about" style="position:relative;top:-100px;"></span>
+      <div class="hp-flare" style="top: 10%; left: 15%; width: 500px; height: 500px; background: rgba(169, 50, 38, 0.25);"></div>
+      <div class="hp-flare" style="bottom: 10%; right: 10%; width: 450px; height: 450px; background: rgba(229, 160, 0, 0.2);"></div>
+
+      <div class="hp-container">
+        <div class="hp-hero-grid">
+          
+          <!-- Left: Editorial Content -->
+          <div class="hp-hero-content hp-reveal">
+            <span class="hp-pill">
+              <span class="hp-pill-dot"></span>
+              Haute Imperial Hot Pot • Dynastic Heritage
+            </span>
+            
+            <h1 class="hp-hero-title">
+              A Sacred Gathering Around The <span class="hp-gradient-text">Steaming Cauldron</span>
+            </h1>
+
+            <p class="hp-hero-desc">
+              Where dynastic Asian broth artistry converges with contemporary culinary luxury. Gather with those who matter most around a gently simmering copper cauldron, immersing yourself in 18-hour slow-simmered collagen elixirs, paper-thin A5 Miyazaki Wagyu, and the timeless joy of shared warmth.
+            </p>
+
+            <div class="hp-hero-actions">
+              <a href="#menu" class="hp-cta-primary">
+                <span>Explore Signature Broths</span>
+                <svg class="icon" viewBox="0 0 24 24" style="width: 18px; height: 18px;"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </a>
+              <button class="hp-cta-secondary" onclick="openLoginModal();">
+                <svg class="icon" viewBox="0 0 24 24" style="width: 18px; height: 18px; color: var(--color-amber);"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                <span>Reserve A Table</span>
+              </button>
+            </div>
+
+            <!-- Metrics / Highlights Row -->
+            <div class="hp-metrics-row">
+              <div class="hp-metric-item">
+                <span class="hp-metric-val">18h</span>
+                <span class="hp-metric-label">Slow Simmer</span>
+              </div>
+              <div class="hp-metric-item">
+                <span class="hp-metric-val">98°C</span>
+                <span class="hp-metric-label">Precision Temp</span>
+              </div>
+              <div class="hp-metric-item">
+                <span class="hp-metric-val">A5</span>
+                <span class="hp-metric-label">Miyazaki Wagyu</span>
+              </div>
+              <div class="hp-metric-item">
+                <span class="hp-metric-val">32</span>
+                <span class="hp-metric-label">Sacred Spices</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Visual Hero Display -->
+          <div class="hp-hero-visual hp-reveal-scale">
+            <div class="hp-hero-frame">
+              <img src="images/hero-hotpot-experience.jpg" alt="Ornate steaming dual-flavor hot pot with Wagyu beef and artisanal ingredients" loading="eager">
+            </div>
+
+            <!-- Floating Badge Top Right -->
+            <div class="hp-floating-badge hp-badge-top-right">
+              <div class="hp-badge-icon">
+                <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"></circle><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"></path></svg>
+              </div>
+              <div>
+                <div class="hp-badge-title">Michelin Selected</div>
+                <div class="hp-badge-subtitle">Grand Broth Guild 2026</div>
+              </div>
+            </div>
+
+            <!-- Floating Badge Bottom Left -->
+            <div class="hp-floating-badge hp-badge-bot-left">
+              <div class="hp-badge-icon" style="background: linear-gradient(135deg, #10B981, #059669);">
+                <svg class="icon" viewBox="0 0 24 24"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"></path></svg>
+              </div>
+              <div>
+                <div class="hp-badge-title">Active Kitchen Hearth</div>
+                <div class="hp-badge-subtitle">Cauldrons Simmering Live</div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- --------------------------------------------------------------------
+         SECTION 2: Signature Broth Collection
+         -------------------------------------------------------------------- -->
+    <section class="hp-section hp-broths-section" id="menu" aria-label="Signature Broth Collection">
+      <span id="home2" style="position:relative;top:-100px;"></span>
+      <div class="hp-flare" style="top: 20%; right: 5%; width: 450px; height: 450px; background: rgba(211, 84, 0, 0.2);"></div>
+
+      <div class="hp-container">
+        
+        <div class="hp-header hp-reveal">
+          <span class="hp-pill">
+            <span class="hp-pill-dot"></span>
+            Centuries of Imperial Simmering
+          </span>
+          <h2 class="hp-title">Our Signature <span class="hp-gradient-text">Broth Collection</span></h2>
+          <p class="hp-subtitle">
+            Every memorable hot pot begins with liquid alchemy. Our master broth artisans simmer each recipe continuously for eighteen hours in hand-hammered copper cauldrons, weaving medicinal herbs, marrow richness, and sacred regional spices.
+          </p>
+        </div>
+
+        <div class="hp-broth-grid">
+          
+          <!-- Broth 1: Sichuan Mala -->
+          <div class="hp-broth-card hp-reveal">
+            <div class="hp-broth-img-box">
+              <img src="images/broth-sichuan-mala.jpg" alt="Simmering Sichuan Mala beef tallow broth with red chili peppers and star anise" loading="lazy">
+              <div class="hp-broth-heat-badge">
+                <span style="display: inline-flex; align-items: center; gap: 3px;">
+                  <svg class="icon pepper-icon" viewBox="0 0 24 24" style="width: 13px; height: 13px;" fill="#E74C3C" stroke="#E74C3C" stroke-width="1"><path d="M14 2c-.5 1.5-1.5 2.5-3 3 1.5 2 2 4.5 1.5 7-.8 3.5-3.5 6-7 6.5-1.5.2-3-.3-4-1.2 1-.5 1.8-1.3 2.2-2.3 1.2-3 .5-6.5-1.7-9.5 1.5.5 3 0 4-1.5.8-1.2 1.5-2.2 3-3.2L14 2z"/><path d="M12 2c1-1 2.5-1 3.5 0" fill="none" stroke="#27AE60" stroke-width="2" stroke-linecap="round"/></svg>
+                  <svg class="icon pepper-icon" viewBox="0 0 24 24" style="width: 13px; height: 13px;" fill="#E74C3C" stroke="#E74C3C" stroke-width="1"><path d="M14 2c-.5 1.5-1.5 2.5-3 3 1.5 2 2 4.5 1.5 7-.8 3.5-3.5 6-7 6.5-1.5.2-3-.3-4-1.2 1-.5 1.8-1.3 2.2-2.3 1.2-3 .5-6.5-1.7-9.5 1.5.5 3 0 4-1.5.8-1.2 1.5-2.2 3-3.2L14 2z"/><path d="M12 2c1-1 2.5-1 3.5 0" fill="none" stroke="#27AE60" stroke-width="2" stroke-linecap="round"/></svg>
+                  <svg class="icon pepper-icon" viewBox="0 0 24 24" style="width: 13px; height: 13px;" fill="#E74C3C" stroke="#E74C3C" stroke-width="1"><path d="M14 2c-.5 1.5-1.5 2.5-3 3 1.5 2 2 4.5 1.5 7-.8 3.5-3.5 6-7 6.5-1.5.2-3-.3-4-1.2 1-.5 1.8-1.3 2.2-2.3 1.2-3 .5-6.5-1.7-9.5 1.5.5 3 0 4-1.5.8-1.2 1.5-2.2 3-3.2L14 2z"/><path d="M12 2c1-1 2.5-1 3.5 0" fill="none" stroke="#27AE60" stroke-width="2" stroke-linecap="round"/></svg>
+                  <span style="margin-left: 3px;">Extreme Mala Heat</span>
+                </span>
+              </div>
+            </div>
+            <div class="hp-broth-body">
+              <div class="hp-broth-tags">
+                <span class="hp-tag">Aged Beef Tallow</span>
+                <span class="hp-tag">32 Spices</span>
+                <span class="hp-tag">Pixian Douban</span>
+              </div>
+              <h3 class="hp-broth-name">Sichuan Mala Fire Tallow Broth</h3>
+              <p class="hp-broth-desc">
+                An intoxicating cauldron of whole lantern chilis, numbing green Sichuan peppercorns, roasted star anise, and fermented fava bean paste melted into rich beef tallow for enduring, soul-warming heat.
+              </p>
+              <div class="hp-broth-notes">
+                <strong>Tasting Notes:</strong> Numbing mala vibration, smoky beef tallow depth, floral Sichuan citrus finish.
+              </div>
+            </div>
+          </div>
+
+          <!-- Broth 2: Golden Collagen Chicken -->
+          <div class="hp-broth-card hp-reveal" style="transition-delay: 0.15s;">
+            <div class="hp-broth-img-box">
+              <img src="images/broth-golden-collagen.jpg" alt="Golden collagen chicken elixir broth with wolfberries, red dates, and ginseng" loading="lazy">
+              <div class="hp-broth-heat-badge" style="background: rgba(229, 160, 0, 0.85); color: #120A08;">
+                <span style="display: inline-flex; align-items: center; gap: 4px;">
+                  <svg class="icon" viewBox="0 0 24 24" style="width: 14px; height: 14px; stroke: #120A08;" fill="none" stroke-width="2"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"></path></svg>
+                  <span>Pure Imperial Collagen</span>
+                </span>
+              </div>
+            </div>
+            <div class="hp-broth-body">
+              <div class="hp-broth-tags">
+                <span class="hp-tag">Yellow-Feather Fowl</span>
+                <span class="hp-tag">Red Dates</span>
+                <span class="hp-tag">Wild Ginseng</span>
+              </div>
+              <h3 class="hp-broth-name">Golden Collagen Imperial Elixir</h3>
+              <p class="hp-broth-desc">
+                Slowly extracted from free-range yellow-feather chickens, trotters, dried scallop, and ginkgo nuts until the soup turns rich molten gold, coating the palate with velvety, restorative nourishment.
+              </p>
+              <div class="hp-broth-notes">
+                <strong>Tasting Notes:</strong> Pure poultry sweetness, silky restorative mouthfeel, clean savory umami.
+              </div>
+            </div>
+          </div>
+
+          <!-- Broth 3: Wild Yunnan Morel -->
+          <div class="hp-broth-card hp-reveal" style="transition-delay: 0.3s;">
+            <div class="hp-broth-img-box">
+              <img src="images/broth-yunnan-mushroom.jpg" alt="Wild Yunnan morel mushroom and black truffle herbal broth" loading="lazy">
+              <div class="hp-broth-heat-badge" style="background: rgba(16, 185, 129, 0.85); color: #FFF3E0;">
+                <span style="display: inline-flex; align-items: center; gap: 4px;">
+                  <svg class="icon" viewBox="0 0 24 24" style="width: 14px; height: 14px; stroke: #FFF3E0;" fill="none" stroke-width="2"><path d="M11 20A7 7 0 0 1 4 13C4 7 11 3 11 3s7 4 7 10a7 7 0 0 1-7 7Z"></path><path d="M11 20V10"></path></svg>
+                  <span>100% Plant-Based</span>
+                </span>
+              </div>
+            </div>
+            <div class="hp-broth-body">
+              <div class="hp-broth-tags">
+                <span class="hp-tag">Yunnan Morels</span>
+                <span class="hp-tag">Black Truffle</span>
+                <span class="hp-tag">Cordyceps</span>
+              </div>
+              <h3 class="hp-broth-name">Wild Yunnan Morel Herbal Pot</h3>
+              <p class="hp-broth-desc">
+                Hand-foraged black morels, cordyceps flowers, Chinese angelica, and black winter truffles simmered into an intensely fragrant, clear earthen broth revered for centuries as an imperial wellness tonic.
+              </p>
+              <div class="hp-broth-notes">
+                <strong>Tasting Notes:</strong> Deep woodland forest aroma, earthiness, delicate sweet herbal finish.
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Twin Pot Feature Strip -->
+        <div class="hp-twin-pot-strip hp-reveal">
+          <div style="display: flex; align-items: center; gap: 20px;">
+            <div style="width: 48px; height: 48px; border-radius: 50%; background: var(--gradient-brand); display: flex; align-items: center; justify-content: center; color: #FFF3E0; flex-shrink: 0;">
+              <svg class="icon" viewBox="0 0 24 24" style="width: 24px; height: 24px;"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a10 10 0 0 0 0 20 5 5 0 0 0 0-10 5 5 0 0 1 0-10z"></path></svg>
+            </div>
+            <div>
+              <h4 style="font-family: 'Cinzel', serif; font-size: 1.15rem; color: var(--text-primary); margin-bottom: 4px;">Experience The Yin-Yang Dual Cauldron</h4>
+              <p style="font-size: 0.88rem; color: var(--text-secondary); margin: 0;">Cannot decide between spicy Mala and soothing Collagen? Every table can pair any two signature broths in our hand-hammered divider pot.</p>
+            </div>
+          </div>
+          <button class="hp-cta-secondary" onclick="openLoginModal();" style="flex-shrink: 0; padding: 10px 22px; font-size: 0.84rem;">
+            <span>Reserve Dual Cauldron</span>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- --------------------------------------------------------------------
+         SECTION 3: Featured Hot Pot Combinations
+         -------------------------------------------------------------------- -->
+    <section class="hp-section hp-combos-section" id="combos" aria-label="Featured Hot Pot Combinations">
+      <div class="hp-container">
+        
+        <div class="hp-header hp-reveal">
+          <span class="hp-pill">
+            <span class="hp-pill-dot"></span>
+            Curated Culinary Flights
+          </span>
+          <h2 class="hp-title">Featured Hot Pot <span class="hp-gradient-text">Combinations</span></h2>
+          <p class="hp-subtitle">
+            Orchestrated by our Master Broth Sommeliers to balance protein marbling, broth salinity, and dipping sauce alchemy for the sublime eight-second immersion ritual.
+          </p>
+        </div>
+
+        <!-- Combo 1: Wagyu Symphony -->
+        <div class="hp-combo-row hp-reveal">
+          <div class="hp-combo-img-wrap">
+            <img src="images/combo-wagyu-beef.jpg" alt="A5 Miyazaki Wagyu ribeye ribbons arranged with delicate marbling on dark slate" loading="lazy">
+          </div>
+          <div class="hp-combo-details">
+            <span class="hp-tag" style="margin-bottom: 12px; display: inline-block;">Signature Meat Selection</span>
+            <h3 class="hp-combo-title">The Emperor's A5 Wagyu Symphony</h3>
+            <p class="hp-combo-desc">
+              Finely shaved sheets of certified Miyazaki A5 Wagyu ribeye and USDA Prime short rib folded into blooming culinary roses. When swirled for eight seconds in bubbling broth, the snowflake intramuscular fat melts into pure velvety bliss.
+            </p>
+            <div class="hp-combo-specs">
+              <div>
+                <div class="hp-spec-label">Ideal Broth</div>
+                <div class="hp-spec-val">Sichuan Mala</div>
+              </div>
+              <div>
+                <div class="hp-spec-label">Swirl Duration</div>
+                <div class="hp-spec-val">8 Seconds</div>
+              </div>
+              <div>
+                <div class="hp-spec-label">Artisan Dip</div>
+                <div class="hp-spec-val">Garlic Sesame Oil</div>
+              </div>
+            </div>
+            <a href="#menu" class="hp-cta-primary" style="padding: 10px 24px; font-size: 0.85rem;">
+              <span>View Meat Cuts & Pairings</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Combo 2: Celestial Seafood -->
+        <div class="hp-combo-row hp-reveal">
+          <div class="hp-combo-img-wrap">
+            <img src="images/combo-seafood-deluxe.jpg" alt="Ocean harvest platter with tiger prawns, sea scallops, and truffle shrimp paste" loading="lazy">
+          </div>
+          <div class="hp-combo-details">
+            <span class="hp-tag" style="margin-bottom: 12px; display: inline-block;">Oceanic Master Harvest</span>
+            <h3 class="hp-combo-title">The Celestial Ocean Harvest</h3>
+            <p class="hp-combo-desc">
+              Live giant blue tiger prawns, sweet Hokkaido sea scallops served in their shells, delicate abalone slices, and hand-beaten black truffle shrimp paste pressed tableside into bubbling broth with bamboo spoons.
+            </p>
+            <div class="hp-combo-specs">
+              <div>
+                <div class="hp-spec-label">Ideal Broth</div>
+                <div class="hp-spec-val">Golden Collagen</div>
+              </div>
+              <div>
+                <div class="hp-spec-label">Swirl Duration</div>
+                <div class="hp-spec-val">30 - 45 Seconds</div>
+              </div>
+              <div>
+                <div class="hp-spec-label">Artisan Dip</div>
+                <div class="hp-spec-val">Ginger Aged Soy</div>
+              </div>
+            </div>
+            <a href="#menu" class="hp-cta-primary" style="padding: 10px 24px; font-size: 0.85rem;">
+              <span>Explore Seafood Flights</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- --------------------------------------------------------------------
+         SECTION 4: Fresh Ingredients & Vegetarian Highlights
+         -------------------------------------------------------------------- -->
+    <section class="hp-section hp-ingredients-section" id="ingredients" aria-label="Fresh Ingredients & Vegetarian Highlights">
+      <div class="hp-flare" style="top: 30%; left: 5%; width: 450px; height: 450px; background: rgba(16, 185, 129, 0.15);"></div>
+
+      <div class="hp-container">
+        
+        <div class="hp-header hp-reveal">
+          <span class="hp-pill">
+            <span class="hp-pill-dot" style="background: #10B981; box-shadow: 0 0 8px #10B981;"></span>
+            From Organic Soil To Cauldron
+          </span>
+          <h2 class="hp-title">Sacred Fungi, Fresh Greens & <span class="hp-gradient-text">Artisan Tofu</span></h2>
+          <p class="hp-subtitle">
+            Great hot pot is an ode to the earth. We partner directly with high-altitude growers across Yunnan and heritage organic farmers for morning-harvested greens, hand-foraged mushrooms, and silky stone-ground bean curds.
+          </p>
+        </div>
+
+        <div class="hp-ing-split">
+          
+          <!-- Card 1: Wild Fungi & Greens -->
+          <div class="hp-ing-card hp-reveal">
+            <div class="hp-ing-img-wrap">
+              <img src="images/fresh-mushroom-vegetable-harvest.jpg" alt="Fresh harvest of Yunnan morels, king oyster, enoki, and crisp morning-picked bok choy" loading="lazy">
+            </div>
+            <h3 class="hp-ing-title">Yunnan Wild Fungi & Heirloom Greens</h3>
+            <p class="hp-ing-desc">
+              Crisp vegetable harvests delivered fresh every dawn. Delicate king oyster mushrooms, earthy black morels, golden enoki bouquets, tender Shanghai bok choy, and fragrant crown daisy leaves.
+            </p>
+            <ul class="hp-checklist">
+              <li>
+                <svg class="hp-checklist-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Hand-foraged black morels & cordyceps flowers</span>
+              </li>
+              <li>
+                <svg class="hp-checklist-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Crisp baby crown daisy (Tong Ho) & sweet lotus root</span>
+              </li>
+              <li>
+                <svg class="hp-checklist-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Zero pesticide heirloom harvest with verified origin</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Card 2: Artisan Tofu Craft -->
+          <div class="hp-ing-card hp-reveal" style="transition-delay: 0.15s;">
+            <div class="hp-ing-img-wrap">
+              <img src="images/fresh-tofu-beancurd-selection.jpg" alt="Artisanal silken tofu, golden crispy yuba rolls, and honeycomb frozen tofu" loading="lazy">
+            </div>
+            <h3 class="hp-ing-title">Three-Texture Artisan Soybean Craft</h3>
+            <p class="hp-ing-desc">
+              Crafted in-house from non-GMO heritage soybeans. Experience three distinctive textural expressions designed to drink in rich broth and release bursts of concentrated flavor.
+            </p>
+            <ul class="hp-checklist">
+              <li>
+                <svg class="hp-checklist-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Handmade Silken Tofu with natural mineral spring water</span>
+              </li>
+              <li>
+                <svg class="hp-checklist-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Crispy 3-second hand-rolled Yuba ring rolls</span>
+              </li>
+              <li>
+                <svg class="hp-checklist-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Honeycomb frozen tofu with micro broth-absorbing chambers</span>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- --------------------------------------------------------------------
+         SECTION 5: The Communal Dining Experience
+         -------------------------------------------------------------------- -->
+    <section class="hp-section hp-communal-section" id="experience" aria-label="The Communal Dining Experience">
+      <span id="gallery" style="position:relative;top:-100px;"></span>
+      <div class="hp-flare" style="top: 20%; right: 10%; width: 500px; height: 500px; background: rgba(169, 50, 38, 0.2);"></div>
+
+      <div class="hp-container">
+        
+        <div class="hp-header hp-reveal">
+          <span class="hp-pill">
+            <span class="hp-pill-dot"></span>
+            Shared Warmth • Shared Joy
+          </span>
+          <h2 class="hp-title">The Sacred Art of <span class="hp-gradient-text">Communal Dining</span></h2>
+          <p class="hp-subtitle">
+            Around the bubbling cauldron, time softens. Conversation flows freely, chopsticks dance across the steam, and every shared ingredient becomes a memorable celebration of friendship and family.
+          </p>
+        </div>
+
+        <div class="hp-communal-grid hp-reveal">
+          
+          <!-- Panoramic Atmosphere Image -->
+          <div class="hp-communal-feature-img">
+            <img src="images/communal-dining-atmosphere.jpg" alt="Friends and family laughing and gathering around a steaming hot pot table" loading="lazy">
+            <div class="hp-communal-quote-overlay">
+              <p class="hp-communal-quote">“To share a bubbling hot pot with those you love is to share warmth that lingers long after the flame subsides.”</p>
+              <div style="font-size: 0.82rem; color: var(--color-amber); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600;">— Ancient Sichuan Dining Proverb</div>
+            </div>
+          </div>
+
+          <!-- Architectural Sanctuary Image -->
+          <div class="hp-communal-side-img">
+            <img src="images/restaurant-interior-ambience.jpg" alt="Architectural luxury interior with wooden lattice screens and glowing paper lanterns" loading="lazy">
+          </div>
+
+        </div>
+
+        <!-- 4 Pillars of the Dining Experience -->
+        <div class="hp-pillars-grid">
+          
+          <div class="hp-pillar-card hp-reveal">
+            <div class="hp-pillar-num">01</div>
+            <h4 class="hp-pillar-title">The Central Hearth</h4>
+            <p class="hp-pillar-desc">The simmering cauldron sits at the exact heart of every table, acting as a magnetic ritual that unifies everyone in shared anticipation.</p>
+          </div>
+
+          <div class="hp-pillar-card hp-reveal" style="transition-delay: 0.1s;">
+            <div class="hp-pillar-num">02</div>
+            <h4 class="hp-pillar-title">Sauce Sanctuary</h4>
+            <p class="hp-pillar-desc">Craft your bespoke dipping alchemy at our 24-ingredient bar, featuring aged Chinkiang vinegars, toasted sesame pastes, and house chili crisps.</p>
+          </div>
+
+          <div class="hp-pillar-card hp-reveal" style="transition-delay: 0.2s;">
+            <div class="hp-pillar-num">03</div>
+            <h4 class="hp-pillar-title">Private Lattice Suites</h4>
+            <p class="hp-pillar-desc">Hand-carved rosewood screens and acoustic insulation ensure your banquet remains intimately private yet warmly connected.</p>
+          </div>
+
+          <div class="hp-pillar-card hp-reveal" style="transition-delay: 0.3s;">
+            <div class="hp-pillar-num">04</div>
+            <h4 class="hp-pillar-title">Sommelier Flights</h4>
+            <p class="hp-pillar-desc">Pair fiery broths with aged Yunnan Pu'er tea, cooling chrysanthemum elixirs, and bespoke craft Baijiu cocktails mixed tableside.</p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- --------------------------------------------------------------------
+         SECTION 6: Chef's Specials & Exclusive Dining Offers
+         -------------------------------------------------------------------- -->
+    <section class="hp-section hp-specials-section" id="offers" aria-label="Chef's Specials & Exclusive Dining Offers">
+      <div class="hp-flare" style="top: 25%; left: 10%; width: 450px; height: 450px; background: rgba(229, 160, 0, 0.18);"></div>
+
+      <div class="hp-container">
+        
+        <div class="hp-header hp-reveal">
+          <span class="hp-pill">
+            <span class="hp-pill-dot"></span>
+            Curated Connoisseur Highlights
+          </span>
+          <h2 class="hp-title">Chef’s Specials & <span class="hp-gradient-text">Exclusive Privileges</span></h2>
+          <p class="hp-subtitle">
+            Rare kitchen allocations, tableside culinary theatre, and secret off-menu recipes reserved exclusively for our dinner guests and Secret Broth Society members.
+          </p>
+        </div>
+
+        <div class="hp-specials-grid">
+          
+          <!-- Special 1: Flame Ritual -->
+          <div class="hp-special-card hp-reveal">
+            <div class="hp-special-img-box">
+              <img src="images/chef-special-tableside-ritual.jpg" alt="Executive chef tableside flame torch sear of marbled Wagyu beef over copper hot pot" loading="lazy">
+              <span class="hp-special-badge">Tableside Culinary Theatre</span>
+            </div>
+            <div class="hp-special-body">
+              <h3 class="hp-special-title">Tableside Wagyu Flame Sear Ritual</h3>
+              <p class="hp-special-desc">
+                Our Executive Chef visits your table to torch-sear thin ribbons of A5 Wagyu wrapped around fresh white asparagus, brushed with smoked bone marrow butter before gentle immersion into your simmering Mala cauldron.
+              </p>
+              <div class="hp-special-footer">
+                <span class="hp-special-perk" style="display: inline-flex; align-items: center; gap: 4px;">
+                  <svg class="icon" viewBox="0 0 24 24" style="width: 13px; height: 13px; fill: var(--color-amber); stroke: var(--color-amber);" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                  <span>Included with all VIP Emperor Tastings</span>
+                </span>
+                <button class="hp-cta-secondary" onclick="openLoginModal();" style="padding: 8px 18px; font-size: 0.8rem;">
+                  <span>Claim Experience</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Special 2: Wagyu Rose Platter -->
+          <div class="hp-special-card hp-reveal" style="transition-delay: 0.15s;">
+            <div class="hp-special-img-box">
+              <img src="images/chef-exclusive-wagyu-platter.jpg" alt="VIP Wagyu beef roses adorned with edible 24K gold leaf and dry ice vapor" loading="lazy">
+              <span class="hp-special-badge" style="background: linear-gradient(135deg, #E5A000, #D35400);">Secret Broth Society Perk</span>
+            </div>
+            <div class="hp-special-body">
+              <h3 class="hp-special-title">Imperial 24K Gold Wagyu Rose Platter</h3>
+              <p class="hp-special-desc">
+                A banquet centerpiece featuring snowflake marbled Wagyu rolled into blooming rose blossoms, accented with 24K edible gold flakes and presented on traditional black lacquerware with aromatic dry ice mist.
+              </p>
+              <div class="hp-special-footer">
+                <span class="hp-special-perk" style="display: inline-flex; align-items: center; gap: 4px;">
+                  <svg class="icon" viewBox="0 0 24 24" style="width: 13px; height: 13px; fill: var(--color-amber); stroke: var(--color-amber);" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                  <span>Complimentary for Banquets of 4+</span>
+                </span>
+                <button class="hp-cta-secondary" onclick="openLoginModal();" style="padding: 8px 18px; font-size: 0.8rem;">
+                  <span>Unlock Member Access</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- --------------------------------------------------------------------
+         SECTION 7: Explore, Discover & Reserve Your Table
+         -------------------------------------------------------------------- -->
+    <section class="hp-section hp-reserve-section" id="reservations" aria-label="Reserve Your Table">
+      <div class="hp-container">
+        
+        <div class="hp-reserve-card hp-reveal">
+          <img src="images/reserve-table-feast.jpg" alt="Panoramic banquet table filled with bubbling twin broths, prime meats, and dipping sauces" class="hp-reserve-bg" loading="lazy">
+
+          <div class="hp-reserve-content">
+            <span class="hp-pill">
+              <span class="hp-pill-dot"></span>
+              Your Table Awaits
+            </span>
+            
+            <h2 class="hp-title" style="font-size: clamp(2.2rem, 4.5vw, 3.2rem); max-width: 700px; margin: 0 auto 16px;">
+              Claim Your Place At The <span class="hp-gradient-text">Imperial Hearth</span>
+            </h2>
+
+            <p class="hp-subtitle" style="max-width: 600px;">
+              Reservations for our handcrafted copper cauldrons and private lattice suites open thirty days in advance. Step inside our sanctuary and experience broth artistry redefined.
+            </p>
+
+            <!-- Quick Reservation Selector -->
+            <form class="hp-reserve-form-box" onsubmit="event.preventDefault(); openLoginModal();">
+              <div class="hp-form-group">
+                <label class="hp-form-label" for="hpPartySize">Party Size</label>
+                <select id="hpPartySize" class="hp-select-field">
+                  <option value="2">2 Connoisseurs (Intimate Table)</option>
+                  <option value="4" selected>3 - 4 Guests (Family Hearth)</option>
+                  <option value="6">5 - 8 Guests (Banquet Cauldron)</option>
+                  <option value="12">9+ Guests (Private Suite)</option>
+                </select>
+              </div>
+
+              <div class="hp-form-group">
+                <label class="hp-form-label" for="hpDiningSession">Dining Session</label>
+                <select id="hpDiningSession" class="hp-select-field">
+                  <option value="lunch">Imperial Lunch (11:30 AM – 3:00 PM)</option>
+                  <option value="dinner" selected>Evening Dinner (5:00 PM – 10:30 PM)</option>
+                  <option value="latenight">Late Night Pot (11:00 PM – 3:30 AM)</option>
+                </select>
+              </div>
+
+              <div class="hp-form-group">
+                <label class="hp-form-label" for="hpBrothPref">Cauldron Style</label>
+                <select id="hpBrothPref" class="hp-select-field">
+                  <option value="duo" selected>Yin-Yang Twin Broth Cauldron</option>
+                  <option value="mala">Sichuan Mala Fire Tallow</option>
+                  <option value="collagen">Golden Collagen Chicken Elixir</option>
+                  <option value="morel">Wild Yunnan Morel & Truffle</option>
+                </select>
+              </div>
+            </form>
+
+            <div class="hp-reserve-actions">
+              <button class="hp-cta-primary" onclick="openLoginModal();" style="padding: 16px 36px; font-size: 1rem;">
+                <svg class="icon" viewBox="0 0 24 24" style="width: 18px; height: 18px;"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                <span>Confirm VIP Table Reservation</span>
+              </button>
+              <a href="#menu" class="hp-cta-secondary" style="padding: 16px 28px; font-size: 0.95rem;">
+                <span>Explore Full Menu</span>
+              </a>
+            </div>
+
+            <div style="margin-top: 24px; font-size: 0.78rem; color: var(--text-muted); display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap;">
+              <span style="display: inline-flex; align-items: center; gap: 5px;"><svg class="icon" viewBox="0 0 24 24" style="width: 13px; height: 13px; stroke: #2ECC71;" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>Instant Table Confirmation</span>
+              <span style="display: inline-flex; align-items: center; gap: 5px;"><svg class="icon" viewBox="0 0 24 24" style="width: 13px; height: 13px; stroke: #2ECC71;" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>Dietary & Halal Options Accommodated</span>
+              <span style="display: inline-flex; align-items: center; gap: 5px;"><svg class="icon" viewBox="0 0 24 24" style="width: 13px; height: 13px; stroke: #2ECC71;" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>Valet Parking Available</span>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ========================================================================
+       ENTIRE FOOTER CONTENT (DIRECTLY DERIVED FROM NAVBAR STRUCTURE & IDENTITY)
+       ======================================================================== -->
+  <footer class="site-footer" id="siteFooter" role="contentinfo">
+    
+    <!-- 1. Top Call-to-Action Reservation Banner Card -->
+    <div class="footer-cta-container">
+      <div class="footer-cta-card">
+        <div class="cta-left">
+          <div class="cta-badge">
+            <span class="pulse-indicator"></span>
+            <span>Live Kitchen Status • Master Broths Simmering at 98°C</span>
+          </div>
+          <h2 class="cta-title">The Sacred Art of Simmering Perfection</h2>
+          <p class="cta-subtitle">
+            Indulge in 18-hour simmered bone marrow broths, hand-carved Miyazaki A5 Wagyu, and artisan dipping oils crafted inside an immersive 3D sensory dining temple.
+          </p>
+        </div>
+        <div class="cta-actions">
+          <button class="btn-3d-login cta-reserve-btn" onclick="openLoginModal();">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path><polyline points="10 17 15 12 10 7"></polyline><line x1="15" y1="12" x2="3" y2="12"></line></svg>
+            <span>VIP Table Booking</span>
+          </button>
+          <a href="#contact" class="cta-secondary-btn">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            <span>Concierge Hotline</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. Main 5-Column Grid (Derived from Navbar Architecture) -->
+    <div class="footer-grid-container">
+      
+      <!-- Col 1: Brand & Steaming Pot Identity -->
+      <div class="footer-col footer-col-brand" id="footerColAbout">
+        <a href="#home" class="brand-logo footer-brand-logo" aria-label="HOT POT RESTAURANT">
+          <!-- Steaming 3D Hot Pot Vector Illustration -->
+          <div class="pot-icon-wrapper" style="width: 52px; height: 52px;">
+            <svg class="hotpot-svg" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Rising Steam Curves -->
+              <g class="steam-group">
+                <path class="steam-path steam-path-1" d="M24 24C22 18 28 14 26 8" />
+                <path class="steam-path steam-path-2" d="M32 22C34 16 30 12 33 6" />
+                <path class="steam-path steam-path-3" d="M40 24C42 18 36 14 38 8" />
+              </g>
+              <ellipse cx="32" cy="56" rx="18" ry="4" fill="rgba(211, 84, 0, 0.45)" filter="blur(2px)"/>
+              <path d="M12 36C10 36 8 38 8 40C8 42 10 44 12 44" stroke="url(#goldPotGrad)" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M52 36C54 36 56 38 56 40C56 42 54 44 52 44" stroke="url(#goldPotGrad)" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M14 34C14 46 22 53 32 53C42 53 50 46 50 34H14Z" fill="url(#potBodyGrad)" stroke="url(#goldPotGrad)" stroke-width="1.8"/>
+              <ellipse cx="32" cy="34" rx="18" ry="8" fill="#1A0A08" stroke="url(#goldPotGrad)" stroke-width="2"/>
+              <path d="M14 34C14 38.4 22 42 32 42C32 38 28 34 32 30C22 30 14 31.8 14 34Z" fill="url(#spicyBrothGrad)"/>
+              <path d="M50 34C50 38.4 42 42 32 42C32 38 36 34 32 30C42 30 50 31.8 50 34Z" fill="url(#herbalBrothGrad)"/>
+              <path d="M32 26C30 30 34 34 32 42" stroke="url(#goldPotGrad)" stroke-width="1.5" stroke-linecap="round"/>
+              <circle class="broth-bubble bubble-1" cx="22" cy="36" r="1.4" fill="#FF5722"/>
+              <circle class="broth-bubble bubble-2" cx="26" cy="38" r="1" fill="#FFA000"/>
+              <circle class="broth-bubble bubble-3" cx="42" cy="36" r="1.3" fill="#FFE082"/>
+            </svg>
+          </div>
+          <div class="brand-text-block">
+            <span class="brand-title" style="font-size: 1.35rem;">
+              HOT POT
+              <span class="brand-flame-dot"></span>
+            </span>
+            <span class="brand-subtitle">RESTAURANT</span>
+          </div>
+        </a>
+
+        <p class="footer-brand-bio">
+          Where dynastic Asian broth artistry meets contemporary luxury dining. Each cauldron is an alchemical tribute to Sichuan mala fire, yellow-feather chicken collagen, and courtly culinary rituals.
+        </p>
+
+        <!-- Social Media Icons (3D circular buttons) -->
+        <div class="footer-social-row">
+          <a href="#instagram" class="social-icon-btn" aria-label="Follow on Instagram" title="Instagram">
+            <svg class="icon" viewBox="0 0 24 24"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+          </a>
+          <a href="#tiktok" class="social-icon-btn" aria-label="Follow on TikTok" title="TikTok">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path></svg>
+          </a>
+          <a href="#wechat" class="social-icon-btn" aria-label="WeChat and Xiaohongshu" title="WeChat / RED">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+          </a>
+          <a href="#youtube" class="social-icon-btn" aria-label="YouTube Channel" title="YouTube">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+          </a>
+          <a href="#facebook" class="social-icon-btn" aria-label="Facebook Page" title="Facebook">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+          </a>
+        </div>
+
+        <div class="footer-awards-badge">
+          <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"></circle><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"></path></svg>
+          <span>Michelin Selected 2026 • Grand Broth Guild</span>
+        </div>
+      </div>
+
+      <!-- Col 2: Experiences (from Navbar: Home 1, Home 2, Experience, Gallery) -->
+      <div class="footer-col" id="footerColExperience">
+        <h3 class="footer-col-title">The Experiences</h3>
+        <ul class="footer-links-list">
+          <li>
+            <a href="#home1" class="footer-link">
+              <svg class="icon link-bullet" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              <span>Home 1: Imperial Palace Copper Pot</span>
+            </a>
+          </li>
+          <li>
+            <a href="#home2" class="footer-link">
+              <svg class="icon link-bullet" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              <span>Home 2: Cyber Hot Pot Lounge</span>
+            </a>
+          </li>
+          <li>
+            <a href="#experience" class="footer-link">
+              <svg class="icon link-bullet" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              <span>24-Ingredient Sauce Sanctuary</span>
+            </a>
+          </li>
+          <li>
+            <a href="#experience" class="footer-link">
+              <svg class="icon link-bullet" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              <span>Private Imperial Copper Suites</span>
+            </a>
+          </li>
+          <li>
+            <a href="#experience" class="footer-link">
+              <svg class="icon link-bullet" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              <span>Tableside Flame Rituals</span>
+            </a>
+          </li>
+          <li>
+            <a href="#gallery" class="footer-link">
+              <svg class="icon link-bullet" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              <span>Visual Symphony & Gallery</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Menus & Master Broths (from Navbar: Menu, Offers) -->
+      <div class="footer-col" id="footerColMenu">
+        <h3 class="footer-col-title">Master Broths & Cuts</h3>
+        <ul class="footer-links-list">
+          <li>
+            <a href="#menu" class="footer-link">
+              <svg class="icon link-bullet" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              <span>Sichuan Mala Tallow Broth</span>
+            </a>
+          </li>
+          <li>
+            <a href="#menu" class="footer-link">
+              <svg class="icon link-bullet" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              <span>Golden Collagen Chicken Elixir</span>
+            </a>
+          </li>
+          <li>
+            <a href="#menu" class="footer-link">
+              <svg class="icon link-bullet" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              <span>Wild Yunnan Morel Herbal Pot</span>
+            </a>
+          </li>
+          <li>
+            <a href="#menu" class="footer-link">
+              <svg class="icon link-bullet" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              <span>Miyazaki A5 Wagyu Ribeye</span>
+            </a>
+          </li>
+          <li>
+            <a href="#offers" class="footer-link">
+              <svg class="icon link-bullet" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              <span>Offers & Late-Night Flights</span>
+            </a>
+          </li>
+          <li>
+            <a href="#menu" class="footer-link">
+              <svg class="icon link-bullet" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              <span>Handmade Black Truffle Prawn Paste</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Col 4: Portals & Concierge (from Navbar: Dashboard, Reservations, Login) -->
+      <div class="footer-col" id="footerColReservations">
+        <h3 class="footer-col-title">Portals & VIP Club</h3>
+        <ul class="footer-links-list">
+          <li>
+            <a href="admin-dashboard.html" class="footer-link" id="footerAdminLink">
+              <svg class="icon link-bullet" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              <span>Admin Kitchen Console</span>
+            </a>
+          </li>
+          <li>
+            <a href="user-dashboard.html" class="footer-link" id="footerUserLink">
+              <svg class="icon link-bullet" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              <span>VIP Chili Club User Portal</span>
+            </a>
+          </li>
+          <li>
+            <a href="#login" class="footer-link" id="footerLoginLink">
+              <svg class="icon link-bullet" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              <span>VIP Connoisseur Sign In</span>
+            </a>
+          </li>
+          <li>
+            <a href="#reservations" class="footer-link" id="footerReservationLink">
+              <svg class="icon link-bullet" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              <span>Online Table Reservations</span>
+            </a>
+          </li>
+          <li>
+            <a href="#banquet" class="footer-link" id="footerBanquetLink">
+              <svg class="icon link-bullet" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              <span>Private Banquet Buyouts</span>
+            </a>
+          </li>
+          <li>
+            <a href="#contact" class="footer-link">
+              <svg class="icon link-bullet" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              <span>Valet & Lost Belongings</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Col 5: Location & Sanctuary Hours (from Navbar: Contact) -->
+      <div class="footer-col" id="footerColContact">
+        <div id="contact" style="position:relative;top:-100px;"></div>
+        <h3 class="footer-col-title">Dining Sanctuary</h3>
+        
+        <div class="footer-info-block">
+          <div class="info-row">
+            <svg class="icon info-icon" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <div>
+              <strong>88 Imperial Dragon Way</strong>
+              <div class="info-muted">Celestial Pavilion, Suite 900</div>
+            </div>
+          </div>
+
+          <div class="info-row">
+            <svg class="icon info-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            <div>
+              <strong>Daily Dining Hours</strong>
+              <div class="info-muted">Lunch: 11:30 AM – 3:00 PM</div>
+              <div class="info-muted">Dinner: 5:00 PM – 11:00 PM</div>
+              <div class="info-muted highlight">Late Night Pot: 11:00 PM – 3:30 AM</div>
+            </div>
+          </div>
+
+          <div class="info-row">
+            <svg class="icon info-icon" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            <div>
+              <strong>+1 (800) 888-POTS (7687)</strong>
+              <div class="info-muted">Valet Parking & Private VIP Entrance</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 3. VIP Secret Broth Society Newsletter Section -->
+    <div class="footer-newsletter-wrap">
+      <div class="footer-newsletter-card">
+        <div class="newsletter-left">
+          <div class="newsletter-icon-circle">
+            <svg class="icon" style="width: 24px; height: 24px;" viewBox="0 0 24 24"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"></path></svg>
+          </div>
+          <div>
+            <h3 class="newsletter-title">Join The Secret Broth Society</h3>
+            <p class="newsletter-desc">Receive secret off-menu broth recipes, seasonal A5 Wagyu flight invitations, and priority table allocations.</p>
+          </div>
+        </div>
+        <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Welcome to the Secret Broth Society! Check your inbox for your VIP welcome gift.'); this.reset();">
+          <input type="email" placeholder="Enter your imperial email..." required class="newsletter-input" aria-label="Email address for VIP newsletter">
+          <button type="submit" class="btn-3d-login newsletter-submit-btn">
+            <span>Subscribe</span>
+            <svg class="icon btn-arrow-icon" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- 4. Bottom Legal & Back to Top Bar -->
+    <div class="footer-bottom-bar">
+      <div class="bottom-bar-inner">
+        <div class="bottom-copy">
+          © 2026 <strong>HOT POT RESTAURANT</strong>. All rights reserved. Crafting imperial dining memories since 1898.
+        </div>
+
+        <div class="bottom-links">
+          <a href="#privacy" class="bottom-link" onclick="alert('Privacy policy: Your data is protected by imperial confidentiality standards.'); return false;">Privacy Policy</a>
+          <span class="sep">•</span>
+          <a href="#terms" class="bottom-link" onclick="alert('Terms of dining: Traditional etiquette and communal respect observed.'); return false;">Terms of Service</a>
+          <span class="sep">•</span>
+          <a href="#allergens" class="bottom-link" onclick="alert('Allergen guide: Peanut oils, sesame, shellfish and dynastic chili warnings available tableside.'); return false;">Dietary & Allergen Guide</a>
+          <span class="sep">•</span>
+          <a href="#accessibility" class="bottom-link">Accessibility</a>
+        </div>
+
+        <div class="bottom-back-to-top">
+          <button class="btn-back-to-top" id="backToTopBtn" aria-label="Back to Top of Page">
+            <span>Back to Top</span>
+            <svg class="icon" viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"></polyline></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </footer>
+
+  <!-- ========================================================================
+       JAVASCRIPT: INTERACTION CONTROLLER & FRAMER-MOTION PHYSICS SIMULATION
+       ======================================================================== -->
+  <script>
+    (function() {
+      'use strict';
+
+      // --- DOM ELEMENT REFERENCES ---
+      const navbarDock = document.getElementById('navbarDock');
+      const navbarContainer = document.getElementById('navbarContainer');
+      const navMenuList = document.getElementById('navMenuList');
+      const magneticIndicator = document.getElementById('magneticIndicator');
+      const navItems = document.querySelectorAll('.nav-item');
+      
+      const themeToggleBtn = document.getElementById('themeToggleBtn');
+      const mobileThemeToggle = document.getElementById('mobileThemeToggle');
+      const mobileThemeLabel = document.getElementById('mobileThemeLabel');
+      
+      const rtlToggleBtn = document.getElementById('rtlToggleBtn');
+      const mobileRtlToggle = document.getElementById('mobileRtlToggle');
+      const mobileRtlLabel = document.getElementById('mobileRtlLabel');
+      
+      const loginBtn = document.getElementById('loginBtn');
+      const mobileLoginBtn = document.getElementById('mobileLoginBtn');
+      const loginModal = document.getElementById('loginModal');
+      const closeModalBtn = document.getElementById('closeModalBtn');
+      
+      const hamburgerBtn = document.getElementById('hamburgerBtn');
+      const mobileDrawer = document.getElementById('mobileDrawer');
+      const mobileBackdrop = document.getElementById('mobileBackdrop');
+      const drawerCloseBtn = document.getElementById('drawerCloseBtn');
+      const drawerActionCloses = document.querySelectorAll('.drawer-action-close');
+      
+      const dashboardNavDropdown = document.getElementById('dashboardNavDropdown');
+      const dashboardDropdownTrigger = document.getElementById('dashboardDropdownTrigger');
+
+      // --- 1. DYNAMIC MOUSE SPOTLIGHT (INTERACTIVE 3D LIGHTING) ---
+      navbarContainer.addEventListener('mousemove', (e) => {
+        const rect = navbarContainer.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        navbarContainer.style.setProperty('--mouse-x', `${x}px`);
+        navbarContainer.style.setProperty('--mouse-y', `${y}px`);
+
+        // Subtle 3D tilt tracking cursor
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const deltaX = (x - centerX) / centerX;
+        const deltaY = (y - centerY) / centerY;
+        
+        // Gentle tilt maximum 2.5deg
+        navbarContainer.style.transform = `perspective(1200px) rotateX(${-deltaY * 2.5}deg) rotateY(${deltaX * 2.5}deg)`;
+      });
+
+      navbarContainer.addEventListener('mouseleave', () => {
+        navbarContainer.style.transform = 'perspective(1200px) rotateX(0deg) rotateY(0deg)';
+      });
+
+      // --- 2. MOVING ACTIVE / HOVER SPRING PILL INDICATOR ---
+      function updateIndicatorPosition(targetEl) {
+        if (!targetEl || !magneticIndicator) return;
+        const rect = targetEl.getBoundingClientRect();
+        const listRect = navMenuList.getBoundingClientRect();
+        
+        const offsetLeft = rect.left - listRect.left;
+        const width = rect.width;
+
+        magneticIndicator.style.opacity = '1';
+        magneticIndicator.style.width = `${width}px`;
+        magneticIndicator.style.transform = `translateX(${offsetLeft}px)`;
+      }
+
+      // Initial active item position
+      const initialActiveItem = document.querySelector('.nav-item.active .nav-link');
+      if (initialActiveItem) {
+        setTimeout(() => updateIndicatorPosition(initialActiveItem), 250);
+      }
+
+      navItems.forEach(item => {
+        const link = item.querySelector('.nav-link');
+
+        // Hover tracking
+        item.addEventListener('mouseenter', () => {
+          updateIndicatorPosition(link);
+        });
+
+        // Click active state selection
+        link.addEventListener('click', (e) => {
+          // If not a dropdown parent or if clicking a section link
+          navItems.forEach(n => n.classList.remove('active'));
+          item.classList.add('active');
+          updateIndicatorPosition(link);
+        });
+      });
+
+      // Reset indicator back to active on mouse leave
+      navMenuList.addEventListener('mouseleave', () => {
+        const activeItem = document.querySelector('.nav-item.active .nav-link');
+        if (activeItem) {
+          updateIndicatorPosition(activeItem);
+        } else {
+          magneticIndicator.style.opacity = '0';
+        }
+      });
+
+      // --- 3. SCROLL-AWARE NAVBAR STYLING (GLASSMORPHISM & DEPTH) ---
+      let lastScrollY = window.scrollY;
+      function handleScroll() {
+        const currentScrollY = window.scrollY;
+        if (currentScrollY > 30) {
+          navbarDock.classList.add('scrolled');
+        } else {
+          navbarDock.classList.remove('scrolled');
+        }
+        lastScrollY = currentScrollY;
+      }
+      window.addEventListener('scroll', handleScroll, { passive: true });
+      handleScroll();
+
+      // Note: Automatic scroll spy is disabled because all sections belong to index.html;
+      // scrolling the page does not automatically change the active navbar navigation.
+      const brandLogo = document.querySelector('.navbar-left .brand-logo');
+      if (brandLogo) {
+        brandLogo.addEventListener('click', () => {
+          const homeItem = document.querySelector('.nav-item[data-nav="home"]');
+          if (homeItem) {
+            navItems.forEach(item => item.classList.remove('active'));
+            homeItem.classList.add('active');
+            const link = homeItem.querySelector('.nav-link');
+            if (link) updateIndicatorPosition(link);
+          }
+        });
+      }
+
+      // --- 4. DARK / LIGHT THEME TOGGLE ---
+      function setTheme(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem('hotpot_theme', theme);
+
+        const isDark = theme === 'dark';
+        if (mobileThemeLabel) {
+          mobileThemeLabel.textContent = isDark ? 'Light Mode' : 'Dark Mode';
+        }
+      }
+
+      function toggleTheme() {
+        const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        setTheme(newTheme);
+      }
+
+      // Initialize theme from storage
+      const savedTheme = localStorage.getItem('hotpot_theme') || 'dark';
+      setTheme(savedTheme);
+
+      themeToggleBtn.addEventListener('click', toggleTheme);
+      if (mobileThemeToggle) mobileThemeToggle.addEventListener('click', toggleTheme);
+
+      // --- 5. RTL / LTR LAYOUT TOGGLE ---
+      function setRTL(isRTL) {
+        document.documentElement.setAttribute('dir', isRTL ? 'rtl' : 'ltr');
+        localStorage.setItem('hotpot_rtl', isRTL ? 'true' : 'false');
+        
+        if (rtlToggleBtn) rtlToggleBtn.setAttribute('data-tooltip', isRTL ? 'Switch to LTR' : 'Switch to RTL');
+        if (mobileRtlLabel) mobileRtlLabel.textContent = isRTL ? 'LTR Layout' : 'RTL Layout';
+
+        // Recalculate magnetic indicator
+        setTimeout(() => {
+          const activeItem = document.querySelector('.nav-item.active .nav-link');
+          if (activeItem) updateIndicatorPosition(activeItem);
+        }, 150);
+      }
+
+      function toggleRTL() {
+        const currentRTL = document.documentElement.getAttribute('dir') === 'rtl';
+        setRTL(!currentRTL);
+      }
+
+      const savedRTL = localStorage.getItem('hotpot_rtl') === 'true';
+      if (savedRTL) setRTL(true);
+
+      rtlToggleBtn.addEventListener('click', toggleRTL);
+      if (mobileRtlToggle) mobileRtlToggle.addEventListener('click', toggleRTL);
+
+      // --- 6. MOBILE HAMBURGER & FULL-HEIGHT DRAWER ---
+      function openDrawer() {
+        mobileDrawer.classList.add('open');
+        mobileBackdrop.classList.add('open');
+        hamburgerBtn.classList.add('active');
+        hamburgerBtn.setAttribute('aria-expanded', 'true');
+        document.body.classList.add('scroll-locked');
+      }
+
+      function closeDrawer() {
+        mobileDrawer.classList.remove('open');
+        mobileBackdrop.classList.remove('open');
+        hamburgerBtn.classList.remove('active');
+        hamburgerBtn.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('scroll-locked');
+      }
+
+      hamburgerBtn.addEventListener('click', () => {
+        if (mobileDrawer.classList.contains('open')) {
+          closeDrawer();
+        } else {
+          openDrawer();
+        }
+      });
+
+      drawerCloseBtn.addEventListener('click', closeDrawer);
+      mobileBackdrop.addEventListener('click', closeDrawer);
+
+      // Close drawer when any mobile nav link is clicked
+      drawerActionCloses.forEach(link => {
+        link.addEventListener('click', () => {
+          closeDrawer();
+        });
+      });
+
+      // Mobile Accordion Dropdowns
+      const accordionTriggers = document.querySelectorAll('.accordion-trigger');
+      accordionTriggers.forEach(trigger => {
+        trigger.addEventListener('click', (e) => {
+          const parentItem = trigger.closest('.drawer-item');
+          const isOpen = parentItem.classList.contains('accordion-open');
+          
+          // Close other open accordions
+          document.querySelectorAll('.drawer-item.accordion-open').forEach(el => {
+            if (el !== parentItem) el.classList.remove('accordion-open');
+          });
+
+          if (isOpen) {
+            parentItem.classList.remove('accordion-open');
+            trigger.setAttribute('aria-expanded', 'false');
+          } else {
+            parentItem.classList.add('accordion-open');
+            trigger.setAttribute('aria-expanded', 'true');
+          }
+        });
+      });
+
+      /* UNIVERSAL LOGO & LOGIN REDIRECTS */
+      document.querySelectorAll('.brand-logo, .footer-brand-logo').forEach(function(el) {
+        el.addEventListener('click', function(e) {
+          e.preventDefault();
+          window.location.href = 'index.html';
+        });
+      });
+
+      document.querySelectorAll('#loginBtn, #mobileLoginBtn, #footerLoginLink, #ofrMemberLoginBtn').forEach(function(el) {
+        el.addEventListener('click', function(e) {
+          e.preventDefault();
+          window.location.href = 'login.html';
+        });
+      });
+
+      // --- 7. MODAL WINDOW (LOGIN & AUTH) ---
+      function openLoginModal() {
+        window.location.href = 'login.html';
+      }
+
+      function closeLoginModal() {
+        loginModal.classList.remove('open');
+        document.body.classList.remove('scroll-locked');
+      }
+
+      // Expose globally for any button/link invocations
+      window.openLoginModal = openLoginModal;
+      window.closeLoginModal = closeLoginModal;
+
+      loginBtn.addEventListener('click', openLoginModal);
+      if (mobileLoginBtn) mobileLoginBtn.addEventListener('click', openLoginModal);
+      closeModalBtn.addEventListener('click', closeLoginModal);
+      
+      loginModal.addEventListener('click', (e) => {
+        if (e.target === loginModal) closeLoginModal();
+      });
+
+      // Login form submission handler
+      const loginForm = document.getElementById('loginForm');
+      if (loginForm) {
+        loginForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          alert('Logged in successfully! Welcome to the VIP Imperial Lounge.');
+          closeLoginModal();
+          loginForm.reset();
+        });
+      }
+
+      // Dashboard dropdown action links (demo alerts & click toggle)
+      if (dashboardDropdownTrigger && dashboardNavDropdown) {
+        dashboardDropdownTrigger.addEventListener('click', (e) => {
+          e.preventDefault();
+          if (getComputedStyle(navCenter).display !== 'none') {
+            const isOpen = dashboardNavDropdown.classList.toggle('dropdown-open');
+            dashboardDropdownTrigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+          }
+        });
+      }
+
+      const homeDropdownTrigger = document.getElementById('homeDropdownTrigger');
+      const homeDropdownItem = homeDropdownTrigger ? homeDropdownTrigger.closest('.nav-item') : null;
+      if (homeDropdownTrigger && homeDropdownItem) {
+        homeDropdownTrigger.addEventListener('click', (e) => {
+          e.preventDefault();
+          // If in 3-section view (Desktop / Nest Hub Max) and clicking the dropdown
+          if (getComputedStyle(navCenter).display !== 'none') {
+            const isOpen = homeDropdownItem.classList.toggle('dropdown-open');
+            homeDropdownTrigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+          }
+        });
+      }
+
+      // Click outside to close dropdowns
+      document.addEventListener('click', (e) => {
+        if (dashboardNavDropdown && !dashboardNavDropdown.contains(e.target)) {
+          dashboardNavDropdown.classList.remove('dropdown-open');
+          if (dashboardDropdownTrigger) dashboardDropdownTrigger.setAttribute('aria-expanded', 'false');
+        }
+        if (homeDropdownItem && !homeDropdownItem.contains(e.target)) {
+          homeDropdownItem.classList.remove('dropdown-open');
+          if (homeDropdownTrigger) homeDropdownTrigger.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      // Dropdown items click handlers
+      const adminDashboardLink = document.getElementById('adminDashboardLink');
+      // allow default navigation to admin-dashboard.html
+
+      // allow default navigation to user-dashboard.html
+      const userDashboardLink = document.getElementById('userDashboardLink');
+      const mobileUserLink = document.getElementById('mobileUserLink');
+      const footerUserLink = document.getElementById('footerUserLink');
+      const footerLoginLink = document.getElementById('footerLoginLink');
+      if (footerLoginLink) {
+        footerLoginLink.addEventListener('click', (e) => {
+          e.preventDefault();
+          openLoginModal();
+        });
+      }
+      const footerReservationLink = document.getElementById('footerReservationLink');
+      if (footerReservationLink) {
+        footerReservationLink.addEventListener('click', (e) => {
+          e.preventDefault();
+          openLoginModal();
+        });
+      }
+      const footerBanquetLink = document.getElementById('footerBanquetLink');
+      if (footerBanquetLink) {
+        footerBanquetLink.addEventListener('click', (e) => {
+          e.preventDefault();
+          openLoginModal();
+        });
+      }
+
+      // Back to Top smooth scroll
+      const backToTopBtn = document.getElementById('backToTopBtn');
+      if (backToTopBtn) {
+        backToTopBtn.addEventListener('click', () => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+
+      // --- 8. ACCESSIBILITY: KEYBOARD NAVIGATION & ESCAPE KEY ---
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          if (loginModal.classList.contains('open')) {
+            closeLoginModal();
+          }
+          if (mobileDrawer.classList.contains('open')) {
+            closeDrawer();
+          }
+        }
+      });
+
+      // Window resize handler: recalculate indicator position
+      window.addEventListener('resize', () => {
+        const activeItem = document.querySelector('.nav-item.active .nav-link');
+        if (activeItem) updateIndicatorPosition(activeItem);
+        if (getComputedStyle(navCenter).display !== 'none' && mobileDrawer.classList.contains('open')) {
+          closeDrawer();
+        }
+      });
+
+
+      // ========================================================================
+      // HOMEPAGE INTERACTIVE LOGIC & MOTION ANIMATION CONTROLLER
+      // ========================================================================
+
+      // 1. Scroll-Triggered Reveal Animations (IntersectionObserver)
+      const revealElements = document.querySelectorAll('.hp-reveal, .hp-reveal-left, .hp-reveal-right, .hp-reveal-scale');
+      if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('hp-revealed');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, {
+          threshold: 0.12,
+          rootMargin: '0px 0px -40px 0px'
+        });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+      } else {
+        // Fallback for browsers without IntersectionObserver or when reduced motion is preferred
+        revealElements.forEach(el => el.classList.add('hp-revealed'));
+      }
+
+      // 2. Subtle 3D Card Hover & Parallax Tilt Effects
+      const tiltCards = document.querySelectorAll('.hp-broth-card, .hp-special-card, .hp-ritual-card, .hp-harvest-card, .hp-beancurd-card');
+      tiltCards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+          const rotateX = ((y - centerY) / centerY) * -6;
+          const rotateY = ((x - centerX) / centerX) * 6;
+          card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-8px)`;
+        });
+
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = '';
+        });
+      });
+
+      // 3. Reservation Party Size Selector
+      const partyBtns = document.querySelectorAll('.hp-party-btn');
+      const partyInput = document.getElementById('hpPartyInput');
+      if (partyBtns.length && partyInput) {
+        partyBtns.forEach(btn => {
+          btn.addEventListener('click', () => {
+            partyBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            partyInput.value = btn.getAttribute('data-guests') || '2';
+          });
+        });
+      }
+
+      // 4. Reservation Form Submission Handler
+      const reservationForm = document.getElementById('hpReservationForm');
+      if (reservationForm) {
+        reservationForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const name = document.getElementById('hpResName')?.value || 'Guest';
+          const date = document.getElementById('hpResDate')?.value || 'the selected evening';
+          const time = document.getElementById('hpResTime')?.value || '7:00 PM';
+          const broth = document.getElementById('hpResBroth')?.value || 'Signature Broth';
+          const guests = partyInput ? partyInput.value : '2';
+
+          alert(`Table Reserved Successfully!\n\nDear ${name},\nYour imperial table for ${guests} guests has been reserved for ${date} at ${time}.\nMaster Broth: ${broth}.\n\nA confirmation SMS and calendar invite have been dispatched.`);
+          reservationForm.reset();
+          if (partyBtns[0]) {
+            partyBtns.forEach(b => b.classList.remove('active'));
+            partyBtns[0].classList.add('active');
+          }
+        });
+      }
+
+    })();
+  </script>
+
+<script id="navSyncScript">
+(function() {
+  function syncActiveNav() {
+    const rawPath = (window.location.pathname.split('/').pop() || 'index.html').toLowerCase();
+    const path = rawPath.replace(/[?#].*$/, '');
+    let targetNav = 'home';
+    
+    if (path === 'home-2.html') {
+      targetNav = 'home';
+    } else if (path === 'about.html') {
+      targetNav = 'about';
+    } else if (path === 'menu.html') {
+      targetNav = 'menu';
+    } else if (path === 'experience.html') {
+      targetNav = 'experience';
+    } else if (path === 'reservation.html' || path === 'reservations.html') {
+      targetNav = 'reservations';
+    } else if (path === 'offers.html') {
+      targetNav = 'offers';
+    } else if (path === 'gallery.html') {
+      targetNav = 'gallery';
+    } else if (path === 'contact.html') {
+      targetNav = 'contact';
+    } else if (path === 'admin-dashboard.html' || path === 'user-dashboard.html') {
+      targetNav = 'dashboard';
+    } else if (path === 'index.html' || path === '') {
+      targetNav = 'home';
+    }
+
+    // Synchronize desktop navbar
+    const navItems = document.querySelectorAll('.nav-menu-list .nav-item');
+    navItems.forEach(item => {
+      const link = item.querySelector('.nav-link');
+      if (item.getAttribute('data-nav') === targetNav) {
+        item.classList.add('active');
+        if (typeof updateIndicatorPosition === 'function' && link) {
+          updateIndicatorPosition(link);
+        }
+      } else {
+        item.classList.remove('active');
+      }
+    });
+
+    // Synchronize mobile drawer
+    document.querySelectorAll('.mobile-drawer .drawer-item').forEach(item => {
+      if (item.getAttribute('data-nav') === targetNav) {
+        item.classList.add('active');
+      } else {
+        item.classList.remove('active');
+      }
+    });
+  }
+
+  // Run on DOM ready, load, and resize
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      setTimeout(syncActiveNav, 100);
+      setTimeout(syncActiveNav, 300);
+    });
+  } else {
+    setTimeout(syncActiveNav, 100);
+    setTimeout(syncActiveNav, 300);
+  }
+  window.addEventListener('load', syncActiveNav);
+  window.addEventListener('resize', () => {
+    const activeLink = document.querySelector('.nav-item.active .nav-link');
+    if (typeof updateIndicatorPosition === 'function' && activeLink) {
+      updateIndicatorPosition(activeLink);
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
